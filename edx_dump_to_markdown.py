@@ -4,6 +4,7 @@ Converts edX dump to Markdown files.
 Author: Allen Guo <allenguo@berkeley.edu>
 """
 
+import codecs
 import os
 import html2text
 import xml.etree.ElementTree as ET
@@ -34,24 +35,25 @@ def read_child_urls(path):
         if 'url_name' in child.attrib:
             yield child.attrib['url_name']
 
-def convert_chapter(path, output_path):
+def convert_chapter(path, output_dir):
     for i, path in enumerate(read_child_urls(path)):
-        convert_sequential('sequential/' + path, output_path + 'section%d/' % (i + 1))
+        convert_sequential('sequential/' + path, output_dir)
 
-def convert_sequential(path, output_path):
+def convert_sequential(path, output_dir):
+    for i, path in enumerate(read_child_urls(path)):
+        convert_vertical('vertical/' + path, output_dir + 'section%d.md' % (i + 1), output_dir)
+
+def convert_vertical(path, output_path, output_dir):
+    make_directory(OUTPUT_ROOT + output_dir)
+    output_file = codecs.open(OUTPUT_ROOT + output_path, 'w', encoding='utf-8')
     for path in read_child_urls(path):
-        convert_vertical('vertical/' + path, output_path)
-
-def convert_vertical(path, output_path):
-    for i, path in enumerate(read_child_urls(path)):
         try:
-            make_directory(OUTPUT_ROOT + output_path)
-            html_file = open(DUMP_ROOT + 'html/' + path + '.html')
+            html_file = codecs.open(DUMP_ROOT + 'html/' + path + '.html', encoding='utf-8')
             markdown = html_to_markdown(html_file.read())
-            output_file = open(OUTPUT_ROOT + output_path + 'page%d.md' % (i + 1), 'w')
+            
             output_file.write(markdown)
-        except:
-            pass
+        except Exception as e:
+            print e
 
 def main():
     chapter_paths = read_child_urls(MANIFEST)
