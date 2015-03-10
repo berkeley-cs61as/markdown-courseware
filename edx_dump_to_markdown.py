@@ -38,7 +38,7 @@ def read_title(path):
     xml = read_xml(path)
     title = xml.attrib['display_name'] if 'display_name' in xml.attrib else 'Untitled'
     title = re.sub('\?', '', title)
-    title = re.sub(':', '- ', title)
+    title = re.sub(':', ' -', title)
     title = re.sub('/', '-', title)
     return title
 
