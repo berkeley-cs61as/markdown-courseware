@@ -40,8 +40,10 @@ def convert_chapter(path, output_dir):
         convert_sequential('sequential/' + path, output_dir)
 
 def convert_sequential(path, output_dir):
+    xml = read_xml(path)
+    title = xml.attrib['display_name'] if 'display_name' in xml.attrib else 'Untitled'
     for i, path in enumerate(read_child_urls(path)):
-        convert_vertical('vertical/' + path, output_dir + 'section%d.md' % (i + 1), output_dir)
+        convert_vertical('vertical/' + path, output_dir + '%s.md' % title, output_dir)
 
 def convert_vertical(path, output_path, output_dir):
     make_directory(OUTPUT_ROOT + output_dir)
@@ -50,7 +52,6 @@ def convert_vertical(path, output_path, output_dir):
         try:
             html_file = codecs.open(DUMP_ROOT + 'html/' + path + '.html', encoding='utf-8')
             markdown = html_to_markdown(html_file.read())
-            
             output_file.write(markdown)
         except Exception as e:
             print e
@@ -61,4 +62,4 @@ def main():
         convert_chapter('chapter/' + path, 'chapter%d/' % (i + 1))
 
 if __name__ == '__main__':
-    main()                
+    main()
