@@ -46,7 +46,7 @@ def convert_chapter(path, output_dir):
     title = read_title(path)
     for i, path in enumerate(read_child_urls(path)):
         make_directory(OUTPUT_ROOT + output_dir + title)
-        convert_sequential('sequential/' + path, output_dir + title + '/%d - ' % (i + 1))
+        convert_sequential('sequential/' + path, output_dir + title + '/%02d - ' % (i + 1))
 
 def convert_sequential(path, output_dir):
     title = read_title(path)
@@ -72,7 +72,7 @@ def main():
     os.system('rm -rf ./chapter*')
     chapter_paths = read_child_urls(MANIFEST)
     for i, path in enumerate(chapter_paths):
-        convert_chapter('chapter/' + path, 'chapter%d ' % (i + 1))
+        convert_chapter('chapter/' + path, 'chapter%02d ' % (i + 1))
 
 if __name__ == '__main__':
     main()
