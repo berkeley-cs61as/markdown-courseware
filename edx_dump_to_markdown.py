@@ -38,29 +38,35 @@ def read_title(path):
     xml = read_xml(path)
     title = xml.attrib['display_name'] if 'display_name' in xml.attrib else 'Untitled'
     title = re.sub('\?', '', title)
-    title = re.sub('[/:]', '-', title)
+    title = re.sub(':', '- ', title)
+    title = re.sub('/', '-', title)
     return title
 
 def convert_chapter(path, output_dir):
     title = read_title(path)
     for i, path in enumerate(read_child_urls(path)):
-        convert_sequential('sequential/' + path, output_dir + title + '/')
+        make_directory(OUTPUT_ROOT + output_dir + title)
+        convert_sequential('sequential/' + path, output_dir + title + '/%d - ' % (i + 1))
 
 def convert_sequential(path, output_dir):
     title = read_title(path)
-    for i, path in enumerate(read_child_urls(path)):
-        convert_vertical('vertical/' + path, output_dir + '%s.md' % title, output_dir)
+    output_file = codecs.open(OUTPUT_ROOT + output_dir + title + '.md', 'w', encoding='utf-8')
+    markdown = ''
+    for path in read_child_urls(path):
+        markdown += convert_vertical('vertical/' + path)
+    output_file.write(markdown)
+    output_file.close()    
 
-def convert_vertical(path, output_path, output_dir):
-    make_directory(OUTPUT_ROOT + output_dir)
-    output_file = codecs.open(OUTPUT_ROOT + output_path, 'w', encoding='utf-8')
+def convert_vertical(path):
+    output = ''
     for path in read_child_urls(path):
         try:
             html_file = codecs.open(DUMP_ROOT + 'html/' + path + '.html', encoding='utf-8')
             markdown = html_to_markdown(html_file.read())
-            output_file.write(markdown)
+            output += markdown
         except Exception as e:
             print e
+    return output
 
 def main():
     os.system('rm -rf ./chapter*')
