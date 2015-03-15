@@ -1,0 +1,61 @@
+<html>
+<html lang="en">
+    <meta charset="utf-8">
+    <title>{{title}}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/styles.css">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+</head>
+<body>
+<nav role="navigation" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="#" class="navbar-brand">CS 61AS</a>
+        </div>
+        <div id="navbarCollapse" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../textbook.html">Textbook</a></li>
+                <li><a href="../syllabus.html">Syllabus</a></li>
+                <li><a href="../faq.html">FAQ</a></li>
+                <li><a href="../staff.html">Staff</a></li>
+                <li><a href="../resources.html">Resources</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="https://piazza.com/class/i46lp8tlgni71q" target="_blank">Piazza</a></li>
+                <li><a href="http://www.cs61as-quizzes.com" target="_blank">Quiz System</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="row">
+    <div class="col-md-8">
+        <h1>{{title}}</h1>
+        {{content}}
+    </div>
+    <div class="col-md-4">
+        <div class="panel panel-info fixed">
+        <div class="panel-heading"><b>{{chaptertitle}}</b></div>
+            <div class="panel-body">
+                {{chaptertoc}}
+            </div>
+        </div>
+    </div>    
+</div>
+<div id="footer">
+<hr>
+    Copyright 2015 CS 61AS Course Staff. Based on <i>Structure and Interpretation of Computer Programs</i> by Harold Abelson and Gerald Jay Sussman.
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script>
+</script>
+</body>
+</html>
