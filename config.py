@@ -1,5 +1,5 @@
 
-output_directory = '../cs61as-site/'
+output_directory = '../berkeley-cs61as.github.com/'
 
 units = [('Setup', '1-3'),
          ('Unit 0', '4, 6-7'),
@@ -8,8 +8,12 @@ units = [('Setup', '1-3'),
          ('Unit 3', '17-21'),
          ('Unit 4', '22-27')]
 
-pages = [('Syllabus', 'syllabus.md'),
-         ('FAQ', 'faq.md')]
+pages = [('Home','index.md'),
+         ('Textbook','textbook.md'),
+         ('Syllabus','syllabus.md'),
+         ('FAQ','faq.md'),
+         ('Staff','staff.md'),
+         ('Resources','resources.md')]
 
 textbook_html_template = 'textbook-template.html'
 

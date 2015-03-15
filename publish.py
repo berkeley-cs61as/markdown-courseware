@@ -16,8 +16,8 @@ def parse_range(s):
             ans.append(int(chunk))
     return ans
 
-# E.g. 'section01 Hello - My, Name, is Bob.md' -> 'hello-my-name-is-bob'
-def to_output_name(s):
+# E.g. 'section01 Hello - My, Name, is Bob.md' -> 'hello-my-name-is-bob.html'
+def to_output_name(s, extension='.html'):
     s = re.sub('section\d* ', '', s)
     s = re.sub('\.md', '', s)
     s = re.sub(',', '', s)
@@ -27,20 +27,14 @@ def to_output_name(s):
     chunks = s.split(' ')
     chunks = map(lambda x: x.lower(), chunks)
     chunks = filter(lambda x: x, chunks)
-    return '-'.join(chunks) + '.html'
+    return '-'.join(chunks) + extension
 
 def to_section_title(s):
     return re.sub('section\d*', '', s.rstrip('.md')).strip()
 
-def to_chapter_toc(sections):
-    toc = ''
-    for section in sections:
-        toc += '<li><a href="%s">%s</a></li>' % (to_output_name(section), to_section_title(section))
-    return toc
-
 def clear_output_directory():
     os.system('rm -r ' + os.path.join(config.output_directory, 'textbook/'))
-    os.system('rm ' + os.path.join(config.output_directory, '*.md'))
+    os.system('rm ' + os.path.join(config.output_directory, '*.html'))
 
 def prepare_output_directory():
     os.mkdir(os.path.join(config.output_directory, 'textbook/'))
@@ -49,11 +43,25 @@ class Publisher(object):
 
     def __init__(self):
         self.textbook_template = codecs.open(config.textbook_html_template, encoding='utf-8').read()
-        self.static_page_template = codecs.open(config.page_html_template, encoding='utf-8').read()
+        self.page_template = codecs.open(config.page_html_template, encoding='utf-8').read()
+        self.full_toc = ''
+
+    def generate_chapter_toc(self, sections, chapter_title):
+        toc = ''
+        self.full_toc += '<div><b>%s</b><ul>' % chapter_title
+        for section in sections:
+            path = to_output_name(section)
+            title = to_section_title(section)
+            toc += '<li><a href="%s">%s</a></li>' % (path, title)
+            self.full_toc += '<li><a href="textbook/%s">%s</a></li>' % (path, title)
+        self.full_toc += '</ul></div>'
+        return toc            
 
     def publish_units(self):
         for unit_title, chapter_range in config.units:
             print 'Publishing %s...' % unit_title
+            anchor = to_output_name(unit_title, extension='')
+            self.full_toc += '<a class="anchor" id="%s"></a><h2>%s</h2>' % (anchor, unit_title)
             chapters = parse_range(chapter_range)
             for chapter_num in chapters:
                 self.publish_chapter(chapter_num)
@@ -62,13 +70,13 @@ class Publisher(object):
         chapter_str = 'chapter%02d' % chapter_num
         chapter_dir = filter(lambda name: chapter_str in name, os.listdir('.'))
         if not chapter_dir:
-            print 'Chapter does not exist:', chapter_str
+            raise ValueError('Chapter does not exist: ' + chapter_str)
         elif len(chapter_dir) > 1:
-            print 'Ambiguous chapter:', chapter_str
+            raise ValueError('Ambiguous chapter: ' + chapter_str)
         else:
             section_files = os.listdir(chapter_dir[0])
             chapter_title = re.sub('chapter\d* ', '', chapter_dir[0])
-            chapter_toc = to_chapter_toc(section_files)
+            chapter_toc = self.generate_chapter_toc(section_files, chapter_title)
             for section in section_files:
                 input_path = os.path.join(chapter_dir[0], section)
                 output_name = to_output_name(section)
@@ -77,7 +85,6 @@ class Publisher(object):
                 self.convert_section(input_path, output_path, title, chapter_toc, chapter_title)
 
     def convert_section(self, md_path, html_path, title, chapter_toc, chapter_title):
-        print title
         output = self.textbook_template
         in_file = codecs.open(md_path, encoding='utf-8')
         out_file = codecs.open(html_path, 'w', encoding='utf-8')
@@ -90,6 +97,25 @@ class Publisher(object):
         out_file.close()
         in_file.close()
 
+    def publish_pages(self):
+        for page_title, path in config.pages:
+            print 'Publishing %s...' % page_title
+            output_name = to_output_name(path)
+            output_path = os.path.join(config.output_directory, output_name)
+            self.convert_page(path, output_path, page_title)
+
+    def convert_page(self, md_path, html_path, title):
+        output = self.page_template
+        in_file = codecs.open(md_path, encoding='utf-8')
+        out_file = codecs.open(html_path, 'w', encoding='utf-8')
+        html = markdown2.markdown(in_file.read())
+        output = output.replace('{{title}}', title)
+        output = output.replace('{{content}}', html)
+        output = output.replace('{{fulltoc}}', self.full_toc)
+        out_file.write(output)
+        out_file.close()
+        in_file.close()        
+
 def main():
     print 'Clearing output directory of generated files...'
     clear_output_directory()
@@ -97,6 +123,7 @@ def main():
     prepare_output_directory()
     p = Publisher()
     p.publish_units()
+    p.publish_pages()
 
 if __name__ == '__main__':
     main()
