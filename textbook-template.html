@@ -40,7 +40,7 @@
         {{content}}
     </div>
     <div class="col-md-4">
-        <div class="panel panel-info fixed">
+        <div class="panel panel-info fixed" id="toc">
         <div class="panel-heading"><b>{{chaptertitle}}</b></div>
             <div class="panel-body">
                 {{chaptertoc}}
@@ -55,6 +55,49 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <script>
+var getSectionTOCItem = function() {
+    var title = $($('h1')[0]).text();
+    return $('#toc a').filter(function(index) {
+        return $(this).text() === title;
+    });
+}
+
+var setUpTOC = function() {
+    var subtitles = $('h2');
+    var tocItem = getSectionTOCItem().parent();
+    var list = $('<ul></ul>');
+    for (var i = 0; i < subtitles.length; i++) {
+        var current = $(subtitles[i]);
+        heading = current.text();
+        $('<a class="anchor" id="sub' + i + '"></a>').insertBefore(current);
+        list.append('<li><a id="toc-sub' + i + '" href="#sub' + i + '">' + heading + '</a></li>');
+    }
+    tocItem.append(list);
+    var listener = function() {
+        if ($(window).scrollTop() == 0) {
+            getSectionTOCItem().css('font-weight', 'bold');
+            $('[id*="toc-sub"]').css('font-weight', 'normal');
+            return; 
+        }
+        for (var i = 0; i < subtitles.length; i++) {
+            var current = $(subtitles[i]);
+            var tocItem = $('#toc-sub' + i);
+            if ($(window).scrollTop() > current.offset().top - 135) {
+                getSectionTOCItem().css('font-weight', 'normal');
+                $('[id*="toc-sub"]').css('font-weight', 'normal');
+                tocItem.css('font-weight', 'bold');
+            }
+        }
+    }
+    $(window).scroll(listener);
+    listener();
+}
+
+var main = function() {
+    setUpTOC();
+}
+
+$(main());
 </script>
 </body>
 </html>
