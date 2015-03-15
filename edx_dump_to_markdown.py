@@ -44,12 +44,13 @@ def read_title(path):
 
 def convert_chapter(path, output_dir):
     title = read_title(path)
+    title = re.sub('\[.*?\]', '', title).strip()
     for i, path in enumerate(read_child_urls(path)):
         make_directory(OUTPUT_ROOT + output_dir + title)
-        convert_sequential('sequential/' + path, output_dir + title + '/%02d - ' % (i + 1))
+        convert_sequential('sequential/' + path, output_dir + title + '/section%02d ' % (i + 1))
 
 def convert_sequential(path, output_dir):
-    title = read_title(path)
+    title = read_title(path).strip()
     output_file = codecs.open(OUTPUT_ROOT + output_dir + title + '.md', 'w', encoding='utf-8')
     markdown = ''
     for path in read_child_urls(path):
