@@ -8,10 +8,10 @@ Quickstart
 ----------
 To edit the course website/textbook from your browser:
 
-1. Fork this repository by clicking "Fork" above. This will make an editable copy of the course website for you. To understand this better, see GitHub's [help page](https://help.github.com/articles/fork-a-repo/).
-2. In your forked copy, navigate to the Markdown file you want to edit and make your changes by clicking the "edit" button. Remember that you can click "Preview changes" to see what changes you've made.
-3. Save your changes.
-4. Create a pull request. This is you telling us, "I have made changes and I would like you to merge them." See GitHub's [https://help.github.com/articles/creating-a-pull-request/](help page) for more information.
+1. **Fork this repository** by clicking "Fork" above. This will make an editable copy of the course website for you. To understand this better, see GitHub's [help page](https://help.github.com/articles/fork-a-repo/).
+2. In your forked copy, navigate to the Markdown file you want to edit then **make your changes** by clicking the "edit" button. Remember that you can click "Preview changes" to see what changes you've made.
+3. **Save your changes**, making sure to describe your changes in the commit message.
+4. **Create a pull request** by going [https://github.com/berkeley-cs61as/markdown-courseware/compare](here) and clicking "compare across forks". Then select your fork and click "Create pull request". This is you telling us, "I have made changes and I would like you to merge them." See GitHub's [https://help.github.com/articles/creating-a-pull-request/](help page) for more information.
 
 That's all! If you get stuck, contact Allen at allenguo@berkeley.edu. Comments and suggestions are also welcome!
 
