@@ -33,14 +33,14 @@ These instructions are for staff members with write access to both this reposito
 1. Make sure you have Python 2.7 installed. As of right now, Python 3 is not supported.
 2. Install the [markdown2](https://github.com/trentm/python-markdown2) module. (If you use pip: `pip install markdown2`.)
 3. Clone this repository.
-4. Clone [berkeley-cs61as.github.com](https://github.com/berkeley-cs61as/berkeley-cs61as.github.com).
+4. Clone [berkeley-cs61as.github.io](https://github.com/berkeley-cs61as/berkeley-cs61as.github.io).
 
 ### Deployment
 
 0. Navigate to this repository.
 0. Do a `git pull`.
-2. Run `publish.py` by doing `python publish.py`. This will convert all of the Markdown files to HTML. By default, the resulting HTML files will be placed in `../berkeley-cs61as.github.com`.
-3. Navigate to `../berkeley-cs61as.github.com`.
+2. Run `publish.py` by doing `python publish.py`. This will convert all of the Markdown files to HTML. By default, the resulting HTML files will be placed in `../berkeley-cs61as.github.io`.
+3. Navigate to `../berkeley-cs61as.github.io`.
 4. Commit and push.
 4. Your changes will be instantly visible at http://berkeley-cs61as.github.io.
 
@@ -72,7 +72,7 @@ What Does `publish.py` Do?
 * Generates a table of contents that includes every chapter and section.
 * Converts Markdown files to HTML.
 * Inserts the converted content in the appropriate places, as defined by the templates files (see below).
-* Writes the final HTML files to the output directory (usually `../berkeley-cs61as.github.com`).
+* Writes the final HTML files to the output directory (usually `../berkeley-cs61as.github.io`).
 
 ### Templating
 
