@@ -1,5 +1,5 @@
 
-output_directory = '../berkeley-cs61as.github.com/'
+output_directory = '../berkeley-cs61as.github.io/'
 
 units = [('Setup', '1-3'),
          ('Unit 0', '4, 6-7'),
