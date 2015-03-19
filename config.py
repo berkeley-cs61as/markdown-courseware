@@ -1,3 +1,12 @@
+#!/usr/bin/env python
+
+"""
+config.py
+Allen Guo <allenguo@berkeley.edu>
+Specifies configurable settings for publish.py.
+"""
+
+github_url = 'https://github.com/berkeley-cs61as/markdown-courseware/tree/master/'
 
 output_directory = '../berkeley-cs61as.github.io/'
 

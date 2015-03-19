@@ -1,3 +1,12 @@
+#!/usr/bin/env python
+
+"""
+publish.py
+Allen Guo <allenguo@berkeley.edu>
+Publishes textbook and website using the supplied templates and settings.
+See the README file for details.
+"""
+
 import codecs, os, re
 import markdown2
 import config
@@ -85,6 +94,7 @@ class Publisher(object):
                 self.convert_section(input_path, output_path, title, chapter_toc, chapter_title)
 
     def convert_section(self, md_path, html_path, title, chapter_toc, chapter_title):
+        edit_url = os.path.join(config.github_url, md_path)
         output = self.textbook_template
         in_file = codecs.open(md_path, encoding='utf-8')
         out_file = codecs.open(html_path, 'w', encoding='utf-8')
@@ -93,6 +103,7 @@ class Publisher(object):
         output = output.replace('{{content}}', html)
         output = output.replace('{{chaptertoc}}', chapter_toc)
         output = output.replace('{{chaptertitle}}', chapter_title)
+        output = output.replace('{{editurl}}', edit_url)
         out_file.write(output)
         out_file.close()
         in_file.close()
