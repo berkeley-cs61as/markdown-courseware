@@ -68,17 +68,17 @@ class Publisher(object):
 
     def publish_chapter(self, chapter_num):
         chapter_str = 'chapter%02d' % chapter_num
-        chapter_dir = filter(lambda name: chapter_str in name, os.listdir('.'))
+        chapter_dir = filter(lambda name: chapter_str in name, os.listdir('textbook'))
         if not chapter_dir:
             raise ValueError('Chapter does not exist: ' + chapter_str)
         elif len(chapter_dir) > 1:
             raise ValueError('Ambiguous chapter: ' + chapter_str)
         else:
-            section_files = os.listdir(chapter_dir[0])
+            section_files = os.listdir(os.path.join('textbook', chapter_dir[0]))
             chapter_title = re.sub('chapter\d* ', '', chapter_dir[0])
             chapter_toc = self.generate_chapter_toc(section_files, chapter_title)
             for section in section_files:
-                input_path = os.path.join(chapter_dir[0], section)
+                input_path = os.path.join('textbook/', chapter_dir[0], section)
                 output_name = to_output_name(section)
                 output_path = os.path.join(config.output_directory, 'textbook/', output_name)
                 title = to_section_title(section)
@@ -100,7 +100,7 @@ class Publisher(object):
     def publish_pages(self):
         for page_title, path in config.pages:
             print 'Publishing %s...' % page_title
-            output_name = to_output_name(path)
+            output_name = to_output_name(os.path.split(path)[1])
             output_path = os.path.join(config.output_directory, output_name)
             self.convert_page(path, output_path, page_title)
 
