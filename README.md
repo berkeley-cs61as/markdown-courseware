@@ -56,7 +56,7 @@ More Complicated Changes
 ### Deleting/Adding Sections
 To delete/add sections, simply delete/add Markdown files as needed. Keep in mind:
 
-* Section file names are of the form `section## Title Goes Here.md`, where the `#`s are numerical digits.
+* Section file names are of the form `section## Title Goes Here.md`, where the `#`s are numerical digits. Multiple sections **may not** share the same title. This is true across the entire textbook.
 * Sections are ordered by number. Feel free to change the numbers of existing sections as needed to get everything in the right order.
 
 ### Deleting/Adding Chapters
