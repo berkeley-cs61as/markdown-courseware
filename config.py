@@ -33,7 +33,7 @@ pages = [('Home', 'pages/index.html', 'page-no-toc'),
          ('Syllabus', 'pages/syllabus.md', 'page-toc'),
          ('FAQ', 'pages/faq.html', 'page-toc'),
          ('Staff', 'pages/staff.html', 'page-no-toc'),
-         ('Resources', 'pages/resources.html', 'page-toc')]
+         ('Resources', 'pages/resources.html', 'page-no-toc')]
 
 # publish.py generates a warning if a section title exceeds this
 section_title_max_length = 48
