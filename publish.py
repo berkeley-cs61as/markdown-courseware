@@ -104,6 +104,8 @@ class Publisher(object):
 
     def convert_section(self, md_path, html_path, title, chapter_toc, chapter_title):
         edit_url = os.path.join(config.github_url, md_path)
+        if os.path.exists(html_path):
+            print 'Warning: Only one section can be named "%s"' % title
         output = self.textbook_template
         in_file = codecs.open(md_path, encoding='utf-8')
         out_file = codecs.open(html_path, 'w', encoding='utf-8')
