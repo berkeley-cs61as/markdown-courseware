@@ -54,6 +54,7 @@ class Publisher(object):
         self.textbook_template = codecs.open(config.textbook_html_template, encoding='utf-8').read()
         self.page_template = codecs.open(config.page_html_template, encoding='utf-8').read()
         self.full_toc = ''
+        self.full_toc_new_row = True
 
     def generate_chapter_toc(self, sections, chapter_title):
         toc = ''
@@ -70,10 +71,18 @@ class Publisher(object):
         for unit_title, chapter_range in config.units:
             print 'Publishing %s...' % unit_title
             anchor = to_output_name(unit_title, extension='')
+            if self.full_toc_new_row:
+                if self.full_toc:
+                    self.full_toc += '</div>'
+                self.full_toc += '<div class="row">'
+            self.full_toc_new_row = not self.full_toc_new_row
+            self.full_toc += '<div class="col-md-6 full-toc-panel"'
             self.full_toc += '<a class="anchor" id="%s"></a><h2>%s</h2>' % (anchor, unit_title)
             chapters = parse_range(chapter_range)
             for chapter_num in chapters:
                 self.publish_chapter(chapter_num)
+            self.full_toc += '</div>'  # Close column
+        self.full_toc += '</div>'  # Close row
 
     def publish_chapter(self, chapter_num):
         chapter_str = 'chapter%02d' % chapter_num
