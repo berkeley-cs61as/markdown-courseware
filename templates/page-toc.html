@@ -92,6 +92,7 @@ var setUpTOC = function() {
 
 var main = function() {
     setUpTOC();
+    $('a.nav-link:contains({{title}})').parent().addClass('active');
 }
 
 $(main());
