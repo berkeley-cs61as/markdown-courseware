@@ -23,13 +23,17 @@ units = [('Setup', '1-3'),
          ('Unit 3', '17-21'),
          ('Unit 4', '22-27')]
 
-pages = [('Home','pages/index.md'),
-         ('Textbook','pages/textbook.md'),
-         ('Syllabus','pages/syllabus.md'),
-         ('FAQ','pages/faq.md'),
-         ('Staff','pages/staff.md'),
-         ('Resources','pages/resources.md')]
+# List of tuples. Each tuple represents a (non-textbook) page.
+# The first item in the tuple is the name of the page.
+# The second item is the file path (relative to publish.py).
+# This can either be a Markdown file or HTML file.
+# The third item is the template to use with page.
+pages = [('Home', 'pages/index.html', 'page-no-toc'),
+         ('Textbook', 'pages/textbook.html', 'page-no-toc'),
+         ('Syllabus', 'pages/syllabus.md', 'page-toc'),
+         ('FAQ', 'pages/faq.html', 'page-toc'),
+         ('Staff', 'pages/staff.html', 'page-no-toc'),
+         ('Resources', 'pages/resources.html', 'page-toc')]
 
-textbook_html_template = 'templates/textbook-template.html'
-
-page_html_template = 'templates/page-template.html'
+# publish.py generates a warning if a section title exceeds this
+section_title_max_length = 48

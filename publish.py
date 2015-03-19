@@ -29,6 +29,7 @@ def parse_range(s):
 def to_output_name(s, extension='.html'):
     s = re.sub('section\d* ', '', s)
     s = re.sub('\.md', '', s)
+    s = re.sub('\.html', '', s)
     s = re.sub(',', '', s)
     s = re.sub(' - ', ' ', s)
     s = re.sub('\(', '', s)
@@ -51,8 +52,10 @@ def prepare_output_directory():
 class Publisher(object):
 
     def __init__(self):
-        self.textbook_template = codecs.open(config.textbook_html_template, encoding='utf-8').read()
-        self.page_template = codecs.open(config.page_html_template, encoding='utf-8').read()
+        self.templates = {}
+        for file in os.listdir('templates'):
+            html = codecs.open(os.path.join('templates', file), encoding='utf-8').read()
+            self.templates[file.rstrip('.html')] = html
         self.full_toc = ''
         self.full_toc_new_row = True
 
@@ -103,10 +106,12 @@ class Publisher(object):
                 self.convert_section(input_path, output_path, title, chapter_toc, chapter_title)
 
     def convert_section(self, md_path, html_path, title, chapter_toc, chapter_title):
-        edit_url = os.path.join(config.github_url, md_path)
+        if len(title) > config.section_title_max_length:
+            print 'Warning: Section title "%s" is too long' % title
         if os.path.exists(html_path):
             print 'Warning: Only one section can be named "%s"' % title
-        output = self.textbook_template
+        edit_url = os.path.join(config.github_url, md_path)
+        output = self.templates['textbook']
         in_file = codecs.open(md_path, encoding='utf-8')
         out_file = codecs.open(html_path, 'w', encoding='utf-8')
         html = markdown2.markdown(in_file.read())
@@ -120,17 +125,21 @@ class Publisher(object):
         in_file.close()
 
     def publish_pages(self):
-        for page_title, path in config.pages:
+        for page_title, path, template in config.pages:
             print 'Publishing %s...' % page_title
             output_name = to_output_name(os.path.split(path)[1])
             output_path = os.path.join(config.output_directory, output_name)
-            self.convert_page(path, output_path, page_title)
+            self.convert_page(path, output_path, template, page_title)
 
-    def convert_page(self, md_path, html_path, title):
-        output = self.page_template
-        in_file = codecs.open(md_path, encoding='utf-8')
-        out_file = codecs.open(html_path, 'w', encoding='utf-8')
-        html = markdown2.markdown(in_file.read())
+    def convert_page(self, input_path, output_path, template, title):
+        output = self.templates[template]
+        input_type = input_path.split('.')[-1]
+        in_file = codecs.open(input_path, encoding='utf-8')
+        out_file = codecs.open(output_path, 'w', encoding='utf-8')
+        if input_type == 'md':
+            html = markdown2.markdown(in_file.read())        
+        else:
+            html = in_file.read()
         output = output.replace('{{title}}', title)
         output = output.replace('{{content}}', html)
         output = output.replace('{{fulltoc}}', self.full_toc)
