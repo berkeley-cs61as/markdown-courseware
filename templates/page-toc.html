@@ -1,0 +1,100 @@
+<html>
+<html lang="en">
+    <meta charset="utf-8">
+    <title>{{title}}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/styles.css">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+</head>
+<body>
+<nav role="navigation" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="../index.html" class="navbar-brand">CS 61AS</a>
+        </div>
+        <div id="navbarCollapse" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a class="nav-link" href="../textbook.html">Textbook</a></li>
+                <li><a class="nav-link" href="../syllabus.html">Syllabus</a></li>
+                <li><a class="nav-link" href="../faq.html">FAQ</a></li>
+                <li><a class="nav-link" href="../staff.html">Staff</a></li>
+                <li><a class="nav-link" href="../resources.html">Resources</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="https://piazza.com/class/i46lp8tlgni71q" target="_blank">Piazza</a></li>
+                <li><a href="http://www.cs61as-quizzes.com" target="_blank">Quiz System</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="row">
+    <div class="col-md-8">
+        <h1>{{title}}</h1>
+        {{content}}
+        <div id="footer" class="padded">
+            <hr>
+            Copyright 2015 CS 61AS Course Staff. Based on <i>Structure and Interpretation of Computer Programs</i> by Harold Abelson and Gerald Jay Sussman.
+        </div>                
+    </div>
+    <div class="col-md-4">
+        <div class="panel panel-info fixed hidden-xs hidden-sm" id="toc">
+            <div class="panel-heading"><b>Table of Contents</b></div>
+            <div class="panel-body">
+                <li><a id="toc-item" href="#" style="font-weight: bold;">{{title}}</a></li>
+            </div>
+        </div>     
+    </div>    
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script>
+var getSectionTOCItem = function() {
+    return $('#toc-item');
+}
+
+var setUpTOC = function() {
+    var subtitles = $('h2');
+    var tocItem = getSectionTOCItem().parent();
+    var list = $('<ul></ul>');
+    for (var i = 0; i < subtitles.length; i++) {
+        var current = $(subtitles[i]);
+        heading = current.text();
+        $('<a class="anchor" id="sub' + i + '"></a>').insertBefore(current);
+        list.append('<li><a id="toc-sub' + i + '" href="#sub' + i + '">' + heading + '</a></li>');
+    }
+    tocItem.append(list);
+    var listener = function() {
+        if ($(window).scrollTop() == 0) {
+            getSectionTOCItem().css('font-weight', 'bold');
+            $('[id*="toc-sub"]').css('font-weight', 'normal');
+            return; 
+        }
+        for (var i = 0; i < subtitles.length; i++) {
+            var current = $(subtitles[i]);
+            var tocItem = $('#toc-sub' + i);
+            if ($(window).scrollTop() > current.offset().top - 135) {
+                getSectionTOCItem().css('font-weight', 'normal');
+                $('[id*="toc-sub"]').css('font-weight', 'normal');
+                tocItem.css('font-weight', 'bold');
+            }
+        }
+    }
+    $(window).scroll(listener);
+    listener();
+}
+
+var main = function() {
+    setUpTOC();
+}
+
+$(main());
+</script>
+</body>
+</html>
