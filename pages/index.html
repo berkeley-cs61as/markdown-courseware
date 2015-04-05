@@ -1,6 +1,189 @@
+<!--
 <p>
 Welcome to <b>CS 61AS</b>!
 </p>
+-->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+<style>
+.agenda-view .panel-heading a:hover {
+    text-decoration: none;
+}
+.date {
+    font-size: 26px;
+}
+.details {
+    margin-top: 10px;
+    font-size: 14px;
+}
+.task-info p {
+    margin-bottom: 0px;
+}
+.well {
+    background-color: #FFF;
+    text-align: center;
+    margin-bottom: 0px;
+}
+.agenda-view {
+    width: 700px;
+    margin: 0px auto;
+    margin-bottom: 40px;
+}
+.agenda-view h2 {
+    margin-top: 10px;
+}
+.panel-heading {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+}
+.task-info .btn {
+    margin-top: 25px;
+    margin-right: 5px;
+}
+.close {
+
+}
+button .fa {
+    margin-right: 5px;
+}
+.card {
+    background-color: #F5F5F5;
+    border-left: 8px solid black;
+}
+.card.lesson {
+    border-left-color: rgb(141, 199, 137);
+}
+.card.discussion {
+    border-left-color: rgb(137, 161, 199);
+}
+.card.quiz {
+    border-left-color: rgb(199, 137, 184);
+}
+.card.assignment {
+    border-left-color: rgb(199, 137, 137);
+}
+.card:not(:first-of-type) {
+    margin-top: 15px;
+}
+.heading-details {
+    margin-top: 5px;
+    font-size: 14px;
+    font-weight: normal;
+}
+</style>
+<div class="panel panel-default agenda-view">
+  <div class="panel-heading">
+  <span style="float: left"><a href=""><i class="fa fa-long-arrow-left"></i> Back</a></span>
+  Week of March 30, 2015
+  <span style="float: right"><a href="">Next <i class="fa fa-long-arrow-right"></i></a></span>
+  <div class="heading-details">
+  <a href="">Track: Units 1&ndash;4</a>
+  </div>
+  </div>
+  <div class="panel-body">
+    <div class="panel panel-default card lesson">
+        <div class="panel-body">
+        <div class="row">
+        <div class="col-xs-4">
+        <div class="well">
+            <b>Tuesday</b>
+            <div class="date">
+            Mar 31
+            </div>
+            <div class="details">
+            Suggested Due Date
+            </div>
+        </div></div>
+        <div class="col-xs-8 task-info">
+        <button type="button" class="close pull-right">&times;</button>        
+        <h2>Lesson 6</h2>
+        This week, we'll be learning about generic operators and how we can use them to write better programs.
+        <p>
+        <button class="btn btn-default"><i class="fa fa-book"></i> Online Textbook</button>
+        <button class="btn btn-default"><i class="fa fa-youtube-play"></i> Lecture Videos</button>
+        </div>
+        </div>
+        </div>
+    </div>
+    <div class="panel panel-default card discussion">
+        <div class="panel-body">
+        <div class="row">
+        <div class="col-xs-4">
+        <div class="well">
+            <b>Wednesday</b>
+            <div class="date">
+            Apr 1
+            </div>
+            <div class="details">
+            10 AM &ndash; 11 AM<br>
+            271 Soda Hall
+            </div>
+        </div></div>
+        <div class="col-xs-8 task-info">
+        <button type="button" class="close pull-right">&times;</button>        
+        <h2>Discussion 6</h2>
+        This discussion will be led by <a href="mailto:andrew@berkeley.edu">Andrew</a>.
+        You will receive 0.5 attendance points for attending.
+        <p>
+        <button class="btn btn-default"><i class="fa fa-file-pdf-o"></i> Worksheet</button>
+        <button class="btn btn-default"><i class="fa fa-file-pdf-o"></i> Solutions</button>
+        </div>
+        </div>
+        </div>
+    </div>
+    <div class="panel panel-default card quiz">
+        <div class="panel-body">
+        <div class="row">
+        <div class="col-xs-4">
+        <div class="well">
+            <b>Friday</b>
+            <div class="date">
+            Apr 30
+            </div>
+            <div class="details">
+            Due by End of Lab<br>
+            </div>
+        </div></div>
+        <div class="col-xs-8 task-info">
+        <button type="button" class="close pull-right">&times;</button>        
+        <h2>Quiz 6</h2>
+        Ask a reader or TA to take a quiz.
+        <p>
+        <button class="btn btn-default"><i class="fa fa-globe"></i> Quiz System</button>
+        <button class="btn btn-default"><i class="fa fa-files-o"></i> Practice Quizzes</button>
+        </div>
+        </div>
+        </div>
+    </div>    
+    <div class="panel panel-default card assignment">
+        <div class="panel-body">
+        <div class="row">
+        <div class="col-xs-4">
+        <div class="well">
+            <b>Friday</b>
+            <div class="date">
+            Apr 30
+            </div>
+            <div class="details">
+            Due 11:59 PM<br>
+            <small>(plus grace period)</small>
+            </div>
+        </div></div>
+        <div class="col-xs-8 task-info">
+        <button type="button" class="close pull-right">&times;</button>        
+        <h2>Homework 6</h2>
+        Please submit using the <code>submit</code> command.
+        <p>
+        <button class="btn btn-default"><i class="fa fa-file-text-o"></i> Problems</button>
+        </div>
+        </div>
+        </div>
+    </div>        
+  </div>
+</div>
+
+<!--
 <h2>Calendar</h2>
         <table class="table table-bordered table-striped">
             <thead>
@@ -39,11 +222,12 @@ Welcome to <b>CS 61AS</b>!
                 </tr>                                                
             </tbody>
         </table>
+        -->
 <div class="row">
     <div class="col-md-8">
         
     </div>
     <div class="col-md-4">
-        <h2>Announcements</h2>       
     </div>
 </div>
+<!--
