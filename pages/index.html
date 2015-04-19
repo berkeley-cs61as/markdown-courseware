@@ -25,7 +25,7 @@ Welcome to <b>CS 61AS</b>!
     margin-bottom: 0px;
 }
 .agenda-view {
-    width: 700px;
+    width: 900px;
     margin: 0px auto;
     margin-bottom: 40px;
 }
@@ -71,17 +71,26 @@ button .fa {
     font-size: 14px;
     font-weight: normal;
 }
+#right-side {
+    border-left: 1px solid #CCC;
+    padding-left: 10px;
+}
 </style>
 <div class="panel panel-default agenda-view">
   <div class="panel-heading">
-  <span style="float: left"><a href=""><i class="fa fa-long-arrow-left"></i> Back</a></span>
-  Week of March 30, 2015
-  <span style="float: right"><a href="">Next <i class="fa fa-long-arrow-right"></i></a></span>
+  <span style="float: left"><a href=""><i class="fa fa-long-arrow-left"></i> Lesson 5</a></span>
+  Lesson 6 Checklist
+  <span style="float: right"><a href="">Lesson 7 <i class="fa fa-long-arrow-right"></i></a></span>
   <div class="heading-details">
-  <a href="">Track: Units 1&ndash;4</a>
+  Track: Units 1&ndash;4 (<a href="">Change Track</a>)
   </div>
   </div>
   <div class="panel-body">
+    <div class="row">
+    <div class="col-xs-3">
+    Sidebar
+    </div>
+    <div class="col-xs-9" id="right-side">
     <div class="panel panel-default card lesson">
         <div class="panel-body">
         <div class="row">
@@ -179,7 +188,9 @@ button .fa {
         </div>
         </div>
         </div>
-    </div>        
+      </div>        
+      </div>
+    </div>
   </div>
 </div>
 
