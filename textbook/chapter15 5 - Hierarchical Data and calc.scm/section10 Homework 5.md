@@ -106,14 +106,14 @@ if s is a sequence containing four sequences, `((1 2 3) (4 5 6) (7 8 9) (10 11
 
 ` nil`
 
-` (cons (accumulate op init <_??_>)`
+` (cons (accumulate op init <??>)`
 
-` (accumulate-n op init <_??_>))))`
+` (accumulate-n op init <??>))))`
 
 ## Exercise 5
 
-Suppose we represent vectors _v_ = (_v__i_) as sequences of numbers, and
-matrices _m_ = (_m__i__j_) as sequences of vectors (the rows of the matrix).
+Suppose we represent vectors _v_ = (_v_<sub>_i_</sub>) as sequences of numbers, and
+matrices _m_ = (_m_<sub>_i_,_j_</sub>) as sequences of vectors (the rows of the matrix).
 For example, the matrix
 
 ![](http://mitpress.mit.edu/sicp/full-text/book/ch2-Z-G-20.gif)
@@ -139,17 +139,17 @@ previous exercise)
 
 `(define (matrix-*-vector m v)`
 
-` (map <_??_> m))`
+` (map <??> m))`
 
 `(define (transpose mat)`
 
-` (accumulate-n <_??_> <_??_> mat))`
+` (accumulate-n <??> <??> mat))`
 
 `(define (matrix-*-matrix m n)`
 
 ` (let ((cols (transpose n)))`
 
-` (map <_??_> m)))`
+` (map <??> m)))`
 
 ## Exercise 6: SICP 2.38
 
