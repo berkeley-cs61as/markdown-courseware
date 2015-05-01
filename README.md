@@ -6,13 +6,21 @@ If you need a refresher on Markdown, see [here](https://github.com/adam-p/markdo
 
 Quickstart
 ----------
-### Before You Begin
+<!--### Before You Begin
 
 To contribute to this project you will need a GitHub account. Create one [here](https://github.com/join).
 
-If you are planning to make significant or non-trivial changes, consider discussing your changes with other contributors beforehand.
+If you are planning to make significant or non-trivial changes, consider discussing your changes with other contributors first. -->
 
-### Instructions
+### How Can I Help?
+There are four main tasks that must be completed for each section:
+
+1. Compare the material with the edX version to make sure nothing is missing.
+2. Check that paragraph text, code blocks, and bulleted lists are correctly formated.
+3. Check for dead or broken links (including images).
+4. Improve or report anything else ugly or blatantly unprofessional.
+
+### Editing Instructions
 To edit the course website/textbook from your browser:
 
 1. **Navigate** to the Markdown file you want to edit.
@@ -26,7 +34,10 @@ To edit the course website/textbook from your browser:
 3. **Save your changes**, making sure to describe your changes in the commit message.
 4. **Create a pull request** by going [https://github.com/berkeley-cs61as/markdown-courseware/compare](here) and clicking "compare across forks". Then select your fork and click "Create pull request". This is you telling us, "I have made changes and I would like you to merge them." See GitHub's [https://help.github.com/articles/creating-a-pull-request/](help page) for more information.
 -->
-That's all! If you get stuck, contact Allen at allenguo@berkeley.edu. Comments and suggestions are also welcome.
+That's all! Note that your changes will not be visible on the live course webpage immediately.
+
+If you get stuck at any point, contact Allen at allenguo@berkeley.edu. Comments and suggestions are also welcome.
+
 
 Updating the Live Site
 ----------------------
