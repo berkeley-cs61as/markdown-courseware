@@ -120,6 +120,7 @@ class Publisher(object):
         output = output.replace('{{chaptertoc}}', chapter_toc)
         output = output.replace('{{chaptertitle}}', chapter_title)
         output = output.replace('{{editurl}}', edit_url)
+        output = output.replace('<code>', '<code class="scheme">')
         out_file.write(output)
         out_file.close()
         in_file.close()
