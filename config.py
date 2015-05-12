@@ -1,39 +1,38 @@
-#!/usr/bin/env python
+import os
+import re
+# Import various utilities from utils
+# import templar.utils.html
+# import templar.utils.filters
 
-"""
-config.py
-Allen Guo <allenguo@berkeley.edu>
-Specifies configurable settings for publish.py.
-"""
+# Path of the current file -- best not to change this
+FILEPATH = os.path.dirname(os.path.abspath(__file__))
 
-github_url = 'https://github.com/berkeley-cs61as/markdown-courseware/tree/master/'
+##################
+# Configurations #
+##################
 
-output_directory = '../berkeley-cs61as.github.io/'
+configurations = {
+    # List of directories in which to search for templates
+    'TEMPLATE_DIRS': [
+        FILEPATH,
+        # Add directories that contain templates
+        # os.path.join(FILEPATH, 'example'),
+    ],
 
-# List of tuples. Each tuple represents a unit.
-# The first item in the tuple is the name of the unit.
-# The second item is a range of numbers indicating the chapters
-# in that tuple. The range must be something like this: "1, 2-4, 6, 7."
-# Note that ranges indicated with a dash are inclusive-inclusive.
-# Also, make sure every comma is followed by a space.
-units = [('Setup', '1-3'),
-         ('Unit 0', '4, 6-7'),
-         ('Unit 1', '8-9, 11-12'),
-         ('Unit 2', '13-16'),
-         ('Unit 3', '17-21'),
-         ('Unit 4', '22-27')]
+    # Variables that can be used in templates
+    'VARIABLES': {
+        # Add variables here, like the following
+        # 'example': 'something here',
+    },
 
-# List of tuples. Each tuple represents a (non-textbook) page.
-# The first item in the tuple is the name of the page.
-# The second item is the file path (relative to publish.py).
-# This can either be a Markdown file or HTML file.
-# The third item is the template to use with page.
-pages = [('Home', 'pages/index.html', 'page-no-toc'),
-         ('Textbook', 'pages/textbook.html', 'page-no-toc'),
-         ('Syllabus', 'pages/syllabus.md', 'page-toc'),
-         ('FAQ', 'pages/faq.html', 'page-toc'),
-         ('Staff', 'pages/staff.html', 'page-no-toc'),
-         ('Resources', 'pages/resources.html', 'page-no-toc')]
+    # Substitutions for the linker
+    'SUBSTITUTIONS': [
+        # Add substitutions of the form
+        # (regex, sub_function),
+        # (regex, sub_function, condition),
+    ],
 
-# publish.py generates a warning if a section title exceeds this
-section_title_max_length = 48
+    # Use the following to scrape "headers"
+    # TOC_BUILDER should be a subclass of templar.utils.core.TocBuilder
+    # 'TOC_BUILDER': templar.utils.htmlHeaderParser,
+}
