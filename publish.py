@@ -1,16 +1,22 @@
 #!/usr/bin/env python
 
-"""
-publish.py
-Allen Guo <allenguo@berkeley.edu>
-Publishes textbook and website using the supplied templates and settings.
-See the README file for details.
-"""
+#########################################################################
+# publish.py
+#
+# Author: Allen Guo <allenguo@berkeley.edu>
+#
+# Publishes textbook and static pages using the settings in config.py.
+# See the README file for details.
+#########################################################################
 
 import codecs, os, re
-import markdown2
+import markdown2  # pip install markdown2
 import config
 
+"""
+Substitutions for simplifying filenames.
+See to_output_name().
+"""
 OUTPUT_NAME_SUBS = [('section\d* ', ''),
                     ('\.md', ''),
                     ('\.html', ''),
@@ -21,11 +27,14 @@ OUTPUT_NAME_SUBS = [('section\d* ', ''),
 
 
 def open_unicode(path, mode='r'):
+    """Opens a UTF-8 file in the specified mode."""
     return codecs.open(path, mode, encoding='utf-8')
 
 
-# E.g. '1, 9-11, 13' -> [1, 9, 10, 11, 13]
 def parse_range(s):
+    """Reads a range into a Python list.
+    E.g., '1, 9-11, 13' becomes the list [1, 9, 10, 11, 13].
+    """
     if not s:
         return []
     ans = []
@@ -39,8 +48,11 @@ def parse_range(s):
     return ans
 
 
-# E.g. 'section01 Hello - My, Name, is Bob.md' -> 'hello-my-name-is-bob.html'
 def to_output_name(s, extension='.html'):
+    """Simplifies a filename into neat hyphenated chunks.
+    E.g., 'section01 Hello - My, Name, is Bob.md' becomes 'hello-my-name-is-bob.html'.
+    Appends the given extension (defaults to ".html").
+    """
     for original, replacement in OUTPUT_NAME_SUBS:
         s = re.sub(original, replacement, s)
     chunks = s.lower().split(' ')
@@ -49,25 +61,26 @@ def to_output_name(s, extension='.html'):
 
 
 def to_section_title(s):
+    """Returns the title of a section based on its filename."""
     return re.sub('section\d*', '', s.rstrip('.md')).strip()
 
 
 def clear_output_directory():
+    """Removes all generated files from the output directory."""
     os.system('rm -r ' + os.path.join(config.output_directory, 'textbook/'))
     os.system('rm ' + os.path.join(config.output_directory, '*.html'))
 
 
 def prepare_output_directory():
+    """Creates the output directory for textbook pages."""
     os.mkdir(os.path.join(config.output_directory, 'textbook/'))
 
 
 class Publisher(object):
     """Builds the textbook and website pages as specified in the config."""
 
-    """
-    Loads templates and starts the main (global) TOC.
-    """
     def __init__(self):
+        """Loads templates and starts the main (global) TOC."""
         self.templates = {}
         for file in os.listdir('templates'):
             html = open_unicode(os.path.join('templates', file)).read()
@@ -75,12 +88,11 @@ class Publisher(object):
         self.full_toc = ''
         self.full_toc_new_row = True
 
-    """
-    Creates the TOC for a single chapter.
-    Also adds to the main (global) TOC.
-    As a result, this function has side effects and is only called once each chapter.
-    """
     def generate_chapter_toc(self, sections, chapter_title):
+        """Creates the TOC for a single chapter.
+        Also adds to the main (global) TOC.
+        As a result, this function has side effects and is only called once each chapter.
+        """
         toc = ''
         self.full_toc += '<div><b>%s</b><ul>' % chapter_title
         for section in sections:
@@ -91,11 +103,10 @@ class Publisher(object):
         self.full_toc += '</ul></div>'
         return toc
 
-    """
-    Builds all units specified in the config.
-    Creates an global TOC along the way.
-    """
     def publish_units(self):
+        """Builds all units specified in the config.
+        Creates an global TOC along the way.
+        """
         for unit_title, chapter_range in config.units:
             print 'Publishing %s...' % unit_title
             if self.full_toc_new_row:
@@ -111,10 +122,8 @@ class Publisher(object):
             self.full_toc += '</div>'  # Close column
         self.full_toc += '</div>'  # Close row
 
-    """
-    Builds an individual chapter.
-    """
     def publish_chapter(self, chapter_num):
+        """Builds an individual chapter."""
         # Look for chapter directories matching chapter_num
         chapter_str = 'chapter%02d' % chapter_num
         matches = filter(lambda name: chapter_str in name, os.listdir('textbook'))
@@ -139,10 +148,8 @@ class Publisher(object):
             title = to_section_title(section)
             self.convert_section(input_path, output_path, title, chapter_toc, chapter_title)
 
-    """
-    Builds an individual textbook page, or "section".
-    """
     def convert_section(self, md_path, html_path, title, chapter_toc, chapter_title):
+        """Builds an individual textbook page, or section."""
         # Check for bad titles
         if len(title) > config.section_title_max_length:
             print 'Warning: Section title "%s" is too long' % title
@@ -175,20 +182,16 @@ class Publisher(object):
         out_file.close()
         in_file.close()
 
-    """
-    Builds all static pages specified in the config.
-    """
     def publish_pages(self):
+        """Builds all static pages specified in the config."""
         for page_title, path, template in config.pages:
             print 'Publishing %s...' % page_title
             output_name = to_output_name(os.path.split(path)[1])
             output_path = os.path.join(config.output_directory, output_name)
             self.convert_page(path, output_path, template, page_title)
 
-    """
-    Builds a single static page.
-    """
     def convert_page(self, input_path, output_path, template, title):
+        """Builds a single static page."""
         # Get template to use
         output = self.templates[template]
 
@@ -215,6 +218,7 @@ class Publisher(object):
 
 
 def main():
+    """Do all the things."""
     print 'Clearing output directory of generated files...'
     clear_output_directory()
     print 'Preparing output directory...'
