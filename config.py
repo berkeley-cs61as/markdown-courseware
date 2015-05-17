@@ -28,7 +28,7 @@ units = [('Setup', '1-3'),
 # The second item is the file path (relative to publish.py).
 # This can either be a Markdown file or HTML file.
 # The third item is the template to use with page.
-pages = [('Home', 'pages/index.html', 'page-no-toc'),
+pages = [('Home', 'pages/index.html', 'index'),
          ('Textbook', 'pages/textbook.html', 'page-no-toc'),
          ('Syllabus', 'pages/syllabus.md', 'page-toc'),
          ('FAQ', 'pages/faq.html', 'page-toc'),
