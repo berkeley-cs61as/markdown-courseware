@@ -62,7 +62,9 @@ def to_output_name(s, extension='.html'):
 
 def to_section_title(s):
     """Returns the title of a section based on its filename."""
-    return re.sub('section\d*', '', s.rstrip('.md')).strip()
+    if '.' in s:
+        s = s[:s.rfind('.')]
+    return re.sub('section\d*', '', s).strip()
 
 
 def clear_output_directory():
