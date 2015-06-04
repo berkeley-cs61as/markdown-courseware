@@ -262,9 +262,8 @@ following into your terminal:
 
 Why did the Walrus cross the Serengeti?
 
-To figure out this answer, look on
-[Piazza](http://piazza.com/berkeley/spring2014/cs61as/home) for the post
-labeled "Answer to Homework 0-1 Exercise 3"
+To figure out this answer, look on Piazza for the post
+labeled "Answer to Homework 0-1 Exercise 3".
 
 ## Exercise 4.
 
