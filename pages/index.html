@@ -47,7 +47,7 @@ MTuWTh, 4&ndash;7 PM, 330 Soda Hall
 div>
 -->
 <h2>Calendar</h2>
-        <table class="table table-bordered table-striped calendar-table">
+        <table class="table table-bordered table-striped calendar-table" style="display: none">
             <thead>
                 <tr id="calendar-top"><th colspan="7">
                     <span style="font-size: 130%" id="track-text">Units 1-4</span><br>
@@ -281,6 +281,7 @@ toggleTrack = function(track) {
 
 main = function() {
     toggleTrack(localStorage['latestTrack'] || '1-4');
+    $('.calendar-table').show();
 }
 
 $(main)
