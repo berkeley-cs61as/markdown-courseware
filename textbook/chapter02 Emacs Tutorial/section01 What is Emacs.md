@@ -32,6 +32,16 @@ There are two keys which are very important in Emacs: Control and the Meta
 key. Control is the normal Ctrl key that you should be used to. The Meta key
 varies depending on the computer, but it is typically either the Alt key.
 
+<div class="mc">
+Given the following class, what color is the dress?<pre><code>(define-class (test-penguin name)
+    (parent (emperor-penguin name))
+    (method (eat) ( ... )))
+</code></pre>
+<ans text="Blue and black." explanation="The dress was verified to be blue and black." correct></ans>
+<ans text="White and gold." explanation="Well sure, maybe to <i>you</i> it looks like that."></ans>
+<ans text="What dress? <code>help()</code> me please." explanation="Hah."></ans>
+</div>
+
 ## Trying it Out
 
 Let's try it out! You're going to try out your first Emacs command to see if

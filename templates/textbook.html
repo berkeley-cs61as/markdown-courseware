@@ -63,6 +63,25 @@
 <script src="../js/highlight.pack.js"></script>
 
 <script>
+var activateMCQuestions = function() {
+    $('.mc').each(function(i) {
+        $(this).find('ans').each(function() {
+            var that = $(this);
+            var radio = $('<div class="radio"><label><input type="radio" name="mc' + i + '">'
+                + $(this).attr('text') + '</label></div>');
+            radio.children().children().change(function() {
+                if ($(this).attr('seen')) return;
+                $(this).attr('seen', 'true');
+                var correct = that.attr('correct') === "";
+                var icon = correct ? 'ok' : 'remove';
+                var expl = that.attr('explanation');
+                $(this).parent().append(' <span class="glyphicon glyphicon-' + icon + '"></span><b>' + expl + '</b>');
+            })
+            $(this).replaceWith(radio);
+        });
+    });
+}
+
 var getSectionTOCItem = function() {
     var title = $($('h1')[0]).text();
     return $('#toc a').filter(function(index) {
@@ -103,6 +122,7 @@ var setUpTOC = function() {
 
 var main = function() {
     setUpTOC();
+    activateMCQuestions();
 }
 
 $(main);

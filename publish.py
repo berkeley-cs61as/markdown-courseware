@@ -177,7 +177,7 @@ class Publisher(object):
         output = output.replace('{{editurl}}', edit_url)
 
         # Tell syntax highlighter we're using Scheme
-        output = output.replace('<code>', '<code class="scheme">')
+        output = output.replace('<code>', '<code class=scheme>')
 
         # Write file
         out_file.write(output)
