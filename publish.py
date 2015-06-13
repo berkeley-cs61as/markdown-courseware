@@ -70,7 +70,6 @@ def to_section_title(s):
 def clear_output_directory():
     """Removes all generated files from the output directory."""
     os.system('rm -r ' + os.path.join(config.output_directory, 'textbook/'))
-    os.system('rm ' + os.path.join(config.output_directory, '*.html'))
 
 
 def prepare_output_directory():

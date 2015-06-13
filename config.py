@@ -28,12 +28,7 @@ units = [('Setup', '1-3'),
 # The second item is the file path (relative to publish.py).
 # This can either be a Markdown file or HTML file.
 # The third item is the template to use with page.
-pages = [('Home', 'pages/index.html', 'index'),
-         ('Textbook', 'pages/textbook.html', 'page-no-toc'),
-         ('Syllabus', 'pages/syllabus.md', 'page-toc'),
-         ('FAQ', 'pages/faq.html', 'page-toc'),
-         ('Staff', 'pages/staff.html', 'page-no-toc'),
-         ('Resources', 'pages/resources.html', 'page-no-toc')]
+pages = []
 
 # publish.py generates a warning if a section title exceeds this
 section_title_max_length = 48
