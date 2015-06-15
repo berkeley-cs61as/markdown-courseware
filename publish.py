@@ -166,7 +166,7 @@ class Publisher(object):
         out_file = open_unicode(html_path, 'w')
 
         # Convert input to Markdown
-        html = markdown2.markdown(in_file.read())
+        html = markdown2.markdown(in_file.read(), extras=['fenced-code-blocks'])
 
         # Make templating substitutions
         output = output.replace('{{title}}', title)
