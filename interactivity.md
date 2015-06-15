@@ -31,5 +31,16 @@ The three important things to remember are:
 
 See [this page](https://berkeley-cs61as.github.io/textbook/what-is-emacs.html) for a demo of an interactive MC question.
 
-The source is [here](https://github.com/berkeley-cs61as/markdown-courseware/blob/master/textbook/chapter02%20Emacs%20Tutorial/section01%20What%20is%20Emacs.md) (click "Raw" or "Edit" to view source).
+The source for the question above is below:
+```html
+<div class="mc">
+Given the following class, what color is the dress?<pre><code>(define-class (test-penguin name)
+    (parent (emperor-penguin name))
+    (method (eat) ( ... )))
+</code></pre>
+<ans text="Blue and black." explanation="The dress was verified to be blue and black." correct></ans>
+<ans text="White and gold." explanation="Well sure, maybe to <i>you</i> it looks like that."></ans>
+<ans text="What dress? <code>help()</code> me please." explanation="Hah."></ans>
+</div>
+```
 
