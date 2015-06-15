@@ -1,7 +1,7 @@
 # Interactivity
 
 To add an interactive multiple-choice question, copy and paste the following block of HTML code into the Markdown file:
-```
+```html
 <div class="mc">
 The question is here.
 
