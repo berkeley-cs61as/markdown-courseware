@@ -31,7 +31,7 @@ The three important things to remember are:
 
 See [this page](https://berkeley-cs61as.github.io/textbook/what-is-emacs.html) for a demo of an interactive MC question.
 
-The source for the question above is below:
+The source for this demo question is below:
 ```html
 <div class="mc">
 Given the following class, what color is the dress?<pre><code>(define-class (test-penguin name)
