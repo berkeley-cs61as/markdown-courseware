@@ -1,6 +1,6 @@
 # markdown-courseware
 
-Welcome! This repository contains the Markdown files that make up the CS 61AS course website and textbook.
+Welcome! This repository contains the Markdown files that make up the CS 61AS course textbook.
 
 If you need a refresher on Markdown, see [here](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).
 
@@ -10,7 +10,7 @@ Quickstart
 
 To contribute to this project you will need a GitHub account. Create one [here](https://github.com/join).
 
-If you are planning to make significant or non-trivial changes, consider discussing your changes with other contributors first. -->
+If you are planning to make significant or non-trivial changes, consider discussing your changes with other contributors first.
 
 ### How Can I Help?
 There are four main tasks that must be completed for each section:
@@ -18,7 +18,11 @@ There are four main tasks that must be completed for each section:
 1. Compare the material with the edX version to make sure nothing is missing.
 2. Check that paragraph text, code blocks, and bulleted lists are correctly formated.
 3. Check for dead or broken links (including images).
-4. Improve or report anything else ugly or blatantly unprofessional.
+4. Improve or report anything else ugly or blatantly unprofessional. -->
+
+### Proofreading Guidelines
+
+See [here](https://docs.google.com/document/d/1EHenZNlI0P5SyNvVQ0QAyKmFddqr7WU3Vl7C8PqpI08/edit#).
 
 ### Editing Instructions
 To edit the course website/textbook from your browser:
@@ -34,10 +38,9 @@ To edit the course website/textbook from your browser:
 3. **Save your changes**, making sure to describe your changes in the commit message.
 4. **Create a pull request** by going [https://github.com/berkeley-cs61as/markdown-courseware/compare](here) and clicking "compare across forks". Then select your fork and click "Create pull request". This is you telling us, "I have made changes and I would like you to merge them." See GitHub's [https://help.github.com/articles/creating-a-pull-request/](help page) for more information.
 -->
-That's all! Note that your changes will not be visible on the live course webpage immediately.
+That's all! Note that your changes will not be visible on the live course webpage until your proposed change is reviewed.
 
 If you get stuck at any point, contact Allen at allenguo@berkeley.edu. Comments and suggestions are also welcome.
-
 
 Updating the Live Site
 ----------------------
