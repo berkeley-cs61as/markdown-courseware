@@ -1,3 +1,5 @@
+# Interactivity
+
 To add an interactive multiple-choice question, copy and paste the following block of HTML code into the Markdown file:
 ```
 <div class="mc">
@@ -15,7 +17,8 @@ goes in a block like this)
 For this question, the correct answer is Answer A.
 
 The three important things to remember are:
-# Markdown does *not* work inside these blocks.
-# There can be only *one* correct answer per question.
-# These blocks will *not* render correctly in GitHub's Markdown preview
+
+1. Markdown does **not** work inside these blocks.
+2. There can be only **one** correct answer per question.
+3. These blocks will **not** render correctly in GitHub's Markdown preview
 
