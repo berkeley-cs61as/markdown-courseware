@@ -95,9 +95,9 @@ Find the values of the following expressions where `add1` is a primitive procedu
 
 Work these out before trying them on the computer.
 
-  1. `((t 1+) 0)`
-  2. `((t (t 1+)) 0)`
-  3. `(((t t) 1+) 0)`
+  1. `((t add1) 0)`
+  2. `((t (t add1)) 0)`
+  3. `(((t t) add1) 0)`
 
 ## Exercise 6.
 
