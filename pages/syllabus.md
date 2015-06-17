@@ -22,11 +22,12 @@
 <h2>Units and Lessons</h2>
 <p>The course is organized into five&nbsp;"units" numbered 0 through 4. Unit 0 is the introductory material for students whose prior experience does not include programming recursive functions, and helps ease students into the heavier material in the following units. <strong>We will not be offering Unit 0 over the summer</strong>, since students taking CS 61AS over the summer should expect to work through this course at a fast pace. Units 1 through 4 correspond to chapters of the SICP textbook. This is a variable credit course - you earn one UCB credit unit for each course Unit 1 through 4 that you complete successfully. For example,&nbsp;if you wish to work at a slower pace, you can take the first two units, Unit 1 and 2, and receive 2 UCB credit units. You may then finish the course next semester.
 
-<p>We offer three different unit tracks this summer:</p>
+<p>We offer four different unit tracks this summer:</p>
 <ul>
 	<li><strong>Unit Track 1-2: </strong>This is the minimum number of units you can take. If you prefer working at a slower pace, take this unit track. You may finish Units 3 and 4 in a following semester.</li>
 	<li><strong>Unit Track 1-3: </strong>Since Unit 3 covers object-oriented programming, completing Units 1-3 will allow you to take CS 61B next semester. You will still need to complete Unit 4 in order to fulfill the CS 61A requirement.</li>
 	<li><strong>Unit Track 1-4: </strong>Completing all four core units fulfills the CS 61A requirement for majors. <strong>We STRONGLY advise against taking all four units over the summer.</strong> Seeing as taking this unit track during the school year is already strenuous, completing it over the summer equates to learning the same material at TWICE the speed. You MUST speak to the TA first before deciding on this unit track.</li>
+	<li><strong>Unit Track 3-4: </strong>This track is for students who have already taken up to and including Unit 2 in an earlier semester and are planning on finishing the course over the sumer. <strong>You may NOT take this track if you haven't completed the previous Units.</strong></li>
 </ul>
 <p><strong>It is very important that you sign up for the correct units on Tele-bears.</strong> We will go over in class the important deadlines and how to sign up for the correct number of units.</p>
 <p>The online material is organized in terms of "lessons"; each lesson contains in-class lab activities and homework, mostly taken from the textbook, for you to do on your own. After you submit each homework assignment, you can see our solutions to the lesson's problems; you should be sure to read these and compare our solutions to yours to ensure that you understand the concepts of the lesson.</p>
