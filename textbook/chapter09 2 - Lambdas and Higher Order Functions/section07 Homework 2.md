@@ -87,8 +87,7 @@ definition.
 
 ## Exercise 5.
 
-`(define (1+ num) (+ 1 num))`  
-Find the values of the following expressions where `1+` is defined above that adds one to its argument, and `t` is defined as follows:
+Find the values of the following expressions where `add1` is a primitive procedure that adds one to its argument, and `t` is defined as follows:
 
 `(define (t f) `
 
