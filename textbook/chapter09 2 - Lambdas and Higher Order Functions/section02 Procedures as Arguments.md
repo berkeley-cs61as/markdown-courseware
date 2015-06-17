@@ -29,12 +29,14 @@ Consider the following three functions:
           0
           (+ **(square a)** (sum-squares (+ a 1) b))))
 
-(define (sum-cubes a b)  
+
+    (define (sum-cubes a b)
       (if (> a b)
           0
           (+ **(cube a)** (sum-cubes (+ a 1) b))))
 
-(define (sum-doubles a b)  
+
+    (define (sum-doubles a b)  
       (if (> a b)
           0
           (+ **(* 2 a)** (sum-doubles (+ a 1) b))))
@@ -44,7 +46,7 @@ b, respectively.
 
 For example, `(sum-squares 5 8)` computes 5^2 + 6^2 + 7^2 + 8^2 .
 
-However, notice how very similar these are. I have bolded the differences
+However, notice how very similar these are. I have marked the differences
 among them.
 
 Can we abstract these differences somehow? Well, how would we do it?
@@ -56,7 +58,9 @@ So, our generalized procedure can take a function as an argument and apply it
 to a in the proper place.
 
 It would look like this:
-(define (sum fn a b)  
+
+
+    (define (sum fn a b)  
       (if (> a b)
           0
           (+ **(fn a)** (sum fn (+ a 1) b))))
@@ -70,6 +74,7 @@ only written one procedure.
 
 If needed, the 3 special case procedures above can now be defined using sum as
 follows:
+    
     
     (define (sum-squares a b)
       (sum square a b))
