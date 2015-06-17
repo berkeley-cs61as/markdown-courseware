@@ -7,11 +7,11 @@ For example, suppose we wish to compute the function
 
 which we could also express as
 
-[mathjaxinline]\displaystyle a = 1 + xy[/mathjaxinline]
+[mathjax]\displaystyle a = 1 + xy[/mathjax]
 
-[mathjaxinline]\displaystyle b = 1 -y[/mathjaxinline]
+[mathjax]\displaystyle b = 1 -y[/mathjax]
 
-[mathjaxinline]\displaystyle f(x,y) = 1 -y[/mathjaxinline]
+[mathjax]\displaystyle f(x,y) = 1 -y[/mathjax]
 
 So, how shall we bind some variables? Well, the easiest thing is just to make
 a procedure with the arguments we want.
