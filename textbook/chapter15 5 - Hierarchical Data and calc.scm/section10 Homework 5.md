@@ -1,12 +1,12 @@
 Type the following command at the terminal to copy the template file to the
 current directory (note the period at the end):
 
-`cp ~cs61as/autograder/templates/hw5.scm .`
+`cp ~cs61as/autograder/templates/hw5.rkt .`
 
 (Don't forget the '.' at the end)
 
 Or download it from
-[here](http://inst.eecs.berkeley.edu/~cs61as/templates/hw5.scm).
+[here](http://inst.eecs.berkeley.edu/~cs61as/templates/hw5.rkt).
 
 ## Exercise 1: SICP 2.26
 
@@ -47,21 +47,21 @@ another mobile:
         (list len structure))
     
 
-a. Write the corresponding selectors `left-branch` and `right-branch`, which
+**a.** Write the corresponding selectors `left-branch` and `right-branch`, which
 return the branches of a mobile, and `branch-length` and `branch-structure`,
 which return the components of a branch.
 
-b. Using your selectors, define a procedure `total-weight` that returns the
+**b.** Using your selectors, define a procedure `total-weight` that returns the
 total weight of a mobile.
 
-c. A mobile is said to be _balanced_ if the torque applied by its top-left
+**c.** A mobile is said to be _balanced_ if the torque applied by its top-left
 branch is equal to that applied by its top-right branch (that is, if the
 length of the left rod multiplied by the weight hanging from that rod is equal
 to the corresponding product for the right side) and if each of the submobiles
 hanging off its branches is balanced. Design a predicate that tests whether a
 binary mobile is balanced.
 
-d. Suppose we change the representation of mobiles so that the constructors
+**d.** Suppose we change the representation of mobiles so that the constructors
 are
 
 `(define (make-mobile left right) (cons left right))`
@@ -75,7 +75,7 @@ representation?
 
 ## Exercise 3: SICP 2.30, 2.31
 
-a) Define a procedure `square-tree` analogous to the `square-list` procedure.
+**a.** Define a procedure `square-tree` analogous to the `square-list` procedure.
 That is, `square-tree` should behave as follows:
 
     
@@ -83,7 +83,7 @@ That is, `square-tree` should behave as follows:
     (1 (4 (9 16) 25) (36 49))
     
 
-b) Abstract your answer to produce a procedure `tree-map` with the property
+**b.** Abstract your answer to produce a procedure `tree-map` with the property
 that `square-tree` could be defined as:
 
 `(define (square-tree tree) (tree-map square tree))`
@@ -155,8 +155,7 @@ previous exercise)
 
 The `accumulate` procedure is also known as `fold-right`, because it combines
 the first element of the sequence with the result of combining all the
-elements to the right. There is also a `fold-left`, which is similar to `fold-
-right`, except that it combines elements working in the opposite direction:
+elements to the right. There is also a `fold-left`, which is similar to `fold-right`, except that it combines elements working in the opposite direction:
 
     
     (define (fold-left op initial sequence)
@@ -220,11 +219,11 @@ the set of subsets of a set and give a clear explanation of why it works:
             (append rest (map <??> rest)))))
     
 
-## Exercise 9.
+## Exercise 9
 
   
-Extend `calc.scm` to include words as data, providing the operations `first,
-butfirst, last, butlast, and word`. Unlike Scheme, your calculator should
+Extend `calc.rkt` to include words as data, providing the operations `first,
+butfirst, last, butlast, and word`. Unlike Racket, your calculator should
 treat words as self-evaluating expressions except when seen as the operator of
 a compound expression. That is, it should work like these examples:
 
@@ -244,21 +243,21 @@ a compound expression. That is, it should work like these examples:
 
 Remember, you can get the program by typing
 
-`cp ~cs61as/lib/calc.scm .`
+`cp ~cs61as/lib/calc.rkt .`
 
 Or download it from
-[here](http://inst.eecs.berkeley.edu/~cs61as/library/calc.scm).
+[here](http://inst.eecs.berkeley.edu/~cs61as/library/calc.rkt).
 
-# Extra for Experts
+## Exercise 10: Extra for Experts
 
-### Do this if you want to. This is NOT for credit.
-
-## Exercise 9.
+**Do this if you want to. This is NOT for credit.**
 
 Read [section 2.3.4](http://mitpress.mit.edu/sicp/full-
 text/book/book-Z-H-16.html#%25_sec_2.3.4) and do exercises 2.67 - 2.72.
 
-## Exercise 10.
+## Exercise 11: Extra for Experts
+
+**Do this if you want to. This is NOT for credit.**
 
 Programming by example: In some programming systems, instead of writing an
 algorithm, you give examples of how you'd like the program to behave, and the

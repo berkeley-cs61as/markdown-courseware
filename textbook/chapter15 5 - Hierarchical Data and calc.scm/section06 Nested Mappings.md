@@ -37,9 +37,9 @@ y-coordinate is always 1. So if we have a list `(1 2 3 4)`, we can `cons` each
 element with 1. We can write this as:
 
     
-    >(map (lambda (x) (cons x 1))
+    > (map (lambda (x) (cons x 1))
          (enumerate 1 4))
-    >((1 . 1) (2 . 1) (3 . 1) (4 . 1))
+    ((1 . 1) (2 . 1) (3 . 1) (4 . 1))
     
 
 So far so good. Jack is happy.
@@ -66,22 +66,16 @@ Since there are only 4 rows, we can technically have a copy for each row.
     
     
 
-That is good and all but we know that copying and pasting code is generally a
-bad idea. We want to keep the part that is similar, and change as little as
-possible. Notice that the only difference from the code for row1, row2, row3
-and row4 is the number you are cons-ing with. We can apply the same method
+That is good and all, but we know that copying and pasting code is generally a
+bad idea. (What if the checkerboard was 1000x1000?) We want to keep the part that is similar, and change as little as possible. Notice that the only difference from the code for row1, row2, row3, and row4 is the number you are cons-ing with. We can apply the same method
 from before:
 
     
-    **
-    (map (lambda (y)**
-        (map (lambda (x) (cons x y))
-             (enumerate 1 4)))
-    **     (enumerate 1 4))
-    **
+    (map (lambda (y) (map (lambda (x) (cons x y))
+                          (enumerate 1 4)))
+         (enumerate 1 4))
 
-The bolded part of the code shows the additions we made. We can describe this
-as "for each row 1 to 4, make a list of coordinates for that row".
+Notice how the inner lambda takes care of each tile in a single row, while the outer lambda takes care of each row in a board. Hooray! We're done, right?
 
 ## Checkers Grid: Flattening
 
@@ -91,14 +85,14 @@ This is what we get we we run our current code:
 
     
     
-    >(map (lambda (y) 
+    > (map (lambda (y) 
             (map (lambda (x) (cons x y))
                  (enumerate 1 4)))  
           (enumerate 1 4))
-    >( ((1 . 1) (2 . 1) (3 . 1) (4 . 1))  
-       ((1 . 2) (2 . 2) (3 . 2) (4 . 2))   
-       ((1 . 3) (2 . 3) (3 . 3) (4 . 3))   
-       ((1 . 4) (2 . 4) (3 . 4) (4 . 4)))
+    ( ((1 . 1) (2 . 1) (3 . 1) (4 . 1))  
+      ((1 . 2) (2 . 2) (3 . 2) (4 . 2))   
+      ((1 . 3) (2 . 3) (3 . 3) (4 . 3))   
+      ((1 . 4) (2 . 4) (3 . 4) (4 . 4)) )
     
 
 This looks deceptively similar to our desired result:
@@ -108,17 +102,16 @@ This looks deceptively similar to our desired result:
     ( (1 . 1) (2 . 1) (3 . 1) (4 . 1)  
       (1 . 2) (2 . 2) (3 . 2) (4 . 2) 
       (1 . 3) (2 . 3) (3 . 3) (4 . 3) 
-      (1 . 4) (2 . 4) (3 . 4) (4 . 4))
+      (1 . 4) (2 . 4) (3 . 4) (4 . 4) )
 
 What's different? Our current code returns a list of a list of coordinates.
 What we want instead is a list of coordinates. So how do we 'flatten' the
-list? We can call `accumulate` with `append`
+list? We can call `accumulate` with `append`:
 
     
-    **
     (accumulate nil
            	    append
-    **           (map (lambda (y) 
+                (map (lambda (y) 
                         (map (lambda (x) (cons x y)) 
                     (enumerate 1 4))
                 (enumerate 1 4))
@@ -126,8 +119,7 @@ list? We can call `accumulate` with `append`
 
 ## Flatmap
 
-Calling `accumulate` with `append` is so common that Scheme implements this
-for us in the procedure called `flatmap`
+Calling `accumulate` with `append` is so common that we implement this procedure as `flatmap`:
 
     
     (define (flatmap proc seq)
