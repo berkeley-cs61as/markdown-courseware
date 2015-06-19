@@ -73,15 +73,15 @@ Here is an example call:
     (10 (20 (30 40) 50) (60 70))
 
 
-**Test Your Understanding**
-
 <div class="mc">
+<strong>Test Your Understanding</strong><br><br>
 Below is an unfinished definition of scale-tree. Which <strong>base case(s)</strong> do we need in order to correctly define scale-tree?
 
-<pre><code>
-(define (scale-tree tree factor)
+<pre><code>(define (scale-tree tree factor)
   (cond ;;Your answer here.
-        (else (cons (scale-tree (car tree) factor) (scale-tree (cdr tree) factor)))))
+        (else 
+          (cons (scale-tree (car tree) factor) 
+                (scale-tree (cdr tree) factor)))))
 </code></pre>
 <ans text="A. ((null? tree) 0)" explanation="Returning 0 for a null tree will cons extraneous 0s to the ends of sequences in some cases. Can you give an example for when this will happen?"></ans>
 <ans text="B. ((null? tree) null)" explanation="This is a correct base case, but we also need another one for scale-tree to work correctly."></ans>
@@ -107,13 +107,11 @@ Let's work on a problem with a similar structure. This time, we want to write a 
 
 Notice that not only do `(1 2)` and `(3 4)` switch places, but its elements do as well.
 
-**Test Your Understanding**
-
 <div class="mc">
+<strong>Test Your Understanding</strong><br><br>
 Below is an unfinished definition of deep-reverse. Which <strong>recursive call(s)</strong> do we need in order to correctly define deep-reverse?
 
-<pre><code>
-(define (deep-reverse d-l)
+<pre><code>(define (deep-reverse d-l)
   (cond ((null? d-l) null)
         ;;Your answer here.
   ))

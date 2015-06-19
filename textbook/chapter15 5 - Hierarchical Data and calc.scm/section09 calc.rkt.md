@@ -95,8 +95,7 @@ The first line says `(display "calc: ")`, which tells the interpreter to show
 
 `flush` tells the interpreter to show whatever we type on the 'screen' output (you can ignore this for now). 
 
-The next line, `(print (calc-eval (read)))` tells the interpreter to call `calc-
-eval` with the user input and print the result. 
+The next line, `(print (calc-eval (read)))` tells the interpreter to call `calc-eval` with the user input and print the result. 
 
 The last line is a recursive call to `calc`, which loops us back to the beginning. This is the **read-eval-print-loop (REPL)**: it asks for some user-input, evaluates it, prints the result, and loops. 
 
@@ -142,13 +141,11 @@ like `(+ 1 1)`, `(* 2 3 10)`, or `(- 100 50 20 10)`.
 This will call `calc-eval` as `(print (calc-eval '(* 2 3 10)))`. (Again,
 remember that `read` treats user input as symbols.) How does `calc-eval`
 handle this?
-
-**Test Your Understanding**
     
 <div class="mc">
+<strong>Test Your Understanding</strong><br><br>
 The calc-eval code has be reproduced for you below:
-<pre><code>
-(define (calc-eval exp)
+<pre><code>(define (calc-eval exp)
   (cond ((number? exp) exp)
         ((list? exp)
          (calc-apply (car exp)
@@ -158,8 +155,7 @@ The calc-eval code has be reproduced for you below:
 
 What happens when we call the following expression:
 
-<pre><code>
-(calc-eval '(* 2 3 10))
+<pre><code>(calc-eval '(* 2 3 10))
 </code></pre>
 <ans text="It returns 60 without calling other compound procedures" explanation=""></ans>
 <ans text="It returns '(* 2 3 10)" explanation=""></ans>
@@ -197,13 +193,11 @@ Convince yourself that for any of the 4 acceptable arguments for `fn`, and any
 list of numbers `args`, `calc-apply` will do the right computation.
 
 ## Calc: Nested Operators
-
-**Test Your Understanding**
     
 <div class="mc">
+<strong>Test Your Understanding</strong><br><br>
 Let's test our calculator program by calling a more complex expression. The calc-eval code has be reproduced for you below:
-<pre><code>
-(define (calc-eval exp)
+<pre><code>(define (calc-eval exp)
   (cond ((number? exp) exp)
         ((list? exp)
          (calc-apply (car exp)
@@ -213,8 +207,7 @@ Let's test our calculator program by calling a more complex expression. The calc
 
 What happens when we call the following expression:
 
-<pre><code>
-(calc-eval '(+ 4 5 (* 10 2) 7))
+<pre><code>(calc-eval '(+ 4 5 (* 10 2) 7))
 </code></pre>
 <ans text="It returns 36 without calling other compound procedures" explanation=""></ans>
 <ans text="It returns '(+ 4 5 20 7)" explanation=""></ans>
@@ -231,9 +224,8 @@ So how does our calculator program evaluate compound expressions? It calls
 `calc-eval` on simpler expressions, and recursively repeats this until the
 expressions are simple enough (just numbers) to simply return the expression. We know that `calc-eval` and `calc-apply` works for numbers and expressions with one operator. Everything else is just a combination. Trust the recursion!
 
-**Test Yourself: Mission Impossible**
-
 <div class="mc">
+<strong>Test Your Understanding</strong><br><br>
 Which of the following is NOT a possible call in calc?
 
 <ans text="(calc-apply '+ '())" explanation=""></ans>

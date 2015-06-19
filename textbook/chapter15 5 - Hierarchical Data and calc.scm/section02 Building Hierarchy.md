@@ -3,7 +3,7 @@
 Previously we have seen how to use `cons` to 'group' a pair of data together,
 like `(cons 1 2)` which returns a pair `(1 . 2)`. We can also use `list` to
 group an arbitary amount of data together. For example if you type `(list 1 2
-'bagel 4)` in the interpreter, Scheme will print the list `(1 2 bagel 4)`.
+'bagel 4)` in the interpreter, Racket will print the list `(1 2 bagel 4)`.
 Notice that we can put **any** sort of data inside them, even pairs and lists!
 
 The following call makes a pair of lists:

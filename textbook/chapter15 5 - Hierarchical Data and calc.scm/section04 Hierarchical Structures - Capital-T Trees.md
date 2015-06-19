@@ -90,9 +90,8 @@ provided. Since forests are implemented as a list of Trees, you can use `car`
 of a forest to find the first Tree, or `cdr` to find a list of the rest of the
 Trees.
 
-**Test Your Understanding**
-
 <div class="mc">
+<strong>Test Your Understanding</strong><br><br>
 Assuming pine refers to a Tree, which of the following is a data abstraction violation (DAV)?
 
 <ans text="(null? (children pine))" explanation="This is fine, because the selector children always returns a forest, which is a list of trees. Calling null? on a list is not a DAV"></ans>
@@ -282,8 +281,6 @@ children.
 Is one better than the other? It depends on what you are trying to do with
 your Trees and how you are storing elements in the Tree. 
 
-**Test Your Understanding**
-
 The Tree below represents things in a house. In a "House" you can find a "Kitchen" and "Cat
 Food". In a "Kitchen" you can find a "Drawer", "Trash Can", etc. The leaves
 contain food and the deeper you go, the more filling the foods are.
@@ -291,16 +288,15 @@ contain food and the deeper you go, the more filling the foods are.
 ![](/static/cat_tree_search.png)
 
 <div class="mc">
+<strong>Test Your Understanding</strong><br><br>
 Consider a Tree with a structure similar to the one above. Imagine you are a starving cat searching for <strong>any</strong> food to fill your stomach as soon as possible. What kind of Tree traversal is more appropriate for the following situation?
 
 <ans text="BFS" explanation="Correct! If you use BFS, you'll first explore House, then Kitchen, and then Measley Cat Food and stop. You won't starve tonight." correct></ans>
 <ans text="DFS" explanation="If you use DFS, you'll explore House, then Kitchen, then Drawer, then Top Shelf, then finally Lasagna before you stop. Lasagna is delicious, but there is definitely a faster way to get some food."></ans>
 <ans text="No difference" explanation="Hint: how many nodes does BFS explore? How many nodes does DFS explore?"></ans>
 <!-- and so on -->
-</div>
-
-<div class="mc">
-You are still a cat, but now you're on a quest to find the most delicious food in the house. Which Tree traversal will help you find it the fastest?
+<br>
+You are still a cat, but now you're on a quest to find the most delicious food in the house. Which Tree traversal will help you find it the fastest?<br>
 
 <ans text="BFS" explanation="No, you won't settle for some Measley Cat Food. You keep exploring, and end up visiting eight nodes before finding the lasagna. You can do better."></ans>
 <ans text="DFS" explanation="Correct! You'll only need to explore five nodes to reach the delicious lasagna." correct></ans>

@@ -18,9 +18,8 @@ We have used quotation `'` as a shortcut to create words and sentences since the
 The use of a single quote is actually a shortcut - `'a` is equivalent to
 `(quote a)`. Similarly, `'(a 1 b 2)` is equivalent to `(quote (a 1 b 2))`
 
-**Test Your Understanding**
-
 <div class="mc">
+<strong>Test Your Understanding</strong><br><br>
 The function quote (') is a special form.
 
 <ans text="True" explanation="If quote were not a special form. Then, when we call (quote a) above, Racket will evaluate the argument first, simplifying the expression to (quote 3) and thus returning '3. That's not right!" correct></ans>
@@ -68,21 +67,16 @@ You can implement `memq` with the following definition:
       (cond ((null? x) false)
             ((eq? item (car x)) x)
             (else (memq item (cdr x)))))
-    
-**Test Your Understanding**
 
 <div class="mc">
-What does the following expression return?
+<strong>Test Your Understanding</strong><br><br>
+What do the following expressions return?
 
 <pre><code>(memq 'everything '(sugar spice (everything nice)))</code></pre>
 <ans text="(everything nice)" explanation=""></ans>
 <ans text="everything" explanation=""></ans>
 <ans text="#f" explanation="memq does not work on deep lists, and cannot find elements on a deeper level." correct></ans>
 <!-- and so on -->
-</div>    
-
-<div class="mc">
-What does the following expression return?
 
 <pre><code>(memq 'chicken '(cow chicken cow and chicken))</code></pre>
 <ans text="(chicken cow and chicken)" explanation="If you take a look at the code for memq, we start fromt he beginning of list x and stop once we find item. That means that we will return immediately after the first instance of item in x." correct></ans>

@@ -73,25 +73,20 @@ We went over the `map` HOF in Lesson 4. You may want to [go back](http://localho
              (cons (car sequence)
                    (filter predicate (cdr sequence))))
             (else (filter predicate (cdr sequence)))))
-    
-**Test Your Understanding**
+
 
 <div class="mc">
-What does the following expression return?
+<strong>Test Your Understanding</strong><br><br>
+What do the following expressions return?
 
-<pre><code>
-(filter (lambda (x) (= (remainder x 2) 0)) (list 0 1 2 3 4 5))
+<pre><code>(filter (lambda (x) (= (remainder x 2) 0)) (list 0 1 2 3 4 5))
 </code></pre>
 <ans text="nil" explanation="Hint: what does the lambda function check for?"></ans>
 <ans text="(0 1 2)" explanation="Hint: what does ((lambda (x) (= (remainder x 2) 0)) 4) return?"></ans>
 <ans text="(0 2 4)" explanation="Correct! This expression filters out all numbers in the sequence that are not divisible by 2." correct></ans>
 <ans text="Error" explanation="This expression is syntactically correct."></ans>
 <!-- and so on -->
-</div>
-
-<div class="mc">
-<pre><code>
-(filter equal? '(bongo celia momo laval laburrita bongo))
+<pre><code>(filter equal? '(bongo celia momo laval laburrita bongo))
 </code></pre>
 <ans text="nil" explanation="Hint: what does the predicate check for?"></ans>
 <ans text="(bongo celia momo laval laburrita bongo)" explanation="Hint: how many arguments does equal? take in?"></ans>

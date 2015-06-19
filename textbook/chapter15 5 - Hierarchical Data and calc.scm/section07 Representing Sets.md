@@ -24,15 +24,13 @@ For this lesson, we will use lists to represent a Set ADT. This means we can cre
 
 This code is similar to `memq`. We used `equal?` because the member of a set
 can be a number, symbol, or anything else.
-
-**Test Your Understanding**
     
 <div class="mc">
+<strong>Test Your Understanding</strong><br><br>
 Assume that set1 and set2 both have a length of n.<br><br>
 What is the running time of the function call below?
 
-<pre><code>
-(element-of-set? (car set1) set2)
+<pre><code>(element-of-set? (car set1) set2)
 </code></pre>
 <ans text="Θ(1)" explanation=""></ans>
 <ans text="Θ(logn)" explanation=""></ans>
@@ -71,15 +69,13 @@ Here is the code for `intersection-set`:
              (cons (car set1)
                    (intersection-set (cdr set1) set2)))
             (else (intersection-set (cdr set1) set2))))
-
-**Test Your Understanding**
      
 <div class="mc">
+<strong>Test Your Understanding</strong><br><br>
 Assume that set1 and set2 both have a length of n.<br><br>
 What is the running time of the function call below?
 
-<pre><code>
-(intersection-set set1 set2)
+<pre><code>(intersection-set set1 set2)
 </code></pre>
 <ans text="Θ(1)" explanation=""></ans>
 <ans text="Θ(logn)" explanation=""></ans>
@@ -121,13 +117,11 @@ Our code for `element-of-set?` will then be as follows:
 
 **Note:** We make the assumption that all the elements in our set are numbers. If this is not the case, the above code will error.
 
-**Test Your Understanding**
-
 <div class="mc">
+<strong>Test Your Understanding</strong><br><br>
 Assume that set1 and set2 are ordered lists and both have a length of n.<br><br>
 What is the running time of the function call below?
-<pre><code>
-(element-of-set? (car set1) set2)
+<pre><code>(element-of-set? (car set1) set2)
 </code></pre>
 <ans text="Θ(1)" explanation=""></ans>
 <ans text="Θ(logn)" explanation=""></ans>
@@ -164,14 +158,12 @@ The complete code for `intersection-set` can be written as follows:
                    (intersection-set (cdr set1) set2))
                   ((< x2 x1)
                    (intersection-set set1 (cdr set2)))))))
-  
-**Test Your Understanding**
 
 <div class="mc">
+<strong>Test Your Understanding</strong><br><br>
 Assume that set1 and set2 are ordered lists and both have a length of n.<br><br>
 What is the running time of the function call below?
-<pre><code>
-(intersection-set set1 set2)
+<pre><code>(intersection-set set1 set2)
 </code></pre>
 <ans text="Θ(1)" explanation=""></ans>
 <ans text="Θ(logn)" explanation=""></ans>
@@ -278,10 +270,9 @@ The image above is the result of adding the elements 1, 2, 3, 4, 5, 6, and 7, in
 that order, to an empty tree. (Make sure you try this out with pen and paper to see that this is the case). We say that this tree is **unbalanced** because one
 side of the tree has way more elements than the other.
 
-**Test Your Understanding**
-
 <div class="mc">
-In the unbalanced tree above, what is the running time of finding an element (for example, '7')? n is the the number of nodes in the tree, where n = 7.
+<strong>Test Your Understanding</strong><br><br>
+In the unbalanced tree above, what is the running time of finding an element (e.g., 7)? n is the the number of nodes in the tree, where n = 7.
 
 <ans text="Θ(1)" explanation=""></ans>
 <ans text="Θ(logn)" explanation=""></ans>
