@@ -4,10 +4,10 @@ Type the following command at the terminal to copy the template file to the
 current directory (note the period at the end):
 
     
-    cp ~cs61as/autograder/templates/hw1.scm .
+    cp ~cs61as/autograder/templates/hw1.rkt .
 
 Or you can download the template
-[here](http://inst.eecs.berkeley.edu/~cs61as/templates/hw1.scm).
+[here](http://inst.eecs.berkeley.edu/~cs61as/templates/hw1.rkt).
 
 ## Exercise 1.
 
@@ -139,7 +139,7 @@ true regardless of the values of `y` and `z`. A Lisp interpreter in which `or`
 is a special form can evaluate the arguments one by one until either a true
 one is found or it runs out of arguments.
 
-Your mission is to devise a test that will tell you whether Scheme's and and
+Your mission is to devise a test that will tell you whether Racket's and and
 or are special forms or ordinary functions. This is a somewhat tricky problem,
 but it'll get you thinking about the evaluation process more deeply than you
 otherwise might. Why might it be advantageous for an interpreter to treat or
@@ -154,7 +154,7 @@ reasons why it might be advantageous to treat or as an ordinary function?
 
 **IF YOU HAVE ANY TROUBLE WITH SUBMITTING, ASK A QUESTION ON PIAZZA OR TALK TO A TA.**
 
-**BEFORE SUBMITTING HOMEWORK: Make sure your file loads in Scheme. You can verify this by typing into STk: (load "hw1.scm"),** or whatever the name of your homework file is. You will not receive credit for homework that does not load in Scheme.****
+**BEFORE SUBMITTING HOMEWORK: Make sure your file loads in Racket. You can verify this by typing into Racket: (load "hw1.scm"),** or whatever the name of your homework file is. You will not receive credit for homework that does not load in Racket.****
 
 To submit your assignment, you need to be logged in on any of the lab
 computers. If you want to submit from home, you must connect remotely to the
@@ -164,8 +164,8 @@ Now, click on the "Terminal" icon on the left. Terminal is a terminal
 emulator, a method of interacting directly to the computer via text commands.
 It's sort of an "interpreter" for your entire computer. You can do useful
 things with xterm like navigate and manipulate the filesystem (think Windows
-Explorer), submit homework (what we're doing now), and start the Scheme
-interpreter (via stk)!
+Explorer), submit homework (what we're doing now), and start the Racket
+interpreter (via racket)!
 
 Let's submit an assignment. This requires the following steps:
 
@@ -200,6 +200,8 @@ In order to complete this assignment, you must create a file named units
 on doing. For example, if you were to do units 0, 1, 2, and 3, you'd put
 
 `0 1 2 3`
+
+**DO NOT** include any additional spaces or blank lines!!
 
 ## 3. Submitting
 

@@ -6,13 +6,39 @@ body)`.
 
 Vocab:
 
-    * Compound Procedure: a compound procedure is a procedure that is defined in terms of Scheme primitive procedures.
+    * Compound Procedure: a compound procedure is a procedure that is defined in terms of Racket primitive procedures.
     * Name: the name of the procedure is a symbol used to refer to the procedure.
     * Formal Parameters: the formal parameters of a procedure are the names used within the body of the procedure to refer to the arguments.
     * Body: the body of the procedure is the "meat" of the procedure. It is formally defined as "an expression that will yield the value of the procedure application when the formal parameters are replaced by the actual arguments to which the procedure is applied", but you can think of it as instructions for the computer to follow.
 
 In the procedure definition `(define (square x) (* x x))`, the _name_ is
 `square`, the _formal parameter_ is `x`, and the _body_ is `(* x x)`.
+
+Suppose I define a procedure as such: `(define (foo x y) (+ (* 3 x) (* 4 y)))`. Please answer the following questions.
+
+<div class="mc">
+What is the name of the above procedure?
+
+<ans text="foo" explanation="Nice!" correct></ans>
+<ans text="x, y" explanation="Review the definitions and try again!"></ans>
+<ans text="(+ (* 3 x) (* 4 y))" explanation="Review the definitions and try again!"></ans>
+</div>
+
+<div class="mc">
+What are the two formal parameters?
+
+<ans text="foo" explanation="Review the definitions and try again!"></ans>
+<ans text="x, y" explanation="Nice!" correct></ans>
+<ans text="(+ (* 3 x) (* 4 y))" explanation="Review the definitions and try again!"></ans>
+</div>
+
+<div class="mc">
+What is the body of the procedure?
+
+<ans text="foo" explanation="Review the definitions and try again!"></ans>
+<ans text="x, y" explanation="Review the definitions and try again!" ></ans>
+<ans text="(+ (* 3 x) (* 4 y))" explanation="Nice!" correct></ans>
+</div>
 
 ## Procedures with More than One Formal Parameters
 
