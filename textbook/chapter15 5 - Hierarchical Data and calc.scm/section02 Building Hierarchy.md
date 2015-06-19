@@ -28,10 +28,21 @@ different** from the tree data type. This notation is kept for the sake of consi
 We may also refer to "little-t trees" as "deep lists" (since they are lists within lists within lists within ...), which is less ambiguous, but also less descriptive of the tree-like
 structure of lists of lists.
 
+<div class="mc">
+<strong>Test Your Understanding</strong><br><br>
+Suppose we evaluate the expression (list 1 (list 2 (list 3 4))). What is returned when we enter this into the interpreter? Draw for yourself the corresponding box-and-pointer structure, and the interpretation of this as a tree.
+
+<ans text="(1 2 3 4)" explanation=""></ans>
+<ans text="(1 (2 (3 4)))" explanation="" correct></ans>
+<ans text="(1 2 (3 4))" explanation=""></ans>
+<ans text="(1 . 2 . 3 4)" explanation=""></ans>
+<ans text="None of the above" explanation=""></ans>
+<!-- and so on -->
+</div>
+
 ## Some Shorthand
 
-Series of `car`s and `cdr`s can be downright ugly, like in the previous exercise.
-In our Racket interpreter, there is a built-in short-hand notation to do a multiple calls to `car` and/or `cdr`.
+Series of `car`s and `cdr`s can be downright ugly. In our Racket interpreter, there is a built-in short-hand notation to do a multiple calls to `car` and/or `cdr`.
 
 ` (car (cdr a))` is equivalent to ` (cadr a) `.
 
