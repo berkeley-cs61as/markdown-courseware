@@ -1,14 +1,16 @@
-## INTRODUCTION
+**WARNING: This lesson is substantially more dense and time-consuming than previous lessons.** We have not allocated more time for you to complete this lesson, so please watch your pacing so you don't fall behind.
+
+## Introduction
 
 This lesson builds upon the idea of hierarchical structures - structures made
 up of parts, which themselves are made up of parts, and so on. We will use
-these ideas to make a simple calculator in Scheme at the end of the lesson.
+these ideas to make a simple calculator in Racket at the end of the lesson.
 
-## PREREQUISITES AND WHAT TO EXPECT
+## Prerequisites and What to Expect
 
-The previous material, Lab 4 is required before working on this lesson.
+Material from Lesson 4 is required before working on this lesson.
 
-We will briefly go over cons and list and extend their usage to build a more
+We will briefly go over `cons` and `list` and extend their usage to build a more
 complex structure.
 
 ## Readings

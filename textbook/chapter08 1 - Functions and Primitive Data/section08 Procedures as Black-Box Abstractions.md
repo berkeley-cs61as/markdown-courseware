@@ -37,25 +37,13 @@ function that does the same thing with just the `total `argument. We included
 our original example of 13 blocks of chocolate, suppose Charlie takes a `
 guess ` that the maximum side is 2:
 
-guessleftovernext guess
+| guess | leftover  | next guess |
+|-------|-----------|------------|
+| 2     | 13-4= 9   | 2+1= 3     |
+| 3     | 13-9= 4   | 3+1= 4     |
+| 4     | 13-16= -3 | 4+1= 5     |
 
-2
 
-13-4= 9
-
-2+1= 3
-
-3
-
-13-9= 4
-
-3+1= 4
-
-4
-
-13-16= -3
-
-4+1= 5
 
 For each function call on ` largest-square ` like ` (largest-square 13 2) `,
 we are going to check if the current guess (in this case 2) is good enough.
@@ -74,7 +62,21 @@ have a better `guess`, call `largest-square` with a better `guess`
     	(if (good-enough? total guess)
     		guess
     		(largest-square total (next-guess guess))))
-    
+
+<div class="mc">
+If you type the above definition as is (without defining 'good-enough?' and 'improve-guess', what will happen?
+<ans text="Errors" explanation="The body of a procedure isn't evaluated when we define it!" ></ans>
+<ans text="The definition passes" explanation="Yes! The body of a procedure isn't evaluated when we define it!" correct></ans>
+<!-- and so on -->
+</div>
+
+<div class="mc">
+If afterwards you type (largest-square 13 2), what will happen?
+<ans text="Errors" explanation="When we evaluate the body of largest-square, we need to have all helper procedures defined!" correct></ans>
+<ans text="Returns 3" explanation="When we evaluate the body of largest-square, we need to have all helper procedures defined!" ></ans>
+<!-- and so on -->
+</div>
+
 
 _"Wait wait, you just defined a function but it calls other functions that
 aren't defined yet! We haven't defined 'good-enough?' or 'improve-guess'! "_
@@ -99,12 +101,57 @@ Time to do the neccessary work to make the function work!
     	(if (good-enough? total guess)
     		guess
     		(largest-square total (next-guess guess))))
+
+QUESTION:
+
+
+<div class="mc">
+We want to define the function `good-enough?` that accepts two inputs, `total`, the total number of chocolate blocks you have, and `guess` which represents your current guess. It should report either `#t` or `#f` depending on whether the next integer will be larger than `total`
+
+`(good-enough? 13 3)` Should return `#t`. The next guess is 3+1=4 and will take 16 squares which is above 13, the total
+
+`(good-enough? 13 2)` Should return `#f`. The next guess is 2+1=3 and will take 9 squares which is still below 13, the total
+
+`(good-enough? 100 11)` Should return `#t`. The next guess is 11+1=12 and will take 144 squares which is above 100, the total
+
+`(good-enough? 100 10)` Should return `#t`. The next guess is 10+1=11 and will take 121 squares which is above 100, the total
+
+`(good-enough? 100 9)` Should return `#f`. The next guess is 9+1=10 and will take 100 squares which is equal to 100, the total
+
+Choose what code should fill in the blank:
+
+`(define (good-enough? total guess))
+    ________________________)`
+
+
+<ans text="(> total (square (next-guess guess)))" explanation="Yup!" correct></ans>
+<ans text="(> total guess)" explanation="We have to somehow involve the next guess" ></ans>
+<ans text = "(> total (next-guess guess))" explanation="We have to square the next guess."> </ans>
+<!-- and so on -->
+</div>
+
     
+<div class="mc">
+Next, we the function next-guess  that accepts your current guess, and returns a new number to try next
+
+`(next-guess 1)` ;;Should return 2
+
+`(next-guess 3)` ;;Should return 4
+
+Choose the blank to fill in the following code:
+`(define (next-guess guess)
+    ________________________)
+
+<ans text="guess" explanation="Our procedure should do *something* to guess" ></ans>
+<ans text="(+ guess 1)" explanation="Nice!" correct></ans>
+<ans text="(- guess 1)" explanation="Our procedure should *increase guess*"></ans>
+<!-- and so on -->
+</div>
 
 ## Functions as Abstractions
 
 What can we learn from the square chocolate example? Remember that when we
-first _only _define ` largest-square `, we can understand what the procedure
+first _only_ define ` largest-square `, we can understand what the procedure
 is doing, without actually needing to know how `good-enough?` or `next-guess`
 is implemented. We can consider these functions to be abstracted for us; we
 know what it will output but we don't care ** how ** it is implemented. As
@@ -135,18 +182,28 @@ square ` as follows:
 
     
     
-    (define (largest-square total guess)
+<pre><code>(define (largest-square total guess)
     	(define (next-guess guess) (+ guess 1))
     	(define (good-enough? total guess)
     		(< total (square (next-guess guess))))
     	(if (good-enough? guess)
     		guess
     		(largest-square total (next-guess guess))))
+            </code></pre>
+
+<div class="mc">
+Given that you defined only the procedure above, what will happen when we call `(next-guess 4)`?
+
+<ans text="4" explanation="Try again!" ></ans>
+<ans text="5" explanation="Try again!" ></ans>
+<ans text="Error" explanation="Since the procedure next-guess is defined only inside of the body of larguest-square, and not in the global environment, we get an error." correct></ans>
+<!-- and so on -->
+</div>
     
 
 ## Scope of Variables
 
-(define (largest-square total guess)
+<pre><code>(define (largest-square total guess)
 
     
     	(define (next-guess guess) (+ guess 1))
@@ -154,7 +211,7 @@ square ` as follows:
     		(< total (square (next-guess guess))))
     	(if (good-enough? guess)
     		guess
-    		(largest-square total (next-guess guess))))
+    		(largest-square total (next-guess guess))))</code></pre>
     
 
 Previously we mentioned that the functions `good-enough?` and `next-guess` are
@@ -164,7 +221,7 @@ function. Notice that `next-guess` and `good-enough?` accepts the same `total`
 and `guess` that is passed in to larger-square. Removing the redunant
 arguments in the two helper functions results in:
 
-(define (largest-square total guess)
+<pre><code>(define (largest-square total guess)
 
     
     	(define (next-guess) (+ guess 1))
@@ -172,9 +229,9 @@ arguments in the two helper functions results in:
     		(< total (square (next-guess))))
     	(if (good-enough?)
     		guess
-    (largest-square total (next-guess))))  
+    (largest-square total (next-guess))))  </pre></code>
       
-    How do you keep track of what is available to a function and what is not? We will spend a lot of time on this in Unit 3. When a function defined inside another function, the one inside has access to variables and parameters of the outer function. Because next-guess is defined inside largest-square, next-guess has access to largest-square's parameters, total and guess.  
+    How do you keep track of what is available to a function and what is not? We will spend a lot of time on this in Unit 3. When a function defined inside another function, the one inside has access to variables and parameters of the outer function. Because `next-guess` is defined inside `largest-square`, `next-guess` has access to `largest-square`'s parameters, `total` and `guess`.  
       
     
 
