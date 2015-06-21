@@ -79,15 +79,42 @@ play with it using the interpreter Scheme interpreter!
 Here's a [Scheme interpreter](http://inst.eecs.berkeley.edu/~cs61AS/sp13/js-
 scheme-stk/index.html). Define the procedures and play with it:
 
-## Takeaways
-
-Here are some things covered in this subsection:
-
-  1. What is data abstraction?
-  2. How is a rational number defined?
-
 ## What's Next?
 
 Now that we've learned what data abstraction is, let's move on to learning how data abstraction works on rational
 numbers.
+
+
+## What Will Scheme Output?
+
+    (print-rat (make-rational 2 3))
+
+    a. (2 . 3)
+    b. 2/3
+    c. 0.6666
+    d. 6
+
+    (print-rat (*rat (make-rational 2 3) (make-rational 1 4)))
+
+    a. 6/4
+    b. (6 . 4)
+    c. 24
+    d. 2/12
+<div class="mc">
+What is your name?
+
+<pre><code>(any code
+goes in a block like this)
+</code></pre>
+<ans text="Answer A" explanation="Explanation A" correct></ans>
+<ans text="Answer B" explanation="Explanation B"></ans>
+<ans text="Answer C" explanation="Explanation C"></ans>
+<!-- and so on -->
+</div>
+
+
+
+
+
+
 
