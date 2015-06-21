@@ -111,8 +111,7 @@ For example, `(max-sum-squares 1 2 3)` returns `13`, which is 4 + 9
 
 Why isn't the code below correct?
 
-<pre><code>
-	(define (square x) (* x x))
+<pre><code>(define (square x) (* x x))
 
 	(define (max-sum-squares a b c) (max (+ (square a) (square b)) (+ (square b) (square c)) (+ (square a) (square c))))
 </code></pre>

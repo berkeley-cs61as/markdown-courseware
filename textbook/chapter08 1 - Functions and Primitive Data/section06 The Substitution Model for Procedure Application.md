@@ -31,8 +31,7 @@ Consider the `sum-of-squares` procedure from the very first lab which can be
 defined as follows:
 
 
-<pre><code>
-  (define (sum-of-squares x y)  
+<pre><code>(define (sum-of-squares x y)  
      (+ (square x) (square y))) ;; This line is the 'body' of the procedure
 </code></pre>
 
@@ -108,29 +107,25 @@ Note that the input to square is (`+ 3 2). `
 
 `25`
 
-In Applicative Order, you would evaluate the parameter x,` before you go the
-body of square which is (* x x). `When you evaluate `(+ 3 2)`, you get 5 and
-this is what you pass into square. So x is bounded to 5.
+In Applicative Order, you would evaluate the parameter `x`, before you go the
+body of square, which is `(* x x)`. When you evaluate `(+ 3 2)`, you get `5` and
+this is what you pass into square. So `x` is bound to `5`.
 
-  * `Normal Order:`
+  * Normal Order:
 
 `(square (+ 3 2))`
 
-`(* (+ 3 2) (+ 3 2))  `
+`(* (+ 3 2) (+ 3 2))`
 
 `(* 5 5)`
 
 `25`
 
-In Normal Oder, you don't evaluate (+ 3 2) until it is needed. So in this
-case, the x in `(square x)` is bounded to `(+ 3 2)`
+In Normal Order, you don't evaluate `(+ 3 2)` until you absolutely need to. So in this case, the `x` in `(square x)` is bounded to `(+ 3 2)`.
 
-Notice that in Normal Order, because you don't evaluate the x which is (+ 3 2)
-until it is needed, you evaluate it twice. In contrast in Applicative Order,
-because you evaluate the operand, x which is (+ 3 2) before applying it, you
-only evaluate it once.
+Notice that in Normal Order, since you don't evaluate the `x`, which is `(+ 3 2)`, until it needed, you need to evaluate it twice. In contrast in Applicative Order, since you evaluate the operand, `x`, before applying it, you only evaluate it once.
 
-Consider the following code
+Consider the following piece of code:
 
 <pre><code>(define (double_first a b) (+ a a))
 
@@ -155,7 +150,7 @@ In Normal Order, how many times is (+ 1 1) evaluated?
 </div>
 
 <div class="mc">
-In Applicative Order, how many times is (+ 2 2) evaluated?:
+In Applicative Order, how many times is (+ 2 2) evaluated?
 
 <ans text="0" explanation="Try again!"></ans>
 <ans text="1" explanation="Nice!" correct></ans>
@@ -164,7 +159,7 @@ In Applicative Order, how many times is (+ 2 2) evaluated?:
 </div>
 
 <div class="mc">
-In Normal Order, how many times is (+ 2 2) evaluated?:
+In Normal Order, how many times is (+ 2 2) evaluated?
 
 <ans text="0" explanation="Nice!" correct></ans>
 <ans text="1" explanation="Try again!" ></ans>
@@ -176,7 +171,7 @@ In Normal Order, how many times is (+ 2 2) evaluated?:
 
 ## Takeaways
 
-Some take-aways from this subsection:
+Some takeaways from this subsection:
 
   * The Substitution Model helps us in understanding how application works, but it is NOT how the interpreter does application.
   * Evaluating the arguments before applying (i.e. Applicative Order) is one method of evaluating. There are other methods of evaluation (i.e. Normal Order) where you only evaluate the arguments when you need the value

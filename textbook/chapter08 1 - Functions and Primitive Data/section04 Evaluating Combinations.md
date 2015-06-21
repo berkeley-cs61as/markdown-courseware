@@ -1,4 +1,4 @@
-## What Does Evaluate Means?
+## What Does Evaluate Mean?
 
 When we type a Racket expression such as `(+ 2 3)` into the interpreter, we as
 humans know immediately that that is really just `5`. But all the computer
@@ -54,7 +54,7 @@ a [special form](https://edge.edx.org/courses/uc-berkeley/cs61as-1x/SICP/wiki
 rules of evaluation.
 
 <div class="mc">
-Which of the following is not a primitive functions in Racket?
+Which of the following is not a primitive function in Racket?
 
 <ans text="+" explanation="Nope! + follows the regular rules of evaluation"></ans>
 <ans text="if" explanation="Nice!! *if* is a special form!" correct></ans>

@@ -23,8 +23,7 @@ What would the following evaluate to?
 
 <div class="mc">
 
-<pre><code>
-	=> area
+<pre><code>area
 </code></pre>
 <ans text="(* 3 3 3.14159)" explanation="When you define a variable, you should fully evaluate the value"></ans>
 <ans text="28.27431" explanation="Nice!!" correct></ans>
@@ -34,8 +33,7 @@ What would the following evaluate to?
 
 <div class="mc">
 
-<pre><code>
-	=> circumference
+<pre><code>circumference
 </code></pre>
 <ans text="18.84954" explanation="Nice!!" correct></ans>
 <ans text="28.27431" explanation="Whoops!! Try evaluating the value for *circumference*" correct></ans>

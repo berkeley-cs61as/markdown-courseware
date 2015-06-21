@@ -12,15 +12,11 @@ recursively are:
 
   1. Remember to have a base case. Your recursion should reach a point where it no longer needs to call itself to get an answer. At some point the problem should be trivial enough to just output an answer.
   2. Always make your problem smaller. Whenever you make a recursive call make sure your arguments are smaller than what they were to begin with. If they aren't, then you can get yourself into some nasty infinite loops.
-  3. Lastly trust the recursion! Don't overthink the problem. If your recursion makes sense and you've followed hints 1 and 2 you probably have working code. You don't always need to trace through the recursion to make sure your procedure works as you expect it to.
-
-If this seems weird to you, take a look at the previous lab, [Recursion and
-Scheme](https://edge.edx.org/courses/uc-berkeley/cs61as-1x/SICP/courseware/c89
-182263c7a4c6ca961bf95f6a8c456/22e89b4614e943ba9cec5b3b0c7382d5/)
+  3. Lastly, trust the recursion! Don't overthink the problem. If your recursion makes sense and you've followed hints 1 and 2 you probably have working code. You don't always need to trace through the recursion to make sure your procedure works as you expect it to.
 
 ## Prerequisites and What to Expect
 
-For this lesson, you should understand the very basics of Scheme and know
+For this lesson, you should understand the very basics of Racket and know
 proper syntax.
 
 In this lesson, you will learn recursion.

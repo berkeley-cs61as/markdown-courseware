@@ -54,7 +54,7 @@ and outputs the number of occurences of the input word in the sentence.
 
 `(count-word '(i really really like 61as) 'really) ; 2`
 
-` (count-word '(i lambda scheme) 'love) ; 0`
+` (count-word '(i lambda racket) 'love) ; 0`
 
 ## Exercise 3.
 
@@ -154,7 +154,7 @@ reasons why it might be advantageous to treat or as an ordinary function?
 
 **IF YOU HAVE ANY TROUBLE WITH SUBMITTING, ASK A QUESTION ON PIAZZA OR TALK TO A TA.**
 
-**BEFORE SUBMITTING HOMEWORK: Make sure your file loads in Racket. You can verify this by typing into Racket: (load "hw1.scm"),** or whatever the name of your homework file is. You will not receive credit for homework that does not load in Racket.****
+**BEFORE SUBMITTING HOMEWORK: Make sure your file loads in Racket. You can verify this by typing into Racket: (enter! "hw1.rkt"),** or whatever the name of your homework file is. You will not receive credit for homework that does not load in Racket.****
 
 To submit your assignment, you need to be logged in on any of the lab
 computers. If you want to submit from home, you must connect remotely to the
