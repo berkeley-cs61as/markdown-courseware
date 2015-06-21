@@ -1,12 +1,14 @@
 ## Sequences as Abstractions
 
-We have stressed several times that if we see a program that has the same
-general structure, we can generally abstract it and make a more general form
-of it. This idea can be extended even to chunks of code that have somewhat
-different structures. Let's compare two example functions to see this.
+Let's explore more into the concept of abstraction. One major benefit of using abstraction is that it helps us clean up code and increase readability. Some of the functions that we write for sequences can be generalized and abstracted using Higher Order Functions. This idea can be summarized by the following steps:
 
-Consider the following function that sums up all leaves in a tree (deep list)
-that are odd:
+  * Find a recurring pattern in our code
+  * Abstract each element in the pattern using HOFs
+  * Redefine our code with using the abstraction
+
+Here are two example functions that will help demonstrate this idea.
+
+`sum-odd-squares` takes in a tree containing numbers and adds together the square of each **odd** element in the tree:
 
     
     (define (sum-odd-squares tree)
@@ -15,10 +17,9 @@ that are odd:
              (if (odd? tree) (square tree) 0))
             (else (+ (sum-odd-squares (car tree))
                      (sum-odd-squares (cdr tree))))))
-    
 
-Here is another function that returns a list with only the even Fibbonaci
-numbers:
+
+`even-fibs` takes in a number `n`, and returns a list of even fibonacci numbers up to and including `n`:
 
     
     (define (even-fibs n)
@@ -39,27 +40,31 @@ they do share the same logic:
   
 ![](http://mitpress.mit.edu/sicp/full-text/book/ch2-Z-G-17.gif)
 
-This is what the first program does:
+The first step in our idea was to find a recurring pattern in our code. From how we've described recursion in previous lessons, you might dissect `sum-odd-squares` and `even-fibs` by base cases and recursive calls. Now, let's see what each function does from a different perspective:
 
-  * enumerates the leaves of a tree;
-  * filters them, selecting the odd ones;
-  * squares each of the selected ones; and
-  * accumulates the results using +, starting with 0.
+`sum-odd-squares`:
 
-This is what the second program does:
+  * **enumerates** the leaves of a tree
+  * **filters** out the nodes with even data, leaving only odd-valued nodes
+  * **maps** the function `square` onto each of the remaining nodes, and finally
+  * **accumulates** the results by adding them together, starting with 0.
 
-  * enumerates the integers from 0 to _n_;
-  * computes the Fibonacci number for each integer;
-  * filters them, selecting the even ones; and
-  * accumulates the results using cons, starting with the empty list.
+`even-fibs`:
+
+  * **enumerates** the integers from 0 to `n`
+  * **maps** the function `fib` onto each integer
+  * **filters** out the odd numbers, leaving only even Fibonacci numbers, and finally
+  * **accumulates** the results using `cons`, starting with the empty list.
+
+What pattern do we see here? What at first seemed like two very different functions can now be summarized into four major parts: enumeration, filtering, accumulation, and computation. This is great, because now we can use HOFs to abstract our code. This leads us to step two of our abstraction idea. But before that, let's go over some HOFs.
+
+## Map
+
+We went over the `map` HOF in Lesson 4. You may want to [go back](http://localhost:8000/textbook/representing-sequences.html#sub3) for a quick refresher.
 
 ## Filter
 
-So we decomposed our functions abstractly to 'enumerate', 'map', 'filter' and
-'accumulate'. So how do we design them so that they work on sequences? We
-defined `map` in the previous lesson, so let's look at `filter`. `filter`
-should only select elements in a sequence that satisfies a certain predicate.
-
+`filter` takes in two arguments, `predicate` and `sequence`, and returns the sequence with only the elements of that sequence that satisfy `predicate`.
     
     
     (define (filter predicate sequence)
@@ -68,17 +73,39 @@ should only select elements in a sequence that satisfies a certain predicate.
              (cons (car sequence)
                    (filter predicate (cdr sequence))))
             (else (filter predicate (cdr sequence)))))
-    
+
+
+<div class="mc">
+<strong>Test Your Understanding</strong><br><br>
+What do the following expressions return?
+
+<pre><code>(filter (lambda (x) (= (remainder x 2) 0)) (list 0 1 2 3 4 5))
+</code></pre>
+<ans text="nil" explanation="Hint: what does the lambda function check for?"></ans>
+<ans text="(0 1 2)" explanation="Hint: what does ((lambda (x) (= (remainder x 2) 0)) 4) return?"></ans>
+<ans text="(0 2 4)" explanation="Correct! This expression filters out all numbers in the sequence that are not divisible by 2." correct></ans>
+<ans text="Error" explanation="This expression is syntactically correct."></ans>
+<!-- and so on -->
+<pre><code>(filter equal? '(bongo celia momo laval laburrita bongo))
+</code></pre>
+<ans text="nil" explanation="Hint: what does the predicate check for?"></ans>
+<ans text="(bongo celia momo laval laburrita bongo)" explanation="Hint: how many arguments does equal? take in?"></ans>
+<ans text="(bongo)" explanation="Hint: how many arguments should the predicate have?"></ans>
+<ans text="Error" explanation="Correct! equal? takes in two arguments, but the predicate in filter only checks one element of the sequence at a time. This calls (equal? bongo), which produces an error." correct></ans>
+<!-- and so on -->
+</div>
 
 ## Accumulate
 
-The job of `accumulate` is to reduce series of values into one. For example,
-you can use accumulate with the operation `+` and base case 0 to add a list of
-numbers into a single value. You can also accumulate with the operation
-`append` and base case `nil` to append multiple lists together. Here is the
-definition for `accumulate ('initial' `is the base case`).`
+`accumulate` takes in an operation `op`, a starting value `initial`, and a `sequence`. Starting from `initial`, `accumulate` uses `op` to combine all the values in `sequence` into one. Here are some examples:
 
-    
+
+    > (accumulate + 0 '(1 2 3 4 5))
+    15
+    > (accumulate append null '((1 2) (3 4) (5 6)))
+    (1 2 3 4 5 6)
+
+Here is how we define `accumulate`:    
     
     (define (accumulate op initial sequence)
       (if (null? sequence)
@@ -87,11 +114,13 @@ definition for `accumulate ('initial' `is the base case`).`
               (accumulate op initial (cdr sequence)))))
     
 
-## Step by Step
+How this HOF works could be a little confusing, so here let's write out the evaluation steps explicitly:
 
-Consider the call `(accumulate + 0 (list 1 2 3 4 5))`
+Consider the expression:
 
-The recursive call will be called like this:
+`(accumulate + 0 (list 1 2 3 4 5))`
+
+The recursive steps will proceed as follows:
 
 `(+ 1 (accumulate + 0 (list 2 3 4 5)))`
 
@@ -105,19 +134,28 @@ The recursive call will be called like this:
 
 `(+ 1 (+ 2 (+ 3 (+ 4 (+ 5 0)))))`
 
-and it evaluates the rest normally.
+`(+ 1 (+ 2 (+ 3 (+ 4 5))))`
+
+`(+ 1 (+ 2 (+ 3 9)))`
+
+`(+ 1 (+ 2 12))`
+
+`(+ 1 14)`
+
+`15`
+
 
 ## Enumerate
 
 What does `enumerate` do? `enumerate` makes a sequence/list of elements. Our
-definition of `filter` and `map` are designed for sequences but recall that
+definition of `filter`, `map`, and `accumulate` are designed for sequences but recall that
 one of our functions, `sum-odd-squares` is called on trees. Instead of making
-several versions of maps and filters, we can differentiate them by just having
+several versions of accumulate, map, and filter, we can differentiate them by just having
 different `enumerate` functions.
 
 ## Enumerate for Lists
 
-Enumerate will return a list given a lower and a higher range.
+Enumerate will return a list given a lower and upper range.
 
   * `(enumerate-interval 0 5)` returns ` (0 1 2 3 4 5)`
   * `(enumerate-interval 10 13) ` returns `(10 11 12 13) `
@@ -135,8 +173,7 @@ You can define enumerate (for lists) as:
 ## Enumerate for Trees
 
 For our tree-version of enumerate, we need a function that accepts a tree, and
-returns a list with all of the leaves, so that it is compatible with our `map`
-and `filter.`
+returns a list with all of the leaves, so that it is compatible with the rest of our HOFs.
 
     
     
@@ -149,8 +186,7 @@ and `filter.`
 
 ## Putting Everything Together
 
-With all of the helper functions we have defined, we can define a more modular
-`sum-odd-squares` and `even-fibs`.
+Here, we reach our final step in our abstraction idea. With all of the helper functions we have defined, we can define a more modular, readable, and compact version of `sum-odd-squares` and `even-fibs`:
 
     
     (define (sum-odd-squares tree)
@@ -176,8 +212,8 @@ Similarly we can define `even-fibs` as follows:
                                (enumerate-interval 0 n)))))
     
 
-What happened this time? We make a list from 0 until n (**enumerate**), find
-the fibonacci number for all of them (**map**), keep everything that is even
+What happened this time? We make a list from 0 to `n` (**enumerate**), find
+the Fibonacci number for all of them (**map**), keep everything that is even
 (**filter**), and put them together into a list (**accumulate**).
 
 ## Takeaways
