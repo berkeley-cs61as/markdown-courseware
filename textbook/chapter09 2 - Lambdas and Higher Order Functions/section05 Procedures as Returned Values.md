@@ -24,12 +24,11 @@ Try these expressions in the interpreter:
     (cube 2)
 
 But, what's so great about procedures as returned values anyway? In the last
-example, couldn't we just call + directly, instead of make-adder?
+example, couldn't we just call **+** directly, instead of make-adder?
 
 Yes, we could, but only if we just wanted to compute a sum.
 
-If we needed to pass the function plus3 around, as an argument, saying `(make-
-adder 3)` would be much nicer than saying `(lambda (x) (+ x 3))` .
+If we needed to pass the function plus3 around, as an argument, saying `(make-adder 3)` would be much nicer than saying `(lambda (x) (+ x 3))` .
 
 Let's look at sum again. Recall that` (sum fn a b)` the same as:
 
@@ -49,9 +48,8 @@ us to bypass this lambda. Instead, we can do:
 
 Isn't that much clearer?
 
-Note also how much we've progressed in abstraction. At the beggining of this
-lab, we defined a different procedure for each different type of sum: `sum-
-squares, sum-cubes, sum-doubles`.
+Note also how much we've progressed in abstraction. At the beginning of this
+lab, we defined a different procedure for each different type of sum: `sum-squares, sum-cubes, sum-doubles`.
 
 But now, we have abstracted the summation itself, so that we can express any
 summation in a single clear line.

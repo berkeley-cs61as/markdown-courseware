@@ -87,9 +87,7 @@ definition.
 
 ## Exercise 5.
 
-  
-Find the values of the following expressions where `1+` is a primitive
-procedure that adds one to its argument, and `t` is defined as follows:
+Find the values of the following expressions where `add1` is a primitive procedure that adds one to its argument, and `t` is defined as follows:
 
 `(define (t f) `
 
@@ -97,9 +95,9 @@ procedure that adds one to its argument, and `t` is defined as follows:
 
 Work these out before trying them on the computer.
 
-  1. `((t 1+) 0)`
-  2. `((t (t 1+)) 0)`
-  3. `(((t t) 1+) 0)`
+  1. `((t add1) 0)`
+  2. `((t (t add1)) 0)`
+  3. `(((t t) add1) 0)`
 
 ## Exercise 6.
 
@@ -146,9 +144,7 @@ text/book/book-Z-H-12.html#%25_thm_1.32), [1.33](http://mitpress.mit.edu/sicp
 text/book/book-Z-H-12.html#%25_thm_1.40), [1.41](http://mitpress.mit.edu/sicp
 /full-text/book/book-Z-H-12.html#%25_thm_1.41),
 [1.43](http://mitpress.mit.edu/sicp/full-
-text/book/book-Z-H-12.html#%25_thm_1.43)[
-
-](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-12.html#%25_thm_1.46)
+text/book/book-Z-H-12.html#%25_thm_1.43), [1.46](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-12.html#%25_thm_1.46)
 
 (Pay attention to footnote 51; you'll need to know the ideas in these
 exercises later in the semester.)

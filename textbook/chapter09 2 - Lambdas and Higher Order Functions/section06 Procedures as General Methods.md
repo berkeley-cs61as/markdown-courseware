@@ -19,46 +19,37 @@ Using this idea, we'll make a procedure fixed-point that will keep applying a
 function, until we we find two successive values whose difference is less than
 some prescribed tolerance.
 
-`(define tolerance 0.00001)`
 
-`(define (fixed-point f first-guess)`
-
-` (define (close-enough? v1 v2)`
-
-` (< (abs (- v1 v2)) tolerance))`
-
-` (define (try guess)`
-
-` (let ((next (f guess)))`
-
-` (if (close-enough? guess next)`
-
-` next`
-
-` (try next))))`
-
-` (try first-guess))`
+    (define tolerance 0.00001)
+    
+    (define (fixed-point f first-guess)
+        (define (close-enough? v1 v2)
+            (< (abs (- v1 v2)) tolerance))
+        (define (try guess)
+           (let ((next (f guess)))
+              (if (close-enough? guess next)
+                  next
+                  (try next))))
+        (try first-guess))
 
 For example, we can use this method to approximate the fixed point of the
 cosine function, starting with 1 as an initial approximation:
 
-`> (fixed-point cos 1.0)
+> (fixed-point cos 1.0)
 
-0.7390822985224024`
+0.7390822985224024
 
 To demonstrate the power of abstracting functions with fixed-point, we will
 develop a method to calculate square roots... in only 3 lines of scheme!
 
 Computing the square root of some number _x_ requires finding a _y_ such that
-_y_2 = _x_. Putting this equation into the equivalent form _y_ = _x_/_y_, you
-can see that we are looking for a fixed point of the function `(lambda (y) (/
-x y))`. In code:
+_y_^_2_ = _x_. Putting this equation into the equivalent form _y_ = _x_/_y_, you
+can see that we are looking for a fixed point of the function `(lambda (y) (/ x y))`. In code:
 
-`(define (sqrt x)`
 
-` (fixed-point (lambda (y) (/ x y))`
-
-` 1.0))`
+    (define (sqrt x)
+        (fixed-point (lambda (y) (/ x y))
+        1.0))
 
 If you happen to have an interpreter handy, though, you'll find that this
 doesn't work. To see why, look at the successive guesses of, say, `(sqrt 4)`:
@@ -81,19 +72,16 @@ do that, we'll average the next guess with the currrent guess. That is, the
 next guess after _y_ is (1/2)(_y_ + _x_/_y_) instead of _x_/_y. _
 
 The process of making such a sequence of guesses is simply the process of
-looking for a fixed point of _y_ ![](http://mitpress.mit.edu/sicp/full-
-text/book/book-Z-G-D-17.gif) (1/2)(_y_ + _x_/_y_):
+looking for a fixed point of _y_ = (1/2)(_y_ + _x_/_y_):
 
-`(define (sqrt x)`
 
-` (fixed-point (lambda (y) (* 0.5 (+ y (/ x y))))`
-
-` 1.0))`
+    (define (sqrt x)
+        (fixed-point (lambda (y) (* 0.5 (+ y (/ x y))))
+        1.0))
 
 With this modification, the square-root procedure works.  This approach of
 averaging successive approximations to a solution, a technique the SICP
-authors call [_average damping_](http://mitpress.mit.edu/sicp/full-
-text/book/book-Z-H-12.html#%_sec_1.3.4), often aids the convergence of fixed-
+authors call _average damping_, often aids the convergence of fixed-
 point searches.
 
 So, let's continue our abstraction frenzy and abstract the average damping

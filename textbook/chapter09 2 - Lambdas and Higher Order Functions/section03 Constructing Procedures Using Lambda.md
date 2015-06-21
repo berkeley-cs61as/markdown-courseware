@@ -43,9 +43,8 @@ And now, we can rewrite sum-doubles as:
 
 **Note:** The value returned by `lambda` is a procedure, just as much as one made with `define`.
 
-Here's an interpreter for you to check out lambda.
 
-Try at least these expressions:
+Try at least these expressions using Racket in terminal:
 
     
     (lambda (x) (+ x 3))  
