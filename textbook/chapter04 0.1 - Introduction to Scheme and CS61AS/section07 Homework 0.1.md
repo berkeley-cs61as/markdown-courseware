@@ -213,7 +213,7 @@ if it's correct by typing the following into your terminal:
     
     grader hw0-1 hw0-1.rkt can-drive
 
-## Exercise 2b - `fizzbuz`
+## Exercise 2b - `fizzbuzz`
 
 Write a procedure `fizzbuzz` that takes a number and outputs the word '`fizz`
 if the number is divisible by `3`, '`buzz` if it's divisible by `5`, '`fizzbuzz`
