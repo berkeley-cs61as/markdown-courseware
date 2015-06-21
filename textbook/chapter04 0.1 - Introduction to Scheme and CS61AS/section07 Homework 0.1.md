@@ -3,13 +3,7 @@
 In this homework, you'll use what you've learned in the first day to solve
 some problems. You'll also be doing a bit of reading and introducing yourself.
 
-This homework is due by Friday Jan 23 2015, 11:59PM.
-
-(If you are starting cs61as late, this homework is due by your next scheduled
-lab section)
-
-Before anything, please go over the Emacs Tutorial (on the left). Then
-continue to the next page.
+**This homework is due Tuesday, June 23 2015, 11:59PM**
 
 ## Template
 
@@ -17,12 +11,11 @@ Type the following command at the terminal to copy the template file to the
 current directory (note the period at the end):
 
     
-        cp ~cs61as/autograder/templates/hw0-1.scm .
+        cp ~cs61as/autograder/templates/hw0-1.rkt .
 
-Or you can download the template
-[here](http://inst.eecs.berkeley.edu/~cs61as/templates/hw0-1.scm).
+Or you can download the template [here](http://inst.eecs.berkeley.edu/~cs61as/templates/hw0-1.rkt).
 
-## Introduce yourself
+## Introduce Yourself to the Staff
 
 ![](http://studentbranding.com/wp-content/uploads/2011/04/Repeat-their-name-
 and-introduce-yourself.jpg)
@@ -30,7 +23,7 @@ and-introduce-yourself.jpg)
 Before you start the exercises, introduce yourself to staff! We want to know
 who you are.
 
-Answer the following quesitons on the homework file:
+Answer the following questions on the homework file:
 
 1) What is your name?
 
@@ -42,37 +35,33 @@ Answer the following quesitons on the homework file:
 
 5) Tell us interesting things about yourself.
 
-6) Email a picture of yourself to both TAs. The subject of the email should be
-[CS61AS] "Your Name," "Your Login." Their email addresses can be found on
-Staff Info.
+## Exercise 0 - Introduce Yourself to your Classmates
 
-## Exercise 0
-
-**Icebreaker time! Make a followup on the "Hello World!" post on Piazza introducing yourself. Be sure to include:**
+See if you can find a post on Piazza called "Hello World!". Make a followup on that post and introduce yourself. Be sure to include:
 
   * Name
   * Major and Year
   * One interesting fact about yourself
   * Why you're taking the course
 
-## Exercise 1
+## Exercise 1 - `sum-of-squares`
 
 Here is the syntax for defining a procedure:
 
     
-        (define ([name of procedure] [variables]) [body of procedure])
+    (define ([name of procedure] [variables]) [body of procedure])
       
 
 For example, you saw how to define a `square` procedure:
 
     
-        (define (square x) (* x x))
+    (define (square x) (* x x))
       
 
 After defining, you can use the procedure `square` to find the square of any
 number you want. Likewise...
 
-Without using * (use square instead), define a procedure `sum-of-squares`,
+Without using `*` (use `square` instead), define a procedure `sum-of-squares`,
 which takes two arguments, and returns the sum of the squares of the two
 arguments.
 
@@ -83,25 +72,18 @@ check if you defined your procedure correctly by typing the following into
 your terminal:
 
     
-    grader hw0-1 hw0-1.scm sum-of-squares
+    grader hw0-1 hw0-1.rkt sum-of-squares
 
-## On Words
+## Words
 
 We've shown you some interesting procedures that allow you to do stuff to
 words:
 
-`'` makes a word or a group of words (in parens)
+`'` makes a word (e.g., `'pi`) or a group of words (e.g., `'(good morning)`).
 
-`first` takes a word and returns the first letter of that word
+`first` takes a word and returns the first letter of that word, or it takes a sentence and returns the first word of that sentence.
 
-`butfirst` (or `bf`) takes a word and returns everything but the first letter
-
-Some terminology:
-
-`'pi` is an example of creating a word
-
-`'(good morning)` creates a group of words, or a sentence, representing "good
-morning"
+`butfirst` (or `bf`) takes a word/sentence and returns everything but the first letter/word.
 
 Keep these procedures and concepts in the back of your mind. They'll come back
 in later exercises and labs.
@@ -109,16 +91,16 @@ in later exercises and labs.
 ## Special Forms
 
   
-Scheme has some control features that allow you to choose what to do next
+Racket has some control features that allow you to choose what to do next
 based on a test. These are called _Special Forms._ Special forms have
 particular rules that allow them to skip evaluating some of its arguments.
 
-### if
+### `if`
 
-In Scheme, if is a special form that evaluates only one of its last two
-arguments to use as a value. if always evaluates its first argument. If the
-value of that argument is true, then if evaluates its second argument and
-returns its value. If the value of the first argument is false, then if
+In Racket, `if` is a special form that evaluates only one of its last two
+arguments to use as a value. `if` always evaluates its first argument. If the
+value of that argument is `true`, then `if` evaluates its second argument and
+returns its value. If the value of the first argument is `false`, then if
 evaluates its third argument and returns that value.
 
 Here is an example of proper if syntax:
@@ -128,31 +110,28 @@ Here is an example of proper if syntax:
         'yay!
         (/ 1 0) )
 
-In this case, "yay!" is printed. Because the first expression evaluates to
-true, the last argument to if is not evaluated, which means we don't get a
+In this case, `yay!` is printed. Because the first expression evaluates to
+true, the last argument to `if` is not evaluated, which means we don't get a
 divide-by-zero error.
 
-### cond
+### `cond`
 
-cond is a special-form that acts basically as an if with multiple options.
-Each clause is tested one at a time until one evaluates to the boolean true.
-If none of the clauses are true, you can include an else clause to capture
-these cases.
+`cond` is a special form that acts just like an `if` statement, except with multiple options. Each clause is tested one at a time until one evaluates to `true`. If none of the clauses are `true`, you can include an `else` clause to capture these cases.
 
 Here is an example:
 
     
     (cond ((= 3 1) 'wrong!)
           ((= 3 2) 'still-wrong!)
-          (else 'yay ))
+          (else 'yay))
 
-In this case, yay is printed.
+In this case, the first two conditions return `false`, and `yay` is printed.
 
-Some good procedures to use for the test are >, <, and =.
+Some good procedures to use for the test cases are `>`, `<`, and `=`.
 
-### and
+### `and`
 
-and checks whether **all** its arguments are true.
+`and` checks whether **all** its arguments are `true`.
 
     
     > (and (> 5 3) (< 2 4))
@@ -161,7 +140,7 @@ and checks whether **all** its arguments are true.
     #f
     
 
-Why `and` is a special form: it evaluates its arguments and stops as soon as
+Why is `and` a special form? It evaluates its arguments and stops as soon as
 it can, returning `#f` as soon as any argument evaluates to false. This turns
 out to be useful:
 
@@ -180,8 +159,8 @@ out to be useful:
     ERROR: AARDVARK IS NOT A NUMBER
     
 
-A subtle point about `and`: similar to or, if all its arguments evaluate to
-true instead of simply returning `#t` it will return the value of its last
+A subtle point about `and`: similar to `or`, if all its arguments evaluate to
+`true`, instead of simply returning `#t` it will return the value of its last
 argument.
 
     
@@ -191,13 +170,11 @@ argument.
     100
     
 
-Since all values besides `#f` in Scheme are "truthy", this aspect of `and`
-still works as if it just returned `#t` while allowing us to make use of the
-value of its last argument.
+Anything that is not `#f` is `#t`. So, `100` is `true`, `'foo` is `true`, and so on.
 
-### or
+### `or`
 
-or checks whether **any** of its arguments are true.
+`or` checks whether **any** of its arguments are `true`.
 
     
     > (or (> 5 3) (< 2 1))
@@ -206,35 +183,27 @@ or checks whether **any** of its arguments are true.
     #f
     
 
-Why `or` is a special form: it evaluates its arguments and stops as soon as
-one of its arguments evaluates to true.
+Why is `or` a special form? It evaluates its arguments and stops as soon as
+one of its arguments evaluates to `true`.
 
     
     > (or #f #t (/ 1 0))
     #t
     
 
-A subtle point about `or`: similar to [and](/wiki/cs61as-1x/and), if any one
-of its arguments evaluate to true (it evaluates to anything besides `#f`),
-`or` returns the value of the evaluated expression rather than just simply
-`#t`.
+A subtle point about `or`: just like `and`, if any one of its arguments evaluate to `true`, `or` returns the value of the evaluated expression rather than just simply `#t`.
 
     
     > (or #f (+ 1 2 3))
     6
     > (or (* 3 4) (- 2 1))
     12
-    
 
-Since all values besides `#f` in Scheme are "truthy", this aspect of `or`
-still works as if it just returned `#t` while allowing us to make use of the
-value of its first argument that evaluates to true.
-
-## Exercise 2a
+## Exercise 2a - `can-drive`
 
 Take a moment to read through the above, and try them out in the interpreter.
 Then, write a procedure `can-drive` that takes the age of a person as an
-argument. If the age is below 16, return the sentence '`(not yet)`. Otherwise,
+argument. If the age is below `16`, return the sentence '`(not yet)`. Otherwise,
 return the sentence '`(Good to go)`. Make sure to test your code in the
 interpreter.
 
@@ -242,13 +211,13 @@ After you've finished this exercise, run the autograder on your code to check
 if it's correct by typing the following into your terminal:
 
     
-    grader hw0-1 hw0-1.scm can-drive
+    grader hw0-1 hw0-1.rkt can-drive
 
-## Exercise 2b
+## Exercise 2b - `fizzbuz`
 
 Write a procedure `fizzbuzz` that takes a number and outputs the word '`fizz`
-if the number is divisible by 3, '`buzz` if it's divisible by 5, '`fizzbuzz`
-if it's divisible by both 3 and 5, and otherwise, the number itself. You may
+if the number is divisible by `3`, '`buzz` if it's divisible by `5`, '`fizzbuzz`
+if it's divisible by both `3` and `5`, and otherwise, the number itself. You may
 find the function `remainder` useful. Make sure to test your code in the
 interpreter.
 
@@ -256,16 +225,15 @@ After you've finished this exercise, check your solution by typing the
 following into your terminal:
 
     
-    grader hw0-1 hw0-1.scm fizzbuzz
+    grader hw0-1 hw0-1.rkt fizzbuzz
 
-## EXERCISE 3 - The Most Baffling Question
+## Exercise 3 - The Most Baffling Question
 
 Why did the Walrus cross the Serengeti?
 
-To figure out this answer, look on Piazza for the post
-labeled "Answer to Homework 0-1 Exercise 3".
+To figure out this answer, look on Piazza for the post labeled "Answer to Homework 0-1 Exercise 3".
 
-## Exercise 4.
+## Exercise 4 - `new-if`
 
 See what happens when you type the following snippets of code into the
 interpreter:
@@ -278,7 +246,7 @@ interpreter:
       (/ 4 2))
     
 
-Now we want to see if we can write a procedure that behaves just like if.
+Now we want to see if we can write a procedure that behaves just like `if`.
 Here's our attempt:
 
     
@@ -307,28 +275,27 @@ example? Think about this and try to figure it out. Expect to see it again.
 
 ## Takeaways
 
-This homework tried to provide practice involving the following ideas:
+This homework provides practice involving the following ideas:
 
   1. Procedures
   2. Short Circuiting
   3. Using Piazza
 
-## Reading
-
-The following reading is mandatory and quizzable:
-
-  * [Course Syllabus](https://edge.edx.org/courses/UCBerkeleyX/CS61AS/2014_Spring/1662dbbf6fe94d6488b0f3472210fa35/)
+## Recommended Readings
 
 The following reading is recommended:
 
   * [Lecture Notes 1](http://inst.eecs.berkeley.edu/~cs61as/reader/notes.pdf)
   * [SICP 1.1 - The Elements of Programming](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-10.html#%25_sec_1.1)
 
-## running the autograder
+## Running the Autograder
 
-Before submitting any homework, you should run the autograder to make sure
-your solutions are correct. To run the autograder, type the following into the
-terminal:
+Before submitting any homework, there are two checks you need to make:
+
+  1. Your homework MUST load into the Racket interpreter. Any submissions that do not load will not receive any credit.
+  2. Run your homework through the autograder to check your answers. If you cannot get your homework to pass all the autograder tests, don't fret, and submit your homework anyway. We grade based on effort. 
+
+To run the autograder, type the following into the terminal:
 
     
     grader <assignment name> <file name>
@@ -337,23 +304,16 @@ For example, to run the autograder on this homework, type the following into
 the terminal:
 
     
-     grader hw0-1 hw0-1.scm
+     grader hw0-1 hw0-1.rkt
 
 Remember that if you pass the autograder when you submit your homework, you're
 guaranteed full credit and your slip days are reset!
 
 ## Submitting your Homework
 
-We will go over how to submit homework on Friday.
+Here is a [quick guide](http://berkeley-cs61as.github.io/textbook/submitting-homework.html) to turning in homework and basic Unix commands. If you have any trouble submitting, do not hesitate to ask a TA!
 
-## Moving forward
+## Moving Forward
 
-Start on Lesson 1. If Lesson 1 looks completely foreign to you, then switch to
-Lesson 0.2.
-
-## submit your homework
-
-I am thinking of putting submission guide here, once it gets revised.
-
-**Do not forget to submit the picture of yourself as well! **
+Start on Lesson 1. If Lesson 1 looks completely foreign to you, talk to a TA and s/he will get you on track.
 
