@@ -1,11 +1,11 @@
-## data abstraction and sequences
+## Data Abstraction and Sequences
 
 Now it's time to make things abstract.
 
-## Prerequsites and what to expect
+## Prerequsites and What to Expect
 
-For this lession, you're expected to have understood all of Unit 1, especially
-lesson 1 and 2.
+For this lesson, you're expected to have understood all of Unit 1, especially
+lessons 1 and 2.
 
 In lesson 1, we noted that a procedure used as an element in creating a more
 complex procedure could be regarded not only as a collection of particular
@@ -24,7 +24,7 @@ Here are the relevant readings for this lesson:
   * [SICP 2.2.1](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-15.html#%25_sec_2.2.1)
   * [Lecture Notes](http://inst.eecs.berkeley.edu/~cs61as/reader/notes.pdf#page=18) (ignore the part on MapReduce--this is different than map!)
 
-## what is Data abstraction?
+## What Is Data Abstraction?
 
 Recall Lesson 1. Do you remember [Procedures as Black-Box
 Abstractions](https://edge.edx.org/courses/uc-berkeley/cs61as-1x/SICP/coursewa
@@ -48,16 +48,16 @@ implement the abstract data in terms of the concrete representation. To
 illustrate this technique, we will consider how to design a set of procedures
 for manipulating rational numbers.
 
-## example: rational numbers
+## Example: Rational Numbers
 
-A rational number is any number that can be expressed as the quotient or
-fraction _p/q_ of two integers, with the denominator _q_ not equal to zero.
+A rational number is any number that can be expressed as the quotient or the
+fraction (_p/q_) of two integers, with the denominator _q_ not equal to zero.
 For example, 3/4 is a rational number with the denominator 4 and numerator 3.
 How can we express rational numbers in Scheme?
 
-Here's the definition of rational number. You don't have to know `cons`,
-`car`, `cdr` operators and how the procedures work yet. Just look at it and
-play with it using the interpreter below!
+Here's the definition of a rational number, defined as the procedure called make=rational. You don't have to know `cons`,
+`car`, or `cdr` operators and how the procedures work yet. Just look at the code below and
+play with it using the interpreter Scheme interpreter!
 
     
     (define (make-rational num den)
@@ -79,15 +79,15 @@ play with it using the interpreter below!
 Here's a [Scheme interpreter](http://inst.eecs.berkeley.edu/~cs61AS/sp13/js-
 scheme-stk/index.html). Define the procedures and play with it:
 
-## takeaways
+## Takeaways
 
 Here are some things covered in this subsection:
 
   1. What is data abstraction?
-  2. How a rational number is defined?
+  2. How is a rational number defined?
 
-## what's next?
+## What's Next?
 
-Go to the next subsection and learn how data abstraction works on rational
+Now that we've learned what data abstraction is, let's move on to learning how data abstraction works on rational
 numbers.
 
