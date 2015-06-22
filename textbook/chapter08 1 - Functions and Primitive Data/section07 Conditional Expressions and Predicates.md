@@ -3,12 +3,12 @@
 We have used [if](https://edge.edx.org/courses/uc-berkeley/cs61as-1x/SICP/wiki
 /cs61as-1x/if/) and [conditional](https://edge.edx.org/courses/uc-berkeley
 /cs61as-1x/SICP/wiki/cs61as-1x/cond/) in our first lab and in this section
-will flesh out more details in this section.
+will flesh out more details.
 
-We generally use an 'if' or a 'cond' when we want our function to behave
+We generally use an `if` or a `cond` when we want our function to behave
 differently depending on a certain condition. Note that these 2 functions are
 one of the few special forms in Racket; we don't evaluate them with 'evaluate
-operator and operand' method.
+operator and operand' method discussed in the previous section.
 
 ## Cond Examples
 
@@ -16,45 +16,45 @@ The general form of a cond expression is as follows
 
 `(cond  (<test1> <result1>)`
 
-` (<test2> <result2>)`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;` (<test2> <result2>)`
 
-` ...`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;` ...`
 
-` (<testn> <resultn>)`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;` (<testn> <resultn>)`
 
-` (else <default>))  ;; The 'else' case is optional`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;` (else <default>))  ;; The 'else' case is optional`
 
-The pair of expression (<test1> <result1>) is called a clause. The first part
-of each pair (the <test>) is a predicate, or an expression that has to
+The pair of expression `(<test1> <result1>)` is called a clause. The first part
+of each pair (the `<test>`) is a predicate, or an expression that has to
 evaluate to true or false.
 
-How you evaluate a 'cond' is as follows:
+How you evaluate a `cond` is as follows:
 
-Evalute <test1>, if it is true, evaluate <result1> and return it. If <test1>
-is false, evaluate the next <test>. If it is true, evaluate and return its
-corresponding <result>. If it is false, check the next <test> and so on until
-you go through all the test. If you hit an else, you return the value
-correspoding to it (consider it as the 'default value')
+Evalute `<test1>`, if it is true, evaluate `<result1>` and return it. If `<test1>`
+is false, evaluate the next `<test>`. If the result is true, evaluate and return its
+corresponding `<result>`. If it is false, check the next `<test>` and so on until
+you go through all the tests. If you hit an `else`, you return the value
+corresponding to it (consider it the 'default value')
 
 You can write a cond as a series of 'if' statements:
 
 `(if <test1> `
 
-` <result 1>`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;` <result 1>`
 
-`(if <test 2>`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`(if <test 2>`
 
-` <result 2>`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;` <result 2>`
 
-` ...`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;` ...`
 
-` (if <testn>`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;` (if <testn>`
 
-` <resultn>`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;` <resultn>`
 
-` <default value>)  ;; Close parentheses omitted`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;` <default value>)  ;; Close parentheses omitted`
 
-<div class="mc">
+
 The function 'plural' below accepts one input, and returns its plural form. i.e. `(plural 'carrot)` returns `'carrots`, `(plural 'body)` returns `'bodies`. It does not perform correctly for `(plural 'boy)` which SHOULD return `'boys` but the buggy version below returns `'boies` instead.
 
 <pre><code>(define (plural wd) 
@@ -63,7 +63,8 @@ The function 'plural' below accepts one input, and returns its plural form. i.e.
     (word wd 's)))
 </code></pre>
 
-Choose which line of code to add in the blank below so that `(plural 'boy)` behaves correctly. Suppose `vowel?` is defined as before.
+<div class="mc">
+Choose which line of code to add in the blank below so that (plural 'boy) behaves correctly (that is, it should return boys). Suppose vowel? is defined as before.
 
 <pre><code>(define (plural wd) 
   (if __________________
@@ -77,9 +78,6 @@ Choose which line of code to add in the blank below so that `(plural 'boy)` beha
 <!-- and so on -->
 </div>
 
-    
-(plural 'boy) ; Should return boys
-
 ## Predicate and Style
 
 A predicate is any expression that returns true or false. Some examples
@@ -90,25 +88,26 @@ Here is an example of a predicate:
 
 `(define (even? x) (= (remainder x 2) 0))`
 
-The convention in Racket when defining your own predicate is to end the name
+The convention in Racket when defining your own predicate is to end the name of the procedure
 with '?'.
 
 Notice that the following code is equivalent to the definition above:
 
 `(define (even? x) (if (= (remainder x 2) 0)`
 
-` #t`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;` #t`
 
-` #f))`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;` #f))`
 
-The second code however, is considered to be a 'bad programming style' because
+The second code example, however, is considered to be bad programming style because
 of its redundancy. We urge you to avoid code like this, because it reduces readibility.
 
-<div class="mc">
+
 We define a procedure that takes three numbers as arguments and returns the sum of the squares of the two larger numbers
 
-For example, `(max-sum-squares 1 2 3)` returns `13`, which is 4 + 9
+For example, `(max-sum-squares 1 2 3)` returns `13`, which is `4 + 9`
 
+<div class="mc">
 Why isn't the code below correct?
 
 <pre><code>(define (square x) (* x x))
@@ -122,7 +121,7 @@ Why isn't the code below correct?
 </div>
 
 PRACTICE QUESTION:
-Write a procedure pigl that takes a word as an argument and returns that word in pig latin. Here are the rules for pig latin:
+Write a procedure `pigl` that takes a word as an argument and returns that word in pig latin. Here are the rules for pig latin:
 
 If the input word starts with a vowel then we append "ay" to the input.
 
@@ -130,12 +129,15 @@ If the input word starts with a consonant then we move all the starting consonan
 
 Here are some examples:
 
-(pigl 'hello) ; ellohay 
+<pre><code>(pigl 'hello) ; ellohay 
 (pigl 'open) ; openay 
 (pigl 'scheme) ; emeschay
-What happens if our input doesn't have a vowel, like (pigl 'my)?
+</code></pre>
 
-Make sure your piglatin checks if a word has no vowel and just return that word directly. (pigl my) ; my
+What happens if our input doesn't have a vowel, like `(pigl 'my)`? Make sure your `pigl` checks if a word has no vowels and just returns that word directly. 
+
+<pre><code>(pigl my) ; my
+</code></pre>
 
 Check your answer in your Racket interpreter with the examples above!
 

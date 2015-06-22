@@ -1,7 +1,7 @@
 ## Procedures as Abstractions
 
-So far we have defined functions that does a single computation by itself
-(like `square`, `fib,` and `factorial`). You can create a much more complex
+So far we have defined functions that do a single computation by themselves
+(such as `square`, `fib,` and `factorial`). You can create a much more complex
 function by combining different functions, each handling a subproblem of the
 original problem. We will build on an example of such function in this section
 and explore the idea of 'functions as
@@ -13,17 +13,15 @@ and explore the idea of 'functions as
 Charlie has a large amount of block (not bar) chocolates,  and he wants to
 show it off to his friends by organizing those blocks in the largest possible
 square arrangement! So let's say that Charlie has 13 blocks of chocolate. Then
-the largest square arrangement is a 3x3 = 9 (shown left), with 4 leftovers
-(shown right)
+the largest square arrangement is a 3x3 = 9 (shown left), with 4 leftovers.
 
-![](http://i.imgur.com/wo9ZcRW.png?1)![](http://www.haighschocolates.com.au
-/wp-content/uploads/2013/06/block-chocolate_honeycomb-block-510x340.jpg)
+![](http://i.imgur.com/wo9ZcRW.png?1)
+
 
 Charlie wonders 'how big can the side of my square be given a certain amount
-of chocolate blocks?' We can represent this question as a function, `(largest-
-square total guess)`. The function `largest-square` takes two arguments,
-`total` which represents how many chocolate blocks Charlie has (in the example
-above 13) and `guess` which represents your initial guess on what's the
+of chocolate blocks?' We can represent this question as a function, `(largest-square total guess)`. The function `largest-square` takes two arguments:
+`total`, which represents how many chocolate blocks Charlie has (in the example
+above, `total` is 13), and `guess`, which represents your initial guess on what's the
 largest side you can have. This function will output the largest side your
 chocolate square can have (in this case, 3). We will break this function into
 subproblems, and put all the pieces together in the rest of this section.
@@ -37,11 +35,33 @@ function that does the same thing with just the `total `argument. We included
 our original example of 13 blocks of chocolate, suppose Charlie takes a `
 guess ` that the maximum side is 2:
 
-| guess | leftover  | next guess |
-|-------|-----------|------------|
-| 2     | 13-4= 9   | 2+1= 3     |
-| 3     | 13-9= 4   | 3+1= 4     |
-| 4     | 13-16= -3 | 4+1= 5     |
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+</style>
+<table class="tg">
+  <tr>
+    <th class="tg-031e">guess</th>
+    <th class="tg-031e">leftover</th>
+    <th class="tg-031e">next guess</th>
+  </tr>
+  <tr>
+    <td class="tg-031e">2</td>
+    <td class="tg-031e">13-4= 9</td>
+    <td class="tg-031e">2+1= 3</td>
+  </tr>
+  <tr>
+    <td class="tg-031e">3</td>
+    <td class="tg-031e">13-9= 4</td>
+    <td class="tg-031e">3+1= 4</td>
+  </tr>
+  <tr>
+    <td class="tg-031e">4</td>
+    <td class="tg-031e">13-16= -3</td>
+    <td class="tg-031e">4+1= 5</td>
+  </tr>
+</table>
 
 
 
@@ -78,10 +98,10 @@ If afterwards you type (largest-square 13 2), what will happen?
 </div>
 
 
-_"Wait wait, you just defined a function but it calls other functions that
+_"Wait wait, you just defined a function, but it calls other functions that
 aren't defined yet! We haven't defined 'good-enough?' or 'improve-guess'! "_
 
-Yup, the definitions of the functions inside  are incomplete but notice that
+Yup, the definitions of the functions inside  are incomplete, but notice that
 we (the programmers) can **understand** what the function is doing! We have
 broken down the problem of finding 'largest-square' into some small problems
 like 'is it close enough?' and 'improve our guess'. We could've broken the
@@ -104,8 +124,6 @@ Time to do the neccessary work to make the function work!
 
 QUESTION:
 
-
-<div class="mc">
 We want to define the function `good-enough?` that accepts two inputs, `total`, the total number of chocolate blocks you have, and `guess` which represents your current guess. It should report either `#t` or `#f` depending on whether the next integer will be larger than `total`
 
 `(good-enough? 13 3)` Should return `#t`. The next guess is 3+1=4 and will take 16 squares which is above 13, the total
@@ -118,10 +136,11 @@ We want to define the function `good-enough?` that accepts two inputs, `total`, 
 
 `(good-enough? 100 9)` Should return `#f`. The next guess is 9+1=10 and will take 100 squares which is equal to 100, the total
 
+<div class="mc">
 Choose what code should fill in the blank:
 
-`(define (good-enough? total guess))
-    ________________________)`
+<pre><code>(define (good-enough? total guess))
+    ________________________)</code></pre>
 
 
 <ans text="(> total (square (next-guess guess)))" explanation="Yup!" correct></ans>
@@ -131,16 +150,17 @@ Choose what code should fill in the blank:
 </div>
 
     
-<div class="mc">
+
 Next, we the function next-guess  that accepts your current guess, and returns a new number to try next
 
 `(next-guess 1)` ;;Should return 2
 
 `(next-guess 3)` ;;Should return 4
 
-Choose the blank to fill in the following code:
-`(define (next-guess guess)
-    ________________________)
+<div class="mc">
+Choose what code should fill in the blank:
+<pre><code>(define (next-guess guess)
+    ________________________)</code></pre>
 
 <ans text="guess" explanation="Our procedure should do *something* to guess" ></ans>
 <ans text="(+ guess 1)" explanation="Nice!" correct></ans>
@@ -161,7 +181,7 @@ You can also apply this in real life. When we turn on the TV, we never
 consider "Oh the TV works because we shoot electron across the screen which
 are guided by electromagnets which allows us to view stuff!". We usually think
 more along the lines of "If I press this button, I can watch movies". We don't
-need to know how the TV works to use it; Its implementation is abstracted away
+need to know how the TV works to use it; its implementation is abstracted away
 for us
 
 ## Internal Definitions
@@ -174,7 +194,7 @@ specific to the `largest-square` problem; we can hardly find any other
 functions that may use these functions. Also, when Charlie wants to find what
 the largest square is, he will call the ` largest-square` function and not
 touch the two helper functions directly. In such cases, it would be preffered
-to organize it such that only ` largest-square` has access to those two helper
+to organize our code such that only ` largest-square` has access to those two helper
 functions
 
 How can we do that? We can define the functions inside the body of ` largest-
@@ -183,13 +203,12 @@ square ` as follows:
     
     
 <pre><code>(define (largest-square total guess)
-    	(define (next-guess guess) (+ guess 1))
-    	(define (good-enough? total guess)
-    		(< total (square (next-guess guess))))
-    	(if (good-enough? guess)
-    		guess
-    		(largest-square total (next-guess guess))))
-            </code></pre>
+    (define (next-guess guess) (+ guess 1))
+    (define (good-enough? total guess)
+    	(< total (square (next-guess guess))))
+    (if (good-enough? guess)
+    	guess
+    	(largest-square total (next-guess guess))))</code></pre>
 
 <div class="mc">
 Given that you defined only the procedure above, what will happen when we call `(next-guess 4)`?
@@ -204,14 +223,12 @@ Given that you defined only the procedure above, what will happen when we call `
 ## Scope of Variables
 
 <pre><code>(define (largest-square total guess)
-
-    
-    	(define (next-guess guess) (+ guess 1))
-    	(define (good-enough? total guess)
-    		(< total (square (next-guess guess))))
-    	(if (good-enough? guess)
-    		guess
-    		(largest-square total (next-guess guess))))</code></pre>
+    (define (next-guess guess) (+ guess 1))
+    (define (good-enough? total guess)
+    	(&lt; total (square (next-guess guess))))
+    (if (good-enough? guess)
+    	guess
+    	(largest-square total (next-guess guess))))</code></pre>
     
 
 Previously we mentioned that the functions `good-enough?` and `next-guess` are
@@ -229,15 +246,15 @@ arguments in the two helper functions results in:
     		(< total (square (next-guess))))
     	(if (good-enough?)
     		guess
-    (largest-square total (next-guess))))  </pre></code>
+    (largest-square total (next-guess))))  </code></pre>
       
-    How do you keep track of what is available to a function and what is not? We will spend a lot of time on this in Unit 3. When a function defined inside another function, the one inside has access to variables and parameters of the outer function. Because `next-guess` is defined inside `largest-square`, `next-guess` has access to `largest-square`'s parameters, `total` and `guess`.  
+How do you keep track of what is available to a function and what is not? We will spend a lot of time on this in Unit 3. When a function defined inside another function, the one inside has access to variables and parameters of the outer function. Because `next-guess` is defined inside `largest-square`, `next-guess` has access to `largest-square`'s parameters, `total` and `guess`.  
       
     
 
 If you find a mnemonic helpful, consider the outer function as a parent and
-the inner function as a baby. A parent may lend the baby their stuff (like a
-handphone) but the baby won't let the parents to take away his toys
+the inner function as a baby. A parent may lend the baby their stuff (such as a
+cellphone) but the baby won't let the parents to take away his toys
 
 ![](http://4.bp.blogspot.com/-yfy4u4_1Wb4/TxbQrWKytMI/AAAAAAAAIxs/Hi9b9LWDPGY/
 s400/cute-baby-playing-handphone-448x336.jpg) ![](http://kidsbesttoys.net/wp-
