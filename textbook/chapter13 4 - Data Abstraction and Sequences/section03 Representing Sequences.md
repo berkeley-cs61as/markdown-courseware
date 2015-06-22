@@ -374,11 +374,3 @@ scheme-stk/index.html). Type the above definitions and see if they work:
 ## What's Next?
 
 Go do Homework 3, and start looking at Project 2!
-
-<div class="mc">
-<pre><code></code></pre>
-<ans text="" explanation="Try again"></ans>
-<ans text="(b c)" explanation="You got it!" correct></ans>
-<ans text="" explanation="Try again"></ans>
-<ans text="" explanation="Try again"></ans>
-</div>
