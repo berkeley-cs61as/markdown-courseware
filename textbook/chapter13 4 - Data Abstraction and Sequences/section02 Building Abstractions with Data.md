@@ -1,4 +1,4 @@
-## violating data abstraction
+## Violating Data Abstraction
 
 In the previous subsection, we talked about data abstraction -- the
 methodology that enables us to isolate how a [compound data
@@ -20,8 +20,7 @@ cards.
     > (total '(3h 10c 4d))
     17
 
-This function calls butlast in two places. What do those two invocations mean?
-Compare it with a modiﬁed version:
+'butlast' is called in two places of the function. It is unclear on what each of these 'butlast' does in the function by simply reading the code. Compare the code with its modiﬁed version below:
 
     
     (define (total hand)
@@ -39,31 +38,28 @@ Compare it with a modiﬁed version:
     (define remaining-cards butlast)
     
 
-This is more work to type in, but the result is much more readable. If for
+While the code is much longer, it is more readable, meaning it is easier to understand what the code does by looking at just the code itself. Here, we know what each of the `butlast` does to function: one gets the rank of the card, and the other gets the remaining cards in the hand. If for
 some reason we wanted to modify the program to add up the cards left to right
-instead of right to left, we'd have trouble editing the original version
-because we wouldn't know which butlast to change. In the new version it's easy
-to keep track of which function does what. The auxiliary functions like `rank`
+instead of right to left, editing the original version would be troublesome
+because we wouldn't know which `butlast` to change. It would be easier to do so in the new version as we know which butlast does what. The auxiliary functions like `rank`
 are called **selectors** because they select one component of a multi-part
 datum.
 
 Actually **we're violating the data abstraction** when we type in a hand of
 cards as '(3h 10c 4d) because that assumes we know how the cards are
-represented--namely, as words combining the rank number with a one-letter
-suit.
+represented-- a card respresented as a word that has a rank number and a one-letter suit.
 
-_Then how can I represent the cards without violating the data abstraction?_
+_So, how can I represent the cards without violating the data abstraction?_
 
 We need a constructor.
 
-## constructors and selectors
+## Constructors and Selectors
 
 Constructors allow the user to "glue" data together into a [compound data
 object](https://edge.edx.org/courses/uc-berkeley/cs61as-1x/SICP/wiki/cs61as-1x
-/compound-data). Once an object has been created with a constructor, selectors
-allow the user to extract data from the abstract data type. A user is able to
+/compound-data). Once an object has been created using a constructor, users can use selectors on the object to extract certain data from this abstract data type. A user is able to
 use these constructors and selectors without any information about the
-underlying implementation.
+underlying implementation. Let's look at the following example for better understanding.
 
 Here's a newly defined card representation using the constructors `make-card`
 and `make-hand:`
@@ -72,11 +68,11 @@ and `make-hand:`
     (define (make-card rank suit)
       (word rank (first suit)) )
     
-    (define make-hand se)
-    
     (define rank butlast)
-    
+
     (define suit last)
+    
+    (define make-hand se)
     
     (define one-card last)
     
@@ -89,12 +85,14 @@ and `make-hand:`
           (+ (rank (one-card hand))
              (total (remaining-cards hand)) )))
     
-    > (total (make-hand (make-card 3 'heart) (make-card 10 'club) (make-card 4 'diamond) )) 17  
+    > (total (make-hand (make-card 3 'heart) (make-card 10 'club) (make-card 4 'diamond) )) 
+    > 17  
      
 
-Once we're using data abstraction we can change the implementation of the data
-type without aﬀecting the programs that use that data type. This means we can
-change how we represent a card, for example, without rewriting total:
+In the code above, we used data abstraction. As a result, we can change the implementation of the data type without affecting it behavior or the programs that use that data type. This means we can
+change how our playing cards are represented, without letting the user know as the behavior is the same.
+
+For example, we can represent a card as a number from 1 and 52, instead of a word comprised of the rank number and the one-letter suit. In the code below, we redefined the body of `make-card`, `rank`, and `suit` and kept `make-hand`, `one-card`, and `total` from the code above. Even with these changes, the code's functionalities remain the same and `total` is called the same way. 
 
     
     (define (make-card rank suit)
@@ -109,23 +107,17 @@ change how we represent a card, for example, without rewriting total:
       
     (define (suit card)
       (nth (quotient card 13) '(heart spade diamond club)))
-    
-
-We have changed the internal representation so that a card is now just a
-number between 1 and 52 but we haven't changed the behavior of the program at
-all. We still call total the same way.
 
 Here's a [Scheme interpreter](http://inst.eecs.berkeley.edu/~cs61AS/sp13/js-
 scheme-stk/index.html). Test `total` with each of the two versions of card
 representation:
 
-## pairs
+## Pairs
 
 To enable us to implement the concrete level of our data abstraction, our
-language provides a compound structure called a pair, which can be constructed
-with the primitive procedure `cons`. This procedure takes two arguments and
-returns a compound data object that contains the two arguments as parts. Given
-a pair, we can extract the parts using the primitive procedures `car` and
+language, Scheme, provides a compound structure called a pair, which can be constructed
+with the primitive procedure `cons`. This procedure takes in two arguments and
+returns a compound data object that contains the two arguments as two elements. These elements can be extracted from the pair using the primitive procedures `car` and
 `cdr`. Thus, we can use `cons`, `car`, and `cdr` as follows:
 
     
@@ -143,7 +135,7 @@ a pair, we can extract the parts using the primitive procedures `car` and
 
 Notice that a pair is a data object that can be given a name and manipulated,
 just like a primitive data object. The last example shows you how Scheme
-prints pairs. Moreover, cons can be used to form pairs whose elements are
+prints pairs. Moreover, `cons` can be used to form pairs whose elements are also
 pairs, and so on:
 
     
@@ -153,14 +145,85 @@ pairs, and so on:
     
     (define z (cons x y))
     
+    (car z)
+    (1 . 2)
+
+    (cdr z)
+    (3 . 4)
+
     (car (car z))
     1
     
-    (car (cdr z))
-    3  
+    (cdr (cdr z))
+    4 
       
     ![](/static/pairs.jpg)
     
+## What Will Scheme Output?
+Tip: Draw the box and pointer diagrams
+
+(define x (cons 4 5))
+(define y (cons 'hello 'goodbye))
+(define z (cons x y))
+
+<div class="mc">
+<pre><code>(car x)</code></pre>
+<ans text="y" explanation="Try again"></ans>
+<ans text="5" explanation="Try again"></ans>
+<ans text="4" explanation="You got it!" correct></ans>
+<ans text="(4 . 5)" explanation="Try again"></ans>
+</div>
+<div class="mc">
+<pre><code>(cdr x)</code></pre>
+<ans text="y" explanation="Try again"></ans>
+<ans text="5" explanation="Wahoo!" correct></ans>
+<ans text="4" explanation="Try again"></ans>
+<ans text="(4 . 5)" explanation="Try again"></ans>
+</div>
+<div class="mc">
+<pre><code>(car (cdr z))</code></pre>
+<ans text="goodbye" explanation="Try again"></ans>
+<ans text="4" explanation="Try again"></ans>
+<ans text="(hello . goodbye)" explanation="Try again"></ans>
+<ans text="hello" explanation="You got it!" correct></ans>
+</div>
+<div class="mc">
+<pre><code>(cdr (cdr z))</code></pre>
+<ans text="goodbye" explanation="You're amazing!" correct></ans>
+<ans text="4" explanation="Try again"></ans>
+<ans text="5" explanation="Try again"></ans>
+<ans text="(hello . goodbye)" explanation="Try again"></ans>
+</div>
+<div class="mc">
+<pre><code>(cdr (car z))</code></pre>
+<ans text="goodbye" explanation="Try again"></ans>
+<ans text="error" explanation="Try again"></ans>
+<ans text="5" explanation="You're a genius!" correct></ans>
+<ans text="(4 . 5)" explanation="Try again"></ans>
+</div>
+<div class="mc">
+<pre><code>(car (cons 8 3))</code></pre>
+<ans text="11" explanation="Try again"></ans>
+<ans text="8" explanation="Good job!" correct></ans>
+<ans text="3" explanation="Try again"></ans>
+<ans text="5" explanation="Try again"></ans>
+</div>
+<div class="mc">
+<pre><code>(car z)</code></pre>
+<ans text="4" explanation="Try again"></ans>
+<ans text="(5 . 4)" explanation="Try again"></ans>
+<ans text="(hello . goodbye)" explanation="Try again"></ans>
+<ans text="(4 . 5)" explanation="Correct!" correct></ans>
+</div>
+<div class="mc">
+<pre><code>(car 3)</code></pre>
+<ans text="0" explanation="Try again"></ans>
+<ans text="(.)" explanation="Try again"></ans>
+<ans text="3" explanation="Try again"></ans>
+<ans text="error" explanation="You got it!" correct></ans>
+</div>
+
+
 
 Here's a [Scheme interpreter](http://inst.eecs.berkeley.edu/~cs61AS/sp13/js-
 scheme-stk/index.html). Play with pairs and make sure you're comfortable with
