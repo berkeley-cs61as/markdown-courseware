@@ -1,32 +1,29 @@
 ## Submitting Homework
 
+**For all of the screenshots, disregard the .scm file extensions. Pretend they are .rkt files; they work the same way anyway.**
+
 This section will show you how to submit files for homeworks and projects. We
 will walk you through the different commands you can use in the terminal. This
-example uses hw0-1 submission as an example, but submitting other homeworks
+example uses the hw0-1 submission as an example, but submitting other homeworks
 follows the same process.
 
-**BEFORE SUBMITTING HOMEWORK: Make sure your file loads in Scheme. You can verify this by typing into STk: (load "hw0-1.scm"),** or whatever the name of your homework file is. You will not receive credit for homework that does not load in Scheme.
+**BEFORE SUBMITTING HOMEWORK: Make sure your file loads in Racket.** You can verify this by typing this into your Racket interpreter: `(enter! "hw0-1.rkt")`, or whatever the name of your homework file is. **You will not receive credit for homework that does not load in Racket.**
 
 It is perfectly fine if this part is confusing for you right now; it takes
 time until you are comfortable with these commands. If you are not sure what a
 command does, you can always refer back to this page.
 
-### The ls Command
+### The `ls` Command
+    
 
-    
-    
     ls
     
 
-Typing "ls" in the terminal shows you a list of files and directories(think of
-them as folders) that you currently have access to. Use this command to
-confirm that your file exists. For example, I can confirm that I have access
-to my hw0-1.scm file.
+Typing `ls` in the terminal shows you a list of files and directories (or folders) that you currently have access to. Use this command to confirm that your file exists. For example, I can confirm that I have access to my `hw0-1.rkt` file.
 
 ![](/static/ls.jpg)
 
 ### The mkdir Command
-
     
     
     mkdir
@@ -44,50 +41,47 @@ a new directory successfully.
 
 ### The mv Command
 
-So you have your file (hw0-1.scm) and you want to move it to its respective
-folder(homework0-1) to keep everything tidy and sane. You can use the mv
-command for this; mv stands for "move".
+So you have your file (hw0-1.rkt) and you want to move it to its respective
+folder (homework0-1) to keep everything tidy and sane. You can use the `mv`
+command for this; `mv` stands for "move".
+    
+    
+    mv hw0-1.rkt homework0-1
+    
 
-    
-    
-    mv hw0-1.scm homework0-1
-    
-
-Typing "mv hw0-1.scm homework0-1" will move the hw0-1.scm file into the
-homework0-1 directory. You can type "ls" again to confirm that your hw0-1.scm
-file is no longer there.
+Typing `mv hw0-1.rkt homework0-1` will move the `hw0-1.rkt` file into the
+`homework0-1` directory. You can type `ls` again to confirm that your `hw0-1.rkt` file is no longer there.
 
 ![](/static/mv.png)
 
 ### The cd Command
 
-So your hw0-1.scm file SHOULD be inside homework0-1. Let's check if that is
-true by going inside the homework0-1 directory. We can do this with the "cd"
-command; "cd" stands for "change directory"
+So your `hw0-1.rkt` file SHOULD be inside `homework0-1`. Let's check if that is
+true by going inside the `homework0-1` directory. We can do this with the `cd`
+command; `cd` stands for "change directory"
 
     
     
     cd homework0-1
     
 
-Type "cd homework0-1" to go into your "homework0-1" directory. Now that you
-are inside, type "ls" again to confirm that the file you moved is there.
+Type `cd homework0-1` to go into your `homework0-1` directory. Now that you
+are inside, type `ls` again to confirm that the file you moved is there.
 
 ![](/static/cd.png)
 
 ### The submit Command
-
     
     
     submit hw0-1
     
 
 You are one step away from finishing! Since the name of the assignment is
-"hw0-1", you can submit it by typing "submit hw0-1".
+`hw0-1`, you can submit it by typing `submit hw0-1`.
 
 It will go through all the files you have access in your CURRENT directory and
-asks for each file if you want to submit it. Type "yes" for each file you want
-to submit and type "yes" again to confirm the final submission. If your
+asks for each file if you want to submit it. Type `yes` for each file you want
+to submit and type `yes` again to confirm the final submission. If your
 submission is successful, it will show the message "Submission Complete" :)
 
 ![](/static/submit.png)
@@ -95,11 +89,11 @@ submission is successful, it will show the message "Submission Complete" :)
 **Notes:**
 
   1. You can submit however many times you want, we will only take the latest one.
-  2. The "hw0-1" in "submit hw0-1" refers to the assignment name, not your file name. Say I saved my hw0-1 file name as "fox.scm" (Please don't actually do this, it will be confusing for you and the readers). If you want to submit "fox.scm" as your hw0-1, you will still type "submit hw0-1", NOT "submit fox.scm"
+  2. The `hw0-1` in `submit hw0-1` refers to the assignment name, not your file name. Say I saved my hw0-1 file name as `fox.scm` (Please don't actually do this, it will be confusing for you and the readers). If you want to submit `fox.scm` as your hw0-1, you will still type `submit hw0-1`, NOT `submit fox.scm`.
 
 ### Optional: glookup -t
 
-Another command you can use is "glookup -t". It shows you a list of all
+Another command you can use is `glookup -t`. It shows you a list of all
 submissions you've made and when you've submitted it. If you're not sure if
 the submission is successful, this is something you will use.
 
@@ -107,23 +101,23 @@ the submission is successful, this is something you will use.
 
 **Notes:**
 
-  1. The "lateness" will show the wront result if you haven't submitted your "units" assignment. (We did this in class. If you missed it, please ask either in lab or Piazza). If you did submit it, please give it some time for it to refresh.
-  2. If you believe that there is a mistake, please notify us ASAP
+  1. The "lateness" will show the wrong result if you haven't submitted your `units` assignment. (We did this in class. If you missed it, please talk to a TA). If you did submit it, please give it some time for it to refresh.
+  2. If you believe that there is a mistake, please notify us ASAP.
 
 ### glookup
 
-You can type "glookup" inside the terminal to show a list of assignments and
+You can type `glookup` inside the terminal to show a list of assignments and
 grades. Note that this lists everything from unit 0 to unit 5, you should only
 look at the units you are signed up for.
 
-As the semester progress, you can also type "glookup -s quiz1" to check the
-statistics for quiz1. You can replace "quiz1" with any assignment name. In the
+As the semester progress, you can also type `glookup -s quiz1` to check the
+statistics for quiz1. You can replace `quiz1` with any assignment name. In the
 beginning of the semester the command doesn't run because no grades have been
 assigned.
 
 ![](/static/glookup.png)
 
-**Note**: This assumes that you are working on a Mac or Linux machine. If you are working on Windows please follow the [Windows tutorial](http://www-inst.eecs.berkeley.edu/~cs61a/fa13/pdfs/connect-windows.pdf) for instructions. However, the general workflow is the same for all platforms.
+**Note**: This assumes that you are working on a Mac or Linux machine, or if you are using Windows, that you are using Git-bash. If you have Windows and aren't using Git-bash, make sure you download it [here](https://git-scm.com/downloads).
 
 **Everything here except for the last step is done on your home computer, not ssh-d in to the school computers.**
 
@@ -135,7 +129,7 @@ The workflow for this is as follows:
 
 3. log in to your instructional account and submit from there
 
-**1. `cd` to the directory where your homework .scm file is located**
+**1. `cd` to the directory where your homework .rkt file is located**
 
 `cd` to the directory where your homework is. Mine is located in a folder
 called hw1 on my Desktop, so as soon as I open my terminal I'm going to type
@@ -147,7 +141,7 @@ directory. When I type `ls`, I see this:
 
 **2. `scp` your file over to your instructional account**
 
-Now, I'm going to type `scp hw1.scm cs61as-ta@torus.cs.berkeley.edu:`
+Now, I'm going to type `scp hw1.rkt cs61as-ta@torus.cs.berkeley.edu:`
 
 It should ask you for your password. If it didn't it's probably because you
 forgot the `:` at the end.
@@ -164,9 +158,9 @@ Once you're logged in you should see something like this:
 
 ![ssh](/static/ssh.png)
 
-Notice the hw1.scm file sitting there.
+Notice the hw1.rkt file sitting there.
 
-Now, you should make a directory called hw1, move the hw1.scm file to that
+Now, you should make a directory called hw1, move the hw1.rkt file to that
 directory, and submit from that directory. Instructions on how to do that are
 in the previous tab.
 
