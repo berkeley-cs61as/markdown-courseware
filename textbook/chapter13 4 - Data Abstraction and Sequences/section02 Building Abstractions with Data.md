@@ -229,30 +229,30 @@ Here's a [Scheme interpreter](http://inst.eecs.berkeley.edu/~cs61AS/sp13/js-
 scheme-stk/index.html). Play with pairs and make sure you're comfortable with
 it:
 
-## rational numbers revisited
+## Rational Numbers Revisited
 
-Recall how we represented rational numbers in the introduction:
+Recall how we represented rational numbers in this lesson's introduction (We changed `make-rational` to `make-rat`, `numerator` to `numer`, and `denominator` to `demnom`):
 
     
-    (define (make-rational num den)
+    (define (make-rat num den)
       (cons num den))
     
-    (define (numerator rat)
+    (define (numer rat)
       (car rat))
     
-    (define (denominator rat)
+    (define (denom rat)
       (cdr rat))
     
     (define (*rat a b)
-      (make-rational (* (numerator a) (numerator b))
-    		 (* (denominator a) (denominator b))))
+      (make-rat (* (numer a) (numer b))
+    		 (* (denom a) (denom b))))
     
     (define (print-rat rat)
-      (word (numerator rat) '/ (denominator rat)))
+      (word (numer rat) '/ (denom rat)))
 
-Do the definitions make much more sense to you now?  This representation uses
-a constructor `make-rational` and selectors `numerator` and `denominator`. We
-can define additional procedures for arithmetic use only using constructor and
+Do these definitions make much more sense to you now?  This representation uses
+a constructor `make-rat` and selectors `numer` and `denom`. We
+can define additional procedures for arithmetic use only using the constructor and
 selectors:
 
     
@@ -262,16 +262,16 @@ selectors:
                 (* (denom x) (denom y))))
     
     (define (sub-rat x y)
-      (make-rat (- (* (numer x) (denom y))
+      (make-rat(- (* (numer x) (denom y))
                    (* (numer y) (denom x)))
                 (* (denom x) (denom y))))
     
     (define (mul-rat x y)
-      (make-rat (* (numer x) (numer y))
+      (make-rat(* (numer x) (numer y))
                 (* (denom x) (denom y))))
     
     (define (div-rat x y)
-      (make-rat (* (numer x) (denom y))
+      (make-rat(* (numer x) (denom y))
                 (* (denom x) (numer y))))
     
     (define (equal-rat? x y)
@@ -281,15 +281,15 @@ selectors:
 
 In this case, even if the internal representation of rational numbers change,
 we don't have to make any modification to the above procedures. We only need
-to change our constructor and selectors. This is the best thing about data
+to change our constructor and selectors (`make-rat`, `numer`, `denom`). This is the best thing about data
 abstraction.
 
-## abtraction barriers
+## Abtraction Barriers
 
 ![](http://farm9.staticflickr.com/8505/8388536641_b8428f32fe_b.jpg)
 
 Before continuing with more examples of compound data and data abstraction,
-let us consider some of the issues raised by the rational-number example. We
+let us consider some of the issues raised by the rational-number example seen previously. We
 defined the rational-number operations in terms of a constructor `make-rat`
 and selectors `numer` and `denom`. In general, the underlying idea of data
 abstraction is to identify for each type of data object a basic set of
@@ -303,8 +303,7 @@ different "levels'' of the system. At each level, the barrier separates the
 programs (above) that use the data abstraction from the programs (below) that
 implement the data abstraction. Programs that use rational numbers manipulate
 them solely in terms of the procedures supplied "for public use'' by the
-rational-number package: `add-rat`, `sub-rat`, mul-rat, div-rat, and equal-
-rat?. These, in turn, are implemented solely in terms of the constructor and
+rational-number package: `add-rat`, `sub-rat`, `mul-rat`, `div-rat`, and `equal-rat?`. These, in turn, are implemented solely in terms of the constructor and
 selectors `make-rat`, `numer`, and `denom`, which themselves are implemented
 in terms of pairs. The details of how pairs are implemented are irrelevant to
 the rest of the rational-number package so long as pairs can be manipulated by
@@ -314,14 +313,15 @@ levels.
 
 ![](http://mitpress.mit.edu/sicp/full-text/book/ch2-Z-G-6.gif)
 
-This simple idea has many advantages. One advantage is that it makes programs
+## The Advantage
+This simple idea has many advantages. One primary advantage is that it makes programs
 much easier to maintain and to modify. Any complex data structure can be
 represented in a variety of ways with the primitive data structures provided
 by a programming language.
 
 To understand why this is so important, consider a world where data
 abstraction didn't exist. Of course, the choice of representation influences
-the programs that operate on it; thus, if the representation were to be
+the programs that operate on it; Thus, if the representation were to be
 changed at some later time, all such programs might have to be modified
 accordingly. This task could be time-consuming and expensive in the case of
 large programs unless the dependence on the representation were to be confined
@@ -331,7 +331,7 @@ Luckily, if the data was implemented without any violation of data
 abstraction,  it would be very easy to modify the entire program -- **you only
 need to modify constructors and selectors**.
 
-## Further resources
+## Further Resources
 
 If you'd like some more explanations, here's [SICP 2.1: Introduction to Data
 Abstraction](http://mitpress.mit.edu/sicp/full-
@@ -340,7 +340,7 @@ text/book/book-Z-H-14.html#%25_sec_2.1).
 Or you can watch [Fall 2010 61A lecture video](http://www.youtube.com/watch?v=
 1LZYB8Zs98A&feature=share&list=EC6D76F0C99A731667).
 
-## exercises
+## Exercises
 
 Let's see how much you've got from this subsection!
 
