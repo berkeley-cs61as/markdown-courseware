@@ -67,7 +67,7 @@ scheme-stk/index.html). Construct various lists!:
 Scheme provides useful primitive procedures for lists:
 
   * `list-ref` takes as arguments a list and a number n and returns the nth item of the list. The first elements of the list is indexed as 0. Here's how list-ref is defined and works: 
-    <code>
+
     (define (list-ref items n)
       (if (= n 0)
           (car items)
@@ -78,42 +78,42 @@ Scheme provides useful primitive procedures for lists:
     (list-ref squares 3)
     16
 
-  * `null?` takes a list as an argument and returns `#t` if the list is empty. Otherwise it returns `#f:`  
+  * `null?` takes a list as an argument and returns `#t` if the list is empty. Otherwise it returns `#f:`
 
     
-    (null? (list 1 3))
-    #f
-    
-    (null? '())
-    #t
+      (null? (list 1 3))
+      `#f`
+      
+      (null? '())
+      `#t`
 
   * `length` takes a list as an argument and returns the number of items in a list. Here's how `length` is defined and works: 
     
-    (define (length items)
-      (if (null? items)
-          0
-          (+ 1 (length (cdr items)))))
-    
-    (define odds (list 1 3 5 7))
-    
-    (length odds)
-    4
+      (define (length items)
+        (if (null? items)
+            0
+            (+ 1 (length (cdr items)))))
+      
+      (define odds (list 1 3 5 7))
+      
+      (length odds)
+      4
 
   * `append` takes two(or more) lists as arguments and combines their elements to make a new list: 
     
-    (define (append list1 list2)
-      (if (null? list1)
-          list2
-          (cons (car list1) (append (cdr list1) list2))))
-    
-    (append squares odds)
-    (1 4 9 16 25 1 3 5 7)
-    
-    (append odds squares)
-    (1 3 5 7 1 4 9 16 25)
-    
-    (append odds squares evens)
-    (1 3 5 7 1 4 9 16 25 2 4)
+      (define (append list1 list2)
+        (if (null? list1)
+            list2
+            (cons (car list1) (append (cdr list1) list2))))
+      
+      (append squares odds)
+      (1 4 9 16 25 1 3 5 7)
+      
+      (append odds squares)
+      (1 3 5 7 1 4 9 16 25)
+      
+      (append odds squares evens)
+      (1 3 5 7 1 4 9 16 25 2 4)
 
 ## What Will Scheme Output?
 <code>(define lst1 (list 'le 'petit 'prince))
@@ -348,13 +348,11 @@ doesn't violate data abstraction.**
 
 1. Write a procedure `sum-list` which takes a list of numbers as an argument and returns the sum of the elements of the list. Make sure you're using list operations, not sentences.
 
-<code>
-  (sum-list '(1 2 3))
+    (sum-list '(1 2 3))
     > 6
     
     (sum-list '(0 -1 5))
     > 4 
-    </code>
 
 2. Write a procedure `car-list` which takes a list of lists as an argument and returns a new list that consists of the `car` of each list.
 
