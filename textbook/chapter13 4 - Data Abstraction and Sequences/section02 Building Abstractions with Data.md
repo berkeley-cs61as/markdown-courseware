@@ -344,6 +344,35 @@ Or you can watch [Fall 2010 61A lecture video](http://www.youtube.com/watch?v=
 
 Let's see how much you've got from this subsection!
 
+1. Representing Line Segments and Points
+
+a. Consider the problem of representing line segments in a plane. Each segment is represented as a pair of points: a starting point and an ending point. Define a constructor `make-segment` and selectors `start-segment` and `end-segment` that define the representation of segments in terms of points.
+
+b. Furthermore, a point can be represented as a pair of numbers: the x coordinate and the y coordinate. Accordingly, specify a constructor make-point and selectors x-point and y-point that define this representation. Finally, using your selectors and constructors, define a procedure midpoint-segment that takes a line segment as argument and returns its midpoint (the point whose coordinates are the average of the coordinates of the endpoints). To try your procedures, you'll need a way to print points:
+
+    (define (print-point p)
+      (newline)
+      (display "(")
+      (display (x-point p))
+      (display ",")
+      (display (y-point p))
+      (display ")"))
+
+
+2. Representing Rectangles
+ Implement a representation for rectangles in a plane. (Hint: You may want to make use of the above exercise, Representing Line Segments and Points.) In terms of your constructors and selectors, create procedures that compute the perimeter and the area of a given rectangle. Now implement a different representation for rectangles. Can you design your system with suitable abstraction barriers, so that the same perimeter and area procedures will work using either representation?
+
+3. Defining CDR
+Here is an alternative procedural representation of pairs. For this representation, verify that `(car (cons x y))` yields x for any objects x and y.
+
+  (define (cons x y)
+    (lambda (m) (m x y)))
+
+  (define (car z)
+    (z (lambda (p q) p)))
+    
+What is the corresponding definition of `cdr`?
+
 ## What's next?
 
 In this subsection, you learned how to implement data using abstraction and
