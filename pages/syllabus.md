@@ -61,6 +61,9 @@
 
 <h2>Software</h2>
 <p>If you wish to work from a home computer, please follow the setup guides located on the Resources page.</p>
+
+<p>This summer, if you are working on Units 1 and 2, you will be using the Racket interpreter. If you are working on Units 3 and 4, you will be using the Scheme interpreter.</p>
+
 <p>Once you've downloaded the software, you can load the Racket interpreter by entering "racket" into the terminal. For Scheme, be sure that you run the application called "stk-simply" rather than just "stk." (The lab computers are set up so that stk does the right thing, but your home computer isn't.)</p>
 
 <h2>Textbook(s)</h2>

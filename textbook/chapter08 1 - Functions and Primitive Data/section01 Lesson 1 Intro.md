@@ -31,7 +31,7 @@ Here are the relevant readings for this lesson:
 If you'd like more resources, check out all of the readings for Unit 0.
 
 
-##Functions
+## Functions
 
 Before we talk about functions in computer science, let's talk about functions
 in math. In math, a function _f(x)_ takes a single input _x_, does
