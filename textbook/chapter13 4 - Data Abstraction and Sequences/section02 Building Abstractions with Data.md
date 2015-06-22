@@ -86,7 +86,7 @@ and `make-hand:`
              (total (remaining-cards hand)) )))
     
     > (total (make-hand (make-card 3 'heart) (make-card 10 'club) (make-card 4 'diamond) )) 
-    > 17  
+    17  
      
 
 In the code above, we used data abstraction. As a result, we can change the implementation of the data type without affecting it behavior or the programs that use that data type. This means we can
@@ -157,14 +157,17 @@ pairs, and so on:
     (cdr (cdr z))
     4 
       
-    ![](/static/pairs.jpg)
+
+![](/static/pairs.jpg)
     
 ## What Will Scheme Output?
 Tip: Draw the box and pointer diagrams
 
-(define x (cons 4 5))
-(define y (cons 'hello 'goodbye))
-(define z (cons x y))
+    (define x (cons 4 5))
+
+    (define y (cons 'hello 'goodbye))
+
+    (define z (cons x y))
 
 <div class="mc">
 <pre><code>(car x)</code></pre>
@@ -344,7 +347,7 @@ Or you can watch [Fall 2010 61A lecture video](http://www.youtube.com/watch?v=
 
 Let's see how much you've got from this subsection!
 
-1. Representing Line Segments and Points
+**1. Representing Line Segments and Points**
 
 a. Consider the problem of representing line segments in a plane. Each segment is represented as a pair of points: a starting point and an ending point. Define a constructor `make-segment` and selectors `start-segment` and `end-segment` that define the representation of segments in terms of points.
 
@@ -359,21 +362,23 @@ b. Furthermore, a point can be represented as a pair of numbers: the x coordinat
       (display ")"))
 
 
-2. Representing Rectangles
- Implement a representation for rectangles in a plane. (Hint: You may want to make use of the above exercise, Representing Line Segments and Points.) In terms of your constructors and selectors, create procedures that compute the perimeter and the area of a given rectangle. Now implement a different representation for rectangles. Can you design your system with suitable abstraction barriers, so that the same perimeter and area procedures will work using either representation?
+**2. Representing Rectangles**
 
-3. Defining CDR
+Implement a representation for rectangles in a plane. (Hint: You may want to make use of the above exercise, Representing Line Segments and Points.) In terms of your constructors and selectors, create procedures that compute the perimeter and the area of a given rectangle. Now implement a different representation for rectangles. Can you design your system with suitable abstraction barriers, so that the same perimeter and area procedures will work using either representation?
+
+**3. Defining CDR**
+
 Here is an alternative procedural representation of pairs. For this representation, verify that `(car (cons x y))` yields x for any objects x and y.
 
-  (define (cons x y)
-    (lambda (m) (m x y)))
+    (define (cons x y)
+      (lambda (m) (m x y)))
 
-  (define (car z)
-    (z (lambda (p q) p)))
+    (define (car z)
+      (z (lambda (p q) p)))
     
 What is the corresponding definition of `cdr`?
 
-## What's next?
+## What's Next?
 
 In this subsection, you learned how to implement data using abstraction and
 the importance of data abstraction. Now it's time to learn how to represent
