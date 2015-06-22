@@ -1,4 +1,4 @@
-## What are Expressions?
+## What Are Expressions?
 
 Expressions are anything that you type into the Racket interpreter.
 
