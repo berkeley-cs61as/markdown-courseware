@@ -85,33 +85,24 @@ Now that we've learned what data abstraction is, let's move on to learning how d
 numbers.
 
 
-## What Will Scheme Output?
+## What Will Scheme Output? 
+Tip: Try writing down on paper, line by line, each steps of what happens when a procedure is called. 
 
-    (print-rat (make-rational 2 3))
-
-    a. (2 . 3)
-    b. 2/3
-    c. 0.6666
-    d. 6
-
-    (print-rat (*rat (make-rational 2 3) (make-rational 1 4)))
-
-    a. 6/4
-    b. (6 . 4)
-    c. 24
-    d. 2/12
 <div class="mc">
-What is your name?
-
-<pre><code>(any code
-goes in a block like this)
-</code></pre>
-<ans text="Answer A" explanation="Explanation A" correct></ans>
-<ans text="Answer B" explanation="Explanation B"></ans>
-<ans text="Answer C" explanation="Explanation C"></ans>
-<!-- and so on -->
+<pre><code>(print-rat (make-rational 2 3))</code></pre>
+<ans text="(2 . 3)" explanation="Try again"></ans>
+<ans text="2/3" explanation="You got it!" correct></ans>
+<ans text="0.6666" explanation="Try again"></ans>
+<ans text="6" explanation="Try again"></ans>
 </div>
 
+<div class="mc">
+<pre><code>((print-rat (*rat (make-rational 2 3) (make-rational 1 4)))</code></pre>
+<ans text="6/4" explanation="Try again"></ans>
+<ans text="(6 . 4)" explanation="Try again"></ans>
+<ans text="24" explanation="Try again"></ans>
+<ans text="2/12" explanation="You got it!" correct></ans>
+</div>
 
 
 
