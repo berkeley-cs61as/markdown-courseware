@@ -203,7 +203,7 @@ A subtle point about `or`: just like `and`, if any one of its arguments evaluate
 
 Take a moment to read through the above, and try them out in the interpreter.
 Then, write a procedure `can-drive` that takes the age of a person as an
-argument. If the age is below `16`, return the sentence '`(not yet)`. Otherwise,
+argument. If the age is below `16`, return the sentence '`(Not yet)`. Otherwise,
 return the sentence '`(Good to go)`. Make sure to test your code in the
 interpreter.
 
