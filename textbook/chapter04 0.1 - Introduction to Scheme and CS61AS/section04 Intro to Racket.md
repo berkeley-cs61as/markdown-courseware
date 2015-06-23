@@ -27,7 +27,7 @@ to make computers do things, such as computing large prime numbers or counting a
 Let's start our Racket interpreter. We do this by opening a Terminal (`Ctrl-
 Alt-t`) and then typing in `racket` and hitting Enter. You've just started the Racket interpreter!
 
-## What will Racket Output?
+## What Will Racket Output?
 
 What does the Racket interpreter output when you try the following examples?
 Type each example into the interpreter to try it out. Before entering each example, take a moment and think about what the output should be. Some of these examples will cause errors -- why is that? (If something errors, the interpreter will output `"*** Error:"` along with some error message.)

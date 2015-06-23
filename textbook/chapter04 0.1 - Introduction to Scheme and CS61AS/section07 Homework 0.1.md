@@ -309,7 +309,7 @@ the terminal:
 Remember that if you pass the autograder when you submit your homework, you're
 guaranteed full credit and your slip days are reset!
 
-## Submitting your Homework
+## Submitting Your Homework
 
 Here is a [quick guide](http://berkeley-cs61as.github.io/textbook/submitting-homework.html) to turning in homework and basic Unix commands. If you have any trouble submitting, do not hesitate to ask a TA!
 
