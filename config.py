@@ -16,7 +16,7 @@ output_directory = '../berkeley-cs61as.github.io/'
 # in that tuple. The range must be something like this: "1, 2-4, 6, 7."
 # Note that ranges indicated with a dash are inclusive-inclusive.
 # Also, make sure every comma is followed by a space.
-units = [('Setup', '1-3'),
+units = [('Setup', '3'),
          ('Unit 0', '4, 6-7'),
          ('Unit 1', '8-9, 11-12'),
          ('Unit 2', '13-16'),
