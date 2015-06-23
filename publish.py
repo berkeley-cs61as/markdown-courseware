@@ -217,6 +217,12 @@ class Publisher(object):
         out_file.close()
         in_file.close()
 
+    def output_toc(self):
+        if config.toc_path:
+            out = open(config.toc_path, 'w')
+            out.write(self.full_toc)
+            out.close()
+
 
 def main():
     """Do all the things."""
@@ -227,6 +233,7 @@ def main():
     p = Publisher()
     p.publish_units()
     p.publish_pages()
+    p.output_toc()
 
 if __name__ == '__main__':
     main()

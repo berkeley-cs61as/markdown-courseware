@@ -30,5 +30,9 @@ units = [('Setup', '1-3'),
 # The third item is the template to use with page.
 pages = []
 
-# publish.py generates a warning if a section title exceeds this
+# publish.py generates a warning if a section title exceeds this.
 section_title_max_length = 48
+
+# publish.py generates an HTML table of contents for the entire textbook.
+# It is printed to this file.
+toc_path = 'toc.html'
