@@ -1,5 +1,3 @@
-# What is Computer Science?
-
 Note that all links in the following paragraphs are completely optional
 reading and are included solely for the interest and amusement of the reader.
 
