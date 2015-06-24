@@ -1,11 +1,9 @@
 ## Define
 
 One of the most important aspect of a programming language is the ability to
-name [variables](https://edge.edx.org/courses/uc-berkeley/cs61as-1x/SICP/wiki
-/cs61as-1x/variable/). The procedure `define` is the way variables are specified
+name variables. The procedure `define` is the way variables are specified
 in Racket. For example, `(define x 2)` _binds_ the variable `x` to the
-[value](https://edge.edx.org/courses/uc-berkeley/cs61as-1x/SICP/wiki/cs61as-
-1x/value/) `2`. Now, the expression `(+ x 5)` evaluates to `7`. Where is the
+value `2`. Now, the expression `(+ x 5)` evaluates to `7`. Where is the
 value of `x `stored? In something called the _environment_, which we'll
 discuss more in Unit 3.
 
@@ -25,7 +23,7 @@ What would the following evaluate to?
 
 <pre><code>area
 </code></pre>
-<ans text="(* 3 3 3.14159)" explanation="When you define a variable, you should fully evaluate the value"></ans>
+<ans text="(* 3 3 3.14159)" explanation="When you define a variable, you should fully evaluate the value."></ans>
 <ans text="28.27431" explanation="Nice!!" correct></ans>
 <ans text="ERROR" explanation="Try evaluating the expression again!"></ans>
 <!-- and so on -->
