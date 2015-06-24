@@ -31,23 +31,6 @@ result of removing duplicate words from the sentence. This problem uses
 
 ## Exercise 2.
 
-Write a procedure `dupls-removed` that, given a sentence as input, returns the
-result of removing duplicate words from the sentence.
-
-`;;This should output (c a d e b)`
-
-`(dupls-removed '(a b c a e d e b))`
-
-`;;This should output (a b c)`
-
-`(dupls-removed '(a b c)) ;;`
-
-`This should output (b a) `
-
-`(dupls-removed '(a a a a b a a))`
-
-## Exercise 2.
-
   
 Write a procedure `count-word` that takes a sentence and a word as arguments
 and outputs the number of occurences of the input word in the sentence.
