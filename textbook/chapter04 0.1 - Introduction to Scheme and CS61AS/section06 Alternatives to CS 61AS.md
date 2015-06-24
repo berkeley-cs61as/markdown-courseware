@@ -12,6 +12,6 @@ Each class has something different to offer. To see an organized comparison of C
 
 Now, hopefully you have at least a little idea of what this class is going to be about. We learned in this section about the other introductory CS courses that Berkeley has to offer.
 
-## What now?
+## What Now?
 
 What do you mean, what now? Get started on that [homework](http://berkeley-cs61as.github.io/textbook/homework-0.1.html)!
