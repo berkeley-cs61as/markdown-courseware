@@ -9,13 +9,15 @@ current directory (note the period at the end):
 Or you can download the template
 [here](http://inst.eecs.berkeley.edu/~cs61as/templates/hw1.rkt).
 
+**If you get stuck on this homework, review [Lesson 0.3](https://berkeley-cs61as.github.io/textbook/how-recursion-works.html) 
+for a detailed explanation of recursion.**
+
 ## Exercise 1.
 
   
 Write a procedure `dupls-removed` that, given a sentence as input, returns the
 result of removing duplicate words from the sentence. This problem uses
-[recursion](https://edge.edx.org/courses/uc-berkeley/cs61as-1x/SICP/courseware
-/c89182263c7a4c6ca961bf95f6a8c456/22e89b4614e943ba9cec5b3b0c7382d5/).
+[recursion](https://berkeley-cs61as.github.io/textbook/how-recursion-works.html).
 
 `;;This should output (c a d e b)`
 

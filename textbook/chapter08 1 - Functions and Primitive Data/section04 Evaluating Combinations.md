@@ -23,7 +23,7 @@ Let's try evaluating the following expression:
 
 `(* (+ 2 (* 4 6)) `
 
-` (+ 3 5 7))`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;` (+ 3 5 7))`
 
 This is a fairly complicated expression, and without recursion it would be very
 difficult to evaluate. Evaluating this requires that the evaluation rule be
