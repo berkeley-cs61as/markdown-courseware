@@ -4,10 +4,10 @@ Type the following command at the terminal to copy the template file to the
 current directory (note the period at the end):
 
     
-    cp ~cs61as/autograder/templates/hw2.scm .
+    cp ~cs61as/autograder/templates/hw2.rkt .
 
 Or you can download the template
-[here](http://inst.eecs.berkeley.edu/~cs61as/templates/hw2.scm).
+[here](http://inst.eecs.berkeley.edu/~cs61as/templates/hw2.rkt).
 
 ## Exercise 1.
 

@@ -143,9 +143,9 @@ Choose what code should fill in the blank:
     ________________________)</code></pre>
 
 
-<ans text="(> total (square (next-guess guess)))" explanation="Yup!" correct></ans>
-<ans text="(> total guess)" explanation="We have to somehow involve the next guess" ></ans>
-<ans text = "(> total (next-guess guess))" explanation="We have to square the next guess."> </ans>
+<ans text="(< total (square (next-guess guess)))" explanation="Yup!" correct></ans>
+<ans text="(< total guess)" explanation="We have to somehow involve the next guess" ></ans>
+<ans text = "(< total (next-guess guess))" explanation="We have to square the next guess."> </ans>
 <!-- and so on -->
 </div>
 
