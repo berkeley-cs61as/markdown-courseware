@@ -67,7 +67,7 @@ Next, here is a procedure to select the vowels from a word:
 
 ` AOEO`
 
-Let's look at the differences between the every pattern and the pattern. First
+Let's look at the differences between the every pattern and the keep pattern. First
 of all, the keep procedures have three cases, instead of just two as in most
 of the every procedures. In the every pattern, we only have to distinguish
 between the base case and the recursive case. In the keep pattern, there is
