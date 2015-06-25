@@ -10,7 +10,7 @@
 #########################################################################
 
 import codecs, os, re
-import markdown2  # pip install markdown2
+import markdown2  # should be in this directory 
 import config
 
 """

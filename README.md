@@ -50,9 +50,8 @@ These instructions are for staff members with write access to both this reposito
 ### Before You Begin
 
 1. Make sure you have Python 2.7 installed. As of right now, Python 3 is not supported.
-2. Install the [markdown2](https://github.com/trentm/python-markdown2) module. (If you use pip: `pip install markdown2`.)
-3. Clone this repository.
-4. Clone [berkeley-cs61as.github.io](https://github.com/berkeley-cs61as/berkeley-cs61as.github.io).
+2. Clone this repository.
+3. Clone [berkeley-cs61as.github.io](https://github.com/berkeley-cs61as/berkeley-cs61as.github.io).
 
 ### Deployment
 
