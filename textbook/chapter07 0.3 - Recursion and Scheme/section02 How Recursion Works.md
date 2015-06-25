@@ -49,13 +49,10 @@ stk/index.html) and see what Scheme outputs:
 Let's look at the definition of factorial again. Hopefully it makes more sense
 at this point.
 
-(define (factorial n)
-
-(if (= n 0)
-
-1
-
-(* n (factorial (- n 1)))))
+    (define (factorial n)
+      (if (= n 0)
+          1
+          (* n (factorial (- n 1)))))
 
 So as part of computing `(factorial 6)`, Scheme computes `(factorial 0)` and
 gets the answer 1. After Scheme gets that answer, it uses the answer to
@@ -130,23 +127,16 @@ ashtray.
 
 We can write Pig Latin in Scheme using recursion and helper procedure:
 
-`(define (pigl wd)`
+    (define (pigl wd)
+      (if (pl-done? wd)
+          (word wd 'ay)
+          (pigl (word (bf wd) (first wd)))))
 
-` (if (pl-done? wd)`
+    (define (pl-done? wd)
+      (vowel? (first wd)))
 
-` (word wd 'ay)`
-
-` (pigl (word (bf wd) (first wd)))))`
-
-` (define (pl-done? wd)`
-
-` (vowel? (first wd)))`
-
-` `
-
-`(define (vowel? letter)`
-
-` (member? letter '(a e i o u)))`
+    (define (vowel? letter)
+      (member? letter '(a e i o u)))
 
 member? is a Scheme primitive procedure. it takes two arguments, a letter and
 a sequence of letters and returns true if the letter is in the sequence.
