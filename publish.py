@@ -137,7 +137,7 @@ class Publisher(object):
 
         # Gather chapter information (directory name, sections, title, TOC)
         chapter_dir = matches[0]
-        section_files = os.listdir(os.path.join('textbook', chapter_dir))
+        section_files = sorted(os.listdir(os.path.join('textbook', chapter_dir)))
         chapter_title = re.sub('chapter\d* ', '', chapter_dir)
         chapter_toc = self.generate_chapter_toc(section_files, chapter_title)
 
