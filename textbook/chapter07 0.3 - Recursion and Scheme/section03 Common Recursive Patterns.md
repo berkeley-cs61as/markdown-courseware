@@ -2,19 +2,19 @@
 
 Here's a procedure to square every number in a sentence of numbers:
 
-  (define (square-sent sent)
-    (if (empty? sent) `
-        '()
-        (se (square (first sent))
-            (square-sent (bf sent)))))
+    (define (square-sent sent)
+      (if (empty? sent) `
+          '()
+          (se (square (first sent))
+              (square-sent (bf sent)))))
 
 Here's a procedure to translate every word of a sentence into Pig Latin:
 
-  (define (pigl-sent sent)
-    (if (empty? sent)
-        '()
-        (se (pigl (first sent))
-            (pigl-sent (bf sent)))))
+    (define (pigl-sent sent)
+      (if (empty? sent)
+          '()
+          (se (pigl (first sent))
+              (pigl-sent (bf sent)))))
 
 The pattern here is pretty clear. Our recursive case will do something
 straightforward to the `first` of the sentence, such as `square`ing it or
@@ -33,11 +33,11 @@ others.
 
 First, here is a procedure to select the three-letter words from a sentence:
 
-  (define (keep-three-letter-words sent)
-    (cond ((empty? sent) '())
-          ((= (count (first sent)) 3)
-          (se (first sent) (keep-three-letter-words (bf sent))))
-          (else (keep-three-letter-words (bf sent)))))
+    (define (keep-three-letter-words sent)
+      (cond ((empty? sent) '())
+            ((= (count (first sent)) 3)
+            (se (first sent) (keep-three-letter-words (bf sent))))
+            (else (keep-three-letter-words (bf sent)))))
 
 ` > (keep-three-letter-words '(one two three four five six seven))`
 
@@ -45,10 +45,10 @@ First, here is a procedure to select the three-letter words from a sentence:
 
 Next, here is a procedure to select the vowels from a word:
 
-  (define (keep-vowels wd)
-    (cond ((empty? wd) "")
-          ((vowel? (first wd))
-          (word (first wd) (keep-vowels (bf wd))))
+    (define (keep-vowels wd)
+      (cond ((empty? wd) "")
+            ((vowel? (first wd))
+            (word (first wd) (keep-vowels (bf wd))))
 
 ` (else (keep-vowels (bf wd)))))`
 
@@ -73,17 +73,17 @@ scheme-stk/index.html). Type in your definition above and see if it works:
 Here are two recursive procedures for functions that combine all of the
 elements of the argument into a single result:
 
-  (define (addup nums)
-    (if (empty? nums)
-        0
-        (+ (first nums)
-           (addup (bf nums)))))
+    (define (addup nums)
+      (if (empty? nums)
+          0
+          (+ (first nums)
+             (addup (bf nums)))))
 
-  (define (scrunch-words sent)
-    (if (empty? sent)
-        "" ; This is an empty word
-        (word (first sent)
-              (scrunch-words (bf sent)))))
+    (define (scrunch-words sent)
+      (if (empty? sent)
+          "" ; This is an empty word
+         (word (first sent)
+               (scrunch-words (bf sent)))))
 
 `> (addup '(8 3 6 1 10))`
 
