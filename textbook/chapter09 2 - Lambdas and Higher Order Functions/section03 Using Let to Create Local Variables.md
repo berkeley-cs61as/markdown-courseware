@@ -41,7 +41,7 @@ So that we get:
 
 [mathjax]\displaystyle f(x,y) = xa^2 + yb + ab[/mathjax]
 
-Okay, I guess that's better. Writing this in Racket, we will define a helper function called `f-helper` so that we can use substition:
+Okay, I guess that's better. Writing this in Racket, we will define a helper function called `f-helper` so that we can use substitution:
 
     (define (f x y)
         (define (f-helper a b)
