@@ -11,7 +11,7 @@ Here are the relevant readings for this lesson:
   * [SICP 1.2 - Procedures and the Processes They Generate](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-11.html)
   * [Lecture Notes](http://inst.eecs.berkeley.edu/~cs61as/reader/notes.pdf#page=14)
 
-## before we begin
+## Before We Begin
 
 This week is about efficiency. Usually in 61AS we're happy if you can get a
 program working at all except for this week, when we introduce ideas that will
