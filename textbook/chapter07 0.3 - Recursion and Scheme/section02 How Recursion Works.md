@@ -1,6 +1,6 @@
-## Breaking down recursion
+## Breaking Down Recursion
 
-Now we are going to look at how recursion does the magic. Let's start at
+Now we are going to look at how recursion does the magic. Let's start by
 figuring out `factorial.`
 
     
@@ -12,7 +12,7 @@ figuring out `factorial.`
 `factorial` returns 1 when `n` is 0, otherwise it returns the product of `n`
 and the factorial of `n` - 1.
 
-## How does it work?
+## How Does It work?
 
 At this point, you may still be wondering how a function can be defined in
 terms of itself. If you use `factorial` in the middle of defining `factorial`,
@@ -44,7 +44,7 @@ Type each function above in the
 [interpreter](http://inst.eecs.berkeley.edu/~cs61AS/sp13/js-scheme-
 stk/index.html) and see what Scheme outputs:
 
-## factorial revisited
+## `factorial` Revisited
 
 Let's look at the definition of factorial again. Hopefully it makes more sense
 at this point.
@@ -89,7 +89,7 @@ scheme-stk/index.html). Type `(trace factorial)` after defining a `factorial`
 procedure, then call `(factorial 6)`. What do you see? If you no longer want
 to trace the procedure, simply type `(untrace factorial)`.
 
-## example: fibonacci
+## Example: Fibonacci Numbers
 
 Consider computing the sequence of Fibonacci numbers, in which each number is
 the sum of the preceding two: \[0, 1, 1, 2, 3, 5, 8, 13, 21\]
@@ -117,7 +117,7 @@ Consider what would happen if we left out the base case for `n` = 1. `(fib 1)`
 would call `(fib 0)` and `(fib -1)`. `(fib 0)` would return 0, but `(fib -1)`
 would never reach a base case, and the procedure would loop indefinitely.
 
-## example: pig latin
+## Example: Pig Latin
 
 Pig Latin is a language game where words in English are altered according to a
 simple set of rules. Pig Latin takes the first consonant (or consonant
@@ -153,7 +153,7 @@ Here's a [Scheme interpreter](http://inst.eecs.berkeley.edu/~cs61AS/sp13/js-
 scheme-stk/index.html). Play with `pigl`! Also `trace` it and see what Scheme
 outputs:
 
-## sentences
+## Sentences
 
 In Scheme, you quote a group of words in order to represent a sentence. For
 example, to express "I love Scheme," you have to type `'(I love Scheme)`.
@@ -196,20 +196,20 @@ Here is a [Scheme Interpeter](http://inst.eecs.berkeley.edu/~cs61AS/sp13/js-
 scheme-stk/index.html). Define `sum-sent` and play with it! Make sure you
 understand it:
 
-## further reading
+## Further Reading
 
 If you think you need some more detailed explanation of recursion, read
 [Simply Scheme: How Recursion Works](http://www.cs.berkeley.edu/~bh/ssch13
 /convince-recur.html).
 
-## exercises
+## Exercises
 
 Let's see how much you got from this subsection!
 
 Here is a [Scheme Interpeter](http://inst.eecs.berkeley.edu/~cs61AS/sp13/js-
 scheme-stk/index.html). Type the above definitions and see if they work:
 
-## what's next?
+## What's Next?
 
 Now the next subsection will work on common recursive patterns. Go check it
 out!
