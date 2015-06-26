@@ -21,9 +21,7 @@ You've already been introduced to prefix notation in Unit 0.1, so here's a
 quick recap.
 
 In Racket, we use prefix notation. So, instead of typing in `2 + 3 ` into the
-interpreter, we type in `(+ 2 3)` --that is, the [
-operator](https://edge.edx.org/courses/uc-berkeley/cs61as-1x/SICP/wiki/cs61as-
-1x/operator/) comes before the operands, or arguments.
+interpreter, we type in `(+ 2 3)` --that is, the operator comes before the operands, or arguments.
 
 This has a few benefits. The most obvious one right now is that it can take
 procedures, such as + or *, that take a variable number of arguments. For
