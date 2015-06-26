@@ -4,7 +4,7 @@
       (define a 5)
       (+ x a))
 
-The local environment is the environment created by the function `foo`, and the local variable is `a`. Note that `x` is *not* a local variable, even though it as well cannot be accessed outside of `foo`&mdash;it is formally called the parameter.
+The local environment is the environment created by the function `foo`, and the local variable is `a`. Note that `x` is *not* a local variable, even though it also cannot be accessed outside of `foo`&mdash;it is formally called the parameter.
 
 ## Introduction to `let`
 
