@@ -1,11 +1,11 @@
-## True and false
+## True and False
 
-Sometimes, we want to express _conditionals_--that is the ability to act based
+Sometimes, we want to express _conditionals_&mdash;that is, the ability to act based
 on the results of a test. For example, "If we're out of milk, then go to the
 store. Else, add milk to our cereal and enjoy."
 
-In order to do the above, we have to have some idea of true and false. Scheme
-has 2 boolean values, #t and #f:
+In order to do the above, we have to have some idea of true and false. Racket
+has two boolean values, `#t` and `#f`:
 
     
     > (= 1 1)
@@ -32,67 +32,62 @@ has 2 boolean values, #t and #f:
 
 ## Predicates
 
-A function that returns a true or false value is called a predicate. For
-example, even? is a predicate used to test whether a number is even. (even? 3)
-will return #f.
+A function that returns either true or false is called a *predicate*. For
+example, `even?` is a predicate used to test whether a number is even. `(even? 3)`
+will return `#f`.
 
 Lets look at some predicates that are given to us.
 
-  * `<, >, =, <=, >=` are the standard mathematical operators for comparing 2 numbers.  Beware:  the = function can only take numbers as arguments - for words and sentences, you should use equal?.
-  * `member?` takes two arguments, checking to see if the first one is a member of the second. You can use this to check if a letter is in a word OR if a word is in a sentence.
-  * `empty?` checks if its argument is the empty word "" or the empty sentence '()
-  * equal? checks if two values are equal to each other.
+  * `<`, `>`, `=`, `<=`, and `>=` are the standard mathematical operators for comparing two numbers. Beware: the `=` function can only take numbers as arguments&mdash;for words and sentences, you should use `equal?`.
+  * `member?` takes two arguments, checking to see if the first is a member of the second. You can use this to check if a letter is in a word or if a word is in a sentence.
+  * `empty?` checks if its argument is the empty word `""` or the empty sentence `'()`.
+  * `equal?` checks if two values are equal to each other.
 
-ex:
+For example:
 
-`(< 1 2)` returns #t
+* `(< 1 2)` returns `#t`.
+* `(member? 'a 'aeiou)` returns `#t`.
+* `(member? 'dream '(I have a dream))` returns `#t`.
+* `(empty? '(hi))` returns `#f`.
+* `(equal? 'apples 'oranges)` returns `#f`.
+* `(equal? 'apples 'apples)` returns `#t`.
+* `(equal? '(it is a bird) '(it is a plane))` returns `#f`.
+* `(equal? '(it is a bird) '(it is a bird))` returns `#t`.
 
-`(member? 'a 'aeiou)` returns #t
+There are also predicates that check whether a value is of a particular type:
 
-`(member? 'dream '(I have a dream))` returns #t
+* `number?` checks if a value is a number.
+* `word?` checks if a value is a word.
+* `sentence?` checks if a value is a sentence.
+* `boolean?` checks if a value is a boolean.
 
-``(empty? '(hi))` returns #f`
+You can also create your own predicates. For example:
 
-`(equal? 'apples 'oranges)` returns #f
-
-(`equal? 'apples 'apples)` returns #t
-
-`(equal? '(it is a bird) '(it is a plane)`) returns #f
-
-`(equal? '(it is a bird) '(it is a bird))` returns #t
-
-Then there are predicates like `number?` or `word?` that check whether or not
-the input is a number or word respectively. There is a predicate checking for
-numbers, booleans, words, and sentences. You can also create your own
-predicates like:
-
-`(define (vowel? letter)
-
-(member? letter 'aeiou))`
+```
+(define (vowel? letter)
+  (member? letter 'aeiou))
+```
 
 ## Exercises
 
 Write a predicate `teen?` that returns true if its argument is between 13 and
 19.
 
-## Everything That Isn't False Is True
+## Everything That Isn't False is True
 
-When evaluating whether or not a statement is true or false, remember that
+When evaluating whether or not an expression is true or false, remember that
 anything is considered true unless it is false. If you do `(if 1 2 3)`, this
 code actually doesn't error and returns 2 since 1 isn't false. This is useful
-for things like semipredicates. An example of a semipredicate is
+for writing *semipredicates*. An example of a semipredicate is
 
-`(define (integer-quotient big little)
+```
+(define (integer-quotient big little)
+  (if (divisible? big little)
+      (/ big little)
+      #f))
+```
 
-(if (divisible? big little)
-
-(/ big little)
-
-#f))
-
-`
-
-Note how it will return a number if `big` is divisible by `little` and false
+Notice how our semipredicate returns a number if `big` is divisible by `little` and false
 otherwise. This allows us to make statements like
 
     
@@ -100,84 +95,71 @@ otherwise. This allows us to make statements like
        '(do something)
        '(do something else))
 
-, without actually needing the predicate to evaluate exactly to true.
+without actually needing the predicate to evaluate exactly to true.
 
-## And & or
+## `and` and `or`
 
 `and` is a predicate that takes however many expressions and returns the last
-element if everything was not false and returns false otherwise.
+element if everything was not false and returns false otherwise. For example:
 
-ex: `(and 1 2 3)` outputs 3
-
-` (and (number? 'hi) 2 3)` outputs false
+* `(and 1 2 3)` outputs 3.
+* `(and (number? 'hi) 2 3)` outputs `#f`.
 
 `or` is a predicate that takes however many expressions and returns the first
-true element and returns false otherwise.
+true element and returns false otherwise. For example:
 
-ex: `(or 1 #f 2)` outputs 1
+* `(or 1 #f 2)` outputs 1.
+* `(or (even? 1) #f (number? 'foo))` outputs `#f`.
 
-`(or (even? 1) #f (number? 'foo))` outputs false
+## The `cond` Clause
 
-## The cond clause
+It is possible to use `if` many times in the same expression, like this:
 
-If you have a huge mess of `if`'s lying around like this
+```
+(define (roman-value letter)
+  (if (equal? letter 'i)
+      1
+      (if (equal? letter 'v)
+          5
+          (if (equal? letter 'x)
+              10
+              (if (equal? letter 'l)
+                  50
+                  (if (equal? letter 'c)
+                      100
+                      (if (equal? letter 'd)
+                          500
+                          (if (equal? letter 'm)
+                              1000
+                              'huh?))))))))
+```
 
-`(define (roman-value letter)
+But it may be easier to use `cond`, which does the same thing
+more neatly. Here's the same function written using `cond`:
 
-(if (equal? letter 'i)
+```
+(define (roman-value letter)
+  (cond ((equal? letter 'i) 1)
+        ((equal? letter 'v) 5)
+        ((equal? letter 'x) 10)
+        ((equal? letter 'l) 50)
+        ((equal? letter 'c) 100)
+        ((equal? letter 'd) 500)
+        ((equal? letter 'm) 1000)
+        (else 'huh?)))
+```
 
-1
+As you can see, the `cond` clause lets you specify a series of conditions and
+possible values. The `else` clause at the end specifies the value when none of
+the previous predicates are true.
 
-(if (equal? letter 'v)
+Translated into English, the above code reads:
 
-5
-
-(if (equal? letter 'x)
-
-10
-
-(if (equal? letter 'l)
-
-50
-
-(if (equal? letter 'c)
-
-100
-
-(if (equal? letter 'd)
-
-500
-
-(if (equal? letter 'm)
-
-1000
-
-'huh?))))))))`
-
-Then it may be easier to use `cond`, which would do essentially the same thing
-but much neater. First lets look at how at the code equivalent using `cond` to
-see how it's structured.
-
-`(define (roman-value letter)
-
-(cond **(**(equal? letter 'i) 1**)**
-
-** (**(equal? letter 'v) 5**)**  
-** (**(equal? letter 'x) 10**)**  
-** (**(equal? letter 'l) 50**)**  
-** (**(equal? letter 'c) 100**)**  
-** (**(equal? letter 'd) 500**)**  
-** (**(equal? letter 'm) 1000**)**  
-**(**else 'huh?**)** )) `
-
-Note that within each bolded set of parenthesis (it might be hard to see,
-sorry) is a predicate and what to do if the predicate were true. This code
-first checks if the letter is i and if it is, it outputs 1. If the letter was
-not i, then it moves on to the next set of bolded parenthesis. The final set
-of bolded parenthesis is an else clause. This is the code that executes if
-none of the previous predicates were true. It is possible to write cond
-without using the else clause. If you don't have an else clause, the
-procedures stops if none of the predicates were true.
+* If the input letter is "i", the value is 1.
+* If the input letter is "v", the value is 5.
+* ...
+* If the input letter is "m", the value is 1000.
+* Otherwise, when none of the above are true, the value is `'huh?`.
 
 ## Special forms
 
