@@ -1,14 +1,14 @@
-**Local variables** are variables that only exist within a local environment. If we have the following function:
+**Local variables** are variables that only exist within a local environment. Here's an example:
 
     (define (foo x)
       (define a 5)
       (+ x a))
 
-The local environment is the environment created by the function `foo`, and the local variable is `a`. Note that `x` is NOT a local variable, even though it as well cannot be accessed outside of `foo` - it is formally called the parameter.
+The local environment is the environment created by the function `foo`, and the local variable is `a`. Note that `x` is *not* a local variable, even though it as well cannot be accessed outside of `foo`&mdash;it is formally called the parameter.
 
 ## Introduction to `let`
 
-The **let** special form is essentially a call to a lambda function, rearranged differently. Let's illustrate an example first. Take the following lambda function call:
+The special form `let` is essentially a call to a lambda function, arranged differently. For example, take the following lambda function call:
 
     -> ((lambda (x y z) (+ x y x z)) 1 2 3)
     7
@@ -18,11 +18,11 @@ This is equivalent to the following let statement:
     -> (let ((x 1) (y 2) (z 3)) (+ x y x z))
     7
 
-When will this ever be useful? Two words: local variables. Rarely will we ever use a let statement for simply calling a lambda function. Instead, we use it create local variables inside of a function.
+When will this ever be useful? Two words: local variables. Rarely will we use a `let` statement to simply call a lambda function. Instead, we use it create local variables inside of a function.
 
 ## An Example: Polynomials
 
-We apologize in advance for the math lesson. Let's say we want to use Racket to compute the following polynomial with any given x and y:
+Let's say we want to use Racket to compute the following polynomial with any given *x* and *y*:
 
 [mathjax]f(x,y) = x(1+xy)^2 + y (1-y) + (1+xy)(1-y)[/mathjax]
 
@@ -51,7 +51,7 @@ Okay, I guess that's better. Writing this in Racket, we will define a helper fun
         (f-helper (+ 1 (* x y))
                   (- 1 y)))
 
-Take a minute to confirm that this does the same as the earlier definition of `f`. Like we learned in the previous section, we don't really need an extra function definition inside `f`. Instead, let's use a lambda:
+Take a minute to confirm that this does the same thing as the earlier definition of `f`. As we learned in the previous section, we don't really need an extra function definition inside `f`. Instead, we can use a lambda:
 
     (define (f x y)
         ((lambda (a b)
