@@ -13,9 +13,7 @@ is an expression. So is
 A combination, as shown above, is an expression where paretheses are used to
 show when a procedure is called. The procedure, in this case +, is called the
 _operator_, and the arguments, in this case `2` and `3` are called the
-_operands_. The value of a combination is obtained by
-[applying](https://edge.edx.org/courses/uc-berkeley/cs61as-1x/SICP/wiki
-/cs61as-1x/apply) the operator to the operands.
+_operands_. The value of a combination is obtained by applying the operator to the operands.
 
 ## Prefix Notation
 
