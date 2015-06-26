@@ -1,13 +1,15 @@
-Here, we will explore a more applied example using the tools we learned so
-far.
+**NOTE:** This section is a bit more dense than the rest of the lesson. If you struggle with this section, don't worry - it's more advanced than most of what we'll expect you to know.
 
-In particular, we will first try to express the calculation of _fixed points_
-of functions. A number _x_ is called a _fixed point_ of a function _f_ if _x_
-satisfies the equation _f_(_x_) = _x_.
+Here, we will explore two applied examples using the tools we learned so
+far: `fixed-point` and `iterate`.
 
-For some functions _f_ we can locate a fixed point by beginning with an
-initial guess and applying _f_ repeatedly, until successive values are very
-close.
+## `fixed-point`
+
+In particular, we will first try to express the calculation of **fixed points**
+of functions. A number `x` is called a fixed point of a function `f` if `x`
+satisfies the equation `f(x) = x`.
+
+An algorithm that finds a fixed point for some functions `f` is one where we start with an initial guess and apply `f` repeatedly, until successive values are very close.
 
     
     x  
@@ -15,9 +17,9 @@ close.
     (f (f x))  
     ...
 
-Using this idea, we'll make a procedure fixed-point that will keep applying a
-function, until we we find two successive values whose difference is less than
-some prescribed tolerance.
+Using this idea, we'll make a procedure `fixed-point` that will keep applying a
+function until we find two successive values whose difference is less than
+some prescribed `tolerance`. Take a look at our definition of `fixed-point` below:
 
 
     (define tolerance 0.00001)
@@ -35,16 +37,14 @@ some prescribed tolerance.
 For example, we can use this method to approximate the fixed point of the
 cosine function, starting with 1 as an initial approximation:
 
-> (fixed-point cos 1.0)
+    -> (fixed-point cos 1.0)
+    0.7390822985224024
 
-0.7390822985224024
+To demonstrate the power of abstracting functions with `fixed-point`, we will
+develop a method to calculate square roots with only 3 lines of Racket code!
 
-To demonstrate the power of abstracting functions with fixed-point, we will
-develop a method to calculate square roots... in only 3 lines of scheme!
-
-Computing the square root of some number _x_ requires finding a _y_ such that
-_y_^_2_ = _x_. Putting this equation into the equivalent form _y_ = _x_/_y_, you
-can see that we are looking for a fixed point of the function `(lambda (y) (/ x y))`. In code:
+Computing the square root of some number `x` requires finding a `y` such that
+<code>y<sup>2</sup> = x</code>. Putting this equation into the equivalent form `y = x / y`, you can see that we are looking for a fixed point of the function `(lambda (y) (/ x y))`. In code:
 
 
     (define (sqrt x)
@@ -64,15 +64,15 @@ doesn't work. To see why, look at the successive guesses of, say, `(sqrt 4)`:
 
 ...
 
-It just keeps oscillatting! If you think about it, it'll do that for any
-number we put in (expect 0 or 1).
+It just keeps oscillating! If you think about it, it'll do that for any
+number we put in (except 0 or 1).
 
-So, instead of changing the guess so much, we'll move it by a little less. To
-do that, we'll average the next guess with the currrent guess. That is, the
-next guess after _y_ is (1/2)(_y_ + _x_/_y_) instead of _x_/_y. _
+So, instead of changing the guess by `1`, we'll adjust by a little less. To
+do that, we'll average the next guess with the current guess. That is, the
+next guess after `y` is `(1/2)(y + x/y)` instead of `x/y`.
 
 The process of making such a sequence of guesses is simply the process of
-looking for a fixed point of _y_ = (1/2)(_y_ + _x_/_y_):
+looking for a fixed point of `y = (1/2)(y + x/y)`:
 
 
     (define (sqrt x)
@@ -81,7 +81,7 @@ looking for a fixed point of _y_ = (1/2)(_y_ + _x_/_y_):
 
 With this modification, the square-root procedure works.  This approach of
 averaging successive approximations to a solution, a technique the SICP
-authors call _average damping_, often aids the convergence of fixed-
+authors call `average damping`, often aids the convergence of fixed-
 point searches.
 
 So, let's continue our abstraction frenzy and abstract the average damping
@@ -91,7 +91,7 @@ technique as well:
     (define (average-damp f)  
          (lambda (y) (* 0.5 (+ y (f y)))))
 
-And now, a new sqrt:
+And now, a new `sqrt`:
 
     
     (define (sqrt x)  
@@ -102,22 +102,21 @@ Amazingly clear, eh?
 
 Notes:
 
-_y_ = (1/2)(_y_ + _x_/_y_) is a simple transformation of the equation _y_ =
-_x_/_y_; to derive it, add _y_ to both sides of the equation and divide by 2.
+`y = (1/2)(y + x/y)` is a simple transformation of the equation `y =
+x / y`; to derive it, add `y` to both sides of the equation and divide by `2`.
 
 You may have noticed that we have effectively derived Newton's method for
 calculating square roots. But... there are so many other ways! If you're
-intersted, here's a cool link:
+intersted, here's a [cool link](http://en.wikipedia.org/wiki/Methods_of_computing_square_roots).
 
-[http://en.wikipedia.org/wiki/Methods_of_computing_square_roots](http://en.wik
-ipedia.org/wiki/Methods_of_computing_square_roots)
+## `iterate`
 
-We will now conclude this lab with another higher-order function.
+We will now conclude this lesson with another higher order function.
 
-This one will allow us to write fixed-point AND largest-square (from lab 1).
+This one will allow us to write `fixed-point` AND `largest-square` (from Lesson 1).
 
-How, you ask? Because they both fall under the general form of_ iterative
-improvement_. That is, you start with a value and keep improving it until it
+How, you ask? Because they both fall under the general form of **iterative
+improvement**. That is, you start with a value and keep improving it until it
 is good enough.
 
 Notice there are 3 things to abstract here:
