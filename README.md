@@ -45,15 +45,27 @@ If you get stuck at any point, contact Allen at allenguo@berkeley.edu. Comments 
 Updating the Live Site
 ----------------------
 
+Once your changes are merged into the master branch of this repository, you can update the live site
+using the tool found [here](https://www.ocf.berkeley.edu/~allenguo/flasky2/). This tool
+
+* grabs the latest versions of both repos,
+* executes the publish script,
+* commits any changes to the berkeley-cs61as.github.io repository, and
+* pushes the commit to GitHub, thereby updating the live page.
+
+If the above tool is not working, please follow the manual deployment instructions below.
+
+### Manual Deployment
+
 These instructions are for staff members with write access to both this repository and the [berkeley-cs61as.github.io](https://github.com/berkeley-cs61as/berkeley-cs61as.github.io) repository.
 
-### Before You Begin
+Before you begin:
 
 1. Make sure you have Python 2.7 installed. As of right now, Python 3 is not supported.
 2. Clone this repository.
 3. Clone [berkeley-cs61as.github.io](https://github.com/berkeley-cs61as/berkeley-cs61as.github.io).
 
-### Deployment
+To deploy:
 
 0. Navigate to this repository.
 0. Do a `git pull`.
