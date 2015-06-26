@@ -26,35 +26,37 @@ occurrence of the old word replaced by the new word.
 Type each of the following into Racket, and note the results. See if you can
 predict the results before letting Racket do the computation.
 
-`(lambda (x) (+ x 3)) `
-
-`((lambda (x) (+ x 3)) 7) `
+* `(lambda (x) (+ x 3)) `
+* `((lambda (x) (+ x 3)) 7) `
 
 `make-adder` is a function that returns another function.
 
-`(define (make-adder num)`
+```
+(define (make-adder num)
+  (lambda (x) (+ x num)))
+((make-adder 3) 7)
+```
 
-`(lambda (x) (+ x num))) `
+```
+(define plus3 (make-adder 3))
+(plus3 7)
+```
 
-`((make-adder 3) 7)`
+```
+(define (square x) ( x x))
+(square 5)
+```
 
-`(define plus3 (make-adder 3)) `
+```
+(define sq (lambda (x) ( x x)))
+(sq 5)
+```
 
-`(plus3 7)`
-
-`(define (square x) (* x x)) `
-
-`(square 5)`
-
-`(define sq (lambda (x) (* x x))) `
-
-`(sq 5)`
-
-`(define (try f) (f 3 5)) `
-
-`(try +)`
-
-`(try word)`
+```
+(define (try f) (f 3 5))
+(try +)
+(try word)
+```
 
 ## Exercise 3
 
@@ -147,18 +149,15 @@ exercises later in the semester.)
 
 Notes:
 
-For 1.31a, you should base your `product` function off of the `sum` function
-earlier in the text. It should take 4 arguments - `term`, `a`, `next`, and
+* For 1.31a, you should base your `product` function off of the `sum` function
+earlier in the text. It should take 4 arguments: `term`, `a`, `next`, and
 `b`. Find the `sum` function and figure out what each of these arguments do.
-
-For 1.31a, the function to estimate pi should be called `estimate-pi`. It
+* For 1.31a, the function to estimate pi should be called `estimate-pi`. It
 should take in no arguments, and should estimate pi using at least 100 terms
 of the formula given in SICP.
-
-For 1.33, the predicate should be the last argument to `filtered-accumulate`
+* For 1.33, the predicate should be the last argument to `filtered-accumulate`
 (see text box).
-
-For 1.33, you should define functions `sum-sq-prime` and `prod-of-some-
+* For 1.33, you should define functions `sum-sq-prime` and `prod-of-some-
 numbers` (see text box).
 
 ## Exercise 9
@@ -189,7 +188,7 @@ Using the higher order functions, our simply-scheme library provides its own ver
   6. `(keep (lambda (letter) (member? letter 'aeiou)) '(purple syzygy)) `
   7. `(keep (lambda (wd) (member? 'e wd)) '(purple syzygy))`
 
+## Exercise 11
 
-
-### **DON'T FORGET TO SUBMIT YOUR HOMEWORK!**
+There is no exercise 11. **Don't forget to submit your homework!**
 
