@@ -1,3 +1,5 @@
+**THIS PAGE IS INCOMPLETE. DO NOT START WORKING ON THIS PROJECT YET!**
+
 We have a new Project 1 for this semester called "Chatterbot".
 
 A "Chatterbot" is a program that is able to "chat" or "communicate" with a
