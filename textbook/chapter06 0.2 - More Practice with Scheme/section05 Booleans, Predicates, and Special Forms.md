@@ -68,7 +68,7 @@ You can also create your own predicates. For example:
   (member? letter 'aeiou))
 ```
 
-## Exercises
+### Exercise
 
 Write a predicate `teen?` that returns true if its argument is between 13 and
 19.
