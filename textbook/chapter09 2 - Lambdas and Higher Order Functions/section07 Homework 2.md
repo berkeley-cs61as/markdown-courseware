@@ -26,8 +26,13 @@ occurrence of the old word replaced by the new word.
 Type each of the following into Racket, and note the results. See if you can
 predict the results before letting Racket do the computation.
 
-* `(lambda (x) (+ x 3)) `
-* `((lambda (x) (+ x 3)) 7) `
+```
+(lambda (x) (+ x 3))
+```
+
+```
+((lambda (x) (+ x 3)) 7)
+```
 
 `make-adder` is a function that returns another function.
 
