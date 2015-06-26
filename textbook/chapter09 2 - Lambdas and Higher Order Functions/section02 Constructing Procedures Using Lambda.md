@@ -6,7 +6,7 @@ Take a look at the following definition of `sum-doubles`, which takes two number
             0
             (+ (double a) (sum-doubles (+ a 1) b))))
 
-Since there's not `double` function already defined for us, we'll have to define one ourselves inside of our `sum-doubles` definition.
+Since the `double` function was not already defined for us, we had to define it ourselves inside of our `sum-doubles` definition.
 
 But doing that is such a waste! Outside of our `sum-doubles` definition, we won't ever be able use that `double` function. Isn't there a quick, easy way to make a user-defined function without first defining, then applying the named function?
 
@@ -16,13 +16,15 @@ Actually, yes. Let's introduce the **lambda** function, otherwise known as an an
 
 The general form for a lambda is as follows:
 
-`(lambda (<param1> <param2> ... <paramn>) <body>)`
+```
+(lambda (<param1> <param2> ... <paramn>) <body>)
+```
 
-Let's dissect this. Within parentheses, we have three major parts:
+Let's dissect this. Within the parentheses, we have three major parts:
 
-  * a **tag**, `lambda`, that tells Racket that this is a lambda function
-  * a **list of parameters** - you can have as many as you want
-  * the **body** - anything following the list of parameters would be considered the body of the lambda function.
+  * a **tag**, `lambda`, which tells Racket that this is a lambda function,
+  * a **list of parameters** (as many as you want),
+  * and the **body**&mdash;anything following the list of parameters.
 
 
 The procedure `double`, for example, can be defined as the following lambda function:
@@ -37,11 +39,11 @@ would be equivalent to:
 
     (define (double x) (* 2 x)) 
       
-When describing lambdas, you would call it "the function of [params] that returns [body]". For example, "Double is the function of x that returns (* 2 x)".
+When describing lambdas, you would call it "the function of [params] that returns [body]." For example, "`double` is the function of `x` that returns `(* 2 x)`."
 
 ## Calling Lambdas
 
-Just like we can call a procedures that we created using `define`, we can also call lambda functions. The general form of a call to a lambda is as follows:
+Just as we can call procedures created using `define`, we can also call lambda functions. The general form of a call to a lambda is as follows:
 
 `((lambda (<param1> <param2> ... <paramn>) <body>) <arg1> <arg2> ... <argn>)`
 
@@ -52,13 +54,14 @@ So if we want to call `(double 5)` as an anonymous function, the substitution mo
     -> (* 2 5)
     10
 
-What happens here? When we call a lambda function, the first argument corresponds with the first parameter, the second argument with the second parameter, ..., and the nth argument with the nth parameter. Then, for every occurrence of each parameter in the body, we replace it with its corresponding argument.
+What happens here? When we call a lambda function, the first argument corresponds to the first parameter, the second argument to the second parameter, ..., and the nth argument to the nth parameter. Then, in the body, every occurence of each parameter is replaced with the corresponding argument.
 
 Let's illustrate this with an example expression:
 
     -> ((lambda (x y z) (+ x y x z)) 1 2 3)
 
-For every occurrence of `x` in the body of the lambda, we replace it with `1`. For every `y` we see, we replace it with `2`. And for every time we see `z`, we replace it with `3`.
+
+In the body of the lambda, we replace every occurence of `x` with `1`. We replace every `y` we see with `2`. And every time we see a `z`, we replace it with `3`.
 
     -> ((lambda (x y z) (+ x y x z)) 1 2 3)
     -> ((lambda (x y z) (+ 1 2 1 3)) 1 2 3)
