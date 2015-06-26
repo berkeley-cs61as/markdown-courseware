@@ -11,7 +11,7 @@ one-time use.
 
 But that's really annoying! Can't we just create a function on the spot?
 
-Actually, yes. We can do it using the special form lambda, which creates
+Actually, yes. We can do it using the special form `lambda`, which creates
 procedures.
 
 The general form for lambda is:
