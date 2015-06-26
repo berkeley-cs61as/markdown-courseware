@@ -1,7 +1,7 @@
-Formally defined, a **Higher Order Function (HOF)** is any function that does at least one of the following:
+A **higher order function** (**HOF**) is a function that does one or both of the following:
 
-  * Takes a function(s) as an argument(s)
-  * Returns a function as its output
+  * Takes a function as an argument.
+  * Returns a function as its output.
 
 Before we jump in, let's have a quick refresher.
 
