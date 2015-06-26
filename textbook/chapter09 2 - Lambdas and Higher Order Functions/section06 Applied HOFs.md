@@ -1,11 +1,11 @@
-**NOTE:** This section is a bit more dense than the rest of the lesson. If you struggle with this section, don't worry - it's more advanced than most of what we'll expect you to know.
+**Note:** This section is a bit more dense than the rest of the lesson. If you struggle with this section, don't worry&mdash;it's more advanced than most of what we'll expect you to know.
 
-Here, we will explore two applied examples using the tools we learned so
+Here, we will explore two applied examples using the tools we have learned so
 far: `fixed-point` and `iterate`.
 
 ## `fixed-point`
 
-In particular, we will first try to express the calculation of **fixed points**
+We will first try to express the calculation of **fixed points**
 of functions. A number `x` is called a fixed point of a function `f` if `x`
 satisfies the equation `f(x) = x`.
 
@@ -54,15 +54,13 @@ Computing the square root of some number `x` requires finding a `y` such that
 If you happen to have an interpreter handy, though, you'll find that this
 doesn't work. To see why, look at the successive guesses of, say, `(sqrt 4)`:
 
+```
 1
-
 4/1 = 4
-
 4/4 = 1
-
 4/1 = 4
-
 ...
+```
 
 It just keeps oscillating! If you think about it, it'll do that for any
 number we put in (except 0 or 1).
@@ -147,6 +145,3 @@ Our abstraction frenzy (mostly) ends here, but be on your toes. Abstraction is
 what allows programmers to write complex but readable systems.
 
 Never miss a good opportunity to abstract.
-
-![](https://dl.dropboxusercontent.com/u/16963685/cs61as-edx/abstract_on.png)
-
