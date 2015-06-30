@@ -194,7 +194,6 @@ Using the higher order functions, our simply-scheme library provides its own ver
   6. `(keep (lambda (letter) (member? letter 'aeiou)) '(purple syzygy)) `
   7. `(keep (lambda (wd) (member? 'e wd)) '(purple syzygy))`
 
-## Exercise 11
+## Submit Your Homework
 
-There is no exercise 11. **Don't forget to submit your homework!**
-
+Don't remember how? No worries. Take a look at the instructions for [Homework 1](homework-1.html#sub9).
