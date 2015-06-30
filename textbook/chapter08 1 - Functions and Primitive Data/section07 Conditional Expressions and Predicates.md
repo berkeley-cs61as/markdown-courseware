@@ -98,7 +98,7 @@ We urge you to avoid writing code like this.
 Redundant code can make your programs more difficult to understand, and is typically considered
 an example of bad programming style.
 
-# Exercise
+### Exercises
 
 We define a procedure that takes three numbers as arguments and returns the sum of the squares of the two larger numbers
 
