@@ -4,10 +4,10 @@ Type the following command at the terminal to copy the template file to the
 current directory (note the period at the end):
 
     
-    cp ~cs61as/autograder/templates/hw3.scm .
+    cp ~cs61as/autograder/templates/hw3.rkt .
 
 Or you can download the template
-[here](http://inst.eecs.berkeley.edu/~cs61as/templates/hw3.scm).
+[here](http://inst.eecs.berkeley.edu/~cs61as/templates/hw3.rkt).
 
 ## Exercise 1: Invariant for Fast Exponentiation
 
