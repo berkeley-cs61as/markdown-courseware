@@ -1,6 +1,7 @@
 ## Recursive Processes
 
 To begin exploring how procedures use space, consider the following procedure:
+
 ```
 (define (factorial n)
   (if (= n 0)
@@ -9,6 +10,7 @@ To begin exploring how procedures use space, consider the following procedure:
 ```
 
 If we were to evaluate (factorial 5) by hand, writing out each step we get the following:
+
 ```
 start with  (factorial 5)
 replaced by (* 5 (factorial 4))
@@ -24,9 +26,9 @@ replaced by (* 5 24)
 replaced by 120
 ```
 
-Each line describes a new step of the computation--what we need to remember at that time step in order to continue the evaluation. Here is the key observation: if we chose a large enough input for factorial, say 10000, then at some step `(* 10000 (* 9999 (* 9998 (9997 ...))))`, we wouldn't be able fit the entire line in our minds explicitly (even though we can describe what the line should look like, we can't literally visualize all of those parens all at once).
+Each line describes a new step of the computation--what we need to remember at that time step in order to continue the evaluation. Here is the key observation: if we chose a large enough input for factorial, say 10000, then at some step, we wouldn't be able fit the entire line in our minds.
 
-In fact, this is how the computer must keep track of this as well. Each function call is stored in the computer's working memory—a place to store intermediary, incomplete computations. This space is finite and can be easily overflowed. The important thing to remember is that this problem only occurs on large inputs.
+Computers evaluate procedure calls in the same way. Each function call is stored in the computer's working memory—a place to store intermediary, incomplete computations. This space is finite and can be easily overflowed. The important thing to remember is that this problem only occurs on large inputs.
 
 
 ## Iterative Processes
@@ -46,6 +48,7 @@ Is there a way to fix factorial such that it does not force the computer to run 
 
 Test your understanding. Why must we say (> counter max-count)? What happens if we were to do (fact-iter 1 1 n)?
 Now if we were to similarly diagram (factorial 5), we would get the following:
+
 ```
 start with  (factorial 5)
 replaced by (fact-iter 1 1 5)
@@ -64,22 +67,27 @@ Note that this iterative process still uses Recursion, but this is different tha
 Description of an iterative process. Keeping extra state in order to make the procedure tail recursive. At any point in time, the arguments being carried can be used to compute the overall solution.
 
 If we attempt (factorial 100000000), the code would now run without issue.
-Comparing Iterative and Recursive Processes
+
+
+## Comparing Iterative and Recursive Processes
 <table>
 <tr>
-  <td>Recursive</td>
-  <td>Iterative</td>
+  <td>**Recursive**</td>
+  <td>**Iterative**</td>
 </tr>
 <tr>
   <td>
-````
+
+```
 (define (factorial n)
   (if (= n 0)
       1
       (* n (factorial (- n 1)))))
 ```
+
   </td>
   <td>
+
 ```
 (define (factorial n)
   (fact-iter 1 1 n))
@@ -92,6 +100,7 @@ Comparing Iterative and Recursive Processes
                  (+ counter 1)
                  max-count)))
 ```
+
   </td>
 </tr>
 </table>
