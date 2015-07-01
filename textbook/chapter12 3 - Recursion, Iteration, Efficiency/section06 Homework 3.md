@@ -1,67 +1,3 @@
-Here is a template for your homework to make it easier for our autograders to
-grade your work. Remember to comment anything that isn't code with a semicolon
-`;.`
-
-``;; Exercise 1.
-
-;; Write an iterative exponentiation process that takes a logarithmic number
-of steps.
-
-;; YOUR CODE HERE
-
-  
-  
-;; Exercise 2.
-
-;; Compute the golden ratio
-
-;; YOUR CODE HERE
-
-  
-  
-;; Exercise 3.
-
-;; Write cont-frac recursively and iteratively, and use it to estimate e.
-
-;; YOUR CODE HERE
-
-  
-  
-;; Exercise 4.
-
-;; Write next-perf and use it to find the third perfect number.
-
-;; YOUR CODE HERE
-
-  
-;; This should output #f
-
-(type-check sqrt number? 'hello)
-
-  
-;; This should output 2
-
-(type-check sqrt number? 4)
-
-  
-  
-;; Exercise 5.
-
-;; Explain what happens when interchanging the base cases in the cc procedure.
-
-;; YOUR CODE HERE
-
-  
-  
-;; Exercise 6.
-
-;; Give the invariant relating the values of the parameters in xpt and exp-
-iter.
-
-;; YOUR CODE HERE
-
-  
-
 ## Template
 
 Type the following command at the terminal to copy the template file to the
@@ -73,7 +9,9 @@ current directory (note the period at the end):
 Or you can download the template
 [here](http://inst.eecs.berkeley.edu/~cs61as/templates/hw3.scm).
 
-  1. # **DON'T FORGET TO SUBMIT YOUR HOMEWORK!**
+## Problems
+
+Coming soon...
 
 ## Further Reading
 
