@@ -76,6 +76,13 @@ To deploy:
 
 If you're interested in what `publish.py` does, or you want to make more complicated changes to the textbook, keep reading.
 
+Things That Don't Work
+----------------------
+The following either don't work or aren't officially supported:
+
+* Markdown tables (although HTML tables _do_ work)
+* Inline MathJax expressions with underscores
+
 More Complicated Changes
 ------------------------
 ### Deleting/Adding Sections
