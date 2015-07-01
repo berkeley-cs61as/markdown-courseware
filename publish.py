@@ -177,6 +177,7 @@ class Publisher(object):
 
         # Tell syntax highlighter we're using Scheme
         output = output.replace('<code>', '<code class=scheme>')
+        output = output.replace('<table>', '<table class="table table-bordered">')
 
         # Write file
         out_file.write(output)

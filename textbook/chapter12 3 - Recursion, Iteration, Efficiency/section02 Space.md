@@ -71,10 +71,13 @@ If we attempt (factorial 100000000), the code would now run without issue.
 
 ## Comparing Iterative and Recursive Processes
 <table>
-<tr>
-  <td>**Recursive**</td>
-  <td>**Iterative**</td>
-</tr>
+  <thead>
+    <tr>
+      <th>Recursive</th>
+      <th>Iterative</th>
+    </tr>
+  </thead>
+  <tbody>
 <tr>
   <td>
 
@@ -103,6 +106,7 @@ If we attempt (factorial 100000000), the code would now run without issue.
 
   </td>
 </tr>
+</tbody>
 </table>
 More code. Not as easy to understand.
 
