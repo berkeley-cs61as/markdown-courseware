@@ -107,7 +107,7 @@ Looking at these functions side by side, we can identify how these two procedure
 
 Important observations on the differences:
 
-- The value that is returned as  base case in the Recursive version acts as the starting point for `product` in the iterative version (1). Notice that `(factorial 1)` in the iterative version causes the base case to be triggered in `fact-iter`, and 1 is returned.
+- The value that is returned as  base case in the Recursive version acts as the starting point for `product` in the iterative version (1). Notice that calling iterative `(factorial 1)`causes the base case to be triggered in `fact-iter`, and 1 is returned.
 - In the Recursive version, The `*` procedure is called outside of the recursive call. In the iterative version, all of the arguments are transformed before (or inside of) the recursive call. I.e., `(* counter product)` happens first, and then the recursive call gets made. **This is the key to why the Iterative version is more space efficent.**
 - As a corollary, this means the recursive call is the "last" expression that is evaluated in a procedure call (as opposed to a multiplcation.)
 - Because the Iterative version needed to keep track of more arguments, it needed a helper procedure where the recursion actually took place. This is often the case for Iterative procedures.
@@ -116,7 +116,7 @@ Important observations on the differences:
 In formal terms, the Iterative `factorial` is more space efficent because the Racket interpreter impliements Tail Call Optimization. In other programming languages and other interpreters that aren't Tail Call Optimized the Recursive and Iterative versions use the same amount of space when run. So why do we care?
 
 - Introducing these topics gives us a deeper understanding of recursion, evaluation, and programming languages, which provides a solid background for other topics
-- A chance to practice thinking critically about resource usage and tradeoffs, which is generally important to Software Engineering and Computer Science.
+- This is a chance to practice thinking critically about resource usage and tradeoffs, which is generally important to Software Engineering and Computer Science.
 
 In order to write a *tail-recursive* procedure, here are a few tips.
 
@@ -124,7 +124,7 @@ In order to write a *tail-recursive* procedure, here are a few tips.
 - In fact as a general rule, the Recursive version of procedures will try to make its arguments progressively smaller, whereas the Iterative version builds up a result. Thus when writing an iterative procedure, think of the starting values needed in order to "build" your answer. In `factorial`, that was 1, 1, and `n`, in `(fact-iter 1 1 n)`.
 - Ensure that the recursive call happens "at the last moment". In practice, this means that the arguments are processed (added, subtrated, multiplied, `butfirst`'d, etc.) before the recursive call is made.
 
-### Exercises
+## Exercises
 The following questions are for your understanding. You will not be graded. You can check your answers with a staff member.
 
 - Iterative `factorial` keeps track of three things in `fact-iter`. What were those things? Could we rewrite `factorial` yet again in order to only keep track of two things?
