@@ -40,7 +40,7 @@ Different representations of Trees will give you different limitations, features
 
 Before we begin, load our Tree ADT by typing the following into your Racket interpreter:
 
-`(enter! "~cs61as/lib/berkeley.rkt")`
+`(enter! "~cs61as/lib/trees.rkt")`
 
 Here are the built-in constructors and selectors for Trees:
   
@@ -76,10 +76,7 @@ predicate to check whether a node is a leaf:
       (null? (children node)))
 
 Remember that using lists is _just one way_ to represent Trees. We can't
-assume that someone who designed the ADT would use a list. For example, if `maple` is
-a Tree, we can't assume that `(cdr maple)` will give us the children. Instead,
-we must respect the data abstraction and use the constructors and selectors
-they provide for us.
+assume that someone who designed the ADT would use a list. For example, if `maple` is a Tree, we can't assume that `(cdr maple)` will give us the children. Instead, we must respect the data abstraction and use the constructors and selectors they provide for us.
 
 ## Abstraction Barrier
 
