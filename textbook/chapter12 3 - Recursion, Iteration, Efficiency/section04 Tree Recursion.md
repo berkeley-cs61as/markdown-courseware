@@ -77,6 +77,12 @@ When we translate this into code, we get the following:
                      kinds-of-coins))] ))
 ```
 
+## On Time Efficiency
+Tree recursive procedures typically take exponential time to compute. Why would we ever use them?
+
+- Some problems are more easily solved by thinking tree recursively. Try writing count-change using for loops in another language.
+- Some problems are intractably hard, meaning the fastest known algorithms we have for them are *still* exponential in runtime.
+- Turns out we can optimize tree recursive procedures without changing their shape, which we will cover later in the course.
 
 ## Further Reading
 
