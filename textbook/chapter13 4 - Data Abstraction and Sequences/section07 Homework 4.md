@@ -38,26 +38,38 @@ Try and predict what the following expressions will return, then check your answ
 
 ## Exercise 1
 
-**SICP 2.7)** Alyssa's program is incomplete because she has not specified the implementation of the interval abstraction. Here is a definition of the interval constructor:
+### SICP 2.7 
+
+Alyssa's program is incomplete because she has not specified the implementation of the interval abstraction. Here is a definition of the interval constructor:
 
     (define (make-interval a b) (cons a b))
 
 Define selectors `upper-bound` and `lower-bound` to complete the implementation.
 
-**SICP 2.8)** Using reasoning analogous to Alyssa's, describe how the difference of two intervals may be computed. Define a corresponding subtraction procedure, called sub-interval.
+### SICP 2.8
 
-**SICP 2.10)** Ben Bitdiddle, an expert systems programmer, looks over Alyssa's shoulder and comments that it is not clear what it means to divide by an interval that spans zero. Modify Alyssa's code to check for this condition and to signal an error if it occurs.
+Using reasoning analogous to Alyssa's, describe how the difference of two intervals may be computed. Define a corresponding subtraction procedure, called sub-interval.
+
+### SICP 2.10
+
+Ben Bitdiddle, an expert systems programmer, looks over Alyssa's shoulder and comments that it is not clear what it means to divide by an interval that spans zero. Modify Alyssa's code to check for this condition and to signal an error if it occurs.
 
 **Note:** Spans zero means that one bound is <= zero and the other is >= zero!
 
-**SICP 2.12)** Define a constructor `make-center-percent` that takes a center and a percentage tolerance and produces the desired interval. You must also define a selector `percent` that produces the percentage tolerance for a given interval. The `center` selector is the same as the one shown above.
+### SICP 2.12
 
-**SICP 2.17)** Define a procedure `last-pair` that returns the list that contains only the last element of a given (nonempty) list:
+Define a constructor `make-center-percent` that takes a center and a percentage tolerance and produces the desired interval. You must also define a selector `percent` that produces the percentage tolerance for a given interval. The `center` selector is the same as the one shown above.
+
+### SICP 2.17
+
+Define a procedure `last-pair` that returns the list that contains only the last element of a given (nonempty) list:
 
     -> (last-pair (list 23 72 149 34))
     (34)
 
-**SICP 2.20)** The procedures `+`, `*`, and `list` take arbitrary numbers of arguments. One way to define such procedures is to use `define` with **dotted-tail notation**. In a procedure definition, a parameter list that has a dot before the last parameter name indicates that, when the procedure is called, the initial parameters (if any) will have as values the initial arguments, as usual, but the final parameter's value will be a list of any remaining arguments. For instance, given the definition
+### SICP 2.20
+
+The procedures `+`, `*`, and `list` take arbitrary numbers of arguments. One way to define such procedures is to use `define` with **dotted-tail notation**. In a procedure definition, a parameter list that has a dot before the last parameter name indicates that, when the procedure is called, the initial parameters (if any) will have as values the initial arguments, as usual, but the final parameter's value will be a list of any remaining arguments. For instance, given the definition
 
     (define (f x y . z) <body>)
 
@@ -83,7 +95,9 @@ Use this notation to write a procedure `same-parity` that takes one or more inte
     -> (same-parity 2 3 4 5 6 7)
     (2 4 6)
 
-**SICP 2.22)** Louis Reasoner tries to rewrite the first `square-list` procedure of Exercise 2.21 so that it evolves an iterative process:
+### SICP 2.22
+
+Louis Reasoner tries to rewrite the first `square-list` procedure of Exercise 2.21 so that it evolves an iterative process:
 
     (define (square-list items)
       (define (iter things answer)
