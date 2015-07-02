@@ -108,29 +108,26 @@ using Euler's expansion.
 ## Exercise 5: Interchanging Base Cases
 
  <p>Here is the definition of <code>count-change</code> program from earlier in this lesson:
-<pre><code>(define (count-change amount)
-  (cc amount 5))
+<pre><code>
+(define (count-change amount)
+  (cc amount `(50 25 10 5 1)))
+
 (define (cc amount kinds-of-coins)
-  (cond ((= amount 0) 1)
-        ((or (&lt; amount 0) (= kinds-of-coins 0)) 0)
-        (else (+ (cc amount
-                     (- kinds-of-coins 1))
+  (cond [(= amount 0) 1]
+        [(or (< amount 0) (empty? kinds-of-coins)) 0]
+        [else (+ (cc amount
+                     (bf kinds-of-coins))
                  (cc (- amount
-                        (first-denomination kinds-of-coins))
-                     kinds-of-coins)))))
-(define (first-denomination kinds-of-coins)
-  (cond ((= kinds-of-coins 1) 1)
-        ((= kinds-of-coins 2) 5)
-        ((= kinds-of-coins 3) 10)
-        ((= kinds-of-coins 4) 25)
-        ((= kinds-of-coins 5) 50)))</code></pre></p>
+                        (first kinds-of-coins))
+                     kinds-of-coins))] ))
+</code></pre></p>
   <p>Explain the effect of interchanging the order in which the base cases in the <code>cc</code> procedure are checked.</p>
   <p>That is, describe completely the set of arguments for which the original <code>cc</code> procedure would return a different value or behave differently from a <code>cc</code> procedure coded as given below, and explain how the returned values would differ.
 <pre><code>(define (cc amount kinds-of-coins)
   (cond
-    ((or (&lt; amount 0) (= kinds-of-coins 0)) 0)
-    ((= amount 0) 1)
-    (else ... ) ) ) ; as in the original version</code></pre></p>
+    [(or (&lt; amount 0) (empty? kinds-of-coins)) 0]
+    [(= amount 0) 1]
+    [else ... ] ) ) ; as in the original version</code></pre></p>
 
 ## Exercise 6: Invariant for Exponentiation
 
@@ -148,26 +145,5 @@ using Euler's expansion.
   <p>(The kind of answer we're looking for is "the sum of <code>b</code>, <code>n</code>, and <code>counter</code> times <code>product</code> is always equal to 37.")</p>
    
 
-## Further Reading
-
-Do the following reading if it interests you:
-
-  * [ SICP 1.2 Procedures and the Processes They Generate](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-11.html#%_sec_1.2)
-    * [ SICP 1.2.5 Greatest Common Divisors](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-11.html#%_sec_1.2.5)
-    * [ SICP 1.2.6 Example: Testing for Primality](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-11.html#%_sec_1.2.6)
-  * [ Lecture Note 3: Recursion and Iteration (pages 14 - 17)](http://inst.eecs.berkeley.edu/~cs61as/reader/notes.pdf#page=14)
-
-## Reading for Lesson 4
-
-Do the following reading in preparation for Lesson 4:
-
-  * [ Introduction to Chapter 2: Building Abstractions with Data](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-13.html#%_chap_2)
-  * [ SICP 2.1 Introduction to Data Abstraction](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-14.html#%_sec_2.1)
-  * [ SICP 2.2.1 Representing Sequences](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-15.html#%25_sec_2.2.1)
-  * [ Lecture Note 4: Data Abstraction, Sequences (pages 18 - 23)](http://inst.eecs.berkeley.edu/~cs61as/reader/notes.pdf#page=18)
-
 ## Project 1
-
-Do [Project 1](http://www-inst.eecs.berkeley.edu/~cs61as/reader/nodate-21.pdf)
-before the Unit 1 deadline.
-
+Remember that [Project 1](./project-1-chatterbot.html) is due before the Unit 1 deadline.
