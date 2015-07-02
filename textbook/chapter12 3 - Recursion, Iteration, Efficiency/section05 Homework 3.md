@@ -108,29 +108,26 @@ using Euler's expansion.
 ## Exercise 5: Interchanging Base Cases
 
  <p>Here is the definition of <code>count-change</code> program from earlier in this lesson:
-<pre><code>(define (count-change amount)
-  (cc amount 5))
+<pre><code>
+(define (count-change amount)
+  (cc amount `(50 25 10 5 1)))
+
 (define (cc amount kinds-of-coins)
-  (cond ((= amount 0) 1)
-        ((or (&lt; amount 0) (= kinds-of-coins 0)) 0)
-        (else (+ (cc amount
-                     (- kinds-of-coins 1))
+  (cond [(= amount 0) 1]
+        [(or (< amount 0) (empty? kinds-of-coins)) 0]
+        [else (+ (cc amount
+                     (bf kinds-of-coins))
                  (cc (- amount
-                        (first-denomination kinds-of-coins))
-                     kinds-of-coins)))))
-(define (first-denomination kinds-of-coins)
-  (cond ((= kinds-of-coins 1) 1)
-        ((= kinds-of-coins 2) 5)
-        ((= kinds-of-coins 3) 10)
-        ((= kinds-of-coins 4) 25)
-        ((= kinds-of-coins 5) 50)))</code></pre></p>
+                        (first kinds-of-coins))
+                     kinds-of-coins))] ))
+</code></pre></p>
   <p>Explain the effect of interchanging the order in which the base cases in the <code>cc</code> procedure are checked.</p>
   <p>That is, describe completely the set of arguments for which the original <code>cc</code> procedure would return a different value or behave differently from a <code>cc</code> procedure coded as given below, and explain how the returned values would differ.
 <pre><code>(define (cc amount kinds-of-coins)
   (cond
-    ((or (&lt; amount 0) (= kinds-of-coins 0)) 0)
-    ((= amount 0) 1)
-    (else ... ) ) ) ; as in the original version</code></pre></p>
+    [(or (&lt; amount 0) (empty? kinds-of-coins)) 0]
+    [(= amount 0) 1]
+    [else ... ] ) ) ; as in the original version</code></pre></p>
 
 ## Exercise 6: Invariant for Exponentiation
 
