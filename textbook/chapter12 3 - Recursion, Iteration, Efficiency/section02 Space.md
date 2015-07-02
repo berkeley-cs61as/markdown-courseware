@@ -113,7 +113,7 @@ Important observations on the differences:
 - Because the Iterative version needed to keep track of more arguments, it needed a helper procedure where the recursion actually took place. This is often the case for Iterative procedures.
 
 ## Tail Recursion and Writing Tail Recursive Procedures
-In formal terms, the Iterative `factorial` is more space efficent because the Racket interpreter impliements Tail Call Optimization. In other programming languages and other interpreters that aren't Tail Call Optimized the Recursive and Iterative versions use the same amount of space when run. So why do we care?
+In formal terms, the Iterative `factorial` is more space efficent because the Racket interpreter impliements [Tail Call Elimination](https://en.wikipedia.org/wiki/Tail_call). In other programming languages and other interpreters that aren't Tail Call optimized, the Recursive and Iterative versions use the same amount of space when run. So why do we care?
 
 - Introducing these topics gives us a deeper understanding of recursion, evaluation, and programming languages, which provides a solid background for other topics
 - This is a chance to practice thinking critically about resource usage and tradeoffs, which is generally important to Software Engineering and Computer Science.

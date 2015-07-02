@@ -37,7 +37,7 @@ Breaking the procedure down, there are three parts to consider
   - In the second world, we take two steps, and thus the number of steps is reduced by two
 - Making two recursive calls to those smaller problems gives us the answer to those smaller problems, and adding up those up gives us the answer to the original problem.
 
-`count-stairs` is *tree recursive* because whenever it is called, its branch out and form an upside-down tree. For example, `(count-stairs 5)`:
+`count-stairs` is *tree recursive* because whenever it is called, the recursive calls branches out and form an upside-down tree. For example, `(count-stairs 5)`:
 ![An upside down tree](../static/count-stairs/\(count-stairs 5\).png)
 
 ## Counting Change
@@ -51,7 +51,7 @@ We approach the problem in a similar fashion as above. By thinking carefully abo
   - This may seem counter-intuitive, but there's exactly one way to make change for $0--use no coins.
 - If the amount is less than 0, we should count that as 0 ways to make change.
   - You can't make change for negative amounts!
-- If we run out of cois to use, we should count that as 0 ways to make change.
+- If we run out of coins to use, we should count that as 0 ways to make change.
   - This will become more intuitive once we consider the recursive case.
 
 For the recursive case, we again have to make two recursive calls. These two recursive calls break our problem into two worlds:
@@ -79,6 +79,8 @@ When we translate this into code, we get the following:
 
 
 ## Further Reading
-[SICP 1.2.2 Tree Recursion](https://mitpress.mit.edu/sicp/full-text/book/book-Z-H-4.html#%_toc_%_sec_1.2.2)
-[SICP 1.2.2 Example: Counting Change](https://mitpress.mit.edu/sicp/full-text/book/book-Z-H-4.html#%_toc_%_sec_Temp_52)
+
+- [SICP 1.2.2 Tree Recursion](https://mitpress.mit.edu/sicp/full-text/book/book-Z-H-4.html#%_toc_%_sec_1.2.2)
+- [SICP 1.2.2 Example: Counting Change](https://mitpress.mit.edu/sicp/full-text/book/book-Z-H-4.html#%_toc_%_sec_Temp_52)
+
 
