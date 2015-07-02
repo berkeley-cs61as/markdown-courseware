@@ -40,15 +40,9 @@ Suppose we evaluate the expression (list 1 (list 2 (list 3 4))). What is returne
 <!-- and so on -->
 </div>
 
-## Some Shorthand
+## Shorthand Review
 
-Series of `car`s and `cdr`s can be downright ugly. In our Racket interpreter, there is a built-in short-hand notation to do a multiple calls to `car` and/or `cdr`.
-
-` (car (cdr a))` is equivalent to ` (cadr a) `.
-
-`(car (cdr (car (car a))))` is equivalent to `(cadaar a)`.
-
-Notice how in the first example, if we take the `cadr` of some sequence `a`, we first take the `cdr` of `a`, and then take the `car` of whatever is returned from that. In general, you can extract the `a`'s and `d`'s from a string of `car`s and `cdr`s, and append them together, in the same order, between one `c` and one `r`. You can do up to `cxxxxr` (4 `x`'s), where `x` is either `a` or `d`.
+To make your life easier, make sure you refresh yourself on [shorthand notation](LINK HERE!!!!!) for `car`s and `cdr`s.
 
 ![](http://socialkennesaw.com/wp-content/uploads/2013/05/half-cop-car-
 ksaw.jpg)
