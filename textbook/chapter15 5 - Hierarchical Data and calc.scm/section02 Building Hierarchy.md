@@ -4,7 +4,7 @@ Previously we have seen how to use `cons` to 'group' a pair of data together,
 like `(cons 1 2)` which returns a pair `(1 . 2)`. We can also use `list` to
 group an arbitary amount of data together. For example if you type `(list 1 2
 'bagel 4)` in the interpreter, Racket will print the list `(1 2 bagel 4)`.
-Notice that we can put **any** sort of data inside them, even pairs and lists!
+Notice that we can put **any** sort of data inside them, even other pairs and lists!
 
 The following call makes a pair of lists:
 
@@ -42,7 +42,7 @@ Suppose we evaluate the expression (list 1 (list 2 (list 3 4))). What is returne
 
 ## Shorthand Review
 
-To make your life easier, make sure you refresh yourself on [shorthand notation](LINK HERE!!!!!) for `car`s and `cdr`s.
+To make your life easier, make sure you refresh yourself on [shorthand notation](http://berkeley-cs61as.github.io/textbook/representing-sequences.html#sub2) for `car`s and `cdr`s.
 
 ![](http://socialkennesaw.com/wp-content/uploads/2013/05/half-cop-car-
 ksaw.jpg)
