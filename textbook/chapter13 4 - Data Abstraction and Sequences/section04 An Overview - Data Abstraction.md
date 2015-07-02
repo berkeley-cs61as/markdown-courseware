@@ -8,7 +8,7 @@ The basic idea of data abstraction is to structure the programs that use compoun
 
 Programs and projects that professional programmers write are often accessible to the public, who _aren't_ all code savvy. If a tech company writes a cool program in Python, they won't expect their clients to know how they wrote their program, or even how to understand Python, in order to use their product. So how do these programmers let non-programmer people to use their creations? Abstraction. This is what programming is all about.
 
-The interface between these two parts of our system will be a set of procedures, called **constructors** and *selectors**:
+The interface between these two parts of our system will be a set of procedures, called **constructors** and **selectors**:
 
   * The **constructor** creates the object that stores our data.
   * The **selector(s)** extracts the data that you will use from the object created by the constructor.
@@ -51,6 +51,19 @@ Do you see how, in the calls above, there is nothing that reveals _how_ the rati
 
 The constructors and selectors of an abstract data type go hand in hand. The selectors for this rational numbers implementation will not work for a different implementation of rational numbers. We could have used lists, sentences, decimals, etc. The beauty of abstraction is that we _don't know_.
 
+<div class="mc">
+<strong>Test Your Understanding</strong><br><br>
+Consider the problem of representing line segments in a plane. Each segment is represented as a pair of points: a starting point and an ending point.<br><br>
+
+Points are represented as a pair of coordinates:
+
+<pre><code>(define (make-point x y) (cons x y))
+(define (x-coord point) (car point))
+(define (y-coord point) (cdr point))</code></pre>
+
+Define a constructor called make-segment and selectors called start-segment and end-segment that define the representation of segments in terms of points. You may choose any method of storing the data you wish.
+</div>
+
 ## Procedures using ADT
 
 To build off of our rational numbers ADT, let's write some procedures that respect the abstraction of our implementation. One useful procedure is `print-rat`, which actually let's us see what a rational number "looks like" given its abstract representation.
@@ -89,3 +102,8 @@ What's the use of rational numbers if we can't do mathematical operations on the
          (* (numerator rat2) (denominator rat1))))
 
 Notice how these procedures _respect_ the abstraction. Nowhere in our code do we call `cons` to create a rational, or `car`/`cdr` to select the numerator or denominator. Failing to do so is called a **data abstraction violation**, but we can talk about that in a later section. For now, let's move on to a bigger and better example!
+
+<div class="mc">
+<strong>Test Your Understanding</strong><br><br>
+Using your implementation of line segments above, define a procedure called segment-length that takes in a line segment and returns its length.
+</div>

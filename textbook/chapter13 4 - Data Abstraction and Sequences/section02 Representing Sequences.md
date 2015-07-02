@@ -24,7 +24,7 @@ Let's take a look at the following example, where we create a pair of the number
 
 Visually, this pair would look like this:
 
-![](/static/04_empty_pair.png)
+![](/static/04_pair_3_4.png)
 
 This visual representation is called a **box and pointer diagram**, and is an extremely useful tool for understanding pairs when they get more complex in the future.
 
