@@ -50,7 +50,7 @@ Notice how we defined `make-hand` as a **variable** assigned to the procedure `l
 	-> (rest-hand my-hand)
 	((5 . d) (10 . d) (13 . c))
 
-## Using our Implementation
+## Using Our Implementation
 
 That's all we'll need to represent cards! You have cards, and you have a collection of cards. Everything else can be defined in terms these two objects. For example, a deck is just a hand with a card for every combination of rank and suit (plus two jokers, but we'll omit that for now). 
 
