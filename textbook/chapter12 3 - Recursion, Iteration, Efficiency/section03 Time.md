@@ -43,7 +43,7 @@ Orders of Growth describe the relationship between functions. Given two function
 
 - When *f(n) = n* and *g(n) = 329n*, *f = Θ(g)*.
 - When *f(n) = 4n²* and *g(n) = 2n²+n*, *f = Θ(g)*.
-- When *f(n) = .0004n²* and *g(n) = 1000n²+30000n*, *f* IS NOT equal to *Θ(g)*.
+- When *f(n) = .0004n³* and *g(n) = 1000n²+30000n*, *f* IS NOT equal to *Θ(g)*.
 
 Based on these examples, we have the following rules
 
