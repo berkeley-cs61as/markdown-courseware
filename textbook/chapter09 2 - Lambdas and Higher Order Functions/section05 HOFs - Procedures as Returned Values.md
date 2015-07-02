@@ -9,7 +9,7 @@ Let's say we want to define a procedure `sum-powers` that takes the `n`th power 
 	(define (sum f a b)
 		(if (> a b)
 			0
-			(+ (f a) (sum (+ a 1) b))))
+			(+ (f a) (sum f (+ a 1) b))))
 
 From what we learned so far, it'd look something like this:
 
