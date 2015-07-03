@@ -17,8 +17,8 @@ word, and a new word. It should return a copy of the sentence, but with every
 occurrence of the old word replaced by the new word.
 
 ```
-(substitute '(she loves you yeah yeah yeah) 'yeah 'maybe)
-;; Outputs: (she loves you maybe maybe maybe)
+-> (substitute '(she loves you yeah yeah yeah) 'yeah 'maybe)
+(she loves you maybe maybe maybe)
 ```
 
 ## Exercise 2
@@ -49,12 +49,12 @@ predict the results before letting Racket do the computation.
 ```
 
 ```
-(define (square x) ( x x))
+(define (square x) (* x x))
 (square 5)
 ```
 
 ```
-(define sq (lambda (x) ( x x)))
+(define sq (lambda (x) (* x x)))
 (sq 5)
 ```
 
