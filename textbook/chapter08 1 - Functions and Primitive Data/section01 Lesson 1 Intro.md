@@ -2,17 +2,15 @@
 
 > "Did you mean: [recursion](https://www.google.com/search?q=recursion)"
 
-In this lab we will dive into functional programming and recursion. In short,
-recursion is idea of having a procedure solve some big problem by making it a
-little bit smaller somehow and then calling itself. When it calls itself, it
-makes the problem smaller yet again. This continues until the problem is small
-enough to be trivially solved. Recursion can be hard to get used to if you
+In this lesson, we will dive into functional programming and recursion. A recursive procedure solves a large problem by making it a little bit smaller somehow and then calling itself. When it calls itself, it makes the problem smaller yet again. This continues until the problem is small enough to be trivially solved.
+
+Recursion can be hard to get used to if you
 have never used it before. Some things to remember when programming
 recursively are:
 
-  1. Remember to have a base case. Your recursion should reach a point where it no longer needs to call itself to get an answer. At some point the problem should be trivial enough to just output an answer.
-  2. Always make your problem smaller. Whenever you make a recursive call make sure your arguments are smaller than what they were to begin with. If they aren't, then you can get yourself into some nasty infinite loops.
-  3. Lastly, trust the recursion! Don't overthink the problem. If your recursion makes sense and you've followed hints 1 and 2 you probably have working code. You don't always need to trace through the recursion to make sure your procedure works as you expect it to.
+  1. Remember to have a base case. Your recursion should reach a point where it no longer needs to call itself to get an answer. At some point, the problem should be trivial enough to just output an answer.
+  2. Always make your problem smaller. Whenever you make a recursive call, make sure your arguments are smaller than what they were to begin with. If they aren't, then you can get yourself into some nasty infinite loops.
+  3. Lastly, trust the recursion! Don't overthink the problem. If your recursion makes sense and you've followed hints 1 and 2, you probably have working code. You don't always need to trace through the recursion to make sure your procedure works as you expect it to.
 
 ## Prerequisites and What to Expect
 
