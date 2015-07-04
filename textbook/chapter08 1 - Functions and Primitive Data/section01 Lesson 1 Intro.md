@@ -34,12 +34,12 @@ If you'd like more resources, check out all of the readings for Unit 0.
 ## Functions
 
 Before we talk about functions in computer science, let's talk about functions
-in math. In math, a function _f(x)_ takes a single input _x_, does
-"something" to that _x_, and returns a new value. For each _x_ that the
+in math. In math, a function [mathjaxinline]f(x)[mathjaxinline] takes a single input [mathjaxinline]x[mathjaxinline], does
+"something" to that [mathjaxinline]x[mathjaxinline], and returns a new value. For each [mathjaxinline]x[mathjaxinline] that the
 function takes in, it returns only one value, and it returns _the same value
-every time_. For example, if _f(x) = x + 2_, every single time we plug in 4 to
-_f(x)_, we will get 6. In no circumstance will we input 4 and get 5,
-_sqrt(2)_, 7, or anything other than 6.
+every time_. For example, if [mathjaxinline]f(x) = x + 2[mathjaxinline], every single time we plug in 4 to
+[mathjaxinline]f(x)[mathjaxinline], we will get 6. In no circumstance will we input 4 and get 5,
+[mathjaxinline]\sqrt{2}[mathjaxinline], 7, or anything other than 6.
 
 It's the same thing in computer science! A function is defined as a
 [procedure](https://preview.edge.edx.org/courses/uc-berkeley/cs61as-
