@@ -1,7 +1,7 @@
 ## Resources and Computing
 
 Computers are powerful, but they have limits. Because of this, part of a
-programmer's job is to manage a computer's resources efficiently--if a
+programmer's job is to manage a computer's resources efficiently&mdash;if a
 programmer writes a program that is too inefficient, the computer will run out
 of resources attempting to execute it. There are two broad ways a program can
 be inefficient: space and time. Space is the amount of "scratch paper" the
