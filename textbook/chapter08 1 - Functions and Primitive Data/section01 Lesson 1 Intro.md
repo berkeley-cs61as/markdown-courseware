@@ -38,8 +38,7 @@ in math. In math, a function [mathjaxinline]f(x)[/mathjaxinline] takes a single 
 "something" to that [mathjaxinline]x[/mathjaxinline], and returns a new value. For each [mathjaxinline]x[/mathjaxinline] that the
 function takes in, it returns only one value, and it returns _the same value
 every time_. For example, if [mathjaxinline]f(x) = x + 2[/mathjaxinline], every single time we plug in 4 to
-[mathjaxinline]f(x)[/mathjaxinline], we will get 6. In no circumstance will we input 4 and get 5,
-[mathjaxinline]\sqrt{2}[/mathjaxinline], 7, or anything other than 6.
+[mathjaxinline]f(x)[/mathjaxinline], we will get 6. In no circumstance will we input 4 and get 5, 7, or anything other than 6.
 
 It's the same thing in computer science! A function is defined as a
 [procedure](https://preview.edge.edx.org/courses/uc-berkeley/cs61as-
