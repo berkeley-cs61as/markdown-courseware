@@ -40,7 +40,7 @@ What is the body of the procedure?
 <ans text="(+ (* 3 x) (* 4 y))" explanation="Nice!" correct></ans>
 </div>
 
-## Procedures with More than One Formal Parameter
+## Procedures with Multiple Formal Parameters
 
 Procedures don't have to have just one formal parameter, such as in `square`.
 They can also have multiple formal parameters. The way to create procedures
