@@ -1,212 +1,177 @@
 **NOTICE: This project is undergoing major revisions. We will let you know via Piazza when you may begin working on this project. &mdash;The Instructors**
 
-## Project 2: turtle graphics
+## Introduction
 
-This project presents a simple language for drawing pictures that illustrates
-the power of data abstraction and closure, and also exploits higher-order
-procedures in an essential way. The language is designed to make it easy to
-experiment with patterns such as below, which are composed of repeated
-elements that are shifted and scaled. In this language, the data objects being
-combined are represented as procedures rather than as list structure. Just as
-cons, which satisfies the closure property, allowed us to easily build
-arbitrarily complicated list structure, the operations in this language, which
-also satisfy the closure property, allow us to easily build arbitrarily
-complicated patterns.
+This project presents a simple language for drawing pictures.
 
-![](http://mitpress.mit.edu/sicp/full-text/book/ch2-Z-G-24.gif)
-![](http://mitpress.mit.edu/sicp/full-text/book/ch2-Z-G-25.gif)
+Just as we can build arbitrarily complicated list structures using `cons`,
+we can use this picture language to build arbitrarily complicated *patterns*,
+like the one shown below. Notice how the image is composed of repeated
+elements that are shifted and scaled.
 
-To begin, copy the file `~cs61as/lib/picture.scm` to your directory.
+![](../static/squarelimit.png)
 
-Or, download it from
-[here](http://inst.eecs.berkeley.edu/~cs61as/library/picture.scm)
+As we explore this picture language, we'll see how data abstractions and higher-order procedures
+can be combined to build complex and beautiful designs from simple elements.
 
-To draw pictures once you've defined the primitive painters:
+To begin, copy the file `~cs61as/lib/picture.rkt` to your directory, or download it
+[here](http://inst.eecs.berkeley.edu/~cs61as/library/picture.rkt).
 
-    
-    > (cs)
-    > (ht)
-    > (===your-painter=== full-frame)
-    
+## The Picture Language
 
-For example:
-
-    
-    > (wave full-frame)
-    > ((square-limit wave 3) full-frame)
-
-## milestones
-
-Units 1-4: 10/4
-
-Units 0-3: 10/15
-
-Units 1-3: 10/11
-
-Units 0-2: 11/15
-
-## The picture language
-
-When we began our study of programming in lesson 1, we emphasized the
+When we began our study of programming in Lesson 1, we emphasized the
 importance of describing a language by focusing on the language's primitives,
 its means of combination, and its means of abstraction. We'll follow that
 framework here.
 
 Part of the elegance of this picture language is that there is only one kind
-of element, called a painter. A painter draws an image that is shifted and
-scaled to fit within a designated parallelogram-shaped frame. For example,
-there's a primitive painter we'll call wave that makes a crude line drawing,
-as shown in figure 2.10. The actual shape of the drawing depends on the frame
--- all four images in figure 2.10 are produced by the same wave painter, but
-with respect to four different frames. Painters can be more elaborate than
-this: The primitive painter called rogers paints a picture of MIT's founder,
-William Barton Rogers, as shown in figure 2.11.23 The four images in figure
-2.11 are drawn with respect to the same four frames as the wave images in
-figure 2.10.
-
-To combine images, we use various operations that construct new painters from
-given painters. For example, the beside operation takes two painters and
-produces a new, compound painter that draws the first painter's image in the
-left half of the frame and the second painter's image in the right half of the
-frame. Similarly, below takes two painters and produces a compound painter
-that draws the first painter's image below the second painter's image. Some
-operations transform a single painter to produce a new painter. For example,
-flip-vert takes a painter and produces a painter that draws its image upside-
-down, and flip-horiz produces a painter that draws the original painter's
-image left-to-right reversed.
+of element, called a **painter**. A painter draws an image that is shifted and
+scaled to fit within a designated parallelogram-shaped **frame**. For example,
+there's a primitive painter we'll call `wave-painter` that makes a crude line drawing,
+as shown below. The actual shape of the drawing depends on the frame&mdash;all
+four images below are produced by the same `wave-painter`, but
+with respect to four different frames.
 
 ![](http://mitpress.mit.edu/sicp/full-text/book/ch2-Z-G-26.gif)
 ![](http://mitpress.mit.edu/sicp/full-text/book/ch2-Z-G-27.gif)
 ![](http://mitpress.mit.edu/sicp/full-text/book/ch2-Z-G-28.gif)
 ![](http://mitpress.mit.edu/sicp/full-text/book/ch2-Z-G-29.gif)
 
-Figure 2.10: Images produced by the wave painter, with respect to four
-different frames. The frames, shown with dotted lines, are not part of the
-images.
+## Combining Painters
 
-  
-![](http://mitpress.mit.edu/sicp/full-text/book/ch2-Z-G-30.gif)
-![](http://mitpress.mit.edu/sicp/full-text/book/ch2-Z-G-31.gif)
-![](http://mitpress.mit.edu/sicp/full-text/book/ch2-Z-G-32.gif)
-![](http://mitpress.mit.edu/sicp/full-text/book/ch2-Z-G-33.gif)
+To combine images, we use various operations that construct new painters from
+given painters. For example, the `beside` operation takes two painters and
+produces a new, compound painter that draws the first painter's image in the
+left half of the frame and the second painter's image in the right half of the
+frame. Similarly, `below` takes two painters and produces a compound painter
+that draws the first painter's image below the second painter's image.
 
-Figure 2.11: Images of William Barton Rogers, founder and first president of
-MIT, painted with respect to the same four frames as in figure 2.10 (original
-image reprinted with the permission of the MIT Museum).
+Some operations transform a single painter to produce a new painter. For example,
+`flip-vert` takes a painter and produces a painter that draws its image upside-down,
+and `flip-horiz` produces a painter that draws the original painter's
+image left-to-right reversed.
 
-Figure 2.12 shows the drawing of a painter called `wave4` that is built up in
-two stages starting from wave:
+Here's how we can define a painter called `wave4` that is built up in
+two stages starting from `wave-painter`:
 
-    
-    (define wave2 (beside wave (flip-vert wave)))
-    (define wave4 (below wave2 wave2))  
-      
-    ![](http://mitpress.mit.edu/sicp/full-text/book/ch2-Z-G-34.gif)                         ![](http://mitpress.mit.edu/sicp/full-text/book/ch2-Z-G-35.gif)  
-      
-    (define wave2                              (define wave4 
-      (beside wave (flip-vert wave)))            (below wave2 wave2)) 
-    
+```
+(define wave2 (beside wave-painter (flip-vert wave-painter)))
+(define wave4 (below wave2 wave2))  
+``` 
 
-Figure 2.12: Creating a complex figure, starting from the wave painter of
-figure 2.10.
+The resulting figures are shown below:
 
-## combining painters
+![](http://mitpress.mit.edu/sicp/full-text/book/ch2-Z-G-34.gif)
+![](http://mitpress.mit.edu/sicp/full-text/book/ch2-Z-G-35.gif)
 
-In building up a complex image in this manner we are exploiting the fact that
-painters are closed under the language's means of combination. The beside or
-below of two painters is itself a painter; therefore, we can use it as an
-element in making more complex painters. As with building up list structure
-using cons, the closure of our data under the means of combination is crucial
-to the ability to create complex structures while using only a few operations.
+## Abstract Operations
 
 Once we can combine painters, we would like to be able to abstract typical
 patterns of combining painters. We will implement the painter operations as
-Scheme procedures. This means that we don't need a special abstraction
-mechanism in the picture language: Since the means of combination are ordinary
-Scheme procedures, we automatically have the capability to do anything with
+Racket procedures. This means that we don't need a special abstraction
+mechanism in the picture language: since the means of combination are ordinary
+Racket procedures, we automatically have the capability to do anything with
 painter operations that we can do with procedures. For example, we can
 abstract the pattern in `wave4` as
 
-    
-    (define (flipped-pairs painter)
-      (let ((painter2 (beside painter (flip-vert painter))))
-        (below painter2 painter2)))
-    
+```
+(define (flipped-pairs painter)
+  (let ((painter2 (beside painter (flip-vert painter))))
+    (below painter2 painter2)))
+``` 
 
 and define `wave4` as an instance of this pattern:
 
-`(define wave4 (flipped-pairs wave))`
+```
+(define wave4 (flipped-pairs wave))
+```
 
-We can also define recursive operations. Here's one that makes painters split
-and branch towards the right as shown in figures 2.13 and 2.14:
+## Recursive Operations
 
-    
-    
-    (define (right-split painter n)
-      (if (= n 0)
-          painter
-          (let ((smaller (right-split painter (- n 1))))
-            (beside painter (below smaller smaller)))))  
+We can also define recursive operations. Here's one called `right-split`
+that makes painters split and branch towards the right:
+
+```
+(define (right-split painter n)
+  (if (= n 0)
+      painter
+      (let ((smaller (right-split painter (- n 1))))
+        (beside painter (below smaller smaller)))))
+```
       
-    ![](http://mitpress.mit.edu/sicp/full-text/book/ch2-Z-G-36.gif)            ![](http://mitpress.mit.edu/sicp/full-text/book/ch2-Z-G-37.gif)  
-       right-split n                   up-split n  
+Here's what the general template for `(right-split painter n)` looks like:
 
-Figure 2.13: Recursive plans for `right-split` and `corner-split`.
+![](http://mitpress.mit.edu/sicp/full-text/book/ch2-Z-G-36.gif)
 
-We can produce balanced patterns by branching upwards as well as towards the
-right (see exercise 2.44 and figures 2.13 and 2.14):
-
-    
-    (define (corner-split painter n)
-      (if (= n 0)
-          painter
-          (let ((up (up-split painter (- n 1)))
-                (right (right-split painter (- n 1))))
-            (let ((top-left (beside up up))
-                  (bottom-right (below right right))
-                  (corner (corner-split painter (- n 1))))
-              (beside (below painter top-left)
-                      (below bottom-right corner))))))  
-    
-    
+And here's the result for `(right-split wave-painter 4)`:
 
 ![](http://mitpress.mit.edu/sicp/full-text/book/ch2-Z-G-38.gif)
-![](http://mitpress.mit.edu/sicp/full-text/book/ch2-Z-G-39.gif)
 
-`(right-split wave 4)  (right-split rogers 4)`
+We can produce balanced patterns by branching upwards as well as towards the
+right:
+
+```
+(define (corner-split painter n)
+  (if (= n 0)
+      painter
+      (let ((up (up-split painter (- n 1)))
+            (right (right-split painter (- n 1))))
+        (let ((top-left (beside up up))
+              (bottom-right (below right right))
+              (corner (corner-split painter (- n 1))))
+          (beside (below painter top-left)
+                  (below bottom-right corner))))))  
+```
+
+Here's the general template for `(corner-split painter n)`:
+
+![](http://mitpress.mit.edu/sicp/full-text/book/ch2-Z-G-37.gif)
+
+And here's the result for `(corner-split wave-painter 4)`:
 
 ![](http://mitpress.mit.edu/sicp/full-text/book/ch2-Z-G-40.gif)
-![](http://mitpress.mit.edu/sicp/full-text/book/ch2-Z-G-41.gif)
 
-`(corner-split wave 4)  (corner-split rogers 4)`
+By placing four copies of a `corner-split` appropriately, we obtain a pattern
+called `square-limit`:
 
-Figure 2.14: The recursive operations `right-split` and `corner-split` applied
-to the painters wave and rogers.
+```
+(define (square-limit painter n)
+  (let ((quarter (corner-split painter n)))
+    (let ((half (beside (flip-horiz quarter) quarter)))
+      (below (flip-vert half) half))))
+```
 
-By placing four copies of a corner-split appropriately, we obtain a pattern
-called `square-limit`, whose application to wave and rogers is shown in the
-figure below:
+The very first figure at the top of this page, reproduced below, is the visual
+output for `(square-limit wave-painter 5)`:
 
-    
-    ![](http://mitpress.mit.edu/sicp/full-text/book/ch2-Z-G-25.gif)  
-    
-    (define (square-limit painter n)
-      (let ((quarter (corner-split painter n)))
-        (let ((half (beside (flip-horiz quarter) quarter)))
-          (below (flip-vert half) half))))  
-    
+![](../static/squarelimit.png)
 
-## 1. up-split
+## Exercise 1: `up-split`
 
 Define the procedure `up-split` used by `corner-split`. It is similar to
-`right-split`, except that it switches the roles of below and beside.
+`right-split`, except that it switches the roles of `below` and `beside`.
 
-## higher-order operations
+For your convenience, `right-split` is shown again here:
+
+```
+(define (right-split painter n)
+  (if (= n 0)
+      painter
+      (let ((smaller (right-split painter (- n 1))))
+        (beside painter (below smaller smaller)))))
+```
+
+Note that you will not be able to see the visual output of any of your code
+until the very end. As we'll see, the picture language we've been describing
+is incomplete&mdash;you'll have to fill in the gaps before we can begin
+using it.
+
+## Higher-Order Operations
 
 In addition to abstracting patterns of combining painters, we can work at a
 higher level, abstracting patterns of combining painter operations. That is,
 we can view the painter operations as elements to manipulate and can write
-means of combination for these elements -- procedures that take painter
+means of combination for these elements&mdash;procedures that take painter
 operations as arguments and create new painter operations.
 
 For example, `flipped-pairs` and `square-limit` each arrange four copies of a
@@ -214,80 +179,88 @@ painter's image in a square pattern; they differ only in how they orient the
 copies. One way to abstract this pattern of painter combination is with the
 following procedure, which takes four one-argument painter operations and
 produces a painter operation that transforms a given painter with those four
-operations and arranges the results in a square. `Tl`, `tr`, `bl`, and `br`
+operations and arranges the results in a square. `tl`, `tr`, `bl`, and `br`
 are the transformations to apply to the top left copy, the top right copy, the
 bottom left copy, and the bottom right copy, respectively.
 
-    
-    (define (square-of-four tl tr bl br)
-      (lambda (painter)
-        (let ((top (beside (tl painter) (tr painter)))
-              (bottom (beside (bl painter) (br painter))))
-          (below bottom top))))
-    
+```
+(define (square-of-four tl tr bl br)
+  (lambda (painter)
+    (let ((top (beside (tl painter) (tr painter)))
+          (bottom (beside (bl painter) (br painter))))
+      (below bottom top))))
+```
 
 Then `flipped-pairs` can be defined in terms of `square-of-four` as follows:
 
-    
-    (define (flipped-pairs painter)
-      (let ((combine4 (square-of-four identity flip-vert
-                                      identity flip-vert)))
-        (combine4 painter)))
-    
+```
+(define (flipped-pairs painter)
+  (let ((combine4 (square-of-four identity flip-vert
+                                  identity flip-vert)))
+    (combine4 painter)))
+```
 
 and `square-limit` can be expressed as
 
-    
-    (define (square-limit painter n)
-      (let ((combine4 (square-of-four flip-horiz identity
-                                      rotate180 flip-vert)))
-        (combine4 (corner-split painter n))))
-    
+```
+(define (square-limit painter n)
+  (let ((combine4 (square-of-four flip-horiz identity
+                                  rotate180 flip-vert)))
+    (combine4 (corner-split painter n))))
+```
 
-## 2. split
+## Exercise 2: `split`
 
-`Right-split` and `up-split` can be expressed as instances of a general
+`right-split` and `up-split` can be expressed as instances of a general
 splitting operation. Define a procedure `split` with the property that
 evaluating
 
-    
-    (define right-split (split beside below))
-    (define up-split (split below beside))
-    
+```
+(define right-split (split beside below))
+(define up-split (split below beside))
+```
 
 produces procedures `right-split` and `up-split` with the same behaviors as
 the ones already defined.
 
-## frames
+## Frames
 
 Before we can show how to implement painters and their means of combination,
-we must first consider frames. A frame can be described by three vectors -- an
+we must first consider frames. A frame can be described by three vectors&mdash;an
 origin vector and two edge vectors. The origin vector specifies the offset of
 the frame's origin from some absolute origin in the plane, and the edge
 vectors specify the offsets of the frame's corners from its origin. If the
 edges are perpendicular, the frame will be rectangular. Otherwise the frame
 will be a more general parallelogram.
 
-Figure 2.15 shows a frame and its associated vectors. In accordance with data
-abstraction, we need not be specific yet about how frames are represented,
-other than to say that there is a constructor make-frame, which takes three
-vectors and produces a frame, and three corresponding selectors `origin-
-frame`, `edge1-frame`, and `edge2-frame`
+The figure below shows a frame and its associated vectors. In accordance with data
+abstraction, we need not be specific yet about how frames are represented in Racket,
+other than to say that there is a constructor `make-frame`, which takes three
+vectors and produces a frame, and three corresponding selectors: `origin-frame`,
+`edge1-frame`, and `edge2-frame`
 
 ![](http://mitpress.mit.edu/sicp/full-text/book/ch2-Z-G-42.gif)
 
-Figure 2.15: A frame is described by three vectors -- an origin and two edges.
+We will use coordinates in the unit square to specify vectors; that is, we'll
+use the region of space where [mathjaxinline]0 \leq x,y \leq 1[/mathjaxinline].
 
-We will use coordinates in the unit square (0<x,y<1) to specify images. With
-each frame, we associate a frame coordinate map, which will be used to shift
-and scale images to fit the frame. The map transforms the unit square into the
-frame by mapping the vector v = (x,y) to the vector sum
+### Frame Coordinates (Optional)
+
+This optional subsection describes how frame coordinates are calculated.
+
+With each frame, we associate a **coordinate map**, which is used to shift
+and scale images to fit the frame. The coordinate map transforms vectors in the unit square
+to vectors in the frame using the formula
 
 ![](http://mitpress.mit.edu/sicp/full-text/book/ch2-Z-G-43.gif)
 
-For example, (0,0) is mapped to the origin of the frame, (1,1) to the vertex
-diagonally opposite the origin, and (0.5,0.5) to the center of the frame. We
-can create a frame's coordinate map with the following procedure:
+where [mathjaxinline]x[/mathjaxinline] and [mathjaxinline]y[/mathjaxinline] are
+the components of the input vector.
+
+For example, the vector (0, 0) is mapped to the origin of the frame, (1, 1) to the vertex
+diagonally opposite the origin, and (0.5, 0.5) to the center of the frame.
+
+In Racket, we can create a frame's coordinate map with the following procedure:
 
     
     (define (frame-coord-map frame)
@@ -313,24 +286,33 @@ returns the same vector as
     
     (origin-frame a-frame)
     
+because the vector (0, 0) maps to the origin of the frame.
 
-## 3. data abstraction part 1
+## Exercise 3: Representing Vectors
 
-A two-dimensional vector v running from the origin to a point can be
+A two-dimensional vector [mathjaxinline]v[/mathjaxinline] running from the origin to a point can be
 represented as a pair consisting of an x-coordinate and a y-coordinate.
 Implement a data abstraction for vectors by giving a constructor `make-vect`
-and corresponding selectors `xcor-vect` and `ycor-vect`. In terms of your
-selectors and constructor, implement procedures `add-vect`, `sub-vect`, and
-`scale-vect` that perform the operations vector addition, vector subtraction,
-and multiplying a vector by a scalar:
+and corresponding selectors `xcor-vect` and `ycor-vect`. 
 
-![](http://mitpress.mit.edu/sicp/full-text/book/ch2-Z-G-44.gif)
+Then, in terms of your selectors and constructor,
+implement procedures `add-vect`, `sub-vect`, and `scale-vect` that perform
+vector addition, vector subtraction,
+and vector multiplication by a scalar:
 
-Notice that scale-vect takes two different arguments.  To be compatible with
-the given code, you should define scale-vect so that the **first** argument is
-the **scalar**, and the **second** argument is the **vector**.
+<div>
+[mathjax]
+\begin{align}
+(x_1, y_1) + (x_2, y_2) &= (x_1 + x_2, y_1 + y_2)\\
+(x_1, y_1) - (x_2, y_2) &= (x_1 - x_2, y_1 - y_2)\\
+c \cdot (x, y) &= (cx, cy)
+\end{align}
+[/mathjax]
+</div>
 
-## 4. data abstraction part 2
+## Exercise 4: Representing Frames
+
+We will now implement frames as described above.
 
 Here are two possible constructors for frames:
 
@@ -338,25 +320,23 @@ Here are two possible constructors for frames:
     (define (make-frame origin edge1 edge2)
       (list origin edge1 edge2))
     
-    (define (make-frame origin edge1 edge2)
+    (define (make-frame-2 origin edge1 edge2)
       (cons origin (cons edge1 edge2)))
     
 
-For each constructor supply the appropriate selectors to produce an
-implementation for frames.
+For each constructor, supply the appropriate selectors.
 
-## painter
+## Representing Painters
 
-A painter is represented as a procedure that, given a frame as argument, draws
-a particular image shifted and scaled to fit the frame. That is to say, if p
-is a painter and f is a frame, then we produce p's image in f by calling p
-with f as argument.
+A painter is represented as a procedure that, given a frame as an argument, draws
+a particular image shifted and scaled to fit the frame. That is to say, if `p`
+is a painter and `f` is a frame, we produce `p`'s image in `f` by calling `(p f)`.
 
 The details of how primitive painters are implemented depend on the particular
 characteristics of the graphics system and the type of image to be drawn. For
 instance, suppose we have a procedure `draw-line` that draws a line on the
 screen between two specified points. Then we can create painters for line
-drawings, such as the wave painter in figure 2.10, from lists of line segments
+drawings, such as the wave painter, from lists of line segments
 as follows:
 
     
@@ -370,9 +350,9 @@ as follows:
          segment-list)))
     
 
-The segments are given using coordinates with respect to the **unit square.**
+The line segments are given using coordinates with respect to the unit square.
 For each segment in the list, the painter transforms the segment endpoints
-with the frame coordinate map and draws a line between the transformed points.
+with the frame coordinate map (see above) and draws a line between the transformed points.
 
 Representing painters as procedures erects a powerful abstraction barrier in
 the picture language. We can create and intermix all sorts of primitive
@@ -380,40 +360,40 @@ painters, based on a variety of graphics capabilities. The details of their
 implementation do not matter. Any procedure can serve as a painter, provided
 that it takes a frame as argument and draws something scaled to fit the frame.
 
-## 5. segments
+## Exercise 5: Representing Segments
 
-A directed line segment in the plane can be represented as a pair of vectors
--- the vector running from the origin to the start-point of the segment, and
+A directed line segment in the plane can be represented as a pair of vectors&mdash;the
+vector running from the origin to the start-point of the segment, and
 the vector running from the origin to the end-point of the segment. Use your
-vector representation from the previous page (Data Abstraction Part 1) to
-define a representation for segments with a constructor `make-segment` and
+vector representation from above to
+define a representation for segments with constructor `make-segment` and
 selectors `start-segment` and `end-segment`.
 
-## 6. primitive painters
+## Exercise 6: Primitive Painters
 
 Use `segments->painter` to define the following primitive painters:
 
-a. The painter that draws the outline of the designated frame.
+* `outline-painter`, which draws the outline of the designated frame.
 
-b. The painter that draws an ``X'' by connecting opposite corners of the
+* `x-painter`, which draws an "X" by connecting opposite corners of the
 frame.
 
-c. The painter that draws a diamond shape by connecting the midpoints of the
+* `diamond-painter`, which draws a diamond shape by connecting the midpoints of the
 sides of the frame.
 
-d. The `wave` painter.
+* `wave-painter`, which draws the figure shown [here](../static/wave.png).
 
-## transforming and combining painters
+## Transforming and Combining painters
 
 An operation on painters (such as `flip-vert` or `beside`) works by creating a
 painter that invokes the original painters with respect to frames derived from
 the argument frame. Thus, for example, `flip-vert` doesn't have to know how a
-painter works in order to flip it -- it just has to know how to turn a frame
+painter works in order to flip it&mdash;it just has to know how to turn a frame
 upside down: The flipped painter just uses the original painter, but in the
 inverted frame.
 
 Painter operations are based on the procedure `transform-painter`, which takes
-as arguments a painter and information on how to transform a frame and
+as arguments a painter and information on how to transform a frame, and
 produces a new painter. The transformed painter, when called on a frame,
 transforms the frame and calls the original painter on the transformed frame.
 The arguments to `transform-painter` are points (represented as vectors) that
@@ -455,7 +435,7 @@ quarter of the frame it is given:
                          (make-vect 0.5 1.0)))
     
 
-Other transformations rotate images counterclockwise by 90 degrees
+Other transformations rotate images counterclockwise by 90 degrees...
 
     
     (define (rotate90 painter)
@@ -465,7 +445,7 @@ Other transformations rotate images counterclockwise by 90 degrees
                          (make-vect 0.0 0.0)))
     
 
-or squash images towards the center of the frame:
+...or squash images towards the center of the frame:
 
     
     (define (squash-inwards painter)
@@ -502,37 +482,41 @@ right half of the frame:
     
 
 Observe how the painter data abstraction, and in particular the representation
-of painters as procedures, makes beside easy to implement. The beside
+of painters as procedures, makes `beside` easy to implement. The `beside`
 procedure need not know anything about the details of the component painters
 other than that each painter will draw something in its designated frame.
 
-## 7. flip-horiz
+## Exercise 7: `flip-horiz` and Rotations
 
-Define the transformation `flip-horiz`, which flips painters horizontally, and
-transformations that rotate painters counterclockwise by 180 degrees and 270
-degrees.
+Define the transformation `flip-horiz`, which flips painters horizontally.
 
-## 8. below
+Then define `rotate180` and `rotate270`, which rotate painters counterclockwise by
+180 degrees and 270 degrees respectively.
 
-Define the `below` operation for painters. `Below` takes two painters as
+## Exercise 8: `below`
+
+Define the `below` operation for painters. `below` takes two painters as
 arguments. The resulting painter, given a frame, draws with the first painter
 in the bottom of the frame and with the second painter in the top. Define
-below in two different ways -- first by writing a procedure that is analogous
-to the `beside` procedure given above, and again in terms of beside and
+`below` in two different ways&mdash;first by writing a procedure that is analogous
+to the `beside` procedure given above, then in terms of `beside` and
 suitable rotation operations (from the exercise above).
 
-## Levels of Language for robust design
+## Levels of Language for Robust Design
+
+Our picture language is now complete.
+Let's take a step back and evaluate.
 
 The picture language exercises some of the critical ideas we've introduced
 about abstraction with procedures and data. The fundamental data abstractions,
 painters, are implemented using procedural representations, which enables the
 language to handle different basic drawing capabilities in a uniform way. The
-means of combination satisfy the closure property, which permits us to easily
+means of combination are also procedures, and this permits us to easily
 build up complex designs. Finally, all the tools for abstracting procedures
 are available to us for abstracting means of combination for painters.
 
 We have also obtained a glimpse of another crucial idea about languages and
-program design. This is the approach of stratified design, the notion that a
+program design. This is the approach of *stratified design*, the notion that a
 complex system should be structured as a sequence of levels that are described
 using a sequence of languages. Each level is constructed by combining parts
 that are regarded as primitive at that level, and the parts constructed at
@@ -550,57 +534,59 @@ appropriate to computer architecture. Computers are combined to form
 distributed systems, using languages appropriate for describing network
 interconnections, and so on.
 
-As a tiny example of stratification, our picture language uses primitive
-elements (primitive painters) that are created using a language that specifies
-points and lines to provide the lists of line segments for
-`segments->painter`, or the shading details for a painter like `rogers`. The
-bulk of our description of the picture language focused on combining these
-primitives, using geometric combiners such as `beside` and `below`. We also
-worked at a higher level, regarding `beside` and `below` as primitives to be
-manipulated in a language whose operations, such as `square-of-four`, capture
-common patterns of combining geometric combiners.
-
-Stratified design helps make programs robust, that is, it makes it likely that
+Stratified design helps make programs robust&mdash;that is, it makes it likely that
 small changes in a specification will require correspondingly small changes in
-the program. For instance, suppose we wanted to change the image based on wave
-shown in figure 2.9. We could work at the lowest level to change the detailed
-appearance of the wave element; we could work at the middle level to change
-the way `corner-split` replicates the wave; we could work at the highest level
+the program. For instance, suppose we wanted to alter the image based on `wave-painter`.
+We could work at the lowest level to change the detailed
+appearance of the `wave-painter` element; we could work at the middle level to change
+the way `corner-split` replicates the wave; or we could work at the highest level
 to change how `square-limit` arranges the four copies of the corner. In
 general, each level of a stratified design provides a different vocabulary for
 expressing the characteristics of the system, and a different kind of ability
 to change it.
 
-## 9. square limit
+## Exercise 9: Square Limit
 
-Make changes to the square limit of wave shown in the figure below by working
+Alter the square limit of the wave painter by working
 at each of the levels described above. In particular:
 
-![](http://mitpress.mit.edu/sicp/full-text/book/ch2-Z-G-24.gif)
-
-a. Add some segments to the primitive `wave` painter of exercise 6, Primitive
-Painters (to add a smile, for example).
-
-b. Change the pattern constructed by `corner-split` (for example, by using
+* Add some segments to the primitive `wave-painter` from Exercise 6 (to add a smile, for example).
+* Change the pattern constructed by `corner-split` (for example, by using
 only one copy of the `up-split` and `right-split` images instead of two).
-
-c. Modify the version of `square-limit` that uses `square-of-four` so as to
+* Modify the version of `square-limit` that uses `square-of-four` so as to
 assemble the corners in a different pattern. (For example, you might make the
-big Mr. Rogers look outward from each corner of the square.)
+wave figure look outward from each corner of the square.)
 
-## testing
+## Testing
 
-You now finished implementing the painters! Let's test your code. To test it,
-type on Scheme:
+It's finally time to test your code! Note that the following commands may not work over SSH.
 
-    
-    > (cs)
-    > (ht)
-    > (===your-painter=== full-frame)
-    
-    For example:
-    > (wave full-frame)
-    > ((square-limit wave 3) full-frame)
-      
-    (note that you cannot actually draw on js-scheme. If you are using ssh, make sure to have the -X option turned on)
+Load `picture.rkt` in Racket, then type the following to open the drawing window:
 
+```
+(cs)
+```
+
+You can now tell painters to draw in the drawing window by using `full-frame` as the frame argument.
+For example, try this:
+
+```
+(diamond-painter full-frame)
+```
+
+You should see a diamond appear in your drawing window.
+If nothing appears, or if you get errors, don't worry.
+Use the debugging skills you've learned so far to pinpoint the error and resolve it.
+If you need help, post on Piazza or contact a TA.
+
+## Just for Fun: Exporting Drawings
+
+Don't want to lose your masterpiece?
+Eager to share your creation with your Facebook friends?
+You can now save your drawings as PNG files using the following command:
+
+```
+(export "filename.png")
+```
+
+Happy hacking!
