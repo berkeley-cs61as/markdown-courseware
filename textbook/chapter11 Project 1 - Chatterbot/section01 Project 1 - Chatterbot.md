@@ -21,7 +21,7 @@ This is an individual project. You may bounce ideas off of your classmates, but
 sharing or copying other people's code (or code you find online) is
 considered cheating. The CS 61AS academic dishonesty policy can be found on the syllabus page.
 
-Before you submit, make sure your file loads without any error. **Submissions that do not load properly will receive *no credit*.**
+Before you submit, make sure your file loads without any errors. **Submissions that do not load properly will receive *no credit*.**
 
 If you have any questions, please ask on Piazza, in office hours, or during lab.
 
