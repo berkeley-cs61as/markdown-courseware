@@ -12,6 +12,10 @@ Or you can download the template
 **If you get stuck on this homework, review [Lesson 0.3](https://berkeley-cs61as.github.io/textbook/how-recursion-works.html) 
 for a detailed explanation of recursion.**
 
+## Autograder
+
+If you are working on the lab computers, the `grader` command will run the autograder.  If you are working on your own personal machine, you should download [grader.rkt](http://inst.eecs.berkeley.edu/~cs61as/autograder/grader.rkt) and the [HW 1 tests](http://inst.eecs.berkeley.edu/~cs61as/autograder/tests/hw1-tests.rkt).
+
 ## Exercise 1
 
 Write a procedure `dupls-removed` that, given a sentence as input, returns the
@@ -32,6 +36,17 @@ result of removing duplicate words from the sentence. This problem uses
 ;; This should output (b a) 
 (dupls-removed '(a a a a b a a))
 ```
+
+As a reminder, you can run the autograder on the lab computers by:
+
+    
+    grader hw1 hw1.rkt dupls-removed
+
+And on your own machine:
+
+
+    racket -tm grader.rkt -- hw1-tests.rkt hw1.rkt dupls-removed
+
 
 ## Exercise 2
 

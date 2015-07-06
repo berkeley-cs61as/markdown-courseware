@@ -1,12 +1,15 @@
-Type the following command at the terminal to copy the template file to the
-current directory (note the period at the end):
+## Template
 
-`cp ~cs61as/autograder/templates/hw5.rkt .`
+Type the following into the terminal to copy the template file
+to the current directory (note the period at the end):
 
-(Don't forget the '.' at the end)
+    cp ~cs61as/autograder/templates/hw5.rkt .
 
-Or download it from
-[here](http://inst.eecs.berkeley.edu/~cs61as/templates/hw5.rkt).
+Or you can download the template [here](http://inst.eecs.berkeley.edu/~cs61as/templates/hw5.rkt).
+
+## Autograder
+
+If you are working on the lab computers, the `grader` command will run the autograder.  If you are working on your own personal machine, you should download [grader.rkt](http://inst.eecs.berkeley.edu/~cs61as/autograder/grader.rkt) and the [HW 5 tests](http://inst.eecs.berkeley.edu/~cs61as/autograder/tests/hw5-tests.rkt).
 
 ## Exercise 1: SICP 2.26
 
