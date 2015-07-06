@@ -1,3 +1,5 @@
+**NOTICE: This project is undergoing major revisions. We will let you know via Piazza when you may begin working on this project. &mdash;The Instructors**
+
 ## Project 2: turtle graphics
 
 This project presents a simple language for drawing pictures that illustrates
