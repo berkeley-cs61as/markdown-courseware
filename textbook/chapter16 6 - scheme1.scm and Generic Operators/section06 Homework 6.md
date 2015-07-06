@@ -18,13 +18,13 @@ To start the interpreter, type `(racket-1)`. Familiarize yourself with it by
 evaluating some expressions. Remember: you have all the Racket primitives for
 arithmetic and list manipulation; you have lambda but not higher-order
 functions; you don't have define. To stop the racket-1 interpreter and return
-to STk, just evaluate an illegal expression, such as `()`.
+to Racket, just evaluate an illegal expression, such as `()`.
 
 0a. Trace in detail how a simple procedure call such as
 
 `((lambda (x) (+ x 3)) 5) `
 
-is handled in scheme-1.
+is handled in racket-1.
 
 0b. Try inventing higher-order procedures; since you don't have define you'll
 have to use the Y-combinator trick, like this:
@@ -42,7 +42,7 @@ have to use the Y-combinator trick, like this:
     (t r i s)
 
 0c. Since all the Racket primitives are automatically available in racket-1,
-you might think you could use STk's primitive map function. Try these
+you might think you could use Racket's primitive map function. Try these
 examples:
 
     Racket-1: 
