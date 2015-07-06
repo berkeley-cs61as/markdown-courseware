@@ -1,7 +1,7 @@
 ## What is Message Passing?
 
 In conventional style, the operators are represented as functions that know
-about the different types; the types themselves are just data. In DDP, the
+about the different types; the types themselves are just data. In Data-Directed-Programming, the
 operators and types are all data, and there is one universal operate function
 that does the work. We can also stand conventional style on its head,
 representing the types as functions and the operations as mere data.
