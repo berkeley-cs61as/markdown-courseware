@@ -11,7 +11,7 @@ will examine both of these dimensions in detail.
 
 First, we will take a look at space. An inefficient program may take up too
 much space to run, leading the computer to crash. We will examine what causes
-this and how we may prevent it through a specific type of recursion--tail
+this and how we may prevent it through a specific type of recursion&mdash;tail
 recursion.
 
 Next, we will consider time. Some programs may run longer than than the
@@ -20,7 +20,7 @@ perfect solution to Chess.) We will learn how to identify such programs, and
 more generally, introduce and practice a method in which to measure how
 time-efficient our programs are.
 
-Lastly, we will also describe another new type of recursion--tree recursion.
+Lastly, we will also describe another new type of recursion&mdash;tree recursion.
 Utilizing tree recursion in our programs allows us to tackle problems that we
 previously didn't have the tools to solve. We will particularly focus on what
 the costs and benefits this new technique brings.
