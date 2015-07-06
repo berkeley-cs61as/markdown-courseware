@@ -1,32 +1,32 @@
 ## Getting Started
 
-Load the scheme-1 interpreter from the file
+Load the racket-1 interpreter from the file
 
     
-       ~cs61as/lib/scheme1.scm
+       ~cs61as/lib/racket1.rkt
     
 
-We'll soon have you modifying the scheme-1 code, so it's a good idea to copy
+We'll soon have you modifying the racket-1 code, so it's a good idea to copy
 this file to your own account. You can copy the file to your own account using
 
     
-       cp ~cs61as/lib/scheme1.scm .
+       cp ~cs61as/lib/racket1.rkt .
     
 
 Alternatively, you can download the code
-[here](http://inst.eecs.berkeley.edu/~cs61as/library/scheme1.scm).
+[here](http://inst.eecs.berkeley.edu/~cs61as/library/racket1.rkt).
 
-To start the scheme-1 interpreter, type `(scheme-1)`. Familiarize yourself
-with it by evaluating some expressions. Try typing regular Scheme expressions
+To start the racket-1 interpreter, type `(racket-1)`. Familiarize yourself
+with it by evaluating some expressions. Try typing regular Racket expressions
 and see what happens!
 
-You might notice that you can't do everything in scheme-1 that you can do in
-normal Scheme.
+You might notice that you can't do everything in racket-1 that you can do in
+normal Racket.
 
-You have all the Scheme primitives for arithmetic and list manipulation; you
+You have all the Racket primitives for arithmetic and list manipulation; you
 have lambda but not higher-order functions; you don't have define.
 
-To stop the scheme-1 interpreter and return to STk, just evaluate an illegal
+To stop the racket-1 interpreter and return to Racket, just evaluate an illegal
 expression, such as `()`.
 
 **Question**
@@ -39,26 +39,26 @@ In order to run a program on a computer, something in the computer must
 understand the intentions of the code, perform the necessary computations, and
 then return the results. This thing acts as a mediator between the
 programmer's ideas and the hardware that computes them. One such mediator is
-an interpreter. Scheme-1 is a simple interpreter written in Scheme that
+an interpreter. Racket-1 is a simple interpreter written in Racket that
 executes functional procedures.
 
   
 **Introduction**   
-STk is an interpreter for Scheme. It translates ideas that the coder has put
-down in Scheme into instructions that the computer can understand and then,
+Racket is an interpreter for Racket. It translates code that the coder has put
+down in Racket into instructions that the computer can understand and then,
 has the computer execute them. It then returns that output to the user by
 printing the output of that execution.
 
   
-Scheme-1 is also an interpreter, for a purely functional version of Scheme.
+racket-1 is also an interpreter, for a purely functional version of Racket.
 
   
-To understand Scheme-1, one must accept the idea of using a programming
+To understand Racket-1, one must accept the idea of using a programming
 languange to create a programming language interpreter. The programming
 language may BE the language of the interpreter, but so what? From the
 perspective of the users, the implementation language doesn't really matter.
-One could write Scheme-1 in python. Most of a Scheme interpreter is written in
-Scheme.
+One could write racket-1 in python. Most of a Racket interpreter is written in
+Racket.
 
   
 There is an implicit contract between programmer and interpreter:
@@ -71,11 +71,11 @@ to do. If I do, feel free to yell at me (error).
 
   
 Unit 4 goes deeper into interpreters. Project 4 is writing a
-[Logo](http://www.cs.berkeley.edu/~bh/logo.html) interpreter in Scheme.
+[Logo](http://www.cs.berkeley.edu/~bh/logo.html) interpreter in Racket.
 
   
-**Scheme-1**   
-Scheme-1 follows these rules:
+**racket-1**   
+racket-1 follows these rules:
 
   
 To evaluate a combination:
@@ -93,7 +93,7 @@ text/book/book-Z-H-10.html#%_sec_1.1.3), [1.1.5](http://mitpress.mit.edu/sicp
 Example:
 
     
-    STk> ((lambda (x) (* x x)) (- 2 (* 4 3)))
+    Racket> ((lambda (x) (* x x)) (- 2 (* 4 3)))
     100
     
 
@@ -102,26 +102,28 @@ What happens here? Given the rules, walk through the evaluation by hand.
   
 **Read-Eval-Print Loop**   
 An interpreter needs a loop that allows it to do all the things it does. Every
-time you type a command, Scheme-1 parses and executes your input, returns the
+time you type a command, racket-1 parses and executes your input, returns the
 output, and then waits for another command. This is called a Read-Eval-Print
 loop (REPL).
 
   
-Here is all of Scheme-1:
+Here is all of racket-1:
 
     
-    (define (scheme-1)
-      (display "Scheme-1: ")
-      (flush)
-      (print (eval-1 (read)))
-      (scheme-1))
-    
+    (define (racket-1)
+        (newline)
+        (display "Racket-1: ")
+        (flush-output)
+        (print (eval-1 (read)))
+        (newline)
+        (racket-1)
+    )
 
-The first two lines simply print the prompt "Scheme-1: ". The third line is
+The first three lines simply print the prompt "Racket-1: ". The fourth line is
 the important one. Here, input is read, parsed and sent to eval-1 to be
 evaluated. After eval-1 takes care of executing the code, its result is
-printed. Then, Scheme-1 calls itself to restart the process, to display
-another "Scheme-1: " and take another command.
+printed. Finally, racket-1 calls itself to restart the process, to display
+another "Racket-1: " and take another command.
 
   
 **Eval-1**   
@@ -133,7 +135,7 @@ caught and handled.
     
     (define (eval-1 exp)
       (cond ((constant? exp) exp)
-            ((symbol? exp) (eval exp))      ; use underlying Scheme's EVAL
+            ((symbol? exp) (eval exp))      ; use underlying Racket's EVAL
             ((quote-exp? exp) (cadr exp))
             ((if-exp? exp)
              (if (eval-1 (cadr exp))
@@ -150,11 +152,11 @@ caught and handled.
 Apply-1 is called by eval-1 when it is time to apply a procedure to its
 arguments. Apply-1 takes care of two cases:
 
-  1. Scheme-1 primatives. In this context, a primative is a non-user-defined procedures. All STk procedures are Scheme-1 primatives.
+  1. racket-1 primatives. In this context, a primative is a non-user-defined procedures. All Racket procedures are Racket-1 primatives.
   2. Lambda functions, or user defined procedures.
     
     (define (apply-1 proc args)
-      (cond ((procedure? proc)      ; use underlying Scheme's APPLY
+      (cond ((procedure? proc)      ; use underlying Racket's APPLY
              (apply proc args))
             ((lambda-exp? proc)
              (eval-1 (substitute (caddr proc)   ; the body
@@ -165,41 +167,46 @@ arguments. Apply-1 takes care of two cases:
     
 
   
-**Mutual Recursion (in Scheme-1)**   
+**Mutual Recursion (in racket-1)**   
 
 ![eval](/static/eval.png)
 
-## Practice with Scheme-1
+## Practice with Racket-1
 
 Okay, so even though you just finished staring at the code, you probably don't
 completely understand all of it yet. Let's go through a few exercises to
 better acquaint you with the program.
 
-  1. Manually trace through (in detail) how scheme-1 handles the following procedure call:  
+  1. Manually trace through (in detail) how racket-1 handles the following procedure call:  
 
     
          ((lambda (x) (+ x 3)) 5)
 
-In particular, walk through all of the functions that scheme-1 must call to
+In particular, walk through all of the functions that racket-1 must call to
 evaluate this expression.
 
   2. Try inventing higher-order procedures; since you don't have define you'll have to use the Y-combinator trick, like this: 
     
-         Scheme-1: ((lambda (f n)        ; this lambda is defining MAP 
-                      ((lambda (map) (map map f n)) 
-                       (lambda (map f n) 
-                      (if (null? n) 
-                          '() 
-                          (cons (f (car n)) (map map f (cdr n))) )) )) 
-                    first              ; here are the arguments to MAP 
-                    '(the rain in spain)) 
-                   (t r i s)
+        Racket-1: 
+        ((lambda (f n)  ; this lambda is defining MAP 
+        	((lambda (map) (map map f n)) 
+            (lambda (map f n) 
+                (if (null? n) 
+                    '() 
+                    (cons (f (car n)) (map map f (cdr n))) )) )) ;end of lambda defining MAP 
+        first              ; the argument f for MAP
+        '(the rain in spain)) ; the argument n for MAP
+                           
+        
+        (t r i s)
     
 
-  3. Since all the Scheme primitives are automatically available in scheme-1, you might think you could use STk's primitive map function. Try these examples: 
+  3. Since all the Racket primitives are automatically available in racket-1, you might think you could use Racket's primitive map function. Try these examples: 
     
-        Scheme-1: (map first '(the rain in spain)) 
-        Scheme-1: (map (lambda (x) (first x)) '(the rain in spain))
+        Racket-1: 
+        (map first '(the rain in spain)) 
+        Racket-1: 
+        (map (lambda (x) (first x)) '(the rain in spain))
     
 
 Explain the results.
