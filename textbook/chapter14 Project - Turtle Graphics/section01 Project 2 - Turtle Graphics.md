@@ -2,17 +2,17 @@
 
 ## Introduction
 
-This project presents a simple language for drawing pictures.
+In Lesson 4, we explored how `cons` lets us build arbitrarily complicated list structures.
 
-Just as we can build arbitrarily complicated list structures using `cons`,
-we can use this picture language to build arbitrarily complicated *patterns*,
+In this project, we'll create a simple picture language that will
+allow us to build arbitrarily complicated *drawings*,
 like the one shown below. Notice how the image is composed of repeated
 elements that are shifted and scaled.
 
 ![](../static/squarelimit.png)
 
 As we explore this picture language, we'll see how data abstractions and higher-order procedures
-can be combined to build complex and beautiful designs from simple elements.
+can be combined to build simple elements into a complex system.
 
 To begin, copy the file `~cs61as/lib/picture.rkt` to your directory, or download it
 [here](http://inst.eecs.berkeley.edu/~cs61as/library/picture.rkt).
@@ -200,7 +200,7 @@ Then `flipped-pairs` can be defined in terms of `square-of-four` as follows:
     (combine4 painter)))
 ```
 
-and `square-limit` can be expressed as
+Similarly, `square-limit` can be expressed as:
 
 ```
 (define (square-limit painter n)
@@ -381,7 +381,7 @@ frame.
 * `diamond-painter`, which draws a diamond shape by connecting the midpoints of the
 sides of the frame.
 
-* `wave-painter`, which draws the figure shown [here](../static/wave.png).
+* `wave-painter`, which draws the familiar "wave" figure shown [here](../static/wave.png).
 
 ## Transforming and Combining painters
 
@@ -389,7 +389,7 @@ An operation on painters (such as `flip-vert` or `beside`) works by creating a
 painter that invokes the original painters with respect to frames derived from
 the argument frame. Thus, for example, `flip-vert` doesn't have to know how a
 painter works in order to flip it&mdash;it just has to know how to turn a frame
-upside down: The flipped painter just uses the original painter, but in the
+upside down: the flipped painter just uses the original painter, but in the
 inverted frame.
 
 Painter operations are based on the procedure `transform-painter`, which takes
@@ -567,7 +567,7 @@ Load `picture.rkt` in Racket, then type the following to open the drawing window
 (cs)
 ```
 
-You can now tell painters to draw in the drawing window by using `full-frame` as the frame argument.
+You can now tell a painter to draw in the drawing window by using `full-frame` as the frame argument.
 For example, try this:
 
 ```
@@ -582,7 +582,7 @@ If you need help, post on Piazza or contact a TA.
 ## Just for Fun: Exporting Drawings
 
 Don't want to lose your masterpiece?
-Eager to share your creation with your Facebook friends?
+Eager to share your creation on Facebook or Instagram?
 You can now save your drawings as PNG files using the following command:
 
 ```
