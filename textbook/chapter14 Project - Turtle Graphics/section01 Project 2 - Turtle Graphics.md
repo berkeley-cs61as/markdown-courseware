@@ -588,5 +588,3 @@ You can now save your drawings as PNG files using the following command:
 ```
 (export "filename.png")
 ```
-
-Happy hacking!
