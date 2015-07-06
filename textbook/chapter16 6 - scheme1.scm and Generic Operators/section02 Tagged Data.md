@@ -1,32 +1,33 @@
 ## The Big Idea
 
-The first problem we're going to tackle is how to keep track of types of data.
+The first problem we're going to tackle is keeping track of data types.
 
-Think back to Lesson 4 where we defined rational numbers. We represented these
-numbers as a pair, where the `car` is the numerator and the `cdr` is the
-denominator. Meanwhile, our friend Ben Bitdiddle defined complex numbers. He
-represented these numbers as a pair as well, where the `car` is the real part
-and the `cdr` is the imaginary part.
+Think back to Lesson 4 where we implemented rational numbers. We made the decision 
+to store rational numbers as a pair, where the `car` held the numerator and 
+the `cdr` held the denominator. Meanwhile, our frenemy, Ben Bitdiddle, implemented 
+complex numbers. He represented these numbers as a pair as well: the `car` held the real part
+and the `cdr` held the imaginary part.
 
 ![](/static/pair_3.4.PNG)
 
-Now, if we see a pair whose `car` is 3 and whose `cdr` is 4, does that
-represent the fraction 3/4 or the complex number 3+4i? In short, we don't
-know! We need some way of associating this pair with a particular type.
+Now, given a pair whose `car` is 3 and whose `cdr` is 4, how can we tell if the given data
+represents the rational number 3/4 or the complex number 3+4i? 
+Because the raw data we are given can be interpreted either way, we can't know for sure! 
+In fact, the pair may be neither of the two and actually represent some other data type.
+That's why need a system to associate data with its particular type.
 
 (Sidenote: Okay, at this point you might be mad at Ben--why did he have to use
 the same representation as us! However, he really isn't to blame. Even if he
 uses a different internal representation, we **cannot** use this distinction
 to check the type of the data: this would break data abstraction barriers!)
 
-The solution is _tagged data_: Each datum carries around its own type
-information. We accomplish this by attaching a tag to all of our data. To
-accomplish this, we're going to need a constructor `attach-tag` and the
-selectors `type-tag` and `contents`.
+The solution is to have_tagged data_: Each datum carries around
+information about its type. We can do this by attaching tags to all our data. To
+accomplish this, we need a constructor to tag our data: `attach-tag` and
+selectors to grab the tag and the data from a piece of tagged data: `type-tag` and `contents`.
 
-Here's one set of possible definitions for these functions.
+Here's a possible implementation for handling tagged data.
 
-    
     (define (attach-tag tag data)
         (cons tag data))
     
@@ -47,10 +48,11 @@ that accomplishes the same task, but has a different internal representation?
 
 ## Writing Procedures that Use Tagged Data
 
-From the last exercise, you should've gotten the constructors:
+Now that we've decided to tag our data, we've got to fix our implementations of the rational and complex number data types.
+    
+    ~~(define (make-rational num denom)~~
+       ~~(cons num denom))~~
 
-    
-    
     (define (make-rational num denom)
         (attach-tag 'rational (cons num denom)))
     
