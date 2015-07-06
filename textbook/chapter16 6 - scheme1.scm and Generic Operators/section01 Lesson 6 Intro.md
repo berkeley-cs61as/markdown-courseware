@@ -5,7 +5,7 @@ on to learn more about these topics!
 
 ## Prerequisites
 
-You should have a good understanding of `calc.scm` and data abstraction.
+You should have a good understanding of `calc.rkt` and data abstraction.
 
 ## Readings
 
@@ -17,15 +17,10 @@ Here are the relevant readings for this lesson:
 
 ## Generic Operators
 
-In this lesson, we begin our exploration of generic operators, the idea where
-we have different types of data and each type of data is intelligent--they
-know how to manipulate themselves. Procedures then are "stupid"--they don't
-know anything about each of the data types and somehow it still works out.
-Because of this ignorance of data types and the ability to operate across
-different types, they are dubbed "generic".
+In this lesson, we begin our exploration of generic operators: procedures that can be called on different data types. The basis behind generic operators lies in the fact that we have different types of data that are intelligent--they know how to manipulate themselves. Procedures are then allowed to be "stupid"--they don't need to know anything about data types and somehow it still works out.
 
-We also introduce `scheme1.scm`! Scheme-1 is a simple Scheme interpreter
-written in Scheme. While it cannot do all the things STk can do, it does
+Afterwards, we also introduce `racket1.rkt`! Racket-1 is a simple Racket interpreter
+written in Racket. While it cannot do all the things Racket can do, it does
 demonstrate the working parts you need in an interpreter, such as evaluating
 expressions `(eval-1)` and applying procedures to arguments `(apply-1)`.
 `eval-1` takes a compound expression and reduces it to its simplest value.
