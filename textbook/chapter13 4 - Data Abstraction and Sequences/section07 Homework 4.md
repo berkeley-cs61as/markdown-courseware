@@ -1,40 +1,27 @@
 ## Template
 
-From now on, for most labs we will have template files for the labs in which
-you can write your answers. Type the following command at the terminal to copy
-the template file to the current directory (note the period at the end):
+Type the following into the terminal to copy the template file
+to the current directory (note the period at the end):
 
     cp ~cs61as/autograder/templates/hw4.rkt .
 
-Or you can download the template [here](http://inst.eecs.berkeley.edu/~cs61as/templates/hw4.scm).
+Or you can download the template [here](http://inst.eecs.berkeley.edu/~cs61as/templates/hw4.rkt).
 
 ## Warm-up
-
   
 Try and predict what the following expressions will return, then check your answers with the Racket interpreter:
 
-`(define x (cons 4 5))`
-
-`(car x)`
-
-`(cdr x)`
-
-
-`(define y (cons 'hello 'goodbye))`
-
-`(define z (cons x y))`
-
-`(car (cdr z))`
-
-`(cdr (cdr z))`
-
-`(cdr (car z))`
-
-`(car (cons 8 3))`
-
-`(car z)`
-
-`(car 3)`
+* `(define x (cons 4 5))`
+* `(car x)`
+* `(cdr x)`
+* `(define y (cons 'hello 'goodbye))`
+* `(define z (cons x y))`
+* `(car (cdr z))`
+* `(cdr (cdr z))`
+* `(cdr (car z))`
+* `(car (cons 8 3))`
+* `(car z)`
+* `(car 3)`
 
 ## Exercise 1
 
@@ -155,14 +142,14 @@ new words; the last two lists should be the same length. It should return a
 copy of the first argument, but with each word that occurs in the second
 argument replaced by the corresponding word of the third argument:
 
-    -> (substitute2 '((4 calling birds) (3 french hens) (2 turtle doves))
-                    '(1 2 3 4)
-                    '(one two three four))
+    -> (my-substitute2 '((4 calling birds) (3 french hens) (2 turtle doves))
+                       '(1 2 3 4)
+                       '(one two three four))
     ((four calling birds) (three french hens) (two turtle doves))
 
 ## Extra for Experts
 
-### Do these if you want an extra challenge. This is NOT for credit.
+Do these if you want an extra challenge. These are *not* for credit.
 
 ### Exercise 4
 
