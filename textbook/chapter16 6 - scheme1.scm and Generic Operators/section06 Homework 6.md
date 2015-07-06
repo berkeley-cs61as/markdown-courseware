@@ -8,8 +8,7 @@ Or you can download the template
 [here](http://inst.eecs.berkeley.edu/~cs61as/templates/hw6.rkt).
 
 ## Exercise 0. 
-### Problems from the lesson.
-### Do this if you want to. This is NOT for credit.
+### Problems from the lesson. Highly recommended to do. This is NOT for credit.
   
 Load the racket-1 interpreter from the file
 
