@@ -2,13 +2,63 @@ Type the following command at the terminal to copy the template file to the
 current directory (note the period at the end):
 
     
-    cp ~cs61as/autograder/templates/hw6.scm .
+    cp ~cs61as/autograder/templates/hw6.rkt .
 
 Or you can download the template
-[here](http://inst.eecs.berkeley.edu/~cs61as/templates/hw6.scm).
+[here](http://inst.eecs.berkeley.edu/~cs61as/templates/hw6.rkt).
+
+## Exercise 0. 
+### Problems from the lesson.
+### Do this if you want to. This is NOT for credit.
+  
+Load the racket-1 interpreter from the file
+
+`~cs61as/lib/racket1.rkt `
+
+To start the interpreter, type `(racket-1)`. Familiarize yourself with it by
+evaluating some expressions. Remember: you have all the Racket primitives for
+arithmetic and list manipulation; you have lambda but not higher-order
+functions; you don't have define. To stop the racket-1 interpreter and return
+to STk, just evaluate an illegal expression, such as `()`.
+
+0a. Trace in detail how a simple procedure call such as
+
+`((lambda (x) (+ x 3)) 5) `
+
+is handled in scheme-1.
+
+0b. Try inventing higher-order procedures; since you don't have define you'll
+have to use the Y-combinator trick, like this:
+
+    Racket-1:
+    ((lambda (f n)  ; this lambda is defining MAP 
+    	((lambda (map) (map map f n)) 
+        (lambda (map f n) 
+            (if (null? n) 
+                '() 
+                (cons (f (car n)) (map map f (cdr n))) )) )) ;end of lambda defining MAP 
+    first              ; the argument f for MAP
+    '(the rain in spain)) ; the argument n for MAP
+    
+    (t r i s)
+
+0c. Since all the Racket primitives are automatically available in racket-1,
+you might think you could use STk's primitive map function. Try these
+examples:
+
+    Racket-1: 
+    (map first '(the rain in spain))`
+
+    Racket-1: 
+    (map (lambda (x) (first x)) '(the rain in spain))
+
+Explain the results.
+
+0d. Modify the interpreter to add the and special form. Test your work. Be
+sure that as soon as a false value is computed, your and returns #f without
+evaluating any further arguments.
 
 ## Exercise 1.
-
   
 Complete the following:
 
@@ -25,13 +75,13 @@ for modifications to a program that isn't online.)
 ## Exercise 2.
 
   
-Write a `map` primitive for `scheme-1` (call it `map-1` so you and Scheme
+Write a `map` primitive for `racket-1` (call it `map-1` so you and Racket
 don't get confused about which is which) that works correctly for all mapped
 procedures.
 
 ## Exercise 3.
 
-Modify the `scheme-1` interpreter to add the `let` special form. Hint: Like a
+Modify the `racket-1` interpreter to add the `let` special form. Hint: Like a
 procedure call, `let` will have to use `substitute` to replace certain
 variables with their values. Don't forget to evaluate the expressions that
 provide those values!
@@ -110,60 +160,6 @@ should return
 If you're really ambitious, you could maintain a database of inferred argument
 types and use it when a procedure you've seen is invoked by another procedure
 you're examining!
-
-## Exercise 1.
-
-  
-Load the scheme-1 interpreter from the file
-
-`~cs61as/lib/scheme1.scm `
-
-To start the interpreter, type `(scheme-1)`. Familiarize yourself with it by
-evaluating some expressions. Remember: you have all the Scheme primitives for
-arithmetic and list manipulation; you have lambda but not higher-order
-functions; you don't have define. To stop the scheme-1 interpreter and return
-to STk, just evaluate an illegal expression, such as `()`.
-
-1a. Trace in detail how a simple procedure call such as
-
-`((lambda (x) (+ x 3)) 5) `
-
-is handled in scheme-1.
-
-1b. Try inventing higher-order procedures; since you don't have define you'll
-have to use the Y-combinator trick, like this:
-
-Scheme-1:` ((lambda (f n) ; this lambda is defining MAP `
-
-` ((lambda (map) (map map f n)) `
-
-` (lambda (map f n) `
-
-` (if (null? n) `
-
-` '() `
-
-` (cons (f (car n)) (map map f (cdr n))) )) )) `
-
-` first ; here are the arguments to MAP `
-
-` '(the rain in spain))`
-
-` (t r i s) `
-
-1c. Since all the Scheme primitives are automatically available in scheme-1,
-you might think you could use STk's primitive map function. Try these
-examples:
-
-`Scheme-1: (map first '(the rain in spain))`
-
-` Scheme-1: (map (lambda (x) (first x)) '(the rain in spain))`
-
-Explain the results.
-
-1d. Modify the interpreter to add the and special form. Test your work. Be
-sure that as soon as a false value is computed, your and returns #f without
-evaluating any further arguments.
 
 # **DO NOT FORGET TO SUBMIT YOUR HOMEWORK!**
 
