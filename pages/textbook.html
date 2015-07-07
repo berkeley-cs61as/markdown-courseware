@@ -58,7 +58,13 @@ var main = function() {
     $('a.nav-link:contains(Textbook)').parent().addClass('active');
 
     // Programmatically hide Unit 3 and 4 links
-    $('.row').eq(2).hide();
+    $('.row').eq(2).hide();            
+    $('body').keypress(function(e) {
+        if (e.keyCode === 120) {
+            $('.row').eq(2).show();
+        }
+        console.log(e.keyCode)
+    });
 }
 
 $(main);
