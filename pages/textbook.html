@@ -35,7 +35,10 @@
     </div>
 </nav>
 <h1>Textbook</h1>
+<p>
 Please report any errors or discrepancies to the course staff.
+<p>
+Students taking Units 3 and 4 should consult a TA for access to the relevant course materials.
 
 <!--
     Below is the table of contents.
@@ -53,6 +56,9 @@ Please report any errors or discrepancies to the course staff.
 <script>
 var main = function() {
     $('a.nav-link:contains(Textbook)').parent().addClass('active');
+
+    // Programmatically hide Unit 3 and 4 links
+    $('.row').eq(2).hide();
 }
 
 $(main);
