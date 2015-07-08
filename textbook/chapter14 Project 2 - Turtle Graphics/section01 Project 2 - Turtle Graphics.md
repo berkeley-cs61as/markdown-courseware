@@ -2,7 +2,7 @@
 
 In Lesson 4, we explored how `cons` lets us build arbitrarily complicated list structures.
 
-In this project, we'll create a simple picture language that will
+In this project, we'll create a simple **picture language** that will
 allow us to build arbitrarily complicated *drawings*,
 like the one shown below. Notice how the image is composed of repeated
 elements that are shifted and scaled.
