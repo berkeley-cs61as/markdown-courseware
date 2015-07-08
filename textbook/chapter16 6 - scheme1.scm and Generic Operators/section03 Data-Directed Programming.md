@@ -1,5 +1,9 @@
 ## What is Data-Directed-Programming?
 
+**You must load and run the following file to complete this section. Don't worry about what's defined in there.**
+
+    cp ~cs61as/lib/data_directed_programming.rkt .
+
 Data-directed programming is a means to increase the flexibility of your code by modularizing data typing even further.
 Instead of controlling information regarding data types and operators(procedures) inside functions using `cond` clauses, we record this information in a data structure that we can add to and retrieve from. You are given tools to do so: `put` to set up the data structure and `get` to examine it. Intuitively, we're simply adding entries into a table-like data structure.
     
