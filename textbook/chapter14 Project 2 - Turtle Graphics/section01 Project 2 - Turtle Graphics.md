@@ -1,5 +1,3 @@
-**NOTICE: This project is undergoing major revisions. We will let you know via Piazza when you may begin working on this project. &mdash;The Instructors**
-
 ## Introduction
 
 In Lesson 4, we explored how `cons` lets us build arbitrarily complicated list structures.
