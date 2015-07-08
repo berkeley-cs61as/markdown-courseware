@@ -1,13 +1,13 @@
 ## Getting Started
 
-Load the racket-1 interpreter from the file
+Load the racket-1 interpreter in Racket using the following Racket command:
 
     
-       ~cs61as/lib/racket1.rkt
+       (require "~cs61as/lib/racket1.rkt")
     
 
 We'll soon have you modifying the racket-1 code, so it's a good idea to copy
-this file to your own account. You can copy the file to your own account using
+this file to your own account. You can copy the file to your own account using the following UNIX command:
 
     
        cp ~cs61as/lib/racket1.rkt .
