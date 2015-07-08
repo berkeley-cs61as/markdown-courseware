@@ -8,7 +8,7 @@ the `cdr` held the denominator. Meanwhile, our frenemy, Ben Bitdiddle, implement
 complex numbers. He represented these numbers as a pair as well: the `car` held the real part
 and the `cdr` held the imaginary part.
 
-![](/static/pair_3.4.PNG)
+![](/static/tagged_data_1.gif) ![](/static/tagged_data_2.gif)
 
 Now, given a pair whose `car` is 3 and whose `cdr` is 4, how can we tell if the given data
 represents the rational number 3/4 or the complex number 3+4i? 
