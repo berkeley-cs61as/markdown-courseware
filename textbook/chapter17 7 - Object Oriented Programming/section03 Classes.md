@@ -1,118 +1,4 @@
-## Message Passing
-
-The way to get things to happen in OOP is to 'ask' them to do something for
-you. The manner in which we do this is similar to the "message passing" that
-we did in Lesson 6. How do we do it in OOP vocabulary?
-
-Let's say we have two objects; **`Matt-Account`** and **`Brian-Account`**
-which are instances of bank-account classes. They hold the amount of money
-that Matt and Brian have, respectively. (You can't type this into Scheme just
-yet! we are going to assume we made the objects previously)
-
-    
-    >(ask Matt-Account 'balance)
-    1000
-    
-    >(ask Brian-Account 'balance)
-    10000
-    
-    >(ask Matt-Account 'deposit 100)
-    1100
-    
-    >(ask Brian-Account 'withdraw 200)
-    9800
-    
-    >(ask Matt-Account 'balance)
-    1100
-    
-    >(ask Brian-Account 'withdraw 200)
-    9600
-    
-
-## "Ask"
-
-We use the **ask** procedure to tell objects to carry out a certain action. In
-the example above, the bank account objects accepts 3 messages:
-**balance,deposit, and withdraw**. For each of the 3 messsages, the bank
-account objects know what actions need to be carried out. Notice that some
-messages require additional information:
-
-  * For **balance**, it doesn't need any additional arguments. It returns the amount of money that account has. 
-    
-    (ask Matt-Account 'balance)
-
-  * For **deposit** and **withdraw**, we need one more argument to specify how much we are depositing or withdrawing. 
-    
-    (ask Matt-Account 'deposit 50000)
-
-The metaphor is that an object "knows how" to do certain tasks. These tasks
-are called **methods.**
-
-## States
-
-Consider these calls:
-
-    
-    
-    > (ask matt-account 'balance)
-    500
-      
-    > (ask brian-account 'balance)  
-    9999  
-    
-    > (ask matt-account 'deposit 500)
-    1000
-    
-    > (ask matt-account 'balance)
-    1000
-    
-    > (ask matt-account 'withdraw 200)
-    800
-    
-    > (ask matt-account 'balance)
-    800  
-      
-    > (ask brian-account 'balance)  
-    9999
-
-## States
-
-1) In the first question, we see that Matt's balance changes with each
-withdraw and deposit. This feels natural for us because that is how bank
-accounts work. But with the functional programming paradigm that we've been
-seing so far, we would expect the same call to return the same value.
-
-In the OOP paradigm, the objects have state. That is, they have some knowledge
-about what has happened to them in the past. In this example, a bank account
-has a balance, which changes when you deposit or withdraw some money.
-
-2) In the second question, we see that although Matt has his 'balance' and
-Brian has his 'balance' that never interfere with each other.
-
-In OOP jargon we say that 'balance' is a **local state variable ** or
-**Instance variable**. An instance variable will have different values for
-different instances.
-
-We can draw a parallel here with the definitions for
-
-    
-    
-    (define (square x)
-        (* x x))
-
-and
-
-    
-    
-    (define (cube x)
-        (* x x x))
-
-Both definitions use x, but they are independent.
-
-## Classes
-
-To create an object in OOP, you need to **instantiate** a class. `matt-
-account` and `brian-account` are part of an "account" **class**.
+To create an object in OOP, you need to **instantiate** a class. `matt-account` and `brian-account` are part of an "account" **class**.
 
     
     
@@ -123,14 +9,14 @@ account` and `brian-account` are part of an "account" **class**.
     Brian-Account
     
 
-The instantiate function takes a class as its first argument and returns a new
-object of that class. Instantiate may require additional arguments depending
-on the particular class: in this example you specify an account's initial
+The `instantiate` function takes a class as its first argument and returns a new
+object of that class. `instantiate` may require additional arguments depending
+on the particular class: in this example, you must specify an account's initial
 balance when you create it.
 
 ## Defining a Class
 
-Most of the code in an object-oriented program consists of de nitions of
+Most of the code in an object-oriented program consists of definitions of
 various classes. A class can be treated as a blueprint for a certain kind of
 object: "What should objects of these type be able to do? What variables
 should each of them know?". Below is the definition of account class. We will
@@ -139,13 +25,16 @@ say about this code and we will explain them one by one.
 
     
     
-    (define-class (account balance)
-        (method (deposit amount)
+    (define-class (account balance) ;; define a class called account
+        (method (deposit amount) 
+            ;; objects of this class will have one method called deposit
             (set! balance (+ amount balance))
-            balance))
+            balance)
+            ;; deposit sets the balance the the current value plus the deposit amount and then returns the new balance
+            )
     
 
-## define-class
+## `define-class`
 
 There's a new special form, define-class. The syntax of define-class is
 analogous to that of define. Where you would expect to see the name of the
