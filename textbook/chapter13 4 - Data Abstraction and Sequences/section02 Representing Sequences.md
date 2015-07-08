@@ -168,7 +168,7 @@ Here's how `append` works under the hood. Remember how our recursive definition 
     -> (define list3 (list 9 10 11 12))
     list3
     -> (append list1 list2 list3) ;; we take the cdr of list1's last pair, which is the empty list '(), and point it to list2. then, we take the cdr of list2's last pair, which is also '(), and point it to list3.
-    (1 2 3 4 5 6 7 8)
+    (1 2 3 4 5 6 7 8 9 10 11 12)
 
 
 Append will only work if all but the last argument are lists. Can you explain why the last argument does not have to be a list? What does Racket return when you call append where the last argument is not a list?
