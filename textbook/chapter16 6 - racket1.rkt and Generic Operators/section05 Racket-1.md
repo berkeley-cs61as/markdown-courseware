@@ -1,66 +1,58 @@
 ## Getting Started
 
-Load the racket-1 interpreter in Racket using the following Racket command:
+Copy the source code for the Racket-1 interpreter into your current directory
+by typing the following into your terminal:
 
-    
-       (require "~cs61as/lib/racket1.rkt")
-    
-
-We'll soon have you modifying the racket-1 code, so it's a good idea to copy
-this file to your own account. You can copy the file to your own account using the following UNIX command:
-
-    
-       cp ~cs61as/lib/racket1.rkt .
-    
+```    
+cp ~cs61as/lib/racket1.rkt .
+``` 
 
 Alternatively, you can download the code
 [here](http://inst.eecs.berkeley.edu/~cs61as/library/racket1.rkt).
 
-To start the racket-1 interpreter, type `(racket-1)`. Familiarize yourself
-with it by evaluating some expressions. Try typing regular Racket expressions
-and see what happens!
+To start Racket-1, type the following in Racket:
 
-You might notice that you can't do everything in racket-1 that you can do in
-normal Racket.
+```
+;; Load Racket-1 file
+(require "racket1.rkt")
 
-You have all the Racket primitives for arithmetic and list manipulation; you
-have lambda but not higher-order functions; you don't have define.
+;; Start interpreter
+(racket-1)
+```
 
-To stop the racket-1 interpreter and return to Racket, just evaluate an illegal
+Familiarize yourself with Racket-1 by evaluating some expressions.
+Try typing regular Racket expressions and see what happens!
+
+You might notice that you can't do everything in Racket-1 that you can do in
+normal Racket:
+
+* You have all the Racket primitives for arithmetic and list manipulation.
+* You have `lambda` but not higher-order functions.
+* You don't have `define`.
+
+To stop the Racket-1 interpreter and return to Racket, just evaluate an illegal
 expression, such as `()`.
 
-**Question**
+## What Is an Interpreter?
 
-When you type into an interpreter, how does it know what to do?
-
-  
-**Abstract**   
 In order to run a program on a computer, something in the computer must
 understand the intentions of the code, perform the necessary computations, and
 then return the results. This thing acts as a mediator between the
-programmer's ideas and the hardware that computes them. One such mediator is
-an interpreter. Racket-1 is a simple interpreter written in Racket that
-executes functional procedures.
+programmer's ideas and the hardware that computes them.
+One such mediator is an **interpreter**.
 
+`racket` is an interpreter for Racket. It translates Racket source code into instructions
+that the computer, then tells the computer to execute them.
+It has the ability to read input and display output.
   
-**Introduction**   
-Racket is an interpreter for Racket. It translates code that the coder has put
-down in Racket into instructions that the computer can understand and then,
-has the computer execute them. It then returns that output to the user by
-printing the output of that execution.
+Racket-1 is also an interpreter.
+It works for a purely functional subset of Racket.
+The fact that Racket-1 is written *in* Racket is interesting but unimportant.
+We could also write Racket-1 in another language, like Python,
+but what really matters to us as users is
+what the interpreter *does*, not what its source code looks like.
 
-  
-racket-1 is also an interpreter, for a purely functional version of Racket.
-
-  
-To understand Racket-1, one must accept the idea of using a programming
-languange to create a programming language interpreter. The programming
-language may BE the language of the interpreter, but so what? From the
-perspective of the users, the implementation language doesn't really matter.
-One could write racket-1 in python. Most of a Racket interpreter is written in
-Racket.
-
-  
+<!-- This is kind of out of place, imo --Allen
 There is an implicit contract between programmer and interpreter:
 
 Interpreter: I know how to do _these_ things. Give me code that looks like
@@ -68,12 +60,13 @@ _this_ and I will execute it faithfully.
 
 Programmer: Okay, I won't try to ask you to do things that you don't know how
 to do. If I do, feel free to yell at me (error).
-
+-->
   
-Unit 4 goes deeper into interpreters. Project 4 is writing a
-[Logo](http://www.cs.berkeley.edu/~bh/logo.html) interpreter in Racket.
-
+We'll talk more about interpreters in just a few lessons.
+For now, let's discuss how Racket-1 works.
   
+## How Does Racket-1 Work?
+
 **racket-1**   
 racket-1 follows these rules:
 
