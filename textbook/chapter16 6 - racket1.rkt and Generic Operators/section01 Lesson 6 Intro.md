@@ -1,6 +1,6 @@
 ## Introduction
 
-This lesson covers generic operators and introduces the program Scheme-1. Read
+This lesson covers generic operators and introduces the program Racket-1. Read
 on to learn more about these topics!
 
 ## Prerequisites
