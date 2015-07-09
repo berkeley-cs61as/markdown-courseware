@@ -22,7 +22,7 @@ Or you can download the template
   <p>Design a procedure that evolves an iterative exponentiation process that uses successive squaring and uses a logarithmic number of steps, as does <code>fast-expt</code>.</p>
   <p>(Hint: Using the observation that (<i>b</i><sup><i>n</i>/2</sup>)<sup>2</sup> = (<i>b</i><sup>2</sup>)<sup><i>n</i>/2</sup>, keep, along with the exponent <i>n</i> and the base <i>b</i>, an additional state variable <i>a</i>, and define the state transformation in such a way that the product <i>a b<sup>n</sup></i> is unchanged from state to state. At the beginning of the process <i>a</i> is taken to be 1, and the answer is given by the value of <i>a</i> at the end of the process. In general, the technique of defining an invariant quantity that remains unchanged from state to state is a powerful way to think about the design of iterative algorithms.)</p>
 
-## Exercise 2: Golden Ratio
+## Exercise 2: Golden Ratio (Optional)
 
 <p>Read the subsection on <a href="http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-12.html#%_sec_Temp_106">finding fixed points of functions</a> in SICP, and do <a href="http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-12.html#%25_thm_1.35">Exercise 1.35</a>.</p>
 
