@@ -77,13 +77,18 @@ Our goal is to write a universal addition procedure. It should work with rationa
 
 The first step is to write addition procedures that are specific to the data types of the inputs. Using the constructors and selectors that we just wrote in the previous section, this should be fairly straight forward.
 
-__Write `add-rational` which takes in two rational numbers and returns a rational number equal to the sum of the two inputs.__ *See lesson 4 for inspiration. Remember to respect the data abstraction by using proper constructors and selectors.*
+<div class="mc">
+<strong>Test Your Understanding</strong><br><br>
+1a. Write `add-rational` which takes in two rational numbers and returns a rational number equal to the sum of the two inputs. (See lesson 4 for inspiration. Remember to respect the data abstraction by using proper constructors and selectors.) <br><br>
 
-__Write `add-complex` which takes in two complex numbers and returns a complex number equal to the sum of the two inputs.__ *You just add by components. Example: (3+4i) + (5+6i) = (8+10i)*
+1b. Write `add-complex` which takes in two complex numbers and returns a complex number equal to the sum of the two inputs. (You just add by components. Example: (3+4i) + (5+6i) = (8+10i)) <br><br>
 
-__Assume that we've written a procedure `add-rational-complex` which takes in rational number and complex number in that order, and adds them properly.__
+1c. Assume that we've written a procedure `add-rational-complex` which takes in rational number and complex number in that order, and adds them properly.<br><br><br>
 
-Now that we have specific procedure, we can write a generic addition operation. We should rely on tags to direct our data to the correct procedure above. __Write `add-numbers` which takes in two numbers (which can be rational or complex) and adds them.__ 
+2. Now that we have specific procedure, we can write a generic addition operation. We should rely on tags to direct our data to the correct procedure above.Write `add-numbers` which takes in two numbers (which can be rational or complex) and adds them.<br><br>
+
+Check your answers in the next section.<br>
+</div>
 
 ## Why Tagged Data is So Cool
 
