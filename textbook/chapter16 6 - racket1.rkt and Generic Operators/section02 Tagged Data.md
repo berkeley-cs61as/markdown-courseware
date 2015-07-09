@@ -48,17 +48,17 @@ __Can you come up with another set of constructors and selectors that implements
 
 Now that we've decided to tag our data, we've got to fix our implementations of the rational and complex number data types.
     
-    <del>(define (make-rational numer denom)
-       (cons num denom))</del>
+<pre><code><del>(define (make-rational numer denom)
+   (cons num denom))</del>
 
-    (define (make-rational numer denom)
-        (attach-tag 'rational (cons num denom)))
-        
-    <del>(define (make-complex real imag)
-        (cons real imag))</del>
+(define (make-rational numer denom)
+    (attach-tag 'rational (cons num denom)))
     
-    (define (make-complex real imag)
-        (attach-tag 'complex (cons real imag)))
+<del>(define (make-complex real imag)
+    (cons real imag))</del>
+
+(define (make-complex real imag)
+    (attach-tag 'complex (cons real imag)))</code></pre>
         
     
 
