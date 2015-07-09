@@ -13,7 +13,14 @@ As we explore this picture language, we'll see how data abstractions and higher-
 can be combined to build simple elements into a complex system.
 
 To begin, copy the file `~cs61as/lib/picture.rkt` to your directory, or download it
-[here](http://inst.eecs.berkeley.edu/~cs61as/library/picture.rkt).
+[here](http://inst.eecs.berkeley.edu/~cs61as/library/picture.rkt). You'll also need to install the Racket package
+that will enable us to draw pictures. In your terminal, type the following:
+
+```
+raco pkg install htdp-lib
+```
+
+After completing installation, you should be able to type `(require graphics/turtles)` into Racket without errors.
 
 ## The Picture Language
 
