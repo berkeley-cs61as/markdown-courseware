@@ -584,6 +584,18 @@ If nothing appears, or if you get errors, don't worry.
 Use the debugging skills you've learned so far to pinpoint the error and resolve it.
 If you need help, post on Piazza or contact a TA.
 
+<!--
+## Common Errors
+
+This section explains some common errors students might run into while completing this project.
+
+### `Gtk initialization failed for display ":0"`
+
+If you see this, it means Racket couldn't open a window for drawing pictures.
+Make sure you aren't trying to test your code over SSH.
+
+-->
+
 ## Just for Fun: Exporting Drawings
 
 Don't want to lose your masterpiece?
