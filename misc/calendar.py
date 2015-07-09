@@ -96,7 +96,7 @@ DISCUSSIONS_ORDER = ['0_2',
                      '14_sol']
 
 for le in LESSONS:
-    discussion_url = None
+    discussion_url = None 
     try:
         discussion_index = DISCUSSIONS_ORDER.index(le.replace('.', '_'))
         discussion_url, solution_url = DISCUSSIONS[discussion_index], DISCUSSIONS[discussion_index + 1]
