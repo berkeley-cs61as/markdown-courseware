@@ -9,6 +9,10 @@ current directory (note the period at the end):
 Or you can download the template
 [here](http://inst.eecs.berkeley.edu/~cs61as/templates/hw3.rkt).
 
+## Autograder
+
+If you are working on the lab computers, the `grader` command will run the autograder.  If you are working on your own personal machine, you should download [grader.rkt](http://inst.eecs.berkeley.edu/~cs61as/autograder/grader.rkt) and the [HW 3 tests](http://inst.eecs.berkeley.edu/~cs61as/autograder/tests/hw3-tests.rkt).
+
 ## Exercise 1: Invariant for Fast Exponentiation
 
 <p>Here is the <code>fast-expt</code> procedure from earlier in this lesson:

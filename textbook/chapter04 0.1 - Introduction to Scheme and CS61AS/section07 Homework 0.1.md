@@ -15,6 +15,10 @@ current directory (note the period at the end):
 
 Or you can download the template [here](http://inst.eecs.berkeley.edu/~cs61as/templates/hw0-1.rkt).
 
+## Autograder
+
+If you are working on the lab computers, the `grader` command will run the autograder.  If you are working on your own personal machine, you should download [grader.rkt](http://inst.eecs.berkeley.edu/~cs61as/autograder/grader.rkt) and the [HW 0-1 tests](http://inst.eecs.berkeley.edu/~cs61as/autograder/tests/hw0-1-tests.rkt).
+
 ## Introduce Yourself to the Staff
 
 ![](http://studentbranding.com/wp-content/uploads/2011/04/Repeat-their-name-
@@ -68,11 +72,15 @@ arguments.
 Make sure you test your work!
 
 After you've written your procedure, run the autograder for this exercise and
-check if you defined your procedure correctly by typing the following into
-your terminal:
+check if you defined your procedure correctly.  If you are on the lab computers, type the following into your terminal:
 
     
     grader hw0-1 hw0-1.rkt sum-of-squares
+
+If you are working on your own machine, type the following into your terminal:
+
+
+    racket -tm grader.rkt -- hw0-1-tests.rkt hw0-1.rkt sum-of-squares
 
 ## Words
 
@@ -213,6 +221,11 @@ if it's correct by typing the following into your terminal:
     
     grader hw0-1 hw0-1.rkt can-drive
 
+Or, on your own machine:
+
+
+    racket -tm grader.rkt -- hw0-1-tests.rkt hw0-1.rkt can-drive
+
 ## Exercise 2b - `fizzbuzz`
 
 Write a procedure `fizzbuzz` that takes a number and outputs the word '`fizz`
@@ -226,6 +239,11 @@ following into your terminal:
 
     
     grader hw0-1 hw0-1.rkt fizzbuzz
+
+Or, on your own machine:
+
+
+    racket -tm grader.rkt -- hw0-1-tests.rkt hw0-1.rkt fizzbuzz
 
 ## Exercise 3 - The Most Baffling Question
 

@@ -7,6 +7,10 @@ to the current directory (note the period at the end):
 
 Or you can download the template [here](http://inst.eecs.berkeley.edu/~cs61as/templates/hw4.rkt).
 
+## Autograder
+
+If you are working on the lab computers, the `grader` command will run the autograder.  If you are working on your own personal machine, you should download [grader.rkt](http://inst.eecs.berkeley.edu/~cs61as/autograder/grader.rkt) and the [HW 4 tests](http://inst.eecs.berkeley.edu/~cs61as/autograder/tests/hw4-tests.rkt).
+
 ## Warm-up
   
 Try and predict what the following expressions will return, then check your answers with the Racket interpreter:
