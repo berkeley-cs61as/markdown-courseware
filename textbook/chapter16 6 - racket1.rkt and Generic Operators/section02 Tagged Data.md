@@ -138,7 +138,7 @@ you've probably heard that computers communicate solely in binary code (sequence
 As we alluded to in the last section, there are a few weaknesses in the tagged
 data design.
 
-One, __all of the different representations must be identified and hard code into any generic procedures (such as `add-numbers`).__ For instance, suppose we wanted to
+One weakness is that __all of the different representations must be identified and hard code into any generic procedures (such as `add-numbers`).__ For instance, suppose we wanted to
 incorporate a new type of number into our system. We would need to identify
 this new representation with a type, and then edit all the generic procedures out there (adding clauses to `add-numbers,
 multiply-numbers, divide-numbers`,  etc.) to check for the new type and apply

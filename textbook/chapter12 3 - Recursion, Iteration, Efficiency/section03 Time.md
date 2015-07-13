@@ -7,6 +7,7 @@ A better way to approach this is to count the number of steps that a procedure t
 Here are some of the procedures we'll consider as taking "one step":
 
 All of the following procedures take a single step.
+
 - Basic arithmetic operations
 - defining variables
 - defining procedures
