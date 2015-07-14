@@ -15,19 +15,19 @@ If you are working on the lab computers, the `grader` command will run the autog
 
 Suppose we define `x` and `y` to be two lists:
 
-`(define x (list 1 2 3))`
-
-`(define y (list 4 5 6))`
+```
+(define x (list 1 2 3))
+(define y (list 4 5 6))
+```
 
 What result is printed by the interpreter in response to evaluating each of
 the following expressions?
 
-`(append x y)`
-
-`(cons x y)`
-
-  
-`(list x y)`
+```
+(append x y)
+(cons x y)
+(list x y)
+```
 
 ## Exercise 2: SICP 2.29
 
@@ -67,11 +67,11 @@ binary mobile is balanced.
 **d.** Suppose we change the representation of mobiles so that the constructors
 are
 
-`(define (make-mobile left right) (cons left right))`
-
-`(define (make-branch len structure)`
-
-` (cons len structure))`
+```
+(define (make-mobile left right) (cons left right))
+(define (make-branch len structure)
+  (cons len structure))
+```
 
 How much do you need to change your programs to convert to the new
 representation?
@@ -103,15 +103,13 @@ if s is a sequence containing four sequences, `((1 2 3) (4 5 6) (7 8 9) (10 11
 30)`. Fill in the missing expressions in the following definition of
 `accumulate-n`:
 
-`(define (accumulate-n op init seqs)`
-
-` (if (null? (car seqs))`
-
-` nil`
-
-` (cons (accumulate op init <??>)`
-
-` (accumulate-n op init <??>))))`
+```
+(define (accumulate-n op init seqs)
+  (if (null? (car seqs))
+      '()
+      (cons (accumulate op init <??>)
+            (accumulate-n op init <??>))))
+```
 
 ## Exercise 5
 
@@ -140,19 +138,17 @@ Fill in the missing expressions in the following procedures for computing the
 other matrix operations. (The procedure accumulate-n is defined in the
 previous exercise)
 
-`(define (matrix-*-vector m v)`
+```
+(define (matrix-*-vector m v)
+  (map <??> m))
 
-` (map <??> m))`
+(define (transpose mat)
+  (accumulate-n <??> <??> mat))
 
-`(define (transpose mat)`
-
-` (accumulate-n <??> <??> mat))`
-
-`(define (matrix-*-matrix m n)`
-
-` (let ((cols (transpose n)))`
-
-` (map <??> m)))`
+(define (matrix-*-matrix m n)
+  (let ((cols (transpose n)))
+    (map <??> m)))
+```
 
 ## Exercise 6: SICP 2.38
 
@@ -230,18 +226,14 @@ butfirst, last, butlast, and word`. Unlike Racket, your calculator should
 treat words as self-evaluating expressions except when seen as the operator of
 a compound expression. That is, it should work like these examples:
 
-`calc: foo`
-
-` foo`
-
-` calc: (first foo)`
-
-` f`
-
-` calc: (first (butfirst hello))`
-
-` e`
-
+```
+calc: foo
+foo
+calc: (first foo)
+f
+calc: (first (butfirst hello))
+e
+```
   
 
 Remember, you can get the program by typing
@@ -266,11 +258,11 @@ Programming by example: In some programming systems, instead of writing an
 algorithm, you give examples of how you'd like the program to behave, and the
 language figures out the algorithm itself:
 
-`> (define pairup (regroup '((1 2) (3 4) ...)))`
-
-` > (pairup '(the rain in spain stays mainly on the plain))`
-
-` ((the rain) (in spain) (stays mainly) (on the))`
+```
+> (define pairup (regroup '((1 2) (3 4) ...)))
+> (pairup '(the rain in spain stays mainly on the plain))
+((the rain) (in spain) (stays mainly) (on the))
+```
 
 Write `regroup`. Read `~cs61as/lib/regroup.problem` for details.
 
