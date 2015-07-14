@@ -147,17 +147,18 @@ arguments. Apply-1 takes care of two cases:
 
   1. racket-1 primatives. In this context, a primative is a non-user-defined procedures. All Racket procedures are Racket-1 primatives.
   2. Lambda functions, or user defined procedures.
-    
-    (define (apply-1 proc args)
-      (cond ((procedure? proc)      ; use underlying Racket's APPLY
-             (apply proc args))
-            ((lambda-exp? proc)
-             (eval-1 (substitute (caddr proc)   ; the body
-                                 (cadr proc)    ; the formal parameters
-                                 args           ; the actual arguments
-                                 '())))         ; bound-vars
-            (else (error "bad proc: " proc))))
-    
+
+```
+(define (apply-1 proc args)
+  (cond [(procedure? proc)      ; use underlying Racket's APPLY
+          (apply proc args)]
+        [(lambda-exp? proc)
+          (eval-1 (substitute (caddr proc)   ; the body
+                              (cadr proc)    ; the formal parameters
+                              args           ; the actual arguments
+                              '()))]         ; bound-vars
+        [else (error "bad proc: " proc)]))
+```    
 
   
 **Mutual Recursion (in racket-1)**   
