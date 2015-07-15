@@ -37,7 +37,7 @@ server to contact, ask that server to give it the webpage you're looking for,
 download the webpage, interpret the webpage, and display it on your screen.
 Each of these steps contains its own complex parts.
 
-How does all of this fit together? In one word: abstraction!
+How does all of this fit together? In one word: **abstraction**!
 Abstraction allows us to treat a complicated process as a single unit,
 and to use that unit in an even more complex process.
 
