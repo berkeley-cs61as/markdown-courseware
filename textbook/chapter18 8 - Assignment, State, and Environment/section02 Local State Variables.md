@@ -1,4 +1,4 @@
-## quick glance
+## A Preview
 
 Let's take a quick glance at what we will be going over in this section:
 
@@ -17,15 +17,15 @@ Let's take a quick glance at what we will be going over in this section:
       dispatch) 
     
 
-What do you think? Any idea about what this function does?
+What do you think? Do you have any idea about what this function does?
 
-## withdraw
+## Withdraw
 
 Let's withdraw money from the bank account. We will do this using a procedure
 `withdraw`, which takes as argument an amount to be withdrawn. If there is
 enough money in the account to accommodate the withdrawal, then `withdraw`
 should return the balance remaining after the withdrawal. Otherwise,
-`withdraw` should return the message `Insufficient funds`. For example, if we
+`withdraw` should return the message `"Insufficient funds"`. For example, if we
 begin with $100 in the account, we should obtain the following sequence of
 responses using `withdraw`:
 
@@ -73,11 +73,11 @@ Insufficient funds message. Here are the definitions of `balance` and
 
 Decrementing balance is accomplished by the expression
 
-`(set! balance (- balance amount))`
+    (set! balance (- balance amount))
 
 This uses the `set!` special form, whose syntax is
 
-`(set! [name] [new-value])`
+    (set! [name] [new-value])
 
 Here `[name]` is a symbol and `[new-value]` is any expression. `Set!` changes
 `[name]` so that its value is the result obtained by evaluating `[new-value]`.
@@ -89,16 +89,15 @@ evaluated in the case where the if test is true: first decrementing `balance`
 and then returning the value of `balance`. In general, evaluating the
 expression
 
-`(begin [exp1] [exp2] ... [expk])`
+    (begin [exp1] [exp2] ... [expk])
 
 causes the expressions `[exp1]` through `[expk]` to be evaluated in sequence
 and the value of the final expression `[expk]` to be returned as the value of
 the entire `begin` form.
 
-Here's a [Scheme interpreter](http://inst.eecs.berkeley.edu/~cs61AS/sp13/js-
-scheme-stk/index.html). Play with `withdraw`, `set!` and `begin`:
+Play with `withdraw`, `set!` and `begin` on your STk interpreter!
 
-## wait, there's something!
+## Something's Fishy...
 
 Before we move on, examine again how `withdraw` and `balance` are defined:
 
@@ -114,9 +113,9 @@ Before we move on, examine again how `withdraw` and `balance` are defined:
 
 Do you see anything that could cause a trouble?
 
-## trouble detected
+## Trouble Detected
 
-So the problem is with the variable `balance`. As specified above, `balance`
+The problem is with the variable `balance`. As specified above, `balance`
 is a name defined in the global environment and is freely accessible to be
 examined or modified by any procedure. It would be much better if we could
 somehow make `balance` **internal** to `withdraw`, so that `withdraw` would be
@@ -154,107 +153,108 @@ variable `balance` is not accessible by any other procedure.
     60
     
 
-Here's a [Scheme interpreter](http://inst.eecs.berkeley.edu/~cs61AS/sp13/js-
-scheme-stk/index.html). Play with `new-withdraw` and make sure you understand
-how it works:
+Play with `new-withdraw` on the STk interpreter and make sure you understand how it works.
 
-## what will scheme output?
+## `make-account`
 
-Predict the result before you try each example. If you don't understand what
-Scheme actually does, ask for help! Don't waste your time by just typing this
-in without paying attention to the results.
+Here is a simplified version of the `make-account` procedure in SICP:
 
-    
-    
-    (define (make-adder n)                       ((lambda (x) 
-      (lambda (x) (+ x n)))                         (let ((a 3)) 
-                                                      (+ x a))) 
-    (make-adder 3)                                5) 
-     
-    ((make-adder 3) 5)                           (define k 
-                                                   (let ((a 3)) 
-    (define (f x) (make-adder 3))                    (lambda (x) (+ x a)))) 
-     
-    (f 5)                                        (k 5) 
-     
-    (define g (make-adder 3))                    (define m 
-                                                   (lambda (x) 
-    (g 5)                                            (let ((a 3)) 
-                                                       (+ x a)))) 
-    (define (make-funny-adder n)        
-      (lambda (x)                                (m 5) 
-        (if (equal? x 'new)             
-            (set! n (+ n 1))                     (define p 
-            (+ x n))))                             (let ((a 3)) 
-                                                     (lambda (x) 
-    (define h (make-funny-adder 3))                    (if (equal? x 'new) 
-                                                           (set! a (+ a 1)) 
-    (define j (make-funny-adder 7))                        (+ x a))))) 
-     
-    (h 5)                                        (p 5) 
-     
-    (h 5)                                        (p 5) 
-     
-    (h 'new)                                     (p 'new) 
-     
-    (h 5)                                        (p 5) 
-     
-    (j 5)                                        (define r 
-                                                   (lambda (x) 
-    (let ((a 3))                                     (let ((a 3)) 
-      (+ 5 a))                                         (if (equal? x 'new) 
-                                                           (set! a (+ a 1)) 
-    (let ((a 3))                                           (+ x a))))) 
-      (lambda (x) (+ x a)))             
-                                                 (r 5) 
-    ((let ((a 3))                       
-       (lambda (x) (+ x a)))                     (r 5) 
-     5)                                 
-                                                 (r 'new) 
-     
-                                                 (r 5)                 
-     
-    (define s                                    (define (ask obj msg . args) 
-      (let ((a 3))                                 (apply (obj msg) args)) 
-        (lambda (msg)                             
-          (cond ((equal? msg 'new)               (ask s 'add 5) 
-                 (lambda ()                       
-                   (set! a (+ a 1))))            (ask s 'new) 
-                ((equal? msg 'add)                
-                 (lambda (x) (+ x a)))           (ask s 'add 5) 
-                (else (error "huh?"))))))         
-                                                 (define x 5) 
-    (s 'add)                                      
-                                                 (let ((x 10) 
-    (s 'add 5)                                         (f (lambda (y) (+ x y)))) 
-                                                   (f 7)) 
-    ((s 'add) 5)                                  
-                                                 (define x 5) 
-    (s 'new)                                      
-     
-    ((s 'add) 5)                                  
-     
-    ((s 'new))                                    
-     
-    ((s 'add) 5) 
-    
+    (define (make-account balance) 
+      (define (withdraw amount) 
+        (set! balance (- balance amount)) balance) 
+      (define (deposit amount) 
+        (set! balance (+ balance amount)) balance) 
+      (define (dispatch msg) 
+        (cond ((eq? msg 'withdraw) withdraw) 
+              ((eq? msg 'deposit) deposit) ) ) 
+      dispatch)
 
-## substitution model of evaluation
+Now, let's try to rewrite this using local state variables. Fill in the blank in the following code so that the result works exactly the same as the `make-account` procedure above. That is, it responds to the same messages and produces the same return values. The differences between the two procedures are that the inside of `make-account` above is enclosed in the `let` statement below, and the names of the parameters to `make-account` are different.
 
-Introducing assignments accompanies a pretty big cost. At this point, you may
-realize that we cannot use the substitution model of evaluation anymore
-because it yields the wrong value. The trouble here is that substitution is
-based ultimately on the notion that the symbols in our language are
-essentially names for values. But as soon as we introduce set! and the idea
-that the value of a variable can change, a variable can no longer be simply a
-name. Now a variable somehow refers to a place where a value can be stored,
-and the value stored at this place can change.
+    (define (make-account init-amount) 
+      (let (______________________) 
+        (define (withdraw amount) 
+          (set! balance (- balance amount)) balance) 
+        (define (deposit amount) 
+          (set! balance (+ balance amount)) balance) 
+        (define (dispatch msg) 
+          (cond ((eq? msg 'withdraw) withdraw) 
+                ((eq? msg 'deposit) deposit) ) ) 
+        dispatch) )
+
+<div class="mc">
+<ans text="Click to view answer." explanation="(balance init-amount)" correct></ans>
+</div>
+
+Now, modify either version of make-account so that, given the message balance, it returns the current account balance, and given the message init-balance, it returns the amount with which the account was initially created. For example,
+
+    > (define acc (make-account 100)) 
+    acc 
+    > (acc 'balance) 
+    100
+
+<div class="mc">
+<ans text="Click to view answer." explanation="add ((eq? msg 'balance) balance) to the cond statement in the dispatch procedure." correct></ans>
+</div>
+
+Make another modification such that, given the message transactions (any deposit or withdrawal), it returns a list of all transactions made since the account was opened. For example:
+
+    > (define acc (make-account 100)) 
+    acc 
+    > ((acc 'withdraw) 50) 
+    50 
+    > ((acc 'deposit) 10) 
+    60
+    > (acc 'balance)
+    60
+    > (acc 'transactions) 
+    ((deposit 10) (withdraw 50))
+
+Before viewing the entire solution below, try out your definition in the STk interpreter and make sure you understand the entire code for `make-account`.
+
+Here is our solution:
+
+    (define (make-account init-amount) 
+      (let ((balance init-amount)
+            (transactions '())) 
+        (define (withdraw amount) 
+          (set! balance (- balance amount))
+          (set! transactions (cons (list 'withdraw amount) transactions)) 
+          balance) 
+        (define (deposit amount) 
+          (set! balance (+ balance amount))
+          (set! transactions (cons (list 'deposit amount) transactions)) 
+          balance) 
+        (define (dispatch msg) 
+          (cond ((eq? msg 'withdraw) withdraw) 
+                ((eq? msg 'deposit) deposit)
+                ((eq? msg 'balance) balance)
+                ((eq? msg 'transactions) transactions) ) ) 
+        dispatch) )
+
+## The Substitution Model of Evaluation
+
+Given this definition:
+
+    (define (plus1 var) 
+      (set! var (+ var 1)) 
+      var)
+
+Follow the [substitution model](http://berkeley-cs61as.github.io/textbook/the-substitution-model-for-procedure-application.html) to find the result of computing
+
+    (plus1 5)
+
+That is, show the expression that results from substituting `5` for `var` in the body of `plus1`, and then compute the value of the resulting expression.
+
+Now, try it in the STk interpreter. Did you get the same answer? Why or why not?
+
+Introducing assignments accompanies a pretty big cost. At this point, you may realize that we cannot use the substitution model of evaluation anymore because it yields the wrong value. The trouble here is that substitution is based ultimately on the notion that the symbols in our language are essentially names for values. But as soon as we introduce `set!` and the idea that the value of a variable can change, a variable can no longer be simply a name. Now a variable somehow refers to a place where a value can be stored, and the value stored at this place can change. 
 
 _Then how can I evaluate the procedures?_
 
 The new model of evaluation is waiting for you in the next subsection.
 
-## takeaways
+## Takeaways
 
 In this section, you learned:
 
@@ -262,7 +262,6 @@ In this section, you learned:
   2. Costs of assignments
   3. How to use `set!` and `begin`
 
-## what's next?
+## What's Next?
 
 Let's go to the next subsection and learn about the new model of evaluation!
-

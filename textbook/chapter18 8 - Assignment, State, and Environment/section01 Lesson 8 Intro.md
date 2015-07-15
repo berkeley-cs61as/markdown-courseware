@@ -1,19 +1,16 @@
-## Assignment, state and environment
+## Warning
 
-You get to draw cool diagrams.
+This lesson contains dense reading and needs major revisions. If you find any of this material confusing or hard to understand, please do not hesitate to ask questions.
 
-## prerequisites and what to expect
+## Prerequisites and What to Expect
 
-You're supposed to understand all the materials covered so far, especially
-message passing.
+Make sure you understand all the material prior to this lesson, especially [Message Passing](http://berkeley-cs61as.github.io/textbook/message-passing.html).
 
-In this section, we are going to go over the change of the state of the
-variables and environment. Be prepared to be exposed to a fair amount of
-information and synthesize it!
+In this section, we are going to go over the change of the state of the variables and environment. You get to draw cool diagrams that illustrates beautifully the environment in which Scheme stores variables and procedures. Be prepared to be exposed to a fair amount of information and synthesize it!
 
-## reading
+## Reading
 
-In this section, we will cover the material in the following reading:
+In this section, we will cover the material in the following readings:
 
   * [Introduction to Unit 3: Modularity, Objects, and State ](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-19.html#%_sec_3)
   * [SICP 3.1: Assignment and Local State ](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-20.html#%_sec_3.1)
@@ -23,11 +20,10 @@ In this section, we will cover the material in the following reading:
 
 Feel free to read ahead!
 
-Also, here's the webcast of old lecture videos. The only big example of an
-environment diagram is in the webcast, so we strongly suggest you watch it:
+Also, here's the webcast of old lecture videos. The only big example of an environment diagram is in the webcast, so we strongly suggest you watch it:
 
-  * [Lecture 21 ](http://www.youtube.com/watch?v=vh73mm7MqA0&feature=share&list=PL6D76F0C99A731667)
-  * [Lecture 22 ](http://www.youtube.com/watch?v=cmeWXO9Sa5E&feature=share&list=PL6D76F0C99A731667)
+  * [Lecture 21](http://www.youtube.com/watch?v=vh73mm7MqA0&feature=share&list=PL6D76F0C99A731667)
+  * [Lecture 22](http://www.youtube.com/watch?v=cmeWXO9Sa5E&feature=share&list=PL6D76F0C99A731667)
   * [Lecture 23](http://www.youtube.com/watch?v=SdwAj_eowzg&feature=share&list=PL6D76F0C99A731667)
 
 ## Modularity
@@ -72,11 +68,11 @@ composed of a collection of internally cohesive units, called objects, that
 can communicate and interoperate without needing information about their
 internal structure.
 
-## takeaways
+## Takeaways
 
 In this subsection, you learned the definition of modularity.
 
-## what's next?
+## What's Next?
 
 Go to the next subsection and see how you can use modularity to program!
 
