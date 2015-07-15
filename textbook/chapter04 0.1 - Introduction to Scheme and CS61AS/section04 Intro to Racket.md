@@ -14,7 +14,7 @@ for that? We have chosen Racket, a dialect of [the Lisp programming language](ht
 
   1. In Racket, [parentheses matter](http://xkcd.com/297/).
   2. When you ask a procedure to perform its action, you _call_ it. This is also called _invoking_ a procedure. Whenever you invoke a procedure, you must wrap the procedure call (the call to the procedure) in a set of parentheses.
-  3. Everytime we invoke a procedure, we must follow **prefix notation*: a notation that dictates that the procedure that we're invoking is always the leftmost item in the parentheses. Everything else are _arguments_ to that procedure -- things we feed in to the procedure in order to get our answer. For example, for this expression: `(+ 2 2)`, we feed in `2` and `2` into `+` in order to get the answer, `4`.
+  3. Everytime we invoke a procedure, we must follow **prefix notation*: a notation that dictates that the procedure that we're invoking is always the leftmost item in the parentheses. Everything else are _arguments_ to that procedure&mdash;things we feed in to the procedure in order to get our answer. For example, for this expression: `(+ 2 2)`, we feed in `2` and `2` into `+` in order to get the answer, `4`.
 
 ## The Racket Interpreter
 
@@ -30,7 +30,7 @@ Alt-t`) and then typing in `racket` and hitting Enter. You've just started the R
 ## What Will Racket Output?
 
 What does the Racket interpreter output when you try the following examples?
-Type each example into the interpreter to try it out. Before entering each example, take a moment and think about what the output should be. Some of these examples will cause errors -- why is that? (If something errors, the interpreter will output `"*** Error:"` along with some error message.)
+Type each example into the interpreter to try it out. Before entering each example, take a moment and think about what the output should be. Some of these examples will cause errors&mdash;why is that? (If something errors, the interpreter will output an error message.)
 
     
     5
