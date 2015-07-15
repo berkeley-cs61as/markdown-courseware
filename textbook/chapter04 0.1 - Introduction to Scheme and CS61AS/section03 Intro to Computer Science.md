@@ -46,7 +46,7 @@ abstraction in our daily lives: To drive a car, we have to know how to steer and
 the pedals, but we don't have to know how the engine and drivechain work.
 To bake an apple pie, we need a recipie and an oven,
 but we need not grow our own apples or understand how they are grown.
-And to use the internet, we need not understand the
+And to use the internet, we don't have to understand the
 protocols for requesting webpages&mdash;our browser abstracts that process away,
 so we can browse <s>dank memes</s> websites quickly and easily.
 
