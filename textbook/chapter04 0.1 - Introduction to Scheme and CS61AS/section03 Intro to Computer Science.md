@@ -3,7 +3,7 @@ reading and are included solely for the interest and amusement of the reader.*
 
 ## What Is Computer Science?
 
-There isn't any one right answer. Computer science means a lot of different
+There isn't one right answer. Computer science means a lot of different
 things to a lot of different people. For some, it means building [a web
 application that allows you to connect and keep up with your
 friends](https://joindiaspora.com/). For others, it means engineering [self-driving cars](http://en.wikipedia.org/wiki/Google_driverless_car). For yet
