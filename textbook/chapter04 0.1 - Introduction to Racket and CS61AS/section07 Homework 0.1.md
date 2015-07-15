@@ -19,7 +19,7 @@ Or you can download the template [here](http://inst.eecs.berkeley.edu/~cs61as/te
 
 If you are working on the lab computers, the `grader` command will run the autograder.  If you are working on your own personal machine, you should download [grader.rkt](http://inst.eecs.berkeley.edu/~cs61as/autograder/grader.rkt) and the [HW 0-1 tests](http://inst.eecs.berkeley.edu/~cs61as/autograder/tests/hw0-1-tests.rkt).
 
-## Introduce Yourself to the Staff
+## Exercise 0
 
 ![](http://studentbranding.com/wp-content/uploads/2011/04/Repeat-their-name-
 and-introduce-yourself.jpg)
@@ -39,16 +39,14 @@ Answer the following questions on the homework file:
 
 5) Tell us interesting things about yourself.
 
-## Exercise 0 - Introduce Yourself to your Classmates
-
-See if you can find a post on Piazza called "Hello World!". Make a followup on that post and introduce yourself. Be sure to include:
+Now, see if you can find a post on Piazza called "Hello World!". Make a followup on that post and introduce yourself. Be sure to include:
 
   * Name
   * Major and Year
   * One interesting fact about yourself
   * Why you're taking the course
 
-## Exercise 1 - `sum-of-squares`
+## Exercise 1
 
 Here is the syntax for defining a procedure:
 
@@ -65,8 +63,7 @@ For example, you saw how to define a `square` procedure:
 After defining, you can use the procedure `square` to find the square of any
 number you want. Likewise...
 
-Without using `*` (use `square` instead), define a procedure `sum-of-squares`,
-which takes two arguments, and returns the sum of the squares of the two
+Without using `*` (use `square` instead), **define a procedure `sum-of-squares`**, which takes two arguments, and returns the sum of the squares of the two
 arguments.
 
 Make sure you test your work!
@@ -82,7 +79,7 @@ If you are working on your own machine, type the following into your terminal:
 
     racket -tm grader.rkt -- hw0-1-tests.rkt hw0-1.rkt sum-of-squares
 
-## Words
+### Words
 
 We've shown you some interesting procedures that allow you to do stuff to
 words:
@@ -96,14 +93,14 @@ words:
 Keep these procedures and concepts in the back of your mind. They'll come back
 in later exercises and labs.
 
-## Special Forms
+### Special Forms
 
   
 Racket has some control features that allow you to choose what to do next
 based on a test. These are called _Special Forms._ Special forms have
 particular rules that allow them to skip evaluating some of its arguments.
 
-### `if`
+#### `if`
 
 In Racket, `if` is a special form that evaluates only one of its last two
 arguments to use as a value. `if` always evaluates its first argument. If the
@@ -122,7 +119,7 @@ In this case, `yay!` is printed. Because the first expression evaluates to
 true, the last argument to `if` is not evaluated, which means we don't get a
 divide-by-zero error.
 
-### `cond`
+#### `cond`
 
 `cond` is a special form that acts just like an `if` statement, except with multiple options. Each clause is tested one at a time until one evaluates to `true`. If none of the clauses are `true`, you can include an `else` clause to capture these cases.
 
@@ -180,7 +177,7 @@ argument.
 
 Anything that is not `#f` is `#t`. So, `100` is `true`, `'foo` is `true`, and so on.
 
-### `or`
+#### `or`
 
 `or` checks whether **any** of its arguments are `true`.
 
@@ -207,12 +204,9 @@ A subtle point about `or`: just like `and`, if any one of its arguments evaluate
     > (or (* 3 4) (- 2 1))
     12
 
-## Exercise 2a - `can-drive`
+## Exercise 2
 
-Take a moment to read through the above, and try them out in the interpreter.
-Then, write a procedure `can-drive` that takes the age of a person as an
-argument. If the age is below `16`, return the sentence '`(Not yet)`. Otherwise,
-return the sentence '`(Good to go)`. Make sure to test your code in the
+**a)** Take a moment to read through the above, and try them out in the interpreter. Then, write a procedure `can-drive` that takes the age of a person as an argument. If the age is below `16`, return the sentence '`(Not yet)`. Otherwise, return the sentence '`(Good to go)`. Make sure to test your code in the
 interpreter.
 
 After you've finished this exercise, run the autograder on your code to check
@@ -226,13 +220,8 @@ Or, on your own machine:
 
     racket -tm grader.rkt -- hw0-1-tests.rkt hw0-1.rkt can-drive
 
-## Exercise 2b - `fizzbuzz`
 
-Write a procedure `fizzbuzz` that takes a number and outputs the word '`fizz`
-if the number is divisible by `3`, '`buzz` if it's divisible by `5`, '`fizzbuzz`
-if it's divisible by both `3` and `5`, and otherwise, the number itself. You may
-find the function `remainder` useful. Make sure to test your code in the
-interpreter.
+**b)** Write a procedure `fizzbuzz` that takes a number and outputs the word '`fizz` if the number is divisible by `3`, '`buzz` if it's divisible by `5`, '`fizzbuzz` if it's divisible by both `3` and `5`, and otherwise, the number itself. You may find the function `remainder` useful. Make sure to test your code in the interpreter.
 
 After you've finished this exercise, check your solution by typing the
 following into your terminal:
@@ -245,13 +234,13 @@ Or, on your own machine:
 
     racket -tm grader.rkt -- hw0-1-tests.rkt hw0-1.rkt fizzbuzz
 
-## Exercise 3 - The Most Baffling Question
+## Exercise 3
 
 Why did the Walrus cross the Serengeti?
 
 To figure out this answer, look on Piazza for the post labeled "Answer to Homework 0-1 Exercise 3".
 
-## Exercise 4 - `new-if`
+## Exercise 4
 
 See what happens when you type the following snippets of code into the
 interpreter:
