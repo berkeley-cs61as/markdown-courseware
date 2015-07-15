@@ -41,13 +41,13 @@ For each of the 3 messsages, the bank account objects know what actions need to 
 
   * For **balance**, it doesn't need any additional arguments. It returns the amount of money that account has. 
 
-    > (ask Matt-Account 'balance)
-    1000
+<pre><code>> (ask Matt-Account 'balance)
+1000</code></pre>
 
   * For **deposit** and **withdraw**, we need one more argument to specify the amount we are depositing or withdrawing. 
     
-    > (ask Matt-Account 'deposit 50000)
-    51000
+<pre><code>> (ask Matt-Account 'deposit 50000)
+51000</code></pre>
 
 The metaphor is that an object "knows how" to do certain tasks. These tasks
 are called **methods**.
@@ -59,7 +59,7 @@ Suppose we have a bank account for Max, and we enter the following expressions:
 <pre><code>(ask max-account 'balance)
 1000
 
-(define withdraw 'deposit)<pre><code>
+(define withdraw 'deposit)</code></pre>
 
 What is returned from the following expression?
 
@@ -113,7 +113,7 @@ Consider these calls:
 
 <div class="mc">
 <strong>Test Your Understanding</strong><br><br>
-We called <code>(ask matt-account 'balance) several times, each with different values. What does this tell us about OOP?
+We called <code>(ask matt-account 'balance)</code> several times, each with different values. What does this tell us about OOP?
 <ans text="It is representative of Functional Programming" explanation=""></ans>
 <ans text="It is representative of Non-Functional Programming" explanation="Since we see that making the same calls return different values, this tells us that OOP is non-functional in style." correct></ans>
 <ans text="Not enough information" explanation=""></ans>
@@ -126,9 +126,7 @@ Both <code>matt-account</code> and <code>brian-account</code> returns how much m
 <ans text="Brian's account sees no change" explanation="The current methods we have only affect variables unique to each object in a class. Later, we'll observe differences between instance variables and class variables." correct></ans>
 </div>
 
-## States
-
-### OOP Paradigm vs. Functional Programming Paradigm
+## OOP Paradigm vs. Functional Programming Paradigm
 
 In the first question, we see that Matt's balance changes with each
 withdraw and deposit. This feels natural for us because that is how bank

@@ -25,8 +25,7 @@ Why did we call them "little-t trees"? Later on in this section, we are going
 to be learning about the "capital-T Tree" data type, which is **completely
 different** from the tree data type. This notation is kept for the sake of consistency and clarity.
 
-We may also refer to "little-t trees" as "deep lists" (since they are lists within lists within lists within ...), which is less ambiguous, but also less descriptive of the tree-like
-structure of lists of lists.
+We may also refer to "little-t trees" as "deep lists" (since they are lists within lists within lists within ...), which is less ambiguous, but also less descriptive of the tree-like structure of lists of lists.
 
 <div class="mc">
 <strong>Test Your Understanding</strong><br><br>

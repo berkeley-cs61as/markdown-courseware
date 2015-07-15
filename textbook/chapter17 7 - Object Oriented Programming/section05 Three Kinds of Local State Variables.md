@@ -15,10 +15,7 @@ Recall the `checking-account` class:
             (ask self 'withdraw (+ amount 0.10)) ))
     
 
-Whenever we write a check, we charged the account with an additional 10 cents.
-All `checking-accounts` start with a 10 cent fee, but now we want to be able
-to change the fee as we go. One way to do this is to add `check-fee` as an
-instantiation variable.
+Whenever we write a check, we charged the account with an additional 10 cents. All `checking-accounts` start with a 10 cent fee, but now we want to be able to change the fee as we go. One way to do this is to add `check-fee` as an instantiation variable.
 
     
     
@@ -35,24 +32,21 @@ instantiation variable.
     
     
 
-But this format is slightly redundant because we have to specify the `check-
-fee` every time, even though we always want it to start at 10 cents. We will
-introduce a new clause, **instance-vars** that solves our problems.``
-
+But this format is slightly redundant because we have to specify the `check-fee` every time, even though we always want it to start at 10 cents. We will introduce a new clause, **instance-vars** that solves our problems. 
     
-    (define-class (checking-account init-balance)
-        (parent (account init-balance))
-    **    (instance-vars (check-fee 0.10))**
-        (method (write-check amount)
-            (ask self 'withdraw (+ amount check-fee)))
-        (method (set-fee! fee)
-            (set! check-fee fee)) )
+<pre><code>(define-class (checking-account init-balance)
+    (parent (account init-balance))
+    <strong>(instance-vars (check-fee 0.10))</strong>
+    (method (write-check amount)
+        (ask self 'withdraw (+ amount check-fee)))
+    (method (set-fee! fee)
+        (set! check-fee fee)) )</code></pre>
     
 
-## Instance vs Instantiation variables
+## Instance vs. Instantiation Variables
 
 Instantiation variables are also instance variables; that is, every instance
-has its own private value for them. The only diff erence is in the notation
+has its own private value for them. The only difference is in the notation
 and when you set the initial value. For instantiation variables you give a
 value when you call instantiate, but for other instance variables you give the
 value in the class de finition.
@@ -79,19 +73,19 @@ class, and a separate `hunger` variable for each instance.
             'whistle-while-you-work ))  
     
     > (define brian (instantiate worker))
-    BRIAN
+    brian
     > (define matt (instantiate worker))
-    MATT
+    matt
     > (ask matt 'work)
-    WHISTLE-WHILE-YOU-WORK
+    whistle-while-you-work
     > (ask matt 'work)
-    WHISTLE-WHILE-YOU-WORK
+    whistle-while-you-work
     > (ask matt 'hunger)
     2
     > (ask matt 'work-done)
     2
     > (ask brian 'work)
-    WHISTLE-WHILE-YOU-WORK
+    whistle-while-you-work
     > (ask brian 'hunger)
     1
     > (ask brian 'work-done)
@@ -106,6 +100,46 @@ that when Brian works, Matt doesn't get hungry. You can ask any instance the
 value of a class variable, or you can ask the class itself. This is an
 exception to the usual rule that messages must be sent to instances, not to
 classes.
+
+<div class="mc">
+<strong>Test Your Understanding</strong><br><br>
+We are going to design a "Dog" class. For each of the following, decide whether they should be a "child", "parent", "instance variable", "class variable" or "method" for the dog class.<br><br>
+
+(e.g. if we ask "cat?" and you think cat should be a parent of dog, type "parent")<br><br>
+
+In relation to the Dog class, "name" is a(n):
+<ans text="class variable" explanation=""></ans>
+<ans text="instance variable" explanation="Each dog needs to have its own name." correct></ans>
+<ans text="parent" explanation=""></ans>
+<ans text="child" explanation=""></ans>
+<ans text="method" explanation=""></ans>
+<ans text="None of the above" explanation=""></ans>
+<br><br>
+In relation to the Dog class, "age" is a(n):
+<ans text="class variable" explanation=""></ans>
+<ans text="instance variable" explanation="Each dog needs to have its own age." correct></ans>
+<ans text="parent" explanation=""></ans>
+<ans text="child" explanation=""></ans>
+<ans text="method" explanation=""></ans>
+<ans text="None of the above" explanation=""></ans>
+<br><br>
+In relation to the Dog class, "wag-tail" is a(n):
+<ans text="class variable" explanation=""></ans>
+<ans text="instance variable" explanation=""></ans>
+<ans text="parent" explanation=""></ans>
+<ans text="child" explanation=""></ans>
+<ans text="method" explanation="A dog needs to know HOW to wag its tail." correct></ans>
+<ans text="None of the above" explanation=""></ans>
+<br><br>
+In relation to the Dog class, "Animal" is a(n):
+<ans text="class variable" explanation=""></ans>
+<ans text="instance variable" explanation=""></ans>
+<ans text="parent" explanation="An animal is a more general class than dog. Animal should be the parent of dog." correct></ans>
+<ans text="child" explanation=""></ans>
+<ans text="method" explanation=""></ans>
+<ans text="None of the above" explanation=""></ans>
+<!-- and so on -->
+</div>
 
 ## Takeaways
 

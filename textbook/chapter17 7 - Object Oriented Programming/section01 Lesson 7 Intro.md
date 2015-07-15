@@ -44,7 +44,7 @@ we recommend you use for the homework and quiz.
 
 You should also check out the old lecture notes [here](http://www-inst.eecs.berkeley.edu/~cs61as/reader/notes.pdf#page=46).
 
-## OBJECTS
+## Objects
 
 When we are coding in OOP, we are dealing with objects or "smart data" that
 know how to do operations internally and how to interact with other objects.
@@ -52,7 +52,7 @@ For example, we can have an object `Fred` of type `human`. He internally knows
 how to eat other objects, say, `dumpling`. OOP then allows us to "Ask Fred to
 eat dumpling".
 
-## JARGONS
+## Jargon
 
 Programmers who use OOP language have special vocabularies to describe
 different components of OOP. In the example above, `Fred` is an **instance**

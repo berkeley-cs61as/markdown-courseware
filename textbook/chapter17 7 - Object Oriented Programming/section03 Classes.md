@@ -99,14 +99,45 @@ return anything.
     12 
 
 The "!" in "set!" is a convention in Scheme for functions that mutate
-something (just like the convention that procedures ending in "?" return #t or
-#f).
+something (just like the convention that procedures ending in "?" return #t or #f).
+
+<div class="mc">
+<strong>Test Your Understanding</strong><br><br>
+This looks a lot like define, but the meaning is slightly different. Define creates a new variable, while set! changes the value of an existing variable. Take a look at the code below:
+
+<pre><code>(define a 10)
+(define (change x)
+  (define a 20)
+  x)
+(change 30)</code></pre>
+
+What is the value of <code>a</code> now?
+<ans text="Click to view answer." explanation="10" correct></ans>
+<!-- and so on -->
+<br><br>
+Instead, we decided to execute the following piece of code:
+
+<pre><code>(define a 10)
+(define (change x)
+  (set! a 20)
+  x)
+(change 30)</code></pre>
+
+What is the value of <code>a</code> now?
+
+<ans text="Click to view answer." explanation="20" correct></ans>
+<br><br>
+
+What happens if we try to <code>set!</code> a variable that is not defined?
+
+<pre><code>(set! c 10)</code></pre>
+
+Try it out on the STk interpreter.
+</div>
 
 ## Defining 'Withdraw' Methods
 
-We defined the `deposit` method, now lets see how we define more, specifically
-the `withdraw` method. Note that the order in which these methods appear don't
-matter.
+We defined the `deposit` method, and now lets see how to define the `withdraw` method. Note that the order in which these methods appear in our class definition do not matter.
 
     
     
@@ -123,8 +154,8 @@ matter.
                   balance)))
     
 
-Again, `withdraw` is a method that takes in 1 argument called 'amount'. If
-there is not enough money in `balance` return "Insufficient Fund", otherwise
+Again, `withdraw` is a method that takes in one argument, `amount`. If
+there is not enough money in `balance`, return "Insufficient Fund". Otherwise,
 reduce `balance` by `amount` and return the remaining `balance`. We are using
 a new special form, `begin`. What does it actually do?
 
@@ -141,26 +172,12 @@ happen?
         balance)
     
 
-`If` only accepts 3 arguments; a condition, then-case, and else-case. If we
-don't use `begin`, we will have 4 arguments and the interpreter will throw an
-error. Until now, in every procedure we've evaluated only one expression, to
-provide the return value of that procedure. It's still the case that a
-procedure can only return one value. Now, though, we sometimes want to
+`if` only accepts 3 arguments: a condition, then-case, and else-case. If we
+don't use `begin`, we will have **four** arguments and the interpreter will throw an error. Until now, in every procedure we've evaluated only one expression, to provide the return value of that procedure. It's still the case that a procedure can only return one value. Now, though, we sometimes want to
 evaluate an expression for what it does instead of what it returns, e.g.
 changing the value of a variable. The call to `begin` indicates that the
 `(set! amount (- amount balance))` and the `balance` together form a single
 argument to if.
 
-## Takeaways
-
-Several takeaways from this subsection:
-
-  * In OOP, we work with objects: smart data that know what values they have and what functions they can do.
-  * Objects have states: knowledge on what has happened to them in the past.
-  * Every object is a part of a certain class.
-  * A class can have many methods. The order in which they are defined doesn't matter.
-
-## what's next?
-
-Can a class inherit from another class? We will see in the next subsection.
+In the next section, we'll go over how a class can inherit properties from another class.
 
