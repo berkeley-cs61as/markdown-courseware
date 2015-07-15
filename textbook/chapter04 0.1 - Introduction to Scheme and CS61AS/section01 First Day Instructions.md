@@ -1,3 +1,5 @@
-Before we can start on Lesson 0.1, please make sure you have completed our [First Day Instructions](https://docs.google.com/a/berkeley.edu/document/d/1a5tuY3VFxnsxkzu3mI99jghNXyPb_sWhqDf3PpYAR7s/edit?usp=sharing).
+## Before We Begin...
 
-Once you have finished, move on to the next section!
+Before we start Lesson 0.1, we'll have to get your lab account set up. You'll find the instructions [here](https://docs.google.com/a/berkeley.edu/document/d/1a5tuY3VFxnsxkzu3mI99jghNXyPb_sWhqDf3PpYAR7s/edit?usp=sharing). (If you're not currently taking CS 61AS, skip to Step 11.)
+
+Once you've finished, move on to the next section!
