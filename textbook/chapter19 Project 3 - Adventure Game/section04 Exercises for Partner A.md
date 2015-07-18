@@ -5,8 +5,7 @@ You will notice that whenever a person goes to a new place, the place gets an
 an `'exit` message. When the place gets the message, it calls each procedure
 on its list of `entry-procedures` or `exit-procedures` as appropriate. Places
 have the following methods defined for manipulating these lists of procedures:
-`add-entry-procedure, add-exit-procedure, remove-entry-procedure, remove-exit-
-procedure, clear-all-procs`. You can read their definitions in the code.
+`add-entry-procedure`, `add-exit-procedure`, `remove-entry-procedure`, `remove-exit-procedure`, and `clear-all-procs`. You can read their definitions in the code.
 
 Sproul Hall has a particularly obnoxious exit procedure attached to it. Fix
 `sproul-hall-exit` so that it counts how many times it gets called, and stops
@@ -18,7 +17,7 @@ Hall's list of exit procedures still contains the old procedure. The best
 thing to do is just to load `adv-world.scm` again, which will define a new
 Sproul Hall and add the new exit procedure.
 
-## Question A4 -- Part 1
+## Question A4: Part 1
 
 We've provided people with the ability to say something using the messages
 `'talk` and `'set-talk`. As you may have noticed, some people around this
@@ -35,11 +34,11 @@ of people have different `notice` methods.)
 
 Your job is to modify the `enter` method for places, so that in addition to
 what that method already does, it sends a `notice` message to each person in
-that place **other than the person who is entering.** The `notice` message
+that place **other than the person who is entering**. The `notice` message
 should have the newly-entered person as an argument. (You won't do anything
 with that argument now, but you'll need it later.)
 
-Add the following to adv-world:
+Add the following to `adv-world.scm`:
 
     
     (define singer (instantiate person 'rick sproul-plaza))
@@ -54,13 +53,12 @@ Add the following to adv-world:
     
     (ask street-person 'set-talk "Brother, can you spare a buck")
       
-    Try walking around to sproul-plaza and telegraph-ave to see if the messages are triggered
+Try walking around to `sproul-plaza` and `telegraph-ave` to see if the messages are triggered.
     
 
-YOU MUST INCLUDE A TRANSCRIPT IN WHICH YOUR CHARACTER WALKS AROUND AND
-TRIGGERS THESE MESSAGES.
+**You must include a transcript in which your character walks around and triggers these messages.**
 
-## Question A4 -- Part 2
+## Question A4: Part 2
 
 So far the program assumes that anyone can go anywhere they want. In real
 life, many places have locked doors.
@@ -78,7 +76,7 @@ Modify the `person` class so that it checks for permission to enter before
 moving from one place to another. If a person cannot enter, return an error.
 Then create a locked place and test it out.
 
-**Note:** locked-place should take one instantiation variable, its name.
+**Note:** A locked-place should take one instantiation variable, its name.
     
     
     (define warehouse (instantiate locked-place 'warehouse))
@@ -103,7 +101,7 @@ trouble later trying to `unpark` a vehicle from one garage that was parked in
 a different garage.) Every ticket should have the name `ticket`.
 
 You'll associate the ticket number with the vehicle in a key-value table like
-the one that we used with `get` and `put` in 2.3.3. However, `get` and `put`
+the one that we used with `get` and `put` in Lesson 6. However, `get` and `put`
 refer to a single, fixed table for all operations; in this situation we need a
 separate table for every garage. The file `tables.scm` contains an
 implementation of the table Abstract Data Type:
@@ -117,8 +115,7 @@ implementation of the table Abstract Data Type:
                          the key is not in the table.
     
 
-You'll learn how tables are implemented in SICP 3.3.3 (pp. 266-268). For now,
-just take them as primitive.
+You'll learn how tables are implemented in [SICP 3.3.3 (pp. 266-268)](https://mitpress.mit.edu/sicp/full-text/sicp/book/node63.html). For now, just take them as primitive.
 
 Make a table entry with the ticket number as the key, and the vehicle as the
 value. Then ask the vehicle's owner to lose the vehicle and take the ticket.
@@ -135,14 +132,12 @@ of garages.
 
 **Be sure not to name anything a "car"! This will mess up everything!**
 
-  * A ticket only has one instantiation variable, a serial number.   
-`(instantiate ticket 120)`
+Notes:
 
-  * A ticket is a thing with the name 'ticket
-  * A garage takes one instantiation variable, its name.   
-`(instantiate garage 'soda-garage)`
-
-  * Do not define a new class for vehicles. You can assume that park is called with the correct argument
-  * Parking a vehicle that is not owned by anyone, should return an error
-  * Unparking a vehicle that is not parked should return an error
+  * A ticket only has one instantiation variable, a serial number. (e.g., `(instantiate ticket 120)`).
+  * A ticket is a thing with the name `'ticket`
+  * A garage takes one instantiation variable, its name. (e.g., `(instantiate garage 'soda-garage)`).
+  * Do NOT define a new class for vehicles. You can assume that park is called with the correct argument.
+  * Parking a vehicle that is not owned by anyone should return an error.
+  * Unparking a vehicle that is not parked should return an error.
 

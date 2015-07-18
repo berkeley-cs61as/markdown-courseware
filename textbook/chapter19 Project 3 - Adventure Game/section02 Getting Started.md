@@ -1,51 +1,69 @@
 ## Getting Started
 
-In this laboratory assignment, we will be exploring two key ideas: the
-simulation of a world in which objects are characterized by a set of state
-variables, and the use of message passing as a programming technique for
-modularizing worlds in which objects interact.
+In this laboratory assignment, we will be exploring two key ideas: 
 
-Object-oriented programming is becoming an extremely popular methodology for
-any application that involves interactions among computational entities.
+  * The simulation of a world in which objects are characterized by a set of state variables
+  * The use of **message passing** as a programming technique for modularizing worlds in which objects interact.
 
-Examples:
+Object-oriented programming is becoming an extremely popular methodology for any application that involves interactions among computational entities.
 
-  * operating systems (processes as objects)
-  * window systems (windows as objects)
-  * games (asteroids, spaceships, gorillas as objects)
-  * drawing programs (shapes as objects)
+Some examples include:
 
-To start, copy the following five files into your directory:
+  * Operating systems (processes as objects)
+  * Windows systems (windows as objects)
+  * Games (asteroids, spaceships, gorillas as objects)
+  * Drawing programs (shapes as objects)
 
-    
-       ~cs61as/lib/obj.scm           The object-oriented system
-       ~cs61as/lib/adv.scm           The adventure game program
-       ~cs61as/lib/tables.scm	An ADT you'll need for parts A5 and B4
-       ~cs61as/lib/adv-world.scm     The specific people, places, and things
-       ~cs61as/lib/small-world.scm   A smaller world you can use for debugging  
-      
-    (i.e. in the terminal, type "cp ~cs61as/lib/obj.scm ." to copy the first file. Don't forget the "." at the end)
+## Project Files
 
-To work on this project, you must load these files into Scheme in the correct
-order: `obj.scm` first, then `adv.scm` and `tables.scm` when you're using
-that, and finally the particular world you're using, either `adv-world.scm` or
-`small-world.scm`. The work you are asked to do refers to `adv-world.scm`;
+To start, copy the necessary files for the project into your directory:
+
+    cp -r ~cs61as/lib/adventure/ .
+
+<table class="table table-bordered table-striped">
+<thead><tr>
+    <th>File Name</th>
+    <th>Purpose</th>
+</tr></thead><tbody>
+<tr>
+    <td>1.<code>obj.scm</code></td>
+    <td>The code for our object-oriented system.</td>
+</tr>
+<tr>
+    <td>2.<code>adv.scm</code></td>
+    <td>The adventure game program. It contains the definitions of the object classes.</td>
+</tr>
+<tr>
+    <td>3.<code>tables.scm</code></td>
+    <td>An ADT you'll need for Questions A5 and B4.</td>
+</tr>
+<tr>
+    <td>4.<code>adv-world.scm</code></td>
+    <td>The specific instances of the objects (i.e., people, places, and things) in the adventure game.</td>
+</tr>
+<tr>
+    <td>5.<code>small-world.scm</code></td>
+    <td>A smaller, simplified world that you can use for debugging.</td>
+</tr>
+</tbody>
+</table>
+
+To work on this project, you must load these files into STk in the exact order you see in the table above. Load either `adv-world.scm` OR `small-world.scm`, but NOT BOTH. The work you are asked to do refers to `adv-world.scm`;
 `small-world.scm` is provided in case you'd prefer to debug some of your
 procedures in a smaller world that may be less complicated to remember and
 also faster to load.
 
-(To load a scheme file e.g. obj.scm, type (load "obj.scm") in the interpreter)
+To load a Scheme file, e.g., `obj.scm`, type 
 
-The reason the adventure game is divided into `adv.scm` (containing the
-definitions of the object classes) and `adv-world.scm` (containing the
-specific instances of those objects in Berkeley) is that when you change
-something in `adv.scm` you may need to reload the entire world in order for
-your changed version to take effect. Having two files means that you don't
-also have to reload the first batch of procedures.
+    (load "obj.scm")
+
+into the interpreter.
+
+The reason the adventure game is divided into `adv.scm` and `adv-world.scm` is that when you make any changes to the class definitions in `adv.scm`, you may need to reload the entire world in order for your changed version to take effect. Having two files means that you don't also have to reload the first batch of procedures.
 
 ## An Intro to the Program
 
-In this program there are three classes: THING, PLACE, and PERSON.
+In this program there are three main classes: Person, Place, and Thing.
 
 Here are some examples selected from `adv-world.scm`:
 
@@ -75,19 +93,18 @@ Here are some examples selected from `adv-world.scm`:
     (define hacker (instantiate person 'hacker Pimentel))
     
     ;;; connect places in the world
-    
     (can-go Soda 'up art-gallery)
     (can-go art-gallery 'west BH-Office)
     (can-go Soda 'south Pimentel)
     
 
 Having constructed this world, we can now interact with it by sending messages
-to objects. Here is a short example.
+to objects. Here is a short example:
 
     
     
     ; We start with the hacker in Pimentel.
-    
+
     > (ask Pimentel 'exits)
     (NORTH SOUTH)
     > (ask hacker 'go 'north)
@@ -111,4 +128,3 @@ objects:
 You can take objects away from other people, but the management is not
 responsible for the consequences... (Too bad this is a fantasy game, and there
 aren't really vending machines in Soda that stock Jolt.)
-
