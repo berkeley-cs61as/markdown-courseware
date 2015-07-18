@@ -37,6 +37,6 @@ How does all of this fit together? In one word: **abstraction**!
 Abstraction allows us to treat a complicated process as a single unit,
 and to use that unit in an even more complex process.
 
-We already use abstraction in our daily lives: To drive a car, we have to know how to steer and operate the pedals, but we don't have to know how the engine and drivechain work. To bake an apple pie, we need a recipe and an oven, but we need not grow our own apples or understand how they are grown. And to use the internet, we don't have to understand [the protocols for requesting webpages](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller)&mdash;our browser abstracts that process away, so that anyone can browse the web quickly and easily.
+We already use abstraction in our daily lives: To drive a car, we have to know how to steer and operate the pedals, but we don't have to know how the engine and drivechain work. To bake an apple pie, we need a recipe and an oven, but we need not grow our own apples or understand how they are grown. And to use the internet, we don't have to understand [the protocols for requesting webpages](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol)&mdash;our browser abstracts that process away, so that anyone can browse the web quickly and easily.
 
 In this course, we'll explore techniques for creating abstractions to solve problems.
