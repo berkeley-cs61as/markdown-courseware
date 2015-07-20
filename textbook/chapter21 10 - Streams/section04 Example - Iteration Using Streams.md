@@ -11,14 +11,15 @@ the procedure that improves guesses:
 We can create an infinite stream of guesses, starting with an initial guess of
 1:
 
-    (define (sqrt-stream x)
-        (define guesses 
-            (cons-stream 1.0 
-                         (stream-map (lambda (guess) 
-                                         (sqrt-improve guess x)) 
-                                     guesses)))
-        guesses)
-    
+```
+(define (sqrt-stream x)
+  (define guesses 
+    (cons-stream 1.0 (stream-map (lambda (guess) 
+                                   (sqrt-improve guess x)) 
+                                 guesses)))
+  guesses)
+```
+
 The first few elements of `(sqrt-stream 2)` would be:
 
 ```
