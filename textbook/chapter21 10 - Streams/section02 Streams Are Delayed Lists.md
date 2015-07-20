@@ -1,10 +1,11 @@
+## Stream Constructor and Selectors
+
 On the surface, streams are just lists with different names for the procedures
 that manipulate them. They have a constructor ` cons-stream` , and two
 selectors, ` stream-car` and ` stream-cdr`, which satisfies these constraints:
 
-** (stream-car (cons-stream x y))  returns  x **
-
-** (stream-cdr (cons-stream x y))  returns y**
+ * `(stream-car (cons-stream x y))` returns `x`
+ * `(stream-cdr (cons-stream x y))` returns `y`
 
 In order to construct the stream as we use it, we will arrange for the cdr of
 a stream to be evaluated when it is accessed by the `stream-cdr` procedure
@@ -24,26 +25,20 @@ the evaluation -- in effect, forcing the delay to fulfill its promise. We will
 see below how `delay` and `force` can be implemented, but first let us use
 these to construct streams.
 
-` cons-stream` is a special form such that
-
-** (cons-stream [a] [b]) ** is equivalent to ** (cons [a] (delay [b])) **
+`cons-stream` is a special form such that `(cons-stream [a] [b])` is equivalent to `(cons [a] (delay [b]))`.
 
 This means that we will construct using pairs of `cars` and delayed `cdrs`.
 These will be our `stream-car` and `stream-cdr` procedures:
 
-    
-     
-    (define (stream-car stream) (car stream))
-     
-    
-     
-    (define (stream-cdr stream) (force (cdr stream)))
-       
-      
-    Note: Cons-stream is a special-form. What would have happened if it's not a special form? Everytime we call (cons-stream a b), it will evaluate b before going to the body which means that b is not delayed.  
-    
+```
+(define (stream-car stream) (car stream))
 
-There is a distinguishable object, ` the-empty-stream`, which cannot be the
+(define (stream-cdr stream) (force (cdr stream)))
+```
+      
+Note that `cons-stream` is a special form. If it weren't, calling `(cons-stream a b)` would evaluate `b`, meaning `b` wouldn't be delayed.
+
+There is a distinguishable object, `the-empty-stream`, which cannot be the
 result of any `cons-stream` operation, and which can be identified with the
 predicate `stream-null?`. Thus we can make and use streams, in just the same
 way as we can make and use lists, to represent aggregate data arranged in a
@@ -58,8 +53,13 @@ sequence. In particular, we can build stream analogs of `list-ref`, `map`, and
           (stream-ref (stream-cdr s) (- n 1))))
      
 
-If we define x as `(define x (cons-stream 0 (cons-stream 1 (cons-stream 2 the-
-empty-stream))))`, `(stream-ref x 0)` returns 0. `(stream-ref x 2)` returns 2.
+If we define x as
+
+```
+(define x (cons-stream 0 (cons-stream 1 (cons-stream 2 the-empty-stream))))
+```
+
+then `(stream-ref x 0)` returns 0 and  `(stream-ref x 2)` returns 2.
 (Note that n starts counting from 0)
 
     
@@ -138,7 +138,7 @@ necessary. Now we filter it using ` stream-filter`
             (else (stream-filter pred (stream-cdr stream)))))
     
 
-`Stream-filter` tests the `stream-car` of the stream (the car of the pair,
+`stream-filter` tests the `stream-car` of the stream (the car of the pair,
 which is 10,000). Since this is not prime, `stream-filter` examines the
 `stream-cdr` of its input stream. The call to `stream-cdr` forces evaluation
 of the delayed `stream-enumerate-interval`, which now returns
@@ -149,7 +149,7 @@ of the delayed `stream-enumerate-interval`, which now returns
           (delay (stream-enumerate-interval 10002 1000000)))
     
 
-`Stream-filter` now looks at the `stream-car` of this stream, 10,001, sees
+`stream-filter` now looks at the `stream-car` of this stream, 10,001, sees
 that this is not prime either, forces another `stream-cdr`, and so on, until
 `stream-enumerate-interval` yields the prime 10,007, whereupon `stream-
 filter`, according to its definition, returns
@@ -253,7 +253,7 @@ subsequent evaluations, it simply returns the result.
 
 and `force` is unchanged
 
-## takeaways
+## Takeaways
 
 In this section, you learned:
 
@@ -261,7 +261,7 @@ In this section, you learned:
   2. Some useful applications of streams
   3. How to implement `delay` and `force`
 
-## what's next?
+## What's Next?
 
 Let's go to the next subsection and learn about infinite lists!
 
