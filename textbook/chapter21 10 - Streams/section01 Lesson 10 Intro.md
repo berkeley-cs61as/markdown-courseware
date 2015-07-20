@@ -1,21 +1,17 @@
-## Streams
 
-![](http://www.livingstreamsmission.com/images/mountain-
-stream-2-25271280315252lPNU.jpg)
+## Prerequisites and What to Expect
 
-You get to learn what streams are and why they're awesome.
-
-This lesson is based off this [reading](http://mitpress.mit.edu/sicp/full-
-text/book/book-Z-H-24.html#%_sec_3.5).
-
-## prerequisites and what to expect
-
-You're supposed to understand all the materials covered so far, especially
+You're should understand all the materials covered so far, especially
 sequences and list manipulation.
 
 In this section, we are going to go over the streams and their a few of their
 applications. Be prepared to be exposed to a fair amount of information and
 synthesize it!
+
+## Readings
+
+This lesson is based off this [reading](http://mitpress.mit.edu/sicp/full-
+text/book/book-Z-H-24.html#%_sec_3.5).
 
 ## Streams
 
