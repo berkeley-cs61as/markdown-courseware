@@ -48,9 +48,10 @@ predicate `stream-null?`.
 
 We can make and use streams, in just the same
 way as we can make and use lists, to represent aggregate data arranged in a
-sequence. In particular, we can build stream analogs of `list-ref`, `map`, and
-`for-each` :
+sequence. In particular, we can build stream analogs of `list-ref`, `map`,
+`for-each`, and so on.
 
+### `stream-ref`
     
      
     (define (stream-ref s n)
@@ -68,7 +69,7 @@ If we define x as
 then `(stream-ref x 0)` returns 0 and  `(stream-ref x 2)` returns 2.
 (Note that n starts counting from 0)
 
-    
+### `stream-map`
      
     (define (stream-map proc s)
       (if (stream-null? s)
@@ -80,14 +81,14 @@ then `(stream-ref x 0)` returns 0 and  `(stream-ref x 2)` returns 2.
 If x is the same as above, then `(stream-map square x)` returns a stream with
 `(0 1 4)`
 
-    
+### `stream-for-each`
      
     (define (stream-for-each proc s)
       (if (stream-null? s)
           'done
           (begin (proc (stream-car s))
                  (stream-for-each proc (stream-cdr s)))))
-     
+
 
 `stream-for-each` is useful for viewing streams. The
 following may be helpful for checking what's going on:
@@ -101,11 +102,11 @@ following may be helpful for checking what's going on:
       (newline)
       (display x))
      
+## Computation Using Streams     
 
 Let's take another look at the second prime computation we saw earlier,
 reformulated in terms of streams:
 
-    
      
     (stream-car
      (stream-cdr
@@ -203,9 +204,9 @@ filter.
 ## Implementing `delay` and `force`
 
 Although `delay` and `force` may seem like mysterious operations, their
-implementation is really quite straightforward. `Delay` must package an
+implementation is really quite straightforward. `delay` must package an
 expression so that it can be evaluated later on demand, and we can accomplish
-this simply by treating the expression as the body of a procedure. `Delay` can
+this simply by treating the expression as the body of a procedure. `delay` can
 be a special form such that
 
     
@@ -223,7 +224,7 @@ we can implement `force` as a procedure:
      (define (force delayed-object)
       (delayed-object))  
       
-    Again, note the importance of delay being a special-form. If it is not, then when we call (delay b), b will be evaluated before we evaluate the body.
+Again, note the importance of `delay` being a special form. If it is not, then when we call `(delay b)`, `b` will be evaluated before we evaluate the body.
 
 This implementation suffices for `delay` and `force` to work as advertised,
 but there is an important optimization that we can include. In many
