@@ -78,11 +78,8 @@ know and love
       (iter a 0))
      
 
-This second program makes use of [accumulate](https://edge.edx.org/courses/uc-
-berkeley/cs61as-1x/SICP/wiki/cs61as-1x/accumulate/),
-[filter](https://edge.edx.org/courses/uc-berkeley/cs61as-1x/SICP/wiki/cs61as-
-1x/filter/) and [enumerate-interval](https://edge.edx.org/courses/uc-berkeley
-/cs61as-1x/SICP/wiki/cs61as-1x/enumerate-interval/).
+This second program makes use of `accumulate`,
+`filter`, and `enumerate-interval`.
 
     
      
@@ -103,6 +100,16 @@ accumulate before being collapsed to form a sum.
 Such large intermediate storage is not needed by the first program, which we
 can think of as enumerating the interval incrementally, adding each prime to
 the sum as it is generated.
+
+Here's another example of list inefficiency:
+
+```
+(car (cdr (filter prime?
+                  (enumerate-interval 10000 1000000))))
+```
+
+This code would take a long time to run because we generate a huge list of integers
+and a huge list of primes, even though we only want the second prime number.
 
 ##  ... Let's use streams!
 
