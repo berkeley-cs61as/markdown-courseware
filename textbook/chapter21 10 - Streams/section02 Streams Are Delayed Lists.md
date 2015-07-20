@@ -38,9 +38,15 @@ These will be our `stream-car` and `stream-cdr` procedures:
       
 Note that `cons-stream` is a special form. If it weren't, calling `(cons-stream a b)` would evaluate `b`, meaning `b` wouldn't be delayed.
 
+## `the-empty-stream`
+
 There is a distinguishable object, `the-empty-stream`, which cannot be the
 result of any `cons-stream` operation, and which can be identified with the
-predicate `stream-null?`. Thus we can make and use streams, in just the same
+predicate `stream-null?`.
+
+## Stream Analogs of List Procedures
+
+We can make and use streams, in just the same
 way as we can make and use lists, to represent aggregate data arranged in a
 sequence. In particular, we can build stream analogs of `list-ref`, `map`, and
 `for-each` :
@@ -83,9 +89,7 @@ If x is the same as above, then `(stream-map square x)` returns a stream with
                  (stream-for-each proc (stream-cdr s)))))
      
 
-## Viewing Streams
-
-`stream-for-each` from the previous section is useful for viewing streams. The
+`stream-for-each` is useful for viewing streams. The
 following may be helpful for checking what's going on:
 
     
@@ -196,6 +200,8 @@ integers were tested for primality as were necessary to find the second prime,
 and the interval was enumerated only as far as was necessary to feed the prime
 filter.
 
+## Implementing `delay` and `force`
+
 Although `delay` and `force` may seem like mysterious operations, their
 implementation is really quite straightforward. `Delay` must package an
 expression so that it can be evaluated later on demand, and we can accomplish
@@ -210,7 +216,7 @@ is syntactic sugar for
     
      (lambda () [exp])
 
-`Force` simply calls the procedure (of no arguments) produced by `delay`, so
+`force` simply calls the procedure (of no arguments) produced by `delay`, so
 we can implement `force` as a procedure:
 
     
