@@ -1,21 +1,17 @@
 
 ## Prerequisites and What to Expect
 
-You're should understand all the materials covered so far, especially
-sequences and list manipulation.
+Before proceeding, you should understand how to manipulate lists.
+Consider reviewing key procedures like `map` and `filter`.
 
-In this section, we are going to go over the streams and their a few of their
-applications. Be prepared to be exposed to a fair amount of information and
-synthesize it!
+In this section, we'll learn about streams and some of their applications.
 
 ## Readings
 
-This lesson is based off this [reading](http://mitpress.mit.edu/sicp/full-
-text/book/book-Z-H-24.html#%_sec_3.5).
+This lesson is based on [SICP 3.5](https://mitpress.mit.edu/sicp/full-text/book/book-Z-H-24.html#%_sec_3.5).
 
-## Streams
+## Introduction to Streams
 
-  
 We've gained a good understanding of assignment as a tool in modeling, as well
 as an appreciation of the complex problems that assignment raises. It is time
 to ask whether we could have gone about things in a different way, so as to
@@ -57,18 +53,15 @@ in introducing assignment. On the other hand, the stream framework raises
 difficulties of its own, and the question of which modeling technique leads to
 more modular and more easily maintained systems remains open.
 
-In lesson 4, we have seen some of the applications and benefits of sequences.
-We had experience with powerful abstractions for manipulating sequences as we
-worked with sequences as lists: `map` `accumulate`, and `filter`.
+## List Inefficiency
 
+Since Lesson 4, we've been using lists to represent sequences.
 But there are downsides to list representations. Manipulating these list
 sequences require that our programs construct and copy data structures (which
-could be HUGE) at every step of the process. Not very efficient :\.
+could be huge) at every step of the process.
 
-Let's try to see this in action. The first program is the iterative style we
-know and love
-
-    
+Let's see this in action. This procedure is written in the iterative style we
+know and love:
      
     (define (sum-primes a b)
       (define (iter count accum)
@@ -77,25 +70,19 @@ know and love
               (else (iter (+ count 1) accum))))
       (iter a 0))
      
-
-This second program makes use of `accumulate`,
+This second procedure makes use of `accumulate`,
 `filter`, and `enumerate-interval`.
-
-    
      
     (define (sum-primes a b)
       (accumulate +
                   0
                   (filter prime? (enumerate-interval a b))))
      
-
 In carrying out the computation, the first program needs only to store the sum
-being accumulated.
-
-In contrast, the filter in the second program cannot do any testing until
-enumerate-interval has constructed a complete list of the numbers in the
-interval. The filter generates another list, which in turn is passed to
-accumulate before being collapsed to form a sum.
+being accumulated. In contrast, the `filter` in the second program cannot do any testing until
+`enumerate-interval` has constructed a complete list of the numbers in the
+interval. The `filter` generates another list, which in turn is passed to
+`accumulate` before being collapsed to form a sum.
 
 Such large intermediate storage is not needed by the first program, which we
 can think of as enumerating the interval incrementally, adding each prime to
@@ -108,12 +95,12 @@ Here's another example of list inefficiency:
                   (enumerate-interval 10000 1000000))))
 ```
 
-This code would take a long time to run because we generate a huge list of integers
-and a huge list of primes, even though we only want the second prime number.
+This code generates a huge list of integers
+and a huge list of primes, even though we only want the second prime number!
 
-##  ... Let's use streams!
+## Why Streams?
 
-Streams are a clever idea that allows one to use sequence manipulations
+With streams, we can manipulate sequences
 without incurring the costs of manipulating sequences as lists. With streams
 we can achieve the best of both worlds: We can formulate programs elegantly as
 sequence manipulations, while attaining the efficiency of incremental
