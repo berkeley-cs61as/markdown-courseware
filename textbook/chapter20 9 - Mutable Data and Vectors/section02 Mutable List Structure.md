@@ -1,3 +1,57 @@
+## Mutating a Pair
+
+In Unit 2, we used pairs as the foundation of our data structures that stores data. We are now walking in a realm where it's possible to mutate, or _destructively update_ data. This terminology is not meant to have any negative connotation - it simply means that an update to mutable data will "destroy" the old value of the data structure.
+
+## Creating Mutable Pairs and Lists
+
+To create a **mutable pair**, we use the procedure `mcons`. Its corresponding selectors for extracting the first and second elements of the **mpair** are `mcar` and `mcdr`, respectively:
+
+	-> (define x (mcons 1 2))
+	-> (mcar x)
+	1
+	-> (mcdr x)
+	2
+
+Similarly, **mutable lists** are simply nested mpairs, created using the procedure `mlist`:
+
+	-> (define y (mlist 1 2 3))
+	-> (mcar y)
+	1
+	-> (mcdr y)
+	(mcons 2 (mcons 3 '()))
+
+Notice how taking the `mcdr` of a mutable list does not return `'(2 3)`. The above notation is used to emphasize the difference between a **pair** and an **mpair**. Again, they are completely different data structures. 
+
+## Changing Pointers
+
+Suppose we have our first example:
+
+	(define x (mcons 1 2))
+
+![](/static/lab9-1.png)
+
+The `car` of `x` represents the number of times I fall down the stairs and the cdr of x represents the number of times I went to the wrong bathroom. I fell down
+a stair just now, so I should update the car of x to 2. How can we achieve
+this? Scheme allows us to do `(set-car! x 2)`. As the name suggests, `set-
+car!`takes in a pair and a value, and changes its car to point to the
+specified value.
+
+![](/static/lab9-2.png)
+
+The general form is `(set-car! <pair> <value>)`
+
+## set-cdr!
+
+As you might expect, scheme also provides us with `set-cdr!` which takes in a
+pair and a value, and changes the pointer of the pair's cdr to point to the
+value. Going with the previous example, `(define x (cons 1 2))`, calling
+`(set-cdr! x 3)` will change the pair as shown below.
+
+![](/static/lab9-3.png)
+
+The general syntax is `(set-cdr! <pair> <value>)`. We are going to see more
+examples for cars and cdrs in the next subsection.
+
 ## Changing Pointers
 
 Let us see how `set-car!` and `set-cdr!` work with more complicated lists.
