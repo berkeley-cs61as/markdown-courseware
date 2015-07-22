@@ -1,19 +1,10 @@
 ## Intro
 
-We have mentioned in Unit 2 that we can store data using a 2 dimensional table
-and, given 2 keys, can fetch the desired data. We can use mutable lists to
-represent this data structure by first building a 1 dimensional table and
-extending the idea.
+We have mentioned in Unit 2 that we can store data using a 2 dimensional table and, given 2 keys, can fetch the desired data. We can use mutable lists to represent this data structure by first building a 1 dimensional table and extending the idea.
 
-![](http://www.9ori.com/store/media/images/ea7b57534c.jpg)
+## Before We Start: `assoc`
 
-## Before we Start:assoc
-
-Before we dive right in to tables, we have to explore another Scheme compound
-procedure, `assoc,` which will play a huge role. `assoc` accepts a `key` and a
-list of pairs, and returns the first pair that has `key` as its `car`. If no
-such pairs exist, it returns `#f`. Look at the series of examples below to
-understand what `assoc` does.
+Before we dive in to tables, we have to explore another Scheme compound procedure, `assoc`, which will play a huge role. `assoc` accepts a `key` and a list of pairs, and returns the first pair that has `key` as its `car`. If no such pairs exist, it returns `#f`. Look at the series of examples below to understand what `assoc` does.
 
     
     > (assoc 1 '((1 2) (3 4)))
@@ -29,60 +20,61 @@ understand what `assoc` does.
                       (froyo gingerbread honeycomb) 
                       (sandwich jellybean kitkat)))
       (froyo gingerbread honeycomb)    ;Pairs can be of any length
-    
 
-## Definiton
+Here is the formal definition for `assoc`:
 
-assoc is defined as:
-
-    
     (define (assoc key records)
       (cond ((null? records) false)
             ((equal? key (caar records)) (car records))
             (else (assoc key (cdr records)))))
     
 
-## 1 Dimensional Table
+## 1-Dimensional Tables
 
-In a 1D table, values are stored under a single key. A table will be designed
-as a list of pairs. The pairs' `car` hold the keys for each value.
+In a **1D table**, values are stored under a single key. A table will be designed
+as a list of pairs. Each pairs' `car` hold the key for each value.
 
 ![](http://mitpress.mit.edu/sicp/full-text/book/ch3-Z-G-22.gif)
 
 In the above table, the breakdown between the keys and values can be seen
 below.
 
-KeysValues
-
-a
-
-1
-
-b
-
-2
-
-c
-
-3
+<table class="table table-bordered table-striped">
+<thead><tr>
+    <th>Keys</th>
+    <th>Values</th>
+</tr></thead><tbody>
+<tr>
+    <td><code>a</code></td>
+    <td><code>1</code></td>
+</tr>
+<tr>
+    <td><code>b</code></td>
+    <td><code>2</code></td>
+</tr>
+<tr>
+    <td><code>c</code></td>
+    <td><code>3</code></td>
+</tr>
+</tbody>
+</table>
 
 Why does our table point to a pair that doesn't contain any key-value pair? We
 designed our table so that the first pair holds the symbol `*table*` which
 signifies that the current list structure we're looking at is a table.
 
-    
+### `make-table`
+
+Here is the simple constructor for our table:
     
     (define (make-table)
       (list '*table*))
-    
 
-## Lookup
+### `lookup`
 
-To extract information from a table we use the `lookup` procedure, which takes
-a key as argument and returns the associated value (or false if there is no
-value stored under that key).
-
-    
+To extract information from a table, we use the `lookup` selector, which takes
+a key as argument and returns the associated value (or `#f` if there is no
+value stored under that key). Here's our definition of `lookup`
     
     (define (lookup key table)
       (let ((record (assoc key (cdr table))))
@@ -90,13 +82,13 @@ value stored under that key).
             (cdr record)
             false)))  
     
-    >(lookup 'b table)  ;table refers to the table made above
+    > (lookup 'b table)  ;table refers to the table made above
     2
     
 
-## Insert!
+### `insert!`
 
-To insert a key-value pair in a table you follow these steps:
+To insert a key-value pair in a table, we follow this simple algorithm:
 
   1. If key is already in the list, just update the value 
   2. Otherwise, make a new key-value pair and attach it to the table
@@ -111,9 +103,9 @@ To insert a key-value pair in a table you follow these steps:
       'ok)
     
 
-## 2 Dimensional Table
+## 2-Dimensional Tables
 
-In a 2 dimensional table, each value is specified by 2 keys. We can construct
+In a **2D table**, each value is specified by _two_ keys. We can construct
 such a table as a 1 dimensional table in which each key identifies a subtable.
 Say we have 2 tables: "math" and "letters" with the following key-value pairs.
 
@@ -132,7 +124,7 @@ We can put them into one big table:
 
 ![](http://mitpress.mit.edu/sicp/full-text/book/ch3-Z-G-23.gif)
 
-## Lookup
+### `lookup`
 
 To find a value in a 2D table, you will need 2 keys. The first key is used to
 find the correct subtable. The second key is used to find the correct value in
@@ -150,14 +142,13 @@ that subtable.
             #f)))
     
 
-## Inserting
+### `insert`
 
 To insert into a 2D table, you also need 2 keys. The first key is used to try
 and find the correct subtable. If a subtable with the first key doesn't exist,
 make a new subtable. If the table exists, use the exact same algorithm we have
-for the 1 dimensional` insert!` .
+for the 1 dimensional `insert!`.
 
-    
     
     (define (insert! key-1 key-2 value table)
       (let ((subtable (assoc key-1 (cdr table))))
@@ -177,15 +168,7 @@ for the 1 dimensional` insert!` .
 
 ## Local Tables
 
-The `lookup` and` insert!` operations defined above take the table as an
-argument. This enables us to use programs that access more than one table.
-Another way to deal with multiple tables is to have separate `lookup` and`
-insert!` procedures for each table. We can do this by representing a table
-procedurally, as an object that maintains an internal table as part of its
-local state. When sent an appropriate message, this "table object'' supplies
-the procedure with which to operate on the internal table. Here is a generator
-for two-dimensional tables represented in this fashion:
-
+The `lookup` and` insert!` operations defined above take the table as an argument. This enables us to use programs that access more than one table. Another way to deal with multiple tables is to have separate `lookup` and `insert!` procedures for each table. We can do this by representing a table procedurally, as an object that maintains an internal table as part of its local state. When sent an appropriate message, this "table object'' supplies the procedure with which to operate on the internal table. Here is a generator for two-dimensional tables represented in this fashion:
     
     
     (define (make-table)
@@ -219,7 +202,7 @@ for two-dimensional tables represented in this fashion:
         dispatch))
     
 
-## Get & Put
+### `get` and `put`
 
 In Unit 2's "Data Directed" subsection, we used a 2D table to store a value
 under 2 keys using the procedures `get` and `put`.
@@ -237,7 +220,4 @@ We can now define these procedures using our tables!
     (define put (operation-table 'insert-proc!))
     
 
-`Get` takes as arguments two keys, and `put` takes as arguments two keys and a
-value. Both operations access the same local table, which is encapsulated
-within the object created by the call to `make-table`.
-
+`get` takes as arguments two keys, and `put` takes as arguments two keys and a value. Both operations access the same local table, which is encapsulated within the object created by the call to `make-table`.
