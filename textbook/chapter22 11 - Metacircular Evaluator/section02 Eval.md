@@ -82,21 +82,23 @@ expression itself. `Eval` must look up variables in the environment to find
 their values.
 
   * The only self-evaluating items are numbers and strings:
-    
+
+```    
     (define (self-evaluating? exp)
       (cond ((number? exp) true)
             ((string? exp) true)
             (else false)))
-    
+```    
 
 Remember, words are **not** strings. Strings use double quotes (e.g. `"Hello,
 world!"`).
 
   * Variables are represented by symbols:
     
-    
+```    
     (define (variable? exp)
       (symbol? exp))
+```
 
 ## Special Forms
 
@@ -108,74 +110,77 @@ world!"`).
 Quotations have the form `(quote <text-of-quotation>)`:
 
     
-    
+```    
     (define (quoted? exp)
       (tagged-list? exp 'quote))
     
     (define (text-of-quotation exp) (cadr exp))
-    
+```    
 
 `Quoted?` is defined in terms of the procedure `tagged-list?`, which
 identifies lists beginning with a designated symbol:
 
     
-    
+```    
     (define (tagged-list? exp tag)
       (if (pair? exp)
           (eq? (car exp) tag)
           false))
-    
+```    
 
   * A `lambda` expression must be transformed into an applicable procedure by packaging together the parameters and body specified by the lambda expression with the environment of the evaluation.
 
 Lambda expressions are lists that begin with the symbol lambda:
 
     
-    
+```    
     (define (lambda? exp) (tagged-list? exp 'lambda))
     (define (lambda-parameters exp) (cadr exp))
     (define (lambda-body exp) (cddr exp))
-    
+```    
 
 There is a constructor for lambda expressions, which is used by `definition-
 value`:
 
     
-    
+```    
     (define (make-lambda parameters body)
       (cons 'lambda (cons parameters body)))
-    
+```    
 
 ## special forms: sequences
 
 ![](http://x-equals.com/blog/wp-content/editing_sequences_5_seq_1280.jpg)
 
   * `Eval-sequence` is used by `apply` to evaluate the sequence of expressions in a procedure body. It is also used by `eval` to evaluate the sequence of expressions in a `begin` expression. It takes as arguments a sequence of expressions and an environment, and evaluates the expressions in the order in which they occur. The value returned is the value of the final expression.
-    
+
+```    
     (define (eval-sequence exps env)
       (cond ((last-exp? exps) (eval (first-exp exps) env))
             (else (eval (first-exp exps) env)
                   (eval-sequence (rest-exps exps) env))))
-    
+```    
 
   * `Begin` packages a sequence of expressions into a single expression. A `begin` expression requires evaluating its sequence of expressions in the order in which they appear. We include syntax operations on `begin` expressions to extract the actual sequence from the `begin` expression, as well as selectors that return the first expression and the rest of the expressions in the sequence.
     
+```
     (define (begin? exp) (tagged-list? exp 'begin))
     (define (begin-actions exp) (cdr exp))
     (define (last-exp? seq) (null? (cdr seq)))
     (define (first-exp seq) (car seq))
     (define (rest-exps seq) (cdr seq))
-    
+```    
 
 There is a constructor `sequence->exp` (for use by `cond->if`) that transforms
 a sequence into a single expression, using `begin` if necessary:
 
-    
+```    
     (define (sequence->exp seq)
       (cond ((null? seq) seq)
             ((last-exp? seq) (first-exp seq))
             (else (make-begin seq))))
     (define (make-begin seq) (cons 'begin seq))
+```
 
 ## Special Forms: Conditionals
 
@@ -183,11 +188,12 @@ a sequence into a single expression, using `begin` if necessary:
 
   * `Eval-if` evaluates the predicate part of an if expression in the given environment. If the result is true, eval-if evaluates the consequent, otherwise it evaluates the alternative: 
     
+```
     (define (eval-if exp env)
       (if (true? (eval (if-predicate exp) env))
           (eval (if-consequent exp) env)
           (eval (if-alternative exp) env)))
-    
+```    
 
 The use of `true?` in `eval-if` highlights the issue of the connection between
 an implemented language and an implementation language. The `if-predicate` is

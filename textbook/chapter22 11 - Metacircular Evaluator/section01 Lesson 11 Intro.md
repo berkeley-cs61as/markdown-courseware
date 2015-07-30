@@ -1,13 +1,12 @@
 ## metacircular evaluator
 
-Do you remember Scheme-1 in Lesson 6? Now it's time to explore how Scheme
+Do you remember Racket-1 in Lesson 6? Now it's time to explore how Scheme
 evaluates expressions!
 
 ## prerequisites and what to expect
 
-A good understanding of how Scheme-1 works will be helpful in this chapter.
-The materials covered in this lesson would be quite different from the other
-materials covered so far. So be prepared!
+A good understanding of how Racket-1 works will be helpful in this chapter.
+There's a lot of code to understand in this chapter, perhaps more so than previous sections. Don't be afraid to ask questions!
 
 ## Readings
 
@@ -18,8 +17,6 @@ These are the relevant readings for this lesson:
   * [Lectures Notes](http://www-inst.eecs.berkeley.edu/~cs61as/reader/notes.pdf#page=78)
 
 ## what is an evaluator?
-
-![](http://www.codingthewheel.com/img/some_assembly.gif)
 
 So far, we learned how to write procedures that output what we want. Once we
 define those procedures and type them in the Scheme prompt, we get the value.
@@ -41,10 +38,10 @@ Yes, it is. The evaluator is just another program!
 apply.gif)
 
   
-Our evaluator for Lisp will be implemented as a Lisp program. It may seem
-circular to think about evaluating Lisp programs using an evaluator that is
-itself implemented in Lisp. However, evaluation is a process, so it is
-appropriate to describe the evaluation process using Lisp, which, after all,
+Our evaluator for Scheme will be implemented as a Scheme program. It may seem
+circular to think about evaluating Scheme programs using an evaluator that is
+itself implemented in Scheme. However, evaluation is a process, so it is
+appropriate to describe the evaluation process using Scheme, which, after all,
 is our tool for describing processes. An evaluator that is written in the same
 language that it evaluates is said to be metacircular.
 
@@ -52,8 +49,8 @@ The metacircular evaluator is essentially a Scheme formulation of the
 environment model of evaluation described in Lesson 8. Recall that the model
 has two basic parts:
 
-    * To evaluate a combination (a compound expression other than a special form), evaluate the subexpressions and then apply the value of the operator subexpression to the values of the operand subexpressions.
-    * To apply a compound procedure to a set of arguments, evaluate the body of the procedure in a new environment. To construct this environment, extend the environment part of the procedure object by a frame in which the formal parameters of the procedure are bound to the arguments to which the procedure is applied.
+* To evaluate a combination (a compound expression other than a special form), evaluate the subexpressions and then apply the value of the operator subexpression to the values of the operand subexpressions.
+* To apply a compound procedure to a set of arguments, evaluate the body of the procedure in a new environment. To construct this environment, extend the environment part of the procedure object by a frame in which the formal parameters of the procedure are bound to the arguments to which the procedure is applied.
 
 These two rules describe the essence of the evaluation process, a basic cycle
 in which expressions to be evaluated in environments are reduced to procedures
