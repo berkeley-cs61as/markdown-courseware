@@ -25,9 +25,9 @@ text/book/book-Z-H-27.html#%_thm_4.30), [4.32 and
 4.33](http://mitpress.mit.edu/sicp/full-
 text/book/book-Z-H-27.html#%_thm_4.32).
 
-## Extra for Experts
+## Additional Challenging Questions
 
-### Do this if you want to. This is NOT for credit.
+**Do this if you want to. This is NOT for credit.**
 
 ## Exercise 4.
 

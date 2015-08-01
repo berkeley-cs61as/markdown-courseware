@@ -19,24 +19,14 @@ the rest of the evaluation.
 
 Instead of
 
-`
-
-    
     (eval exp env) ==> value
 
-`
 
 we now have
 
-`
-
-    
-    
     1. (analyze exp) ==> exp-procedure 
     2. (exp-procedure env) ==> value
     
-
-`
 
 When we evaluate the same expression again, we only have to repeat step 2.
 What we’re doing is akin to memoization, in that we remember the result of a
@@ -46,24 +36,14 @@ instead of a complete solution.
 
 We can duplicate the effect of the original `eval` this way:
 
-`
-
-    
-    
     (define (eval exp env)
       ((analyze exp) env))
-    
 
-`
 
 ##  Lets look at `analyze`
 
 `Analyze` has a structure similar to that of the original eval:
 
-`
-
-    
-    
     (define (analyze exp)
       (cond
         ((self-evaluating? exp)
@@ -73,9 +53,6 @@ We can duplicate the effect of the original `eval` this way:
         ...
         ((foo? exp) (analyze-foo exp)) 
         ...))
-    
-
-`
 
 The difference is that the procedures such as `eval-if` that take an
 expression and an environment as arguments have been replaced by procedures
@@ -84,10 +61,6 @@ analysis procedures work? As an intermediate step in our understanding, here
 is a version of `analyze-if` that exactly follows the structure of `eval-if`
 and doesn’t save any time:
 
-`
-
-    
-    
     (define (eval-if exp env)
       (if (true? (eval (if-predicate exp) env))
           (eval (if-consequent exp) env) 
@@ -98,29 +71,17 @@ and doesn’t save any time:
         (if (true? (eval (if-predicate exp) env)) 
             (eval (if-consequent exp) env)
             (eval (if-alternative exp) env))))
-    
 
-`
 
 This version of `analyze-if` returns a procedure with `env` as its argument,
 whose body is exactly the same as the body of the original `eval-if`.
 Therefore, if we do
 
-`
-
-    
      ((analyze-if some-if-expression) some-environment)
-
-`
 
 the result will be the same as if we’d said
 
-`
-
-    
     (eval-if some-if-expression some-environment)
-
-`
 
 in the original metacircular evaluator.
 
@@ -134,10 +95,6 @@ value in the given environment. What we’d like to do is split each of those
 `eval` calls into its two separate parts, and do the first part only once, not
 every time:
 
-`
-
-    
-    
     (define (analyze-if exp)
       (let ((pproc (analyze (if-predicate exp)))
             (cproc (analyze (if-consequent exp)))
@@ -146,9 +103,6 @@ every time:
           (if (true? (pproc env)) 
               (cproc env)
               (aproc env)))))
-    
-
-`
 
 In this final version, the procedure returned by `analyze-if` doesn’t contain
 any analysis steps. All of the components were already analyzed before we call
@@ -158,14 +112,7 @@ The biggest gain in efficiency comes from the way in which `lambda`
 expressions are handled. In the original metacircular evaluator, leaving out
 some of the data abstraction for clarity here, we have
 
-`
-
-    
-    
     (define (eval-lambda exp env) (list ’procedure exp env))
-    
-
-`
 
 The evaluator does essentially nothing for a `lambda` expression except to
 remember the procedure’s text and the environment in which it was created. But
@@ -183,26 +130,14 @@ sytactic analysis procedures are implemented).
 
 The analyzing evaluator turns an expression such as
 
-`
-
-    
     (if A B C)
-
-`
 
 into a procedure
 
-`
-
-    
-    
     (lambda (env)
       (if (A-execution-procedure env)
           (B-execution-procedure env) 
           (C-execution-procedure env)))
-    
-
-`
 
 This may seem like a step backward; we’re trying to implement `if` and we end
 up with a procedure that does an `if`. Isn’t this an infinite regress?
@@ -234,7 +169,6 @@ text/book/book-Z-H-26.html#%_sec_4.1.7) of SICP before proceeding).
 Here is a nice example of evaluating `factorial` using the analyzing
 evaluator. Lets consider the following Scheme code:
 
-    
       (define factorial
         (lambda (n)
           (if (= n 1)
@@ -277,20 +211,16 @@ Let's see this in action.
 
 (NOTE: I'll be using `:=` as a way to denote storing:
 
-    
     var := value 
 
 This isn't really scheme, but I think it's easier than having a bunch of `let`
 statements.)
 
-    
     (analyze-lambda '(lambda (n) ...)')
-    
 
 Now we need to `analyze` the body, then store it for later, so that we don't
 redundantly `analyze` the body again.
 
-    
     analyzed-body := (analyze (lambda-body '(lambda (n) (if ...))'))
     
     (analyze-if '(if (= n 1)
@@ -301,7 +231,6 @@ redundantly `analyze` the body again.
 `analyze-if` analyzes everything it's given, stores it, and then creates a new
 execution procedure with those stored values.
 
-    
       if-pred := (analyze '(= n 1)')
       ; this is the execution procedure: (lambda (env)
       ;                                    (execute-application (analyzed/= env)
@@ -323,7 +252,6 @@ execution procedure with those stored values.
 
 And now that we know that result, let's go back to `analyze-lambda`.
 
-    
       analyzed-body := analyzed-fact-if
       (analyze-lambda '(lambda (n) ...)')
          => (lambda (env) (make-procedure '(n) analyzed-body env'))
@@ -370,7 +298,6 @@ false` will do an application of `*` to `(factorial (- n 1))` and `n`, but
 these arguments have already been `analyzed` (when we did `analyze-lambda`).
 So we evaluate the analyzed `(factorial (- n 1))`, which is:
 
-    
       (analyzed-factorial {result of calling analyzed (- n 1)})
     
       (analyzed-body env3)
@@ -379,15 +306,12 @@ So we evaluate the analyzed `(factorial (- n 1))`, which is:
       (if (true? (if-pred env3)) ; (= n 0)
           (if-true env3)   ; 1
           (if-false env3)) ; (* (factorial (- n 1)) n)
-    
 
 We recurse again, in the same fashion:
 
-    
       (if (true? (if-pred env4)) ; (= n 0)
           (if-true env4) ; 1
           (if-false env4)) ; (* (factorial (- n 1)) n)
-    
 
 Here, `n` actually equals `0`, so we call `(if-true env4).` `if-true`
 disregards `env4` and returns the number `1`. Then, we go back to all the
