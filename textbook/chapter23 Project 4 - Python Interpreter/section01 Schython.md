@@ -1,4 +1,4 @@
-You've seen how to implement a Scheme interpreter in Lesson 11 (`mceval.scm`). For this project, you will be helping us construct a Python interpreter called `Schython` (Scheme + Python = Schython).
+You've seen how to implement a Scheme interpreter in Lesson 11 (`mceval.scm`). For this project, you will be helping us construct a Python interpreter called Schython (Scheme + Python = Schython).
 
 To get the necessary project files and the spec, type the following into your interpreter:
 
@@ -6,7 +6,19 @@ To get the necessary project files and the spec, type the following into your in
 
 You may replace the `.` with whichever directory you want to save your project in.
 
-Here's a breakdown of the files contained inside of `schython`:
+Here's a breakdown of the files contained inside of `schython/`:
+
+## Scoring
+
+Each partner will work on nine problems. Five of these (Questions 1, 2, 6, 8, and 9) are common to both partners; the others (Questions 3, 4, 5, and 7) should be completed separately.
+
+Groups will hand in a single completed copy of the project, with one answer for each question. Partners will receive the same score for the common exercises and different scores for the separate questions.
+
+There will be points (indicated in `schython.text`) where partners should combine their work. This is necessary in order to move on to the next sections of the project.
+
+If you cannot find a partner and/or wish to work alone, please talk to a TA.
+
+## Project Files
 
 <table class="table table-bordered table-striped">
 <thead><tr>
@@ -52,6 +64,10 @@ Here's a breakdown of the files contained inside of `schython`:
 </tbody>
 </table>
 
-To get started on the project, take a look at the [spec](https://en.wikipedia.org/wiki/Specification_(technical_standard)) inside the file `schython.text`.
+To load the project, type the following into your interpreter:
 
-Python is a modern and very popular language used for teaching introductory CS courses, and is the language used in CS 61A. If you are interested (this is not at all required for this project), you can take a look at [Python's documentation](https://docs.python.org/3/tutorial/index.html) for a more comprehensive breakdown of the language.
+	(load "start.scm")
+
+## More About Python 
+
+Python is a modern and very popular language used for teaching introductory CS courses, and is the language used in CS 61A. We will go over the basics of the Python language necessary to write the Schython interpreter in the spec. But, if you are interested (this is not at all required for this project), you can take a look at [Python's documentation](https://docs.python.org/3/tutorial/index.html) for a more comprehensive breakdown of the language.
