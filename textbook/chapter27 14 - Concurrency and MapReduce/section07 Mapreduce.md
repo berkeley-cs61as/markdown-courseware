@@ -16,17 +16,17 @@ It accepts a large chunk of data, divide them into smaller parts, apply the
 Mapreduce handles everything related to parallelism, and we only have to
 provide the 2 functions.
 
-Although this may SEEEM like what `mapreduce` is doing, this is **not**
-`mapreduce` ``
+Although this may *seem* like what `mapreduce` is doing, this is **not**
+`mapreduce`:
 
     
     (define (mapreduce mapper reducer base-case data)
     	(accumulate reducer base-case (map mapper data)))
     
 
-`` Why is that not mapreduce? Because it doesn't handle dividing the data,
+Why is that not mapreduce? Because it doesn't handle dividing the data,
 applying the mapper parallelism and sorting them before reducing them. What it
-gets right though is that whoever wants to use mapreduce only needs to pass 4
+gets right though is that whoever wants to use mapreduce only needs to pass four
 arguments: `mapper, reducer, base-case ` and the ` data `we want to process to
 the `mapreduce` function.
 
