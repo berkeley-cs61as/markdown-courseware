@@ -1,4 +1,4 @@
-You've seen how to implement a Scheme interpreter in Lesson 11 (`mce.scm`). For this project, you will be helping us construct a Python interpreter called `Schython` (Scheme + Python = Schython).
+You've seen how to implement a Scheme interpreter in Lesson 11 (`mceval.scm`). For this project, you will be helping us construct a Python interpreter called `Schython` (Scheme + Python = Schython).
 
 To get the necessary project files and the spec, type the following into your interpreter:
 

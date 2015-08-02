@@ -2,9 +2,9 @@
 
 We introduce an abstraction called a serializer. This is a procedure that
 takes as its argument another procedure (call it `proc`). The serializer
-returns a new procedure (call it `protected-proc`). When invoked, `protected-
-proc` invokes `proc`, but only if the same serializer is not already in use by
-another protected procedure. `Proc` can have any number of arguments, and
+returns a new procedure (call it `protected-proc`). When invoked, `protected-proc`
+invokes `proc`, but only if the same serializer is not already in use by
+another protected procedure. `proc` can have any number of arguments, and
 `protected-proc` will take the same arguments and return the same value.
 
 There can be many diﬀerent serializers, all in operation at once, but each one
@@ -20,8 +20,6 @@ can't be doing two things at once. So if we say
 then both tasks can run at the same time; it doesn't matter how their machine
 instructions are interleaved.
 
-**Remember, to follow along with the examples you must first be ssh'ed into star.cs.berkeley.edu and then `(load "~cs61as/lib/concurrency.scm") in a Scheme interpreter`.**
-
 But if we say
 
     
@@ -32,7 +30,7 @@ But if we say
 then, since we're using the same serializer in both tasks, the serializer will
 ensure that they don't overlap in time.
 
-I've introduced a new primitive procedure, `parallel-execute`. It takes any
+We've introduced a new primitive procedure, `parallel-execute`. It takes any
 number of arguments, each of which is a procedure of no arguments, and invokes
 them, in parallel rather than in sequence. (This isn't a standard part of
 Scheme, but an extension for this section of the textbook.)

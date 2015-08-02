@@ -1,32 +1,23 @@
 ## Getting Started
 
-To work with the ideas in this section you should ﬁrst ssh into star by typing
+To work with the ideas in this section, you'll need our concurrency library. From a lab machine (or over SSH), type the following into your Scheme interpreter:
 
-    
-        ssh star
-
-at a terminal in lab. Then, in a Scheme interpreter, type
-
-    
-        (load "~cs61as/lib/concurrency.scm")
-    
-
-in order to get the necessary Scheme extensions.
+```    
+(load "~cs61as/lib/concurrency.scm")
+```
 
 ## An Overview
 
 Many things we take for granted in ordinary programming become problematic
 when there is any kind of parallelism involved. These situations include:
 
-      * multiple processors (hardware) sharing data
-      * software multithreading (simulated parallelism)
-      * operating system input/output device handlers
+* multiple processors (hardware) sharing data
+* software multithreading (simulated parallelism)
+* operating system input/output device handlers
 
-This is the most important topic in CS 162, the operating systems course; here
-in 61AS we give only a brief introduction, in the hope that when you see this
-topic for the second time it'll be clearer as a result.
+This is covered in greater detail in CS 162 (operating systems).
 
-## Why Parallelism is Hard
+## Why Parallelism Is Hard
 
 To see in simple terms what the problem is, think about the Scheme expression
 
