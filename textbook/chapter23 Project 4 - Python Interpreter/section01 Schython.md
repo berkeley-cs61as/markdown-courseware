@@ -6,8 +6,6 @@ To get the necessary project files and the spec, type the following into your in
 
 You may replace the `.` with whichever directory you want to save your project in.
 
-Here's a breakdown of the files contained inside of `schython/`:
-
 ## Scoring
 
 Each partner will work on nine problems. Five of these (Questions 1, 2, 6, 8, and 9) are common to both partners; the others (Questions 3, 4, 5, and 7) should be completed separately.
@@ -19,6 +17,8 @@ There will be points (indicated in `schython.text`) where partners should combin
 If you cannot find a partner and/or wish to work alone, please talk to a TA.
 
 ## Project Files
+
+Here's a breakdown of the files contained inside of `schython/`:
 
 <table class="table table-bordered table-striped">
 <thead><tr>
