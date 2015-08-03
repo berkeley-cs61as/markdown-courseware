@@ -212,7 +212,7 @@ We can see from the previous exercises that it is imperative to know when an mpa
 
 In the code above, `x` and `y` refer to the same mpair, while `z` points to a different mpair that contains the same elements. This is what their box-and-pointer diagrams look like:
 
-![](static/lab9-5.png)
+![](/static/lab9-5.png)
 
 Recall from Lesson 0.2 the `equal?` predicate. Earlier, we vaguely described `equal?` as a procedure that checks two arguments for equality. To be more specifice, when `equal?` is called with two mpairs, it will return `#t` if they contain the same elements, and `#f` otherwise. If we use `equal?` on our `x`, `y`, and `z` above, we will get the following:
 
