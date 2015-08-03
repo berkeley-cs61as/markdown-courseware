@@ -1,10 +1,11 @@
+## Stream Constructor and Selectors
+
 On the surface, streams are just lists with different names for the procedures
 that manipulate them. They have a constructor ` cons-stream` , and two
 selectors, ` stream-car` and ` stream-cdr`, which satisfies these constraints:
 
-** (stream-car (cons-stream x y))  returns  x **
-
-** (stream-cdr (cons-stream x y))  returns y**
+ * `(stream-car (cons-stream x y))` returns `x`
+ * `(stream-cdr (cons-stream x y))` returns `y`
 
 In order to construct the stream as we use it, we will arrange for the cdr of
 a stream to be evaluated when it is accessed by the `stream-cdr` procedure
@@ -24,32 +25,33 @@ the evaluation -- in effect, forcing the delay to fulfill its promise. We will
 see below how `delay` and `force` can be implemented, but first let us use
 these to construct streams.
 
-` cons-stream` is a special form such that
-
-** (cons-stream [a] [b]) ** is equivalent to ** (cons [a] (delay [b])) **
+`cons-stream` is a special form such that `(cons-stream [a] [b])` is equivalent to `(cons [a] (delay [b]))`.
 
 This means that we will construct using pairs of `cars` and delayed `cdrs`.
 These will be our `stream-car` and `stream-cdr` procedures:
 
-    
-     
-    (define (stream-car stream) (car stream))
-     
-    
-     
-    (define (stream-cdr stream) (force (cdr stream)))
-       
+```
+(define (stream-car stream) (car stream))
+
+(define (stream-cdr stream) (force (cdr stream)))
+```
       
-    Note: Cons-stream is a special-form. What would have happened if it's not a special form? Everytime we call (cons-stream a b), it will evaluate b before going to the body which means that b is not delayed.  
-    
+Note that `cons-stream` is a special form. If it weren't, calling `(cons-stream a b)` would evaluate `b`, meaning `b` wouldn't be delayed.
 
-There is a distinguishable object, ` the-empty-stream`, which cannot be the
+## `the-empty-stream`
+
+There is a distinguishable object, `the-empty-stream`, which cannot be the
 result of any `cons-stream` operation, and which can be identified with the
-predicate `stream-null?`. Thus we can make and use streams, in just the same
-way as we can make and use lists, to represent aggregate data arranged in a
-sequence. In particular, we can build stream analogs of `list-ref`, `map`, and
-`for-each` :
+predicate `stream-null?`.
 
+## Stream Analogs of List Procedures
+
+We can make and use streams, in just the same
+way as we can make and use lists, to represent aggregate data arranged in a
+sequence. In particular, we can build stream analogs of `list-ref`, `map`,
+`for-each`, and so on.
+
+### `stream-ref`
     
      
     (define (stream-ref s n)
@@ -58,11 +60,16 @@ sequence. In particular, we can build stream analogs of `list-ref`, `map`, and
           (stream-ref (stream-cdr s) (- n 1))))
      
 
-If we define x as `(define x (cons-stream 0 (cons-stream 1 (cons-stream 2 the-
-empty-stream))))`, `(stream-ref x 0)` returns 0. `(stream-ref x 2)` returns 2.
+If we define x as
+
+```
+(define x (cons-stream 0 (cons-stream 1 (cons-stream 2 the-empty-stream))))
+```
+
+then `(stream-ref x 0)` returns 0 and  `(stream-ref x 2)` returns 2.
 (Note that n starts counting from 0)
 
-    
+### `stream-map`
      
     (define (stream-map proc s)
       (if (stream-null? s)
@@ -74,18 +81,16 @@ empty-stream))))`, `(stream-ref x 0)` returns 0. `(stream-ref x 2)` returns 2.
 If x is the same as above, then `(stream-map square x)` returns a stream with
 `(0 1 4)`
 
-    
+### `stream-for-each`
      
     (define (stream-for-each proc s)
       (if (stream-null? s)
           'done
           (begin (proc (stream-car s))
                  (stream-for-each proc (stream-cdr s)))))
-     
 
-## Viewing Streams
 
-`stream-for-each` from the previous section is useful for viewing streams. The
+`stream-for-each` is useful for viewing streams. The
 following may be helpful for checking what's going on:
 
     
@@ -97,11 +102,11 @@ following may be helpful for checking what's going on:
       (newline)
       (display x))
      
+## Computation Using Streams     
 
 Let's take another look at the second prime computation we saw earlier,
 reformulated in terms of streams:
 
-    
      
     (stream-car
      (stream-cdr
@@ -138,7 +143,7 @@ necessary. Now we filter it using ` stream-filter`
             (else (stream-filter pred (stream-cdr stream)))))
     
 
-`Stream-filter` tests the `stream-car` of the stream (the car of the pair,
+`stream-filter` tests the `stream-car` of the stream (the car of the pair,
 which is 10,000). Since this is not prime, `stream-filter` examines the
 `stream-cdr` of its input stream. The call to `stream-cdr` forces evaluation
 of the delayed `stream-enumerate-interval`, which now returns
@@ -149,7 +154,7 @@ of the delayed `stream-enumerate-interval`, which now returns
           (delay (stream-enumerate-interval 10002 1000000)))
     
 
-`Stream-filter` now looks at the `stream-car` of this stream, 10,001, sees
+`stream-filter` now looks at the `stream-car` of this stream, 10,001, sees
 that this is not prime either, forces another `stream-cdr`, and so on, until
 `stream-enumerate-interval` yields the prime 10,007, whereupon `stream-
 filter`, according to its definition, returns
@@ -196,10 +201,12 @@ integers were tested for primality as were necessary to find the second prime,
 and the interval was enumerated only as far as was necessary to feed the prime
 filter.
 
+## Implementing `delay` and `force`
+
 Although `delay` and `force` may seem like mysterious operations, their
-implementation is really quite straightforward. `Delay` must package an
+implementation is really quite straightforward. `delay` must package an
 expression so that it can be evaluated later on demand, and we can accomplish
-this simply by treating the expression as the body of a procedure. `Delay` can
+this simply by treating the expression as the body of a procedure. `delay` can
 be a special form such that
 
     
@@ -210,14 +217,14 @@ is syntactic sugar for
     
      (lambda () [exp])
 
-`Force` simply calls the procedure (of no arguments) produced by `delay`, so
+`force` simply calls the procedure (of no arguments) produced by `delay`, so
 we can implement `force` as a procedure:
 
     
      (define (force delayed-object)
       (delayed-object))  
       
-    Again, note the importance of delay being a special-form. If it is not, then when we call (delay b), b will be evaluated before we evaluate the body.
+Again, note the importance of `delay` being a special form. If it is not, then when we call `(delay b)`, `b` will be evaluated before we evaluate the body.
 
 This implementation suffices for `delay` and `force` to work as advertised,
 but there is an important optimization that we can include. In many
@@ -253,7 +260,7 @@ subsequent evaluations, it simply returns the result.
 
 and `force` is unchanged
 
-## takeaways
+## Takeaways
 
 In this section, you learned:
 
@@ -261,7 +268,7 @@ In this section, you learned:
   2. Some useful applications of streams
   3. How to implement `delay` and `force`
 
-## what's next?
+## What's Next?
 
 Let's go to the next subsection and learn about infinite lists!
 

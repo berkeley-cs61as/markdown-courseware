@@ -2,43 +2,34 @@
 
 You can copy the template for this homework by typing in your terminal:
 
-    
-      cp ~cs61as/autograder/templates/hw10.scm .
-    
+```    
+cp ~cs61as/autograder/templates/hw10.scm .
+``` 
 
-Or, you can download it
+You can also download it by clicking
 [here](http://inst.eecs.berkeley.edu/~cs61as/templates/hw10.scm).
 
-## Extra Resource
+##  Exercise 1
 
-Stuck on the homework? Check out this week's [discussion
-notes](/static/dis11.pdf) for some great tips on understanding and writing
-code for streams.
+Read [SICP 3.5.1](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-24.html#%_sec_3.5.1),
+then answer the following:
 
-##  Exercise 1.
+1. What is the type of the value of `(delay (+ 1 27))`?
+2. What is the type of the value of `(force (delay (+ 1 27)))`?
 
-Do the following reading for this exercise:
+## Exercise 2
 
-  * [SICP 3.5.1 Streams Are Delayed Lists](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-24.html#%_sec_3.5.1)
+Evaluating this expression produces an error:
 
-What is the type of the value of `(delay (+ 1 27))`? What is the type of the
-value of `(force (delay (+ 1 27)))`?
+```
+(stream-cdr (stream-cdr (cons-stream 1 '(2 3))))
+```
 
-## Exercise 2.
+Explain why.
 
-Do the following reading for this exercise:
+## Exercise 3
 
-  * [SICP 3.5.1 Streams Are Delayed Lists](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-24.html#%_sec_3.5.1)
-
-Evaluation of the expression
-
-`(stream-cdr (stream-cdr (cons-stream 1 '(2 3))))`
-
-produces an error. Why?
-
-## Exercise 3.
-
-    
+Consider the following:
     
     (define (enumerate-interval low high) 
       (if (> low high) 
@@ -50,77 +41,80 @@ produces an error. Why?
           the-empty-stream 
           (cons-stream low (stream-enumerate-interval (+ low 1) high)) ) )
     
-
 What's the difference between the following two expressions?
-
-    
     
     (delay (enumerate-interval 1 3))
     (stream-enumerate-interval 1 3) 
 
-## Exercise 4.
+## Exercise 4
 
 An unsolved problem in number theory concerns the following algorithm for
-creating a sequence of positive integers _s_1, _s_2, ...
+creating a sequence of positive integers [mathjaxinline]s\_1, s\_2, \ldots[/mathjaxinline]
+where [mathjaxinline]s\_1[/mathjaxinline] is some positive integer and,
+for all [mathjaxinline]n > 1[/mathjaxinline],
 
-Choose _s_1 to be some positive integer.
+* if [mathjaxinline]s\_n[/mathjaxinline] is odd, then [mathjaxinline]s\_{n+1} = 3s\_n+1[/mathjaxinline];
+* if [mathjaxinline]s\_n[/mathjaxinline] is even, then [mathjaxinline]s\_{n+1} = s\_n \div 2[/mathjaxinline].
 
-For n > 1,
-
-if _s_n is odd, then _s_n+1 is 3_s_n+1;
-
-if _s_n is even, then _s_n+1 is _s_n/2.
-
-No matter what starting value is chosen, the sequence always seems to end with
-the values 1, 4, 2, 1, 4, 2, 1, ... However, it is not known if this is always
+No matter what starting value [mathjaxinline]s\_1[/mathjaxinline] is chosen, the sequence (called a *hailstone sequence*)
+always seems to end with
+the repeating values 1, 4, 2, 1, 4, 2, 1, .... However, it is not known if this is always
 the case.
 
-a. Write a procedure `num-seq` that, given a positive integer `n` as argument,
-returns the stream of values produced for `n` by the algorithm just given. For
+1. Write a procedure `num-seq` that, given a positive integer `n` as argument,
+returns the hailstone sequence for `n`. For
 example, `(num-seq 7)` should return the stream representing the sequence 7,
 22, 11, 34, 17, 52, 26, 13, 40, 20, 10, 5, 16, 8, 4, 2, 1, 4, 2, 1, ...
 
-b. Write a procedure `seq-length` that, given a stream produced by `num-seq`,
+2. Write a procedure `seq-length` that, given a stream produced by `num-seq`,
 returns the number of values that occur in the sequence up to and including
 the first 1. For example, `(seq-length (num-seq 7))` should return 17. You
 should assume that there is a 1 somewhere in the sequence.
 
-## Exercise 5.
+## Exercise 5
 
-It's that time of the HW. SICP!
+It's that time of the homework&mdash;SICP!
 
-Complete the following: Abelson & Sussman, exercises [3.50, 3.51,
+Complete the following: [3.50, 3.51,
 3.52](http://mitpress.mit.edu/sicp/full-
 text/book/book-Z-H-24.html#%_thm_3.50), [3.53, 3.54, 3.55,
 3.56](http://mitpress.mit.edu/sicp/full-
 text/book/book-Z-H-24.html#%_thm_3.53), [3.64](http://mitpress.mit.edu/sicp
 /full-text/book/book-Z-H-24.html#%25_thm_3.64), [3.66,
-3,68](http://mitpress.mit.edu/sicp/full-
-text/book/book-Z-H-24.html#%25_thm_3.66)
+3.68](http://mitpress.mit.edu/sicp/full-
+text/book/book-Z-H-24.html#%25_thm_3.66).
 
-## Exercise 6.
+## Exercise 6
 
-  
-Write and test two functions to manipulate nonnegative proper fractions. The
+Write and test two functions to manipulate nonnegative proper fractions.
+
+The
 first function, `fract-stream`, will take as its argument a list of two
 nonnegative integers, the numerator and the denominator, in which the
 numerator is less than the denominator. It will return an infinite stream of
-decimal digits representing the decimal expansion of the fraction. The second
+decimal digits representing the decimal expansion of the fraction.
+
+The second
 function, `approximation`, will take two arguments: a fraction stream and a
 nonnegative integer numdigits. It will return a list (not a stream) containing
 the first numdigits digits of the decimal expansion.
 
-`(fract-stream '(1 7))` should return the stream representing the decimal
-expansion of 1/7, which is 0.142857142857142857...
+Some guidelines:
 
-`(stream-car (fract-stream '(1 7)))` should return `1`.
+* `(fract-stream '(1 7))` should return the stream representing the decimal
+* expansion of 1/7, which is 0.142857142857142857...
+* `(stream-car (fract-stream '(1 7)))` should return `1`.
+* `(stream-car (stream-cdr (stream-cdr (fract-stream '(1 7)))))` should return
+* `2`.
+* `(approximation (fract-stream '(1 7)) 4)` should return `(1 4 2 8)`.
+* `(approximation (fract-stream '(1 2)) 4)` should return `(5 0 0 0)`.
 
-`(stream-car (stream-cdr (stream-cdr (fract-stream '(1 7)))))` should return
-`2`.
+## Submit Your Homework
 
-`(approximation (fract-stream '(1 7)) 4)` should return `(1 4 2 8)`.
+Don't forget!
 
-`(approximation (fract-stream '(1 2)) 4)` should return `(5 0 0 0)`.
+
+<!-- Ehhh
 
 ## CHALLENGE PROBLEMS
 
@@ -180,5 +174,4 @@ Why does this happen? Hint: it has to do with delaying and memoization.
 
 # **DO NOT FORGET TO TURN IN YOUR HOMEWORK!**
 
-
-
+-->

@@ -56,8 +56,7 @@ In this subsection, we will go over mutation using `set-mcar!` and `set-mcdr!` o
 Let us work with the following mpairs and their box-and-pointer diagrams:
     
     (define x (mcons (mlist 'a 'b) (mlist 'c 'd)))
-    (define y (mlist 'e 'f))
-    
+    (define y (mlist 'e 'f))    
 
 ![](http://mitpress.mit.edu/sicp/full-text/book/ch3-Z-G-13.gif)
 
@@ -213,7 +212,7 @@ We can see from the previous exercises that it is imperative to know when an mpa
 
 In the code above, `x` and `y` refer to the same mpair, while `z` points to a different mpair that contains the same elements. This is what their box-and-pointer diagrams look like:
 
-![](/static/lab9-5.png)
+![](static/lab9-5.png)
 
 Recall from Lesson 0.2 the `equal?` predicate. Earlier, we vaguely described `equal?` as a procedure that checks two arguments for equality. To be more specifice, when `equal?` is called with two mpairs, it will return `#t` if they contain the same elements, and `#f` otherwise. If we use `equal?` on our `x`, `y`, and `z` above, we will get the following:
 
@@ -242,9 +241,7 @@ Since mpairs are a completely data type from pairs, as we have mentioned time an
 The comprehensive set of mpair operators can be found in the Racket documentation [here](http://docs.racket-lang.org/reference/mpairs.html) and [here](http://docs.racket-lang.org/compatibility/mlists.html).
 
 ## Takeaways
-
   * `set-mcar!` and `set-mcdr!` change the respective `mcar` and `mcdr` pointers of an mpair. 
   * Procedures such as `mcons,` `mlist` and `mappend` create new mpairs. 
   * Knowing which mpairs are shared between different mlists is crucial to determining whether mutating one will influence the other. 
   * Drawing box-and-pointer diagrams extremely helpful in sorting out mpairs and visually analyzing the effects of mutative procedures.
-

@@ -137,7 +137,7 @@ where URL is the text string argument (note the space after x in "lynx ").
 Otherwise, return an error.
 
     
-    > (ask library surf somelaptop "http://www.cs.berkeley.edu")
+    > (ask library 'surf somelaptop "http://www.cs.berkeley.edu")
 
 ## Question B5: Part 2
 

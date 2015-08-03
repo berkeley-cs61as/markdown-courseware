@@ -1,8 +1,7 @@
 ## The Big Idea
 
 In this section we will implement a normal-order language that is the same as
-Scheme except that **compound procedures are non-strict in each argument**.
-**Primitive procedures will still be strict.** It is not difficult to modify
+Scheme, except that **compound procedures are non-strict in each argument. Primitive procedures will still be strict.** It is not difficult to modify
 the evaluator of Lesson 12 so that the language it interprets behaves this
 way. Almost all the required changes center around procedure application.
 
@@ -14,7 +13,7 @@ interpreted Scheme is normal-order.)
 The basic idea is that, when applying a procedure, the interpreter must
 determine which arguments are to be evaluated and which are to be delayed. The
 delayed arguments are not evaluated; instead, they are transformed into
-objects called **thunk**s. The thunk must contain the information required to
+objects called **thunks**. The thunk must contain the information required to
 produce the value of the argument when it is needed, as if it had been
 evaluated at the time of the application. Thus, the thunk must contain the
 argument expression and the environment in which the procedure application is
