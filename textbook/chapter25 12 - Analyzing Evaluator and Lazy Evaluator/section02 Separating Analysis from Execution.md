@@ -1,12 +1,74 @@
+##  Analyzing Evaluator
+
+To work with the ideas in this section, get the analyzing metacircular
+evaluator:
+
+    cp ~cs61as/lib/analyze.scm .
+
+The Metacircular Evaluator implementation in Lesson 12 is simple, but it is very inefficient because of how the syntactic analysis of expressions is interleaved with their execution. Thus, if a program is executed many times, its syntax is analyzed many times. Let's consider an example.
+
+Suppose we’ve defined the `factorial` function as follows:
+    
+    (define (fact num) 
+      (if (= num 0)
+          1
+          (* num (fact (- num 1)))))
+    
+
+What happens when we compute `(fact 3)`?
+
+
+    eval (fact 3) 
+      self-evaluating? ==> #f 
+      variable? ==> #f
+      quoted? ==> #f 
+      assignment? definition?
+      if? ==> #f
+      lambda? ==> #f
+      begin? ==> #f
+      cond? ==> #f 
+      application? ==> #t 
+      eval fact
+        self-evaluating? ==> #f
+        variable? ==> #t
+        lookup-variable-value ==> <procedure fact> 
+        list-of-values (3)
+          eval3 ==> 3
+        apply <procedure fact> (3)
+          eval (if (= num 0) ...) 
+          self-evaluating? ==> #f 
+          variable? ==> #f 
+          quoted? ==> #f 
+          assignment? ==> #f 
+          definition? ==> #f
+          if? ==> #t 
+            eval-if (if (= num 0) ...) 
+              if-predicate ==> (= num 0)
+                eval (= num 0)
+                self-evaluating? ==> #f
+                ...
+              if-alternative ==> (* num (fact (- num 1)))  
+                eval (* num (fact (- num 1)))
+                  self-evaluating? ==> #f
+                  ...
+                  list-of-values (num (fact (- num 1)))
+                    ...
+                    eval (fact (- num 1))
+                      ...
+                      apply <procedure fact> (2)
+                        eval (if (= num 0) ...)
+    
+    
+
+Four separate times, the evaluator has to examine the procedure body, decide
+that it’s an if expression, pull out its component parts, and evaluate those
+parts (which in turn involves deciding what type of expression each part is).
+
+This is one reason why interpreted languages are so much slower than [compiled languages](https://en.wikipedia.org/wiki/Compiled_language): The interpreter does the syntactic analysis of the program over and over again. The compiler does the analysis once, and the compiled program can just do the part of the computation that depends on the actual values of variables. In this section, we will study the analyzing evaluator to see how to prevent the repetitive analysis of a program's syntax.
+
 ##  The Separation
 
-`Eval` takes two arguments, an expression and an environment. Of those, the
-expression argument is (obviously!) the same every time we revisit the same
-expression, whereas the environment will be different each time. For example,
-when we compute `(fact 3)` we evaluate the body of `fact` in an environment in
-which `num` has the value `3`. That body includes a recursive call to compute
-`(fact 2)`, in which we evaluate the same body, but now in an environment with
-`num` bound to `2`.
+`eval` takes two arguments, an expression and an environment. Of those, the expression argument is the same every time we revisit the same expression, whereas the environment will be different each time. For example, when we compute `(fact 3)`, we evaluate the body of `fact` in an environment in which `num` has the value `3`. That body includes a recursive call to compute `(fact 2)`, in which we evaluate the same body, but now in an environment with `num` bound to `2`.
 
 Our plan is to look at the evaluation process, find those parts which depend
 only on `exp` and not on `env`, and do those only once. The procedure that
@@ -26,13 +88,18 @@ we now have
 
     1. (analyze exp) ==> exp-procedure 
     2. (exp-procedure env) ==> value
-    
 
-When we evaluate the same expression again, we only have to repeat step 2.
-What we’re doing is akin to memoization, in that we remember the result of a
-computation to avoid having to repeat it. The difference is that now we’re
-remembering something that’s only part of the solution to the overall problem,
-instead of a complete solution.
+<div class="mc">
+<strong>Test Your Understanding</strong><br><br>
+
+What type of argument(s) does the procedure returned by analyze accept?
+
+<ans text="expression" explanation=""></ans>
+<ans text="environment" explanation="Analyze returns a function that carries out the task of a given syntactic expression. The syntactic expressions in a program often depend on values that are stored in the environment (such as set! statements)." correct></ans>
+<ans text="Both an expression and an environment" explanation=""></ans>
+</div>
+
+When we evaluate the same expression again, we only have to repeat step 2. What we’re doing is akin to memoization, in that we remember the result of a computation to avoid having to repeat it. The difference is that now we’re remembering something that’s only part of the solution to the overall problem, instead of a complete solution.
 
 We can duplicate the effect of the original `eval` this way:
 
@@ -40,9 +107,9 @@ We can duplicate the effect of the original `eval` this way:
       ((analyze exp) env))
 
 
-##  Lets look at `analyze`
+## `analyze`
 
-`Analyze` has a structure similar to that of the original eval:
+`analyze` has a structure similar to that of the original `eval`:
 
     (define (analyze exp)
       (cond
@@ -54,18 +121,17 @@ We can duplicate the effect of the original `eval` this way:
         ((foo? exp) (analyze-foo exp)) 
         ...))
 
-The difference is that the procedures such as `eval-if` that take an
-expression and an environment as arguments have been replaced by procedures
-such as `analyze-if` that take only the expression as argument. How do these
-analysis procedures work? As an intermediate step in our understanding, here
-is a version of `analyze-if` that exactly follows the structure of `eval-if`
-and doesn’t save any time:
+The difference is that the procedures such as `eval-if` that take an expression and an environment as arguments have been replaced by procedures such as `analyze-if` that take only the expression as argument. How do these analysis procedures work? As an intermediate step in our understanding, here is a version of `analyze-if` that exactly follows the structure of `eval-if` and doesn’t save any time:
+
+**`eval-if`:**
 
     (define (eval-if exp env)
       (if (true? (eval (if-predicate exp) env))
           (eval (if-consequent exp) env) 
           (eval (if-alternative exp) env)))
     
+**`analyze-if`:**
+
     (define (analyze-if exp) 
       (lambda (env)
         (if (true? (eval (if-predicate exp) env)) 
@@ -77,7 +143,7 @@ This version of `analyze-if` returns a procedure with `env` as its argument,
 whose body is exactly the same as the body of the original `eval-if`.
 Therefore, if we do
 
-     ((analyze-if some-if-expression) some-environment)
+    ((analyze-if some-if-expression) some-environment)
 
 the result will be the same as if we’d said
 
@@ -122,11 +188,9 @@ procedure does not include its text! Instead, the evaluator represents a
 procedure in the metacircular Scheme as a procedure in the underlying Scheme,
 along with the formal parameters and the defining environment.
 
-(Be sure to read [ Section 4.1.7 ](http://mitpress.mit.edu/sicp/full-
-text/book/book-Z-H-26.html#%_sec_4.1.7) from SICP to see how all of the
-sytactic analysis procedures are implemented).
+(Be sure to read [Section 4.1.7](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-26.html#%_sec_4.1.7) from SICP to see how all of the syntactic analysis procedures are implemented).
 
-##  Level Confusion
+## Level Confusion
 
 The analyzing evaluator turns an expression such as
 
@@ -148,7 +212,7 @@ don’t call `analyze-if` for that one. Also, the `if` in the underlying Scheme
 is much faster than having to do the syntactic analysis for the `if` in the
 meta-Scheme.
 
-##  So What?
+## So What?
 
 The syntactic analysis of expressions is a large part of what a compiler does.
 In a sense, this analyzing evaluator is a compiler! It compiles Scheme into
@@ -156,18 +220,18 @@ Scheme, so it’s not a very useful compiler, but it’s really not that much
 harder to compile into something else, such as the machine language of a
 particular computer.
 
-A compiler whose structure is similar to this one is called a _recursive
-descent_ compiler. Today, in practice, most compilers use a different
+A compiler whose structure is similar to this one is called a _recursive descent_ compiler. Today, in practice, most compilers use a different
 technique (called a stack machine) because it’s possible to automate the
 writing of a parser that way. (I mentioned this earlier as an example of data-
 directed programming.) But if you’re writing a parser by hand, it’s easiest to
 use recursive descent.
 
-(Be sure to read section [4.1.7](http://mitpress.mit.edu/sicp/full-
-text/book/book-Z-H-26.html#%_sec_4.1.7) of SICP before proceeding).
+(Be sure to read section [4.1.7](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-26.html#%_sec_4.1.7) of SICP before proceeding).
+
+## An Example
 
 Here is a nice example of evaluating `factorial` using the analyzing
-evaluator. Lets consider the following Scheme code:
+evaluator. Let's consider the following Scheme code:
 
       (define factorial
         (lambda (n)
@@ -243,7 +307,7 @@ execution procedure with those stored values.
       ; kind of like if-pred
     
       ;;this is the execution procedure we return:
-      ;;lets call this execution procedure 'analyzed-fact-if'
+      ;;let's call this execution procedure 'analyzed-fact-if'
       (lambda (env)
         (if (true? (if-pred env))
             (if-true env)
@@ -279,7 +343,7 @@ analyzing work pay off.
       ((procedure-body {internal factorial value})
        (extend-environment ...)) ; extend-environment is same as old eval
     
-      ;; Lets call the extended environment, env2
+      ;; let's call the extended environment, env2
       (analyzed-body env2) ; analyzed-body from definition above
     
      ((lambda (env)
@@ -293,8 +357,7 @@ analyzing work pay off.
          (if-false env2)) ; (* (factorial (- n 1)) n)
     
 
-Here, `n = 2 != 0`, so we'll end up calling executing `(if-false env2)`. `if-
-false` will do an application of `*` to `(factorial (- n 1))` and `n`, but
+Here, `n = 2 != 0`, so we'll end up calling executing `(if-false env2)`. `if-false` will do an application of `*` to `(factorial (- n 1))` and `n`, but
 these arguments have already been `analyzed` (when we did `analyze-lambda`).
 So we evaluate the analyzed `(factorial (- n 1))`, which is:
 
@@ -325,4 +388,3 @@ Notice that during the evaluation phase, we never check the syntax of a
 statement. The syntax has already been looked at, and `analyzed`. We simply
 carry out what these `analyzed` statements tell us to do. Think about the gain
 in efficiency here when computing something like `(factorial 100)`.
-
