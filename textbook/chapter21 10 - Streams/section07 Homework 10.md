@@ -3,11 +3,11 @@
 You can copy the template for this homework by typing in your terminal:
 
 ```    
-cp ~cs61as/autograder/templates/hw10.scm .
+cp ~cs61as/autograder/templates/hw10.rkt .
 ``` 
 
 You can also download it by clicking
-[here](http://inst.eecs.berkeley.edu/~cs61as/templates/hw10.scm).
+[here](http://inst.eecs.berkeley.edu/~cs61as/templates/hw10.rkt).
 
 ##  Exercise 1
 
@@ -29,7 +29,7 @@ Explain why.
 
 ## Exercise 3
 
-Consider the following:
+Consider the following definitions:
     
     (define (enumerate-interval low high) 
       (if (> low high) 
@@ -48,7 +48,7 @@ What's the difference between the following two expressions?
 
 ## Exercise 4
 
-An unsolved problem in number theory concerns the following algorithm for
+An unsolved problem in number theory (called the [Collatz conjecture](https://en.wikipedia.org/wiki/Collatz_conjecture)) concerns the following algorithm for
 creating a sequence of positive integers [mathjaxinline]s\_1, s\_2, \ldots[/mathjaxinline]
 where [mathjaxinline]s\_1[/mathjaxinline] is some positive integer and,
 for all [mathjaxinline]n > 1[/mathjaxinline],
@@ -96,16 +96,15 @@ decimal digits representing the decimal expansion of the fraction.
 
 The second
 function, `approximation`, will take two arguments: a fraction stream and a
-nonnegative integer numdigits. It will return a list (not a stream) containing
-the first numdigits digits of the decimal expansion.
+nonnegative integer `numdigits`. It will return a list (not a stream) containing
+the first `numdigits` digits of the decimal expansion.
 
-Some guidelines:
+Examples:
 
 * `(fract-stream '(1 7))` should return the stream representing the decimal
-* expansion of 1/7, which is 0.142857142857142857...
+expansion of [mathjaxinline]\frac{1}{7}[/mathjaxinline], which is 0.142857142857142857...
 * `(stream-car (fract-stream '(1 7)))` should return `1`.
-* `(stream-car (stream-cdr (stream-cdr (fract-stream '(1 7)))))` should return
-* `2`.
+* `(stream-car (stream-cdr (stream-cdr (fract-stream '(1 7)))))` should return `2`.
 * `(approximation (fract-stream '(1 7)) 4)` should return `(1 4 2 8)`.
 * `(approximation (fract-stream '(1 2)) 4)` should return `(5 0 0 0)`.
 

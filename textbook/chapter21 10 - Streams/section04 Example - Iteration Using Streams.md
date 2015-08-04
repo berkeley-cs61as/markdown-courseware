@@ -6,9 +6,11 @@ the procedure that improves guesses:
 ```
 (define (sqrt-improve guess x)
   (average guess (/ x guess)))
+(define (average x y)
+  (/ (+ x y) 2))
 ```
 
-We can create an infinite stream of guesses, starting with an initial guess of
+We can do the same thing using streams by creating an infinite stream of guesses, starting with an initial guess of
 1:
 
 ```
@@ -20,18 +22,27 @@ We can create an infinite stream of guesses, starting with an initial guess of
   guesses)
 ```
 
-The first few elements of `(sqrt-stream 2)` would be:
+For example:
 
 ```
-1
-1.5
-1.4166666666666665
-1.4142156862745097
-1.4142135623746899
+-> (ss (sqrt-stream 2015))
+'(1.0
+  1008.0
+  504.999503968254
+  254.494803448699
+  131.20622519086908
+  73.28186410691475
+  50.38921769381862
+  45.18896569765265
+  44.88974861660058
+  44.88875138600392
+  ...)
 ```
 
-Each successive element of the stream gets closer and closer to the square
-root of 2.
+Successive elements of the stream get closer and closer to the square
+root of 2015, which is [about 44.88875137492688156359](http://www.wolframalpha.com/input/?i=sqrt(2015)).
+
+<!-- They get the point
 
 Similarly, we used the following formula to approximate pi:
 
@@ -63,3 +74,5 @@ The first few elements look like this:
 
 As you can tell, the numbers are converging on pi&mdash;after looking at the first
 eight elements, we know pi is somewhere between 3.28 and 3.02.
+
+-->
