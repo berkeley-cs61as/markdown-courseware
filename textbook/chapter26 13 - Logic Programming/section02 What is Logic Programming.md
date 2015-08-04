@@ -11,7 +11,7 @@ specified computation will progress.
 
 Most programming languages, including Lisp, are organized around computing the
 values of mathematical functions. Expression-oriented languages (such as Lisp,
-Fortran, and Algol) capitalize on the "pun'' that an expression that describes
+Fortran, and Algol) capitalize on the "pun" that an expression that describes
 the value of a function may also be interpreted as a means of computing that
 value. Because of this, most programming languages are strongly biased toward
 unidirectional computations (computations with well-defined inputs and
@@ -21,7 +21,7 @@ vision of programming with a powerful kind of symbolic pattern matching called
 unification.
 
 This approach, when it works, can be a very powerful way to write programs.
-Part of the power comes from the fact that a single "what is'' fact can be
+Part of the power comes from the fact that a single "what is" fact can be
 used to solve a number of different problems that would have different "how
 to" components.
 
@@ -31,9 +31,9 @@ Before we get into the specifics of logic programming, we need a database to
 play with. You can load this database using:
 
     
-       > (load "~cs61as/lib/query.scm")
-       > (initialize-data-base microshaft-data-base)
-       > (query-driver-loop)
+    > (load "~cs61as/lib/query.scm")
+    > (initialize-data-base microshaft-data-base)
+    > (query-driver-loop)
     
 
 The personnel data base for Microshaft contains assertions about company
@@ -163,7 +163,7 @@ programmer). The "anything" that can be the second item in the matching list
 is specified by a pattern variable, `?x`. The general form of a pattern
 variable is a symbol, taken to be the name of the variable, preceded by a
 question mark. We will see below why it is useful to specify names for pattern
-variables rather than just putting ? into patterns to represent "anything."
+variables rather than just putting ? into patterns to represent "anything".
 The system responds to a simple query by showing all entries in the data base
 that match the specified pattern.
 
@@ -180,7 +180,7 @@ whether that pattern is an entry in the data base. If so, there will be one
 match; if not, there will be no matches.
 
 The same pattern variable can appear more than once in a query, specifying
-that the same "anything'' must appear in each position. This is why variables
+that the same "anything" must appear in each position. This is why variables
 have names. For example,
 
     
@@ -233,19 +233,19 @@ matches the data
     (computer programmer trainee)
     
 
-with `?type` as the list (programmer trainee). It also matches the data
+with `?type` as the list `(programmer trainee)`. It also matches the data
 
     
     (computer programmer)
     
 
-with `?type` as the list (programmer), and matches the data
+with `?type` as the list `(programmer)`, and matches the data
 
     
     (computer)
     
 
-with `?type` as the empty list` ()`.
+with `?type` as the empty list `()`.
 
 We can describe the query language's processing of simple queries as follows:
 
@@ -256,6 +256,46 @@ Note that if the pattern has no variables, the query reduces to a
 determination of whether that pattern is in the data base. If so, the empty
 assignment, which assigns no values to variables, satisfies that pattern for
 that data base.
+
+<div class="mc">
+<strong>Assertions and Queries: Part 1</strong><br><br>
+Add a couple assertions into the database about things that you like. This should look very similar to
+
+<pre><code>(assert! (likes brian potstickers))</code></pre>
+
+Next, write a query that returns all of the things you like. It should return to you all of the assertions you just added.
+
+<ans text="I have tried the above exercise." explanation="Good. We trust you." correct></ans>
+<br><br>
+<strong>Assertions and Queries: Part 2</strong><br><br>
+
+Add a few more assertions into the database about things that your project partner likes. Write another query that returns all of the things s/he likes.
+
+<ans text="I have tried the above exercise." explanation="I hope you're having fun." correct></ans>
+<br><br>
+<strong>Assertions and Queries: Part 3</strong><br><br>
+
+Finally, write a query that will return all of the things that anoyone in the database likes.
+
+<ans text="I have tried the above exercise." explanation="" correct></ans>
+<br><br>
+<strong>Simple Queries</strong><br><br>
+Give simple queries that retrieve the following information from the data base:
+<ol>
+    <li>all people supervised by Ben Bitdiddle;</li>
+    <li>the names and jobs of all people in the accounting division;</li>
+    <li>the names and addresses of all people who live in Slumerville.</li>
+</ol>
+Remember, to load the example database and run the query system, type the following commands into an interpreter:
+
+<pre><code> (load "~cs61as/lib/query.scm")
+(initialize-data-base microshaft-data-base)
+(query-driver-loop)</code></pre>
+
+<ans text="Click to reveal answer to 1." explanation="(supervisor ?who (Bitdiddle Ben))" correct></ans>
+<ans text="Click to reveal answer to 2." explanation="(job ?person (accounting . ?description))" correct></ans>
+<ans text="Click to reveal answer to 3." explanation="(address ?person (Slumerville . ?street))" correct></ans>
+</div>
 
 ## Compound Queries
 
@@ -290,7 +330,7 @@ In general,
     
 
 is satisfied by all sets of values for the pattern variables that
-simultaneously satisfy <query1> <query2> ... <queryn>
+simultaneously satisfy `<query1> <query2> ... <queryn>`
 
 As for simple queries, the system processes a compound query by finding all
 assignments to the pattern variables that satisfy the query, then displaying
@@ -329,7 +369,7 @@ In general,
     
 
 is satisfied by all sets of values for the pattern variables that satisfy at
-least one of <query1> <query2> ... <queryn>.
+least one of `<query1> <query2> ... <queryn>`.
 
 Compound queries can also be formed with `not`. For example,
 
@@ -348,7 +388,7 @@ In general,
     
 
 is satisfied by all assignments to the pattern variables that do not satisfy
-<query1>.
+`<query1>`.
 
 The final combining form is called `lisp-value`. When `lisp-value` is the
 first element of a pattern, it specifies that the next element is a Lisp
@@ -361,25 +401,17 @@ arguments. In general,
     
 
 will be satisfied by assignments to the pattern variables for which the
-<predicate> applied to the instantiated <arg1> ... <argn> is true. For
+`<predicate>` applied to the instantiated `<arg1> ... <argn>` is true. For
 example, to find all people whose salary is greater than $30,000 we could
 write
-
-    
     
     (and (salary ?person ?amount)
          (lisp-value > ?amount 30000))
     
-    
-    
-    
 
 ## Rules
 
-As long as we just tell the system isolated facts, we can’t get
-extraordinarily interesting replies. But we can also tell it _rules_ that
-allow it to infer one fact from another. For example, if we have a lot of
-facts like:
+As long as we just tell the system isolated facts, we can’t get extraordinarily interesting replies. But we can also tell it _rules_ that allow it to infer one fact from another. For example, if we have a lot of facts like:
 
     
     
@@ -387,7 +419,6 @@ facts like:
     
 
 then we can establish a rule about grandmotherhood:
-
     
     
     (assert! (rule (grandmother ?elder ?younger)
@@ -395,11 +426,9 @@ then we can establish a rule about grandmotherhood:
                         (mother ?mom ?younger) ))))
     
 
-The rule says that the ﬁrst part (the conclusion) is true _if_ we can ﬁnd
-values for the variables such that the second part (the condition) is true.
+The rule says that the ﬁrst part (the conclusion) is true _if_ we can ﬁnd values for the variables such that the second part (the condition) is true. 
 
 Again, resist the temptation to try to do composition of functions!
-
     
     
     (assert! (rule (grandmother ?elder ?younger) ;; WRONG!!!!
@@ -415,11 +444,35 @@ In this language the words `assert!, rule, and, or`, and `not` have special
 meanings. Everything else is just a word that can be part of assertions or
 rules.
 
+<div class="mc">
+<strong>Analyzing the Family Tree</strong><br><br>
+Let's try writing some rules! The following database (see Genesis 4) traces the genealogy of the descendants of Ada back to Adam, by way of Cain:
+
+<pre><code>(son Adam Cain)
+(son Cain Enoch)
+(son Enoch Irad)
+(son Irad Mehujael)
+(son Mehujael Methushael)
+(son Methushael Lamech)
+(wife Lamech Ada)
+(son Ada Jabal)
+(son Ada Jubal)</code></pre>
+
+Formulate rules such as "If S is the son of F, and F is the son of G, then S is the grandson of G" and "If W is the wife of M, and S is the son of W, then S is the son of M" (which was supposedly more true in biblical times than today) that will enable the query system to find the grandson of Cain; the sons of Lamech; the grandsons of Methushael.
+
+<ans text="Click here to reveal answer." explanation="(assert! (rule (grandson ?old ?young)
+        (and (son ?old ?middle)
+             (son ?middle ?young))))
+    
+    (assert! (rule (son ?mother ?son)
+        (and (wife ?father ?mother)
+             (son ?father ?son))))" correct></ans>
+</div>
+
 ## More Rules
 
 Here's a slightly more complicated rule:
 
-    
     
     (rule (lives-near ?person-1 ?person-2)
           (and (address ?person-1 (?town . ?rest-1))
@@ -429,12 +482,30 @@ Here's a slightly more complicated rule:
 
 It specifies that two people live near each other if they live in the same
 town. The final `not` clause prevents the rule from saying that all people
-live near themselves. The `same` relation is defined by the very simple rule:
-
-    
+live near themselves. The `same` relation is defined by the very simple rule:    
     
     (rule (same ?x ?x))
-    
+
+<div class="mc">
+<strong>Carpooling Time</strong><br><br>
+By giving the query
+
+<pre><code>(lives-near ?person (Hacker Alyssa P))</code></pre>
+
+Alyssa P. Hacker is able to find people who live near her, with whom she can ride to work. On the other hand, when she tries to find all pairs of people who live near each other by querying
+
+<pre><code>(lives-near ?person-1 ?person-2)</code></pre>
+
+she notices that each pair of people who live near each other is listed twice; for example,
+
+<pre><code>(lives-near (Hacker Alyssa P) (Fect Cy D))
+(lives-near (Fect Cy D) (Hacker Alyssa P))</code></pre>
+
+Why does this happen? Is there a way to find a list of people who live near each other, in which each pair appears only once? Explain. (Don't write the code for this!)
+
+<ans text="I've attempted this problem." explanation="" correct></ans>
+</div>
+
 
 ## Logic as Programs
 
@@ -442,11 +513,11 @@ We can regard a rule as a kind of logical implication: _If_ an assignment of
 values to pattern variables satisfies the body, _then_ it satisfies the
 conclusion. Consequently, we can regard the query language as having the
 ability to perform _logical deductions_ based upon the rules. As an example,
-consider the `append` operation. A`ppend` can be characterized by the
+consider the `append` operation. `Append` can be characterized by the
 following two rules:
 
-  * For any list` y`, the empty list and` y` append to form` y.`
-  * For any `u, v, y, and z`,` (cons u v)` and` y` append to form` (cons u z)` if `v` and `y` append to form `z`.
+  * For any list `y`, the empty list and `y` append to form `y`.
+  * For any `u`, `v`, `y`, and `z`, `(cons u v)` and `y` append to form `(cons u z)` if `v` and `y` append to form `z`.
 
 To express this in our query language, we define two rules for a relation
 
@@ -505,7 +576,7 @@ use logic programming to compute multiple answers to the same question!
 Somehow it found all the possible combinations of values that would make our
 query true.
 
-How does the append program work? Compare it to the Scheme append:
+How does the append program work? Compare it to the Scheme `append`:
 
     
     (define (append a b)
@@ -560,7 +631,16 @@ logic programming fans are trying to push the limits of the idea, but right
 now, you still have to understand something about the below-the-line algorithm
 to be conﬁdent that your logic program won't loop.
 
-## takeaways
+<div class="mc">
+<strong>Last-Pair</strong><br><br>
+Define rules to implement the <code>last-pair</code> operation of <a href="http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-15.html#%_thm_2.17">SICP exercise 2.17</a>, which returns a list containing the last element of a nonempty list.
+
+Check your rules on queries such as <code>(last-pair (3) ?x)</code>, <code>(last-pair (1 2 3) ?x)</code>, and <code>(last-pair (2 ?x) (3))</code>. Do your rules work correctly on queries such as <code>(last-pair ?x (3))</code>?
+
+<ans text="I've attempted this problem." explanation="" correct></ans>
+</div>
+
+## Takeaways
 
 Here are some takeaways from this subsection:
 
@@ -570,7 +650,7 @@ Here are some takeaways from this subsection:
   * Rules allow infering one fact from another.
   * We can write programs such as `append` with logic programming!
 
-## what's next?
+## What's Next?
 
 Go to the next subsection and learn how the query system works!
 

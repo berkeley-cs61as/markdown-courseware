@@ -1,66 +1,28 @@
 ## Introduction
 
-In this section we give an overview that explains the general structure of the
-system independent of low-level implementation details. After describing the
-implementation of the interpreter, we will be in a position to understand some
-of its limitations and some of the subtle ways in which the query language's
-logical operations differ from the operations of mathematical logic.
+In this section we give an overview that explains the general structure of the system independent of low-level implementation details. After describing the implementation of the interpreter, we will be in a position to understand some of its limitations and some of the subtle ways in which the query language's logical operations differ from the operations of mathematical logic. 
 
-It should be apparent that the query evaluator must perform some kind of
-search in order to match queries against facts and rules in the data base. One
-way to do this would be to implement the query system as a nondeterministic
-program (you don't have to worry about this way). Another possibility is to
-manage the search with the aid of streams. Our implementation follows this
-second approach.
+It should be apparent that the query evaluator must perform some kind of search in order to match queries against facts and rules in the data base. One way to do this would be to implement the query system as a nondeterministic program (you don't have to worry about this way). Another possibility is to manage the search with the aid of streams. Our implementation follows this second approach.
 
-The query system is organized around two central operations called **pattern
-matching** and **unification**. We first describe pattern matching and explain
-how this operation, together with the organization of information in terms of
-streams of frames, enables us to implement both simple and compound queries.
+The query system is organized around two central operations called **pattern matching** and **unification**. We first describe pattern matching and explain how this operation, together with the organization of information in terms of streams of frames, enables us to implement both simple and compound queries.
 
-We next discuss unification, a generalization of pattern matching needed to
-implement rules. Finally, we show how the entire query interpreter fits
-together through a procedure that classifies expressions in a manner analogous
-to the way `eval` classifies expressions for the metacircular evaluator.
+We next discuss unification, a generalization of pattern matching needed to implement rules. Finally, we show how the entire query interpreter fits together through a procedure that classifies expressions in a manner analogous to the way `eval` classifies expressions for the metacircular evaluator. 
+
 
 ## Pattern Matching
 
-A pattern matcher is a program that tests whether some datum fits a specified
-pattern. For example, the data list `((a b) c (a b))` matches the pattern `(?x
-c ?x)` with the pattern variable `?x` bound to` (a b)`. The same data list
-matches the pattern` (?x ?y ?z)` with` ?x` and` ?z` both bound to` (a b)` and`
-?y` bound to` c`. It also matches the pattern` ((?x ?y) c (?x ?y))` with` ?x`
-bound to` a` and` ?y` bound to `b`. However, it does not match the pattern`
-(?x a ?y)`, since that pattern specifies a list whose second element is the
-symbol` a`.
+A pattern matcher is a program that tests whether some datum fits a specified pattern. For example, the data list `((a b) c (a b))` matches the pattern `(?x c ?x)` with the pattern variable `?x` bound to `(a b)`. The same data list matches the pattern `(?x ?y ?z)` with `?x` and `?z` both bound to `(a b)` and `?y` bound to `c`. It also matches the pattern `((?x ?y) c (?x ?y))` with `?x` bound to `a` and `?y` bound to `b`. However, it does not match the pattern `(?x a ?y)`, since that pattern specifies a list whose second element is the symbol `a`.
 
-The pattern matcher used by the query system takes as inputs a pattern (e.g.
-`(?x c ?x))`, a datum (e.g. `((a b) c (a b))`), and a frame that specifies
-bindings for various pattern variables. It checks whether the datum matches
-the pattern in a way that is consistent with the bindings already in the
-frame. If so, it returns the given frame augmented by any bindings that may
-have been determined by the match. Otherwise, it indicates that the match has
-failed.
+The pattern matcher used by the query system takes as inputs a pattern (e.g., `(?x c ?x))`, a datum (e.g., `((a b) c (a b))`), and a frame that specifies bindings for various pattern variables. It checks whether the datum matches the pattern in a way that is consistent with the bindings already in the frame. If so, it returns the given frame augmented by any bindings that may have been determined by the match. Otherwise, it indicates that the match has failed.
 
-For example, using the pattern` (?x ?y ?x)` to match the datum` (a b a)` given
-an empty frame will return a frame specifying that` ?x` is bound to` a` and`
-?y` is bound to `b`. Trying the match with the same pattern, the same datum,
-and a frame specifying that `?y` is bound to `a` will fail. Trying the match
-with the same pattern, the same datum, and a frame in which` ?y` is bound to
-`b` and` ?x` is unbound will return the given frame augmented by a binding of`
-?x` to` a`.
+For example, using the pattern `(?x ?y ?x)` to match the datum `(a b a)` given an empty frame will return a frame specifying that `?x` is bound to `a` and `?y` is bound to `b`. Trying the match with the same pattern, the same datum, and a frame specifying that `?y` is bound to `a` will fail. Trying the match with the same pattern, the same datum, and a frame in which` ?y` is bound to `b` and` ?x` is unbound will return the given frame augmented by a binding of `?x` to `a`.
 
 The pattern matcher is all the mechanism that is needed to process simple
 queries that don't involve rules. For instance, to process the query
 
-    
     (job ?x (computer programmer))
     
-
-we scan through all assertions in the data base and select those that match
-the pattern with respect to an initially empty frame. For each match we find,
-we use the frame returned by the match to instantiate the pattern with a value
-for` ?x`.
+we scan through all assertions in the data base and select those that match the pattern with respect to an initially empty frame. For each match we find, we use the frame returned by the match to instantiate the pattern with a value for `?x`.
 
 ## Streams of Frames
 
@@ -109,15 +71,14 @@ trainee"), we first find all entries that match the pattern
     (can-do-job ?x (computer programmer trainee))
     
 
-This produces a stream of frames, each of which contains a binding for ?x.
+This produces a stream of frames, each of which contains a binding for `?x`.
 Then for each frame in the stream we find all entries that match
-
     
     (job ?person ?x)
     
 
-in a way that is consistent with the given binding for ?x. Each such match
-will produce a frame containing bindings for ?x and ?person. The and of two
+in a way that is consistent with the given binding for `?x`. Each such match
+will produce a frame containing bindings for `?x` and `?person`. The and of two
 queries can be viewed as a series combination of the two component queries, as
 shown in the figure below. The frames that pass through the first query filter
 are filtered and further extended by the second query.
@@ -140,7 +101,7 @@ frames in parallel and merging the results.
 Even from this high-level description, it is apparent that the processing of
 compound queries can be slow. For example, since a query may produce more than
 one output frame for each input frame, and each query in an` and` gets its
-input frames from the previous query, an` and` query could, in the worst case,
+input frames from the previous query, an `and` query could, in the worst case,
 have to perform a number of matches that is exponential in the number of
 queries. Though systems for handling only simple queries are quite practical,
 dealing with complex queries is extremely difficult.
@@ -154,10 +115,9 @@ given the pattern
     
 
 we attempt, for each frame in the input stream, to produce extension frames
-that satisfy` (job ?x (computer programmer))`. We remove from the input stream
+that satisfy `(job ?x (computer programmer))`. We remove from the input stream
 all frames for which such extensions exist. The result is a stream consisting
-of only those frames in which the binding for` ?x` does not satisfy` (job ?x
-(computer programmer))`. For example, in processing the query
+of only those frames in which the binding for` ?x` does not satisfy `(job ?x (computer programmer))`. For example, in processing the query
 
     
     (and (supervisor ?x ?y)
@@ -178,7 +138,7 @@ frames for which the predicate fails.
 In order to handle rules in the query language, we must be able to find the
 rules whose conclusions match a given query pattern. Rule conclusions are like
 assertions except that they can contain variables, so we will need a
-generalization of pattern matching-- called unification--in which both the
+generalization of pattern matching -- called unification -- in which both the
 "pattern" and the "datum" may contain variables.
 
 A unifier takes two patterns, each containing constants and variables, and
@@ -233,14 +193,12 @@ successful unification may not completely determine the variable values; some
 variables may remain unbound and others may be bound to values that contain
 variables.
 
-Consider the unification of` (?x a)` and` ((b ?y) ?z)`. We can deduce that` ?x
-= (b ?y)` and` a = ?z`, but we cannot further solve for `?x` or` ?y`. The
+Consider the unification of` (?x a)` and` ((b ?y) ?z)`. We can deduce that `?x = (b ?y)` and` a = ?z`, but we cannot further solve for `?x` or` ?y`. The
 unification doesn't fail, since it is certainly possible to make the two
 patterns equal by assigning values to` ?x` and` ?y.` Since this match in no
 way restricts the values` ?y` can take on, no binding for` ?y` is put into the
 result frame. The match does, however, restrict the value of `?x`. Whatever
-value `?y` has, `?x` must be` (b ?y)`. A binding of `?x` to the pattern` (b
-?y)` is thus put into the frame. If a value for` ?y` is later determined and
+value `?y` has, `?x` must be` (b ?y)`. A binding of `?x` to the pattern `(b ?y)` is thus put into the frame. If a value for` ?y` is later determined and
 added to the frame (by a pattern match or unification that is required to be
 consistent with this frame), the previously bound `?x` will refer to this
 value.
@@ -269,12 +227,7 @@ that the pattern unifies with the conclusion of the rule
                (not (same ?person-1 ?person-2))))
     
 
-resulting in a frame specifying that `?person-2` is bound to `(Hacker Alyssa
-P)` and that` ?x` should be bound to (have the same value as) `?person-1`.
-Now, relative to this frame, we evaluate the compound query given by the body
-of the rule. Successful matches will extend this frame by providing a binding
-for `?person-1`, and consequently a value for` ?x,` which we can use to
-instantiate the original query pattern.
+resulting in a frame specifying that `?person-2` is bound to `(Hacker Alyssa P)` and that` ?x` should be bound to (have the same value as) `?person-1`. Now, relative to this frame, we evaluate the compound query given by the body of the rule. Successful matches will extend this frame by providing a binding for `?person-1`, and consequently a value for` ?x,` which we can use to instantiate the original query pattern.
 
 In general, the query evaluator uses the following method to apply a rule when
 trying to establish a query pattern in a frame that specifies bindings for
@@ -289,11 +242,7 @@ eval/apply evaluator for Lisp:
   * Bind the procedure's parameters to its arguments to form a frame that extends the original procedure environment.
   * Relative to the extended environment, evaluate the expression formed by the body of the procedure.
 
-The similarity between the two evaluators should come as no surprise. Just as
-procedure definitions are the means of abstraction in Lisp, rule definitions
-are the means of abstraction in the query language. In each case, we unwind
-the abstraction by creating appropriate bindings and evaluating the rule or
-procedure body relative to these.
+The similarity between the two evaluators should come as no surprise. Just as procedure definitions are the means of abstraction in Lisp, rule definitions are the means of abstraction in the query language. In each case, we unwind the abstraction by creating appropriate bindings and evaluating the rule or procedure body relative to these.
 
 ## Simple Queries
 
@@ -319,12 +268,12 @@ with the given pattern.
 Despite the complexity of the underlying matching operations, the system is
 organized much like an evaluator for any language. The procedure that
 coordinates the matching operations is called` qeval`, and it plays a role
-analogous to that of the eval procedure for Lisp. `Qeval` takes as inputs a
+analogous to that of the eval procedure for Lisp. `qeval` takes as inputs a
 query and a stream of frames. Its output is a stream of frames, corresponding
 to successful matches to the query pattern, that extend some frame in the
 input stream. Like `eval`, `qeval` classifies the different types of
 expressions (queries) and dispatches to an appropriate procedure for each.
-There is a procedure for each special form (`and, or, not, and lisp-value`)
+There is a procedure for each special form (`and`, `or`, `not`, and `lisp-value`)
 and one for simple queries.
 
 The driver loop, which is analogous to the `driver-loop` procedure for the
@@ -428,8 +377,7 @@ Here are several takeaways from this subsection:
   * To process compound queries, the pattern matcher needs to check if a match is consistent with a specified frame.
   * Rules are handled with unification.
 
-## what's next?
+## What's Next?
 
-In the next subsection, we are going to talk about the relation between
-logical programming and mathematical logic.
+In the next subsection, we are going to talk about the relation between logical programming and mathematical logic.
 
