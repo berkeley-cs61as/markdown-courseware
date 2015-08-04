@@ -141,6 +141,9 @@ class Publisher(object):
         chapter_title = re.sub('chapter\d* ', '', chapter_dir)
         chapter_toc = self.generate_chapter_toc(section_files, chapter_title)
 
+        # Only convert Markdown files in the secion
+        section_files = filter(lambda s: s.lower().endswith('.md'), section_files)
+
         # Build the sections that comprise this chapter
         for section in section_files:
             input_path = os.path.join('textbook/', chapter_dir, section)
