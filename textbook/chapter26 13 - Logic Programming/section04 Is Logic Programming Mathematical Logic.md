@@ -86,9 +86,9 @@ and again query
 
 Unfortunately, this will drive the system into an infinite loop, as follows:
 
-  * The system finds that the married rule is applicable; that is, the rule conclusion `(married ?x ?y)` successfully unifies with the query pattern` (married Mickey ?who)` to produce a frame in which `?x` is bound to Mickey and` ?y` is bound to `?who`. So the interpreter proceeds to evaluate the rule body` (married ?y ?x)` in this frame -- in effect, to process the query` (married ?who Mickey)`.
+  * The system finds that the married rule is applicable; that is, the rule conclusion `(married ?x ?y)` successfully unifies with the query pattern `(married Mickey ?who)` to produce a frame in which `?x` is bound to Mickey and `?y` is bound to `?who`. So the interpreter proceeds to evaluate the rule body `(married ?y ?x)` in this frame -- in effect, to process the query `(married ?who Mickey)`.
   * One answer appears directly as an assertion in the data base: `(married Minnie Mickey).`
-  * The married rule is also applicable, so the interpreter again evaluates the rule body, which this time is equivalent to` (married Mickey ?who)`.
+  * The married rule is also applicable, so the interpreter again evaluates the rule body, which this time is equivalent to `(married Mickey ?who)`.
 
 The system is now in an infinite loop. Indeed, whether the system will find
 the simple answer `(married Minnie Mickey)` before it goes into the loop
@@ -113,20 +113,18 @@ base introduced earlier, consider the following two queries:
 
 These two queries do not produce the same result. The first query begins by
 finding all entries in the data base that match` (supervisor ?x ?y)`, and then
-filters the resulting frames by removing the ones in which the value of` ?x`
+filters the resulting frames by removing the ones in which the value of `?x`
 satisfies` (job ?x (computer programmer))`. The second query begins by
-filtering the incoming frames to remove those that can satisfy` (job ?x
-(computer programmer))`. Since the only incoming frame is empty, it checks the
-data base to see if there are any patterns that satisfy` (job ?x (computer
-programmer))`. Since there generally are entries of this form, the not clause
+filtering the incoming frames to remove those that can satisfy `(job ?x (computer programmer))`. Since the only incoming frame is empty, it checks the
+data base to see if there are any patterns that satisfy `(job ?x (computer programmer))`. Since there generally are entries of this form, the not clause
 filters out the empty frame and returns an empty stream of frames.
 Consequently, the entire compound query returns an empty stream.
 
 The trouble is that our implementation of not really is meant to serve as a
 filter on values for the variables. If a not clause is processed with a frame
-in which some of the variables remain unbound (as does` ?x` in the example
+in which some of the variables remain unbound (as does `?x` in the example
 above), the system will produce unexpected results. Similar problems occur
-with the use of` lisp-value` -- the Lisp predicate can't work if some of its
+with the use of `lisp-value` -- the Lisp predicate can't work if some of its
 arguments are unbound.
 
 There is also a much more serious way in which the `not` of the query language
@@ -139,7 +137,7 @@ that it is not raining outside, and that 2 + 2 is not 4.78 In other words, the
 not of logic programming languages reflects the so-called closed world
 assumption that all relevant information has been included in the data base.
 
-## takeaways
+## Takeaways
 
 In this subsection, you learned:
 

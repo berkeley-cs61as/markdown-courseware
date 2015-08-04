@@ -2,102 +2,74 @@ For all problems that involve writing queries or rules, test your solutions.
 
 To run the query system and load in the sample data:
 
-`> (load "~cs61as/lib/query.scm")`
+	> (load "~cs61as/lib/query.scm")
+	> (initialize-data-base microshaft-data-base)
+	> (query-driver-loop) 
 
-` > (initialize-data-base microshaft-data-base)`
-
-` > (query-driver-loop) `
-
-You're now in the query system's interpreter.
+You are now in the query system's interpreter.
 
 To add an assertion:
 
-`(assert! (foo bar)) `
+	(assert! (foo bar))
 
 To add a rule:
 
-`(assert! (rule (foo) (bar))) `
+	(assert! (rule (foo) (bar)))
 
 Anything else is a query.
 
-## Exercise 1.
-
+## Exercise 1
   
-Abelson & Sussman, exercises [4.55](http://mitpress.mit.edu/sicp/full-
-text/book/book-Z-H-29.html#%_thm_4.55) and [4.62](http://mitpress.mit.edu/sicp
-/full-text/book/book-Z-H-29.html#%_thm_4.62).
+Abelson & Sussman, exercises [4.56](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-29.html#%_thm_4.56), [4.57, 4.58](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-29.html#%_thm_4.57) and [4.65](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-29.html#%_thm_4.65).
 
-## Exercise 1.
+## Exercise 2: Extra for Experts
 
-  
-Abelson & Sussman, exercises [4.56](http://mitpress.mit.edu/sicp/full-
-text/book/book-Z-H-29.html#%_thm_4.56), [4.57,
-4.58](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-29.html#%_thm_4.57)
-and [4.65](http://mitpress.mit.edu/sicp/full-
-text/book/book-Z-H-29.html#%_thm_4.65).
-
-## Extra for Experts
-
-### Do this if you want to. This is NOT for credit.
-
-## Exercise 3.
-
+**Do this if you want to. This is NOT for credit.**
   
 Earlier in the section, we describe rules that allow inference of the reverse
 relation in one direction, i.e.,
 
-`;;; Query input:`
+	;;; Query input:
+	 (forward-reverse (a b c) ?what) 
 
-` (forward-reverse (a b c) ?what) `
+	;;; Query results:
+	 (FORWARD-REVERSE (A B C) (C B A)) 
 
-`;;; Query results:`
+	;;; Query input:
+	 (forward-reverse ?what (a b c)) 
 
-` (FORWARD-REVERSE (A B C) (C B A)) `
-
-`;;; Query input:`
-
-` (forward-reverse ?what (a b c)) `
-
-`;;; Query results:`
-
-` ... infinite loop`
+	;;; Query results:
+	 ... infinite loop
 
 or
 
-`;;; Query input:`
+	;;; Query input:
+	 (backward-reverse ?what (a b c)) 
 
-` (backward-reverse ?what (a b c)) `
+	;;; Query results:
+	 (BACKWARD-REVERSE (C B A) (A B C)) 
 
-`;;; Query results:`
+	;;; Query input:
+	 (backward-reverse (a b c) ?what) 
 
-` (BACKWARD-REVERSE (C B A) (A B C)) `
+	;;; Query results:
+	 ... infinite loop 
 
-`;;; Query input:`
+Define rules that allow inference of the reverse relation in both directions,
+to produce the following dialog: 
 
-` (backward-reverse (a b c) ?what) `
+	;;; Query input:
+	 (reverse ?what (a b c)) 
 
-`;;; Query results:`
+	;;; Query results:
+	 (REVERSE (C B A) (A B C)) 
 
-` ... infinite loop `
+	;;; Query input:
+	 (reverse (a b c) ?what) 
 
-`Define rules that allow inference of the reverse relation in both directions,
-to produce the following dialog: `
+	;;; Query results:
+	 (REVERSE (A B C) (C B A))
 
-`;;; Query input:`
+## Submit Your Homework!
 
-` (reverse ?what (a b c)) `
-
-`;;; Query results:`
-
-` (REVERSE (C B A) (A B C)) `
-
-`;;; Query input:`
-
-` (reverse (a b c) ?what) `
-
-`;;; Query results:`
-
-` (REVERSE (A B C) (C B A))`
-
-# **DO NOT FORGET TO SUBMIT YOUR HOMEWORK!**
-
+It's short, but it's still graded. :)

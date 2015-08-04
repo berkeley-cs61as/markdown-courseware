@@ -7,7 +7,7 @@ hardware terms. When we discovered streams, we saw how to express an algorithm
 in a way that’s independent of the order of evaluation. Now we are going to
 describe a computation in a way that has no (visible) algorithm at all!
 
-We are using a logic programming language that A&S; implemented in Scheme.
+We are using a logic programming language that A&S implemented in Scheme.
 Because of that, the notation is Scheme-like, i.e., full of lists. Standard
 logic languages like Prolog have different notations, but the idea is the
 same.
@@ -19,10 +19,7 @@ far. As such, there are no prerequisites!
 
 ## Readings
 
-Most of this lesson is taken from [these notes](http://www-
-inst.eecs.berkeley.edu/~cs61as/reader/notes.pdf#page=102) and [SICP Sections
-4.4.1-4.4.3](http://mitpress.mit.edu/sicp/full-
-text/book/book-Z-H-29.html#%_sec_4.4).
+Most of this lesson is taken from [these notes](http://www-inst.eecs.berkeley.edu/~cs61as/reader/notes.pdf#page=102) and [SICP Sections 4.4.1-4.4.3](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-29.html#%_sec_4.4).
 
 ## Logic Programming
 
