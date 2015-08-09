@@ -5,11 +5,9 @@ and, given 2 keys, can fetch the desired data. We can use mutable lists to
 represent this data structure by first building a 1 dimensional table and
 extending the idea.
 
-![](http://www.9ori.com/store/media/images/ea7b57534c.jpg)
+## Before we Start: assoc
 
-## Before we Start:assoc
-
-Before we dive right in to tables, we have to explore another Scheme compound
+Before we dive right into tables, we have to explore another Racket compound
 procedure, `assoc,` which will play a huge role. `assoc` accepts a `key` and a
 list of pairs, and returns the first pair that has `key` as its `car`. If no
 such pairs exist, it returns `#f`. Look at the series of examples below to
@@ -33,47 +31,63 @@ understand what `assoc` does.
 
 ## Definiton
 
-assoc is defined as:
+`assoc` is defined as:
 
     
     (define (assoc key records)
       (cond ((null? records) false)
             ((equal? key (caar records)) (car records))
             (else (assoc key (cdr records)))))
+
+Since this lesson deals with mutable data, we'll be using `massoc` with
+our tables. The procedure `massoc` has the same functionality as `assoc`, 
+but it works on mutable lists.
     
 
-## 1 Dimensional Table
+## One Dimensional Table
 
 In a 1D table, values are stored under a single key. A table will be designed
-as a list of pairs. The pairs' `car` hold the keys for each value.
+as a list of pairs. Each pair's `car` hold the key associated with each value.
 
 ![](http://mitpress.mit.edu/sicp/full-text/book/ch3-Z-G-22.gif)
 
 In the above table, the breakdown between the keys and values can be seen
 below.
 
-KeysValues
-
-a
-
-1
-
-b
-
-2
-
-c
-
-3
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg .tg-e3zv{font-weight:bold}
+</style>
+<table class="tg">
+  <tr>
+    <th class="tg-e3zv">Keys</th>
+    <th class="tg-e3zv">Values</th>
+  </tr>
+  <tr>
+    <td class="tg-031e">a</td>
+    <td class="tg-031e">1</td>
+  </tr>
+  <tr>
+    <td class="tg-031e">b</td>
+    <td class="tg-031e">2</td>
+  </tr>
+  <tr>
+    <td class="tg-031e">c</td>
+    <td class="tg-031e">(length lst), O(n)</td>
+  </tr>
+</table>
 
 Why does our table point to a pair that doesn't contain any key-value pair? We
 designed our table so that the first pair holds the symbol `*table*` which
-signifies that the current list structure we're looking at is a table.
+signifies that the current list structure we're looking at is a table. This
+is similar to the idea of tagged data from Lesson 6.
 
     
     
     (define (make-table)
-      (list '*table*))
+      (mcons '*table* '()))
     
 
 ## Lookup
@@ -85,9 +99,9 @@ value stored under that key).
     
     
     (define (lookup key table)
-      (let ((record (assoc key (cdr table))))
+      (let ((record (massoc key (mcdr table))))
         (if record
-            (cdr record)
+            (mcdr record)
             false)))  
     
     >(lookup 'b table)  ;table refers to the table made above
@@ -103,12 +117,12 @@ To insert a key-value pair in a table you follow these steps:
     
     
     (define (insert! key value table)
-      (let ((record (assoc key (cdr table))))
+      (let ((record (massoc key (mcdr table))))
         (if record
-            (set-cdr! record value)
-            (set-cdr! table
-                      (cons (cons key value) (cdr table)))))
-      'ok)
+            (set-mcdr! record value)
+            (set-mcdr! table
+                      (mcons (mcons key value) (mcdr table)))))
+      'okay)
     
 
 ## 2 Dimensional Table
@@ -132,6 +146,11 @@ We can put them into one big table:
 
 ![](http://mitpress.mit.edu/sicp/full-text/book/ch3-Z-G-23.gif)
 
+Our constructor for 2D tables is the same as our constructor for 1D tables:
+
+      (define (make-table)
+        (mcons '*table* '()))
+
 ## Lookup
 
 To find a value in a 2D table, you will need 2 keys. The first key is used to
@@ -141,11 +160,11 @@ that subtable.
     
     
     (define (lookup key-1 key-2 table)
-      (let ((subtable (assoc key-1 (cdr table))))
+      (let ((subtable (massoc key-1 (mcdr table))))
         (if subtable
-            (let ((record (assoc key-2 (cdr subtable))))
+            (let ((record (massoc key-2 (mcdr subtable))))
               (if record
-                  (cdr record)
+                  (mcdr record)
                   #f))
             #f)))
     
@@ -154,25 +173,25 @@ that subtable.
 
 To insert into a 2D table, you also need 2 keys. The first key is used to try
 and find the correct subtable. If a subtable with the first key doesn't exist,
-make a new subtable. If the table exists, use the exact same algorithm we have
-for the 1 dimensional` insert!` .
+make a new subtable. If the subtable exists, use the exact same algorithm on this
+subtable that we used in our 1D table's `insert!`.
 
     
     
     (define (insert! key-1 key-2 value table)
-      (let ((subtable (assoc key-1 (cdr table))))
+      (let ((subtable (massoc key-1 (mcdr table))))
         (if subtable
-            (let ((record (assoc key-2 (cdr subtable))))
+            (let ((record (massoc key-2 (mcdr subtable))))
               (if record
-                  (set-cdr! record value)
-                  (set-cdr! subtable
-                            (cons (cons key-2 value)
-                                  (cdr subtable)))))
-            (set-cdr! table
-                      (cons (list key-1
-                                  (cons key-2 value))
-                            (cdr table)))))
-      'ok)
+                  (set-mcdr! record value)
+                  (set-mcdr! subtable
+                            (mcons (mcons key-2 value)
+                                  (mcdr subtable)))))
+            (set-mcdr! table
+                      (mcons (mlist key-1
+                                  (mcons key-2 value))
+                            (mcdr table)))))
+      'okay)
     
 
 ## Local Tables
@@ -182,41 +201,45 @@ argument. This enables us to use programs that access more than one table.
 Another way to deal with multiple tables is to have separate `lookup` and`
 insert!` procedures for each table. We can do this by representing a table
 procedurally, as an object that maintains an internal table as part of its
-local state. When sent an appropriate message, this "table object'' supplies
+local state. When sent an appropriate message, this table "object" supplies
 the procedure with which to operate on the internal table. Here is a generator
 for two-dimensional tables represented in this fashion:
 
     
     
     (define (make-table)
-      (let ((local-table (list '*table*)))
+      (let ((local-table (mlist '*table*)))
         (define (lookup key-1 key-2)
-          (let ((subtable (assoc key-1 (cdr local-table))))
+          (let ((subtable (massoc key-1 (mcdr local-table))))
             (if subtable
-                (let ((record (assoc key-2 (cdr subtable))))
+                (let ((record (massoc key-2 (mcdr subtable))))
                   (if record
-                      (cdr record)
+                      (mcdr record)
                       false))
                 false)))
         (define (insert! key-1 key-2 value)
-          (let ((subtable (assoc key-1 (cdr local-table))))
+          (let ((subtable (massoc key-1 (mcdr local-table))))
             (if subtable
-                (let ((record (assoc key-2 (cdr subtable))))
+                (let ((record (massoc key-2 (mcdr subtable))))
                   (if record
-                      (set-cdr! record value)
-                      (set-cdr! subtable
-                                (cons (cons key-2 value)
-                                      (cdr subtable)))))
-                (set-cdr! local-table
-                          (cons (list key-1
-                                      (cons key-2 value))
-                                (cdr local-table)))))
-          'ok)    
+                      (set-mcdr! record value)
+                      (set-mcdr! subtable
+                                (mcons (mcons key-2 value)
+                                      (mcdr subtable)))))
+                (mset-cdr! local-table
+                          (mcons (mlist key-1
+                                      (mcons key-2 value))
+                                (mcdr local-table)))))
+          'okay)    
         (define (dispatch m)
           (cond ((eq? m 'lookup-proc) lookup)
                 ((eq? m 'insert-proc!) insert!)
                 (else (error "Unknown operation -- TABLE" m))))
         dispatch))
+
+If this is confusing to you, review Lesson 8's sections on local state variables. 
+The idea of a dispatch procedure that interprets messages delivered to your table 
+is very similar to the [bank account example](http://www.cs61as.org/textbook/local-state-variables.html#sub4).
     
 
 ## Get & Put
@@ -229,15 +252,17 @@ under 2 keys using the procedures `get` and `put`.
     (get <key-1> <key-2>)
     
 
-We can now define these procedures using our tables!
+We can now define these procedures using our "local" tables, as defined right above!
 
     
     (define operation-table (make-table))
     (define get (operation-table 'lookup-proc))
     (define put (operation-table 'insert-proc!))
     
+Remember that `(operation-table 'lookup-proc)` and `(operation-table 'insert-proc!)` both
+return procedures!
 
-`Get` takes as arguments two keys, and `put` takes as arguments two keys and a
+The procedure `get` takes as arguments two keys, and `put` takes as arguments two keys and a
 value. Both operations access the same local table, which is encapsulated
 within the object created by the call to `make-table`.
 
