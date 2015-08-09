@@ -8,7 +8,7 @@ extending the idea.
 ## Before we Start: assoc
 
 Before we dive right into tables, we have to explore another Racket compound
-procedure, `assoc,` which will play a huge role. `assoc` accepts a `key` and a
+procedure, `assoc,` which will play a huge role. The procedure `assoc` accepts a `key` and a
 list of pairs, and returns the first pair that has `key` as its `car`. If no
 such pairs exist, it returns `#f`. Look at the series of examples below to
 understand what `assoc` does.
@@ -75,7 +75,7 @@ below.
   </tr>
   <tr>
     <td class="tg-031e">c</td>
-    <td class="tg-031e">(length lst), O(n)</td>
+    <td class="tg-031e">3</td>
   </tr>
 </table>
 
@@ -92,7 +92,7 @@ is similar to the idea of tagged data from Lesson 6.
 
 ## Lookup
 
-To extract information from a table we use the `lookup` procedure, which takes
+To extract information from a table, we use the `lookup` procedure, which takes
 a key as argument and returns the associated value (or false if there is no
 value stored under that key).
 
@@ -114,6 +114,8 @@ To insert a key-value pair in a table you follow these steps:
 
   1. If key is already in the list, just update the value 
   2. Otherwise, make a new key-value pair and attach it to the table
+
+We define `insert!` as follows:
     
     
     (define (insert! key value table)
@@ -129,7 +131,7 @@ To insert a key-value pair in a table you follow these steps:
 
 In a 2 dimensional table, each value is specified by 2 keys. We can construct
 such a table as a 1 dimensional table in which each key identifies a subtable.
-Say we have 2 tables: "math" and "letters" with the following key-value pairs.
+Say we have 2 tables: `math` and `letters` with the following key-value pairs.
 
     
     math:
