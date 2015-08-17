@@ -1,17 +1,17 @@
 ## Exercise 1.
 
   
-List all the procedures in the metacircular evaluator that call `eval`.
+List all the procedures in the metacircular evaluator that call `mc-eval`.
 
 ## Exercise 2.
 
   
-List all the procedures in the metacircular evaluator that call `apply`.
+List all the procedures in the metacircular evaluator that call `mc-apply`.
 
 ## Exercise 3.
 
   
-Explain why `make-procedure` does not call `eval`.
+Explain why `make-procedure` does not call `mc-eval`.
 
 ## A Note on Homework 11
 
@@ -30,11 +30,11 @@ You can copy the template for this homework by typing the following in your
 terminal:
 
     
-      cp ~cs61as/autograder/templates/hw11.scm .
+      cp ~cs61as/autograder/templates/hw11.rkt .
     
 
 Or, you can download it
-[here](http://inst.eecs.berkeley.edu/~cs61as/templates/hw11.scm).
+[here](http://inst.eecs.berkeley.edu/~cs61as/templates/hw11.rkt).
 
 ## Exercise 1.
 

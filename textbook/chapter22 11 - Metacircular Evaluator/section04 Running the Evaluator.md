@@ -1,19 +1,20 @@
-## running the evaluator
+## Running the Evaluator
 
-Let's look at how Scheme runs the evaluator. So far, we learned how the Scheme
-expressions are evaluated using `eval` and `apply`. Then how is the evaluator
+Let's look at how Racket runs the evaluator. So far, we learned how the Racket
+expressions are evaluated using `mc-eval` and `mc-apply`. Then how is the evaluator
 program running?
 
 What our evaluator program does is to reduce all the expressions to the
 application of primitive procedures.  So all we need to run the evaluator is
-to create a mechanism that uses the underlying Lisp system for the application
+to create a mechanism that uses the underlying Racket system for the application
 of primitive procedures.
 
-There must be a binding for each primitive procedure name, so that when `eval`
+There must be a binding for each primitive procedure name, so that when `mc-eval`
 evaluates the operator of an application of a primitive, it will find an
-object to pass to `apply`. We thus set up a global environment that associates
+object to pass to `mc-apply`. We thus set up a global environment that associates
 unique objects with the names of the primitive procedures that can appear in
-the expressions we will be evaluating. The global environment also includes
+the expressions we will be evaluating (for example, we'll bind `+` to the
+underlying Racket procedure with the same name). The global environment also includes
 bindings for the symbols `true` and `false`, so that they can be used as
 variables in expressions to be evaluated.
 
@@ -30,7 +31,7 @@ variables in expressions to be evaluated.
     
 
 For convenience in running the metacircular evaluator, we provide a **driver
-loop** that models the read-eval-print loop of the underlying Lisp system. It
+loop** that models the read-eval-print loop (or REPL) of the underlying Racket system. It
 prints a **prompt**, reads an input expression, evaluates this expression in
 the global environment, and prints the result. We precede each printed result
 by an **output prompt** so as to distinguish the value of the expression from
@@ -42,7 +43,7 @@ other output that may be printed.
     (define (driver-loop)
       (prompt-for-input input-prompt)
       (let ((input (read)))
-        (let ((output (eval input the-global-environment)))
+        (let ((output (mc-eval input the-global-environment)))
           (announce-output output-prompt)
           (user-print output)))
       (driver-loop))
@@ -86,17 +87,17 @@ environment and start the driver loop. Here is a sample interaction:
     ;;; M-Eval value:
     (a b c d e f)
 
-_Wait, I still don't get it. How can we evaluate Scheme code with an evaluator
-that is written in Scheme?_
+_Wait, I still don't get it. How can we evaluate Racket code with an evaluator
+that is written in Racket?_
 
-It's because Scheme is powerful enough to handle a program as data, and to let
+It's because Racket is powerful enough to handle a program as data, and to let
 us construct data structures that are both hierarchical and circular. I have
 an analogy for you in the next section.
 
-## data as programs
+## Data as Programs
 
-To understand interpreting Scheme expression with the interpreter written in
-Scheme, think of a program as a description of an abstract machine. For
+To understand interpreting Racket expression with the interpreter written in
+Racket, think of a program as a description of an abstract machine. For
 example, you can think of the program to compute factorials:
 
     
@@ -114,7 +115,7 @@ factorial machine within it -- recursion!) So the machine will look like this:
 
 Like `factorial`, the evaluator is a very special machine that takes a
 description of other machine as input, and then configures itself to emulate
-the given machine. For example, if we give the evaluator the defintion of
+the given machine. For example, if we give the evaluator the definition of
 `factorial`, the evaluator will emulate it and be able to compute factorials.
 
 ![](http://mitpress.mit.edu/sicp/full-text/book/ch4-Z-G-3.gif)
@@ -123,11 +124,11 @@ So our evaluator is just a universal machine that mimics all other machines!
 
 If you'd like to know more about the machines, ask for Unit 5.
 
-## takeaways
+## Takeaways
 
 In this subsection, you learned how the evaluator works.
 
-## what's next?
+## What's Next?
 
 Go do your homework! You should also start on Project 4, where you'll learn
 the Python programming language.
