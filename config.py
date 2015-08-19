@@ -33,4 +33,6 @@ section_title_max_length = 48
 
 # publish.py generates an HTML table of contents for the entire textbook.
 # It is printed to this file.
-toc_path = 'toc.html'
+# Set to None to disable.
+# toc_path = 'toc.html'
+toc_path = None
