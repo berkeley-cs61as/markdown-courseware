@@ -25,7 +25,7 @@ That general formula looks like this when applied to a particular verb:
     
     third-person("sing") = "she sings"
 
-The way we say it in Scheme is
+The way we say it in Racket is
 
     
     (define (third-person verb)
