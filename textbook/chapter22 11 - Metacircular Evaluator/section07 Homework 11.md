@@ -15,14 +15,13 @@ Explain why `make-procedure` does not call `mc-eval`.
 
 ## A Note on Homework 11
 
-Some students have complained that this week's homework is very time-
-consuming.
+Some students have complained that this week's homework is very time-consuming.
 
 Accordingly, with some reluctance, we've marked a few exercises as optional;
 these are the ones to leave out if you're really pressed for time. But it's
 much better if you do all of them!
 
-The optional ones have * next to them.
+The optional exercises have * next to them.
 
 ## Template
 

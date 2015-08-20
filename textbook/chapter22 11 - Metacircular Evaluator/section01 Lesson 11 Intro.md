@@ -3,6 +3,12 @@
 Do you remember Racket-1 in Lesson 6? Now it's time to explore how Racket
 evaluates expressions!
 
+You can download the code for this lesson by typing the following into your terminal:
+
+		cp ~cs61as/lib/mceval.rkt .
+
+The code is also online [here](http://inst.eecs.berkeley.edu/~cs61as/library/mceval.rkt)
+
 ## Prerequisites and What to Expect
 
 A good understanding of how Racket-1 works will be helpful in this chapter. You should
