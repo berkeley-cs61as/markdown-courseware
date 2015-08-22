@@ -1,4 +1,4 @@
-## Queue Data Structure
+## What Is a Queue?
 
 Using `set-mcar!` and `set-mcdr!` allows us to create a data structure that we
 could not have implemented efficiently before: a queue. A **queue** is a sequence in which items are inserted at one end (called the rear of the queue) and deleted from the other end (the front). Because items are always removed in the order in which they are inserted, a queue is sometimes called a FIFO (first in, first out).
@@ -6,9 +6,24 @@ could not have implemented efficiently before: a queue. A **queue** is a sequenc
 ![](http://3.bp.blogspot.com/_w9XO9zBePXE/SKFjlee6K-I/AAAAAAAAAdk/iRjNgU62cmM/
 s1600/royston_queue.jpg)
 
-## Queue in Action
+## Queue Operations
 
-Assume we have the functions `make-queue`, which returns a new queue, `insert-queue!`, which adds a new element to a queue, and `delete-queue!`, which removes an element in a queue (we are going to implement them soon!). Lets examine the mechanisms of a queue.
+We can regard a queue as defined by the
+following set of operations:
+
+  * a constructor: `(make-queue)` returns an empty queue (a queue containing no items).
+  * two selectors:
+    * `(empty-queue? <queue>)` tests if the queue is empty.
+    * `(front-queue <queue>)` returns the object at the front of the queue, signaling an error if the queue is empty. **It does not modify the queue.**
+  * two mutators:
+    * `(insert-queue! <queue> <item>)` inserts the item at the rear of the queue and returns the modified queue as its value.
+    * `(delete-queue! <queue>)` removes the item at the front of the queue and returns the modified queue as its value, signaling an error if the queue is empty before the deletion.
+
+We will implement these procedures below.
+
+### Example
+
+The following shows a series of queue operations and their effects.
 
 <table class="table table-bordered table-striped">
 <thead><tr>
@@ -29,11 +44,11 @@ Assume we have the functions `make-queue`, which returns a new queue, `insert-qu
 </tr>
 <tr>
     <td><code>(delete-queue! q)</code></td>
-    <td>b</td>
+    <td><code>b</code></td>
 </tr>
 <tr>
     <td><code>(insert-queue! q 'c)</code></td>
-    <td>b c</td>
+    <td><code>b c</code></td>
 </tr>
 <tr>
     <td><code>(insert-queue! q 'd)</code></td>
@@ -46,20 +61,11 @@ Assume we have the functions `make-queue`, which returns a new queue, `insert-qu
 </tbody>
 </table>
 
-In terms of data abstraction, we can regard a queue as defined by the
-following set of operations:
-
-  * a constructor: `(make-queue)` returns an empty queue (a queue containing no items).
-  * two selectors:
-    * `(empty-queue? <_queue_>)` tests if the queue is empty.
-    * `(front-queue <_queue_>)` returns the object at the front of the queue, signaling an error if the queue is empty. **It does not modify the queue.**
-  * two mutators:
-    * `(insert-queue! <_queue_> <_item_>)` inserts the item at the rear of the queue and returns the modified queue as its value.
-    * `(delete-queue! <_queue_>)` removes the item at the front of the queue and returns the modified queue as its value, signaling an error if the queue is empty before the deletion.
-
 ## Queues as Lists
 
-Because a queue is a list of items, we can technically represent it with an ordinary list. The front of the queue will be the `car` of the list, inserting a new element will be equivalent to appending a new pair at the end. Deleting an item will just be the `cdr`. Why don't we go with this implementation? The problem is the run time. To add an item to the back of a list, we have to go through a series of `cdr`s. If the list is really long, it will take us a really long time to find the last pair. The run time for this is `Θ(n)`, where `n` is the length of the list.
+Because a queue is a list of items, we can technically represent it with an ordinary list. The front of the queue will be the `car` of the list, inserting a new element will be equivalent to appending a new pair at the end. Deleting an item will just be the `cdr`.
+
+Why don't we go with this implementation? The problem is the run time. To add an item to the back of a list, we have to go through a series of `cdr`s. If the list is really long, it will take us a really long time to find the last pair. The run time for this is linear in the length of the list.
 
 A list allows us access to the first item in constant time, but when you need to find the last pair, it takes a long time. We can solve this simply by using a mutable list that stores and updates a pointer to the backmost pair.
 
@@ -117,18 +123,20 @@ We will follow the general algorithm outlined before:
   2. If the queue is empty, we set its `front-ptr` and `rear-ptr` to this new mpair
   3. If the queue isn't empty, we find the final mpair, change its `mcdr` to the newly made mpair and update the `rear-ptr`.
     
-    
-    (define (insert-queue! queue item)
-      (let ((new-mpair (mcons item '())))
-        (cond ((empty-queue? queue)
-               (set-front-ptr! queue new-mpair)
-               (set-rear-ptr! queue new-mpair)
-               queue)
-              (else
-               (set-mcdr! (rear-ptr queue) new-mpair)
-               (set-rear-ptr! queue new-mpair)
-               queue)))) 
-    
+And now for the code:
+
+```
+(define (insert-queue! queue item)
+  (let ((new-mpair (mcons item '())))
+    (cond ((empty-queue? queue)
+           (set-front-ptr! queue new-mpair)
+           (set-rear-ptr! queue new-mpair)
+           queue)
+          (else
+           (set-mcdr! (rear-ptr queue) new-mpair)
+           (set-rear-ptr! queue new-mpair)
+           queue)))) 
+```
 
 ## Deleting from a Queue
 

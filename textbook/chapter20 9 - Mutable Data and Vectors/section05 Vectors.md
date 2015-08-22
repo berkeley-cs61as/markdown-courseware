@@ -84,7 +84,7 @@ It's a lot more complicated than `map` for lists! For one, our `vector-map` has 
 <div class="mc">
 <strong>Test Your Understanding</strong><br><br>
 
-Write a function <code>vector-addup</code> that takes in a vector of numbers and returns the sum of all the numbers. Test it out in STk to check your answer.
+Write a function <code>vector-addup</code> that takes in a vector of numbers and returns the sum of all the numbers. Test it out in the Racket interpreter to check your answer.
 </div>
 
 ## Vectors vs. Lists

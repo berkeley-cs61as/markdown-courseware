@@ -1,6 +1,6 @@
-## Mutating a Pair
+## Destructive Updates
 
-In Unit 2, we used pairs as the foundation of our data structures that stores data. We are now walking in a realm where it's possible to mutate, or _destructively update_ data. This terminology is not meant to have any negative connotation - it simply means that an update to mutable data will "destroy" the old value of the data structure, clearing any previous values.
+We are now entering a realm where it is possible to mutate, or **destructively update**, data. This terminology is not meant to have any negative connotation&mdash;it simply means that an update to mutable data will "destroy" the old value of the data structure, clearing any previous values.
 
 ## Creating Mutable Pairs and Lists
 
@@ -20,7 +20,7 @@ Similarly, **mutable lists** are simply nested mpairs, created using the procedu
 	-> (mcdr y)
 	(mcons 2 (mcons 3 '()))
 
-Notice how taking the `mcdr` of a mutable list does not return `'(2 3)`. The above notation is used to emphasize the difference between a **pair** and an **mpair**. Again, they are completely different data structures. 
+Notice how taking the `mcdr` of a mutable list does not return `'(2 3)`. The above notation is used to emphasize the difference between a **pair** and an **mpair**. Keep in mind that they are completely different data structures!
 
 ## Changing Pointers: `set-mcar!`
 
@@ -68,11 +68,12 @@ What happens when we call `(set-mcar! x y)` on the original configuration? The `
 
 ![](http://mitpress.mit.edu/sicp/full-text/book/ch3-Z-G-14.gif)
 
-What happens to the mlist of 'a and 'b? Since there are no longer any pointers that point _to_ that mlist, it is no longer accessible and will eventually be erased from memory.
+What happens to the mlist containing `'a` and `'b`? Since there are no longer any pointers that point to that mlist, it is no longer accessible and will eventually be erased from memory.
 
 <div class="mc">
+	<p>
 	<strong>Test Your Understanding</strong>
-	<br><br>
+	<p>
 	What does <code>x</code> from Example 1 print?
 	<ans text="(mcons 'e (mcons 'f (mcons 'c (mcons 'd '()))))" explanation=""></ans>
 	<ans text="(mcons (mcons 'e (mcons 'f '())) (mcons 'c (mcons 'd '())))" explanation="" correct></ans>
@@ -97,13 +98,16 @@ This time, let's define a new mpair, `z`, like so:
 
 ![](http://mitpress.mit.edu/sicp/full-text/book/ch3-Z-G-15.gif)
 
-  * `x` will print ((a b) c d)
-  * `y` will print (e f)
-  * `z` will print ((e f) c d)
+The result:
+
+  * `x` will print `((a b) c d)`.
+  * `y` will print `(e f)`.
+  * `z` will print `((e f) c d)`.
 
 <div class="mc">
+	<p>
 	<strong>Test Your Understanding</strong>
-	<br><br>
+	<p>
 	From Example 2, we now call:
 
 	<pre><code>(set-mcdr! (mcdr z) null)</code></pre>
@@ -123,7 +127,7 @@ This time, let's define a new mpair, `z`, like so:
 
 ## `append` vs. `mappend` vs. `mappend!`
 
-Before we start this subsection, try this exercise our to make sure you are somewhat familiar with mutating mpairs.
+Before we start this subsection, try this exercise.
 
 <div class="mc">
 <strong>Test Your Understanding</strong><br><br>
@@ -163,7 +167,7 @@ Racket's actual implementation of `mappend` will take in any number of mlists as
 
 ### `mappend!`
 
-If, instead, we wish to destructively append mlists together, without creating any new mpairs, the Racket procedure `mappend!` (pronounced m-append-bang) will mutate the tail of each argument mlist to refer to the next, using `set-mcdr!`. Here is a simplified definition that only takes in two mlists:
+If we instead wish to destructively append mlists together, without creating any new mpairs, the Racket procedure `mappend!` (pronounced "m-append-bang") will mutate the tail of each argument mlist to refer to the next, using `set-mcdr!`. Here is a simplified definition that only takes in two mlists:
 
 	(define (mappend! mx my)
 		(if (null? (mcdr mx))
@@ -225,16 +229,16 @@ Recall from Lesson 0.2 the `equal?` predicate. Earlier, we vaguely described `eq
 
 Even though `z` points to a different pair than `x` and `y`, since all three mpairs contain the same elements, `equal?` will return `#t` for all three expressions above.
 
-But then, how can we differentiate between different pairs? We introduce a third equality checker, a Racket primitive called `eq?`, that checks whether its two arguments **point** to the same object.
+But then, how can we differentiate between different pairs? We introduce a third equality checker, a Racket primitive called `eq?`, that checks whether its two arguments point to the same object.
 
-	-> (equal? x y)
+	-> (eq? x y)
 	#t
-	-> (equal? x z)
+	-> (eq? x z)
 	#f
-	-> (equal? y z)
+	-> (eq? y z)
 	#f
 
-## MPair Operators
+## More Operators for Mutable Pairs
 
 Since mpairs are a completely data type from pairs, as we have mentioned time and time again, they have a separate set of operators. We saw above that the operators for pairs and lists, such as `cons`, `list`, `car`, and `cdr` will not work on mpairs and mlists.
 
@@ -242,6 +246,6 @@ The comprehensive set of mpair operators can be found in the Racket documentatio
 
 ## Takeaways
   * `set-mcar!` and `set-mcdr!` change the respective `mcar` and `mcdr` pointers of an mpair. 
-  * Procedures such as `mcons,` `mlist` and `mappend` create new mpairs. 
+  * Procedures like `mcons`, `mlist`, and `mappend` create new mpairs. 
   * Knowing which mpairs are shared between different mlists is crucial to determining whether mutating one will influence the other. 
-  * Drawing box-and-pointer diagrams extremely helpful in sorting out mpairs and visually analyzing the effects of mutative procedures.
+  * Drawing box-and-pointer diagrams are extremely helpful in sorting out mpairs and visually analyzing the effects of mutative procedures.

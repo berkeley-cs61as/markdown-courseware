@@ -1,10 +1,10 @@
 ## Intro
 
-We have mentioned in Unit 2 that we can store data using a 2 dimensional table and, given 2 keys, can fetch the desired data. We can use mutable lists to represent this data structure by first building a 1 dimensional table and extending the idea.
+In Unit 2, we briefly mentioned that we can store data using a 2-dimensional table and, given two keys, can fetch the desired data. We can use mutable lists to represent this data structure by first building a 1-dimensional table and then extending the idea.
 
 ## Before We Start: `assoc`
 
-Before we dive in to tables, we have to explore another Scheme compound procedure, `assoc`, which will play a huge role. `assoc` accepts a `key` and a list of pairs, and returns the first pair that has `key` as its `car`. If no such pairs exist, it returns `#f`. Look at the series of examples below to understand what `assoc` does.
+Before we dive in to tables, we have to explore another Racket compound procedure, `assoc`, which will play a huge role. `assoc` accepts a `key` and a list of pairs, and returns the first pair that has `key` as its `car`. If no such pairs exist, it returns `#f`. Look at the series of examples below to understand what `assoc` does.
 
     
     > (assoc 1 '((1 2) (3 4)))
@@ -93,21 +93,23 @@ To insert a key-value pair in a table, we follow this simple algorithm:
   1. If key is already in the list, just update the value 
   2. Otherwise, make a new key-value pair and attach it to the table
     
-    
-    (define (insert! key value table)
-      (let ((record (assoc key (cdr table))))
-        (if record
-            (set-cdr! record value)
-            (set-cdr! table
-                      (cons (cons key value) (cdr table)))))
-      'ok)
-    
+Here's the code:
+
+```
+(define (insert! key value table)
+  (let ((record (assoc key (cdr table))))
+    (if record
+        (set-cdr! record value)
+        (set-cdr! table
+                  (cons (cons key value) (cdr table)))))
+  'ok)
+``` 
 
 ## 2-Dimensional Tables
 
 In a **2D table**, each value is specified by _two_ keys. We can construct
-such a table as a 1 dimensional table in which each key identifies a subtable.
-Say we have 2 tables: "math" and "letters" with the following key-value pairs.
+such a table as a 1D table in which each key identifies a subtable.
+Say we have two tables, "math" and "letters", with the following key-value pairs.
 
     
     math:
@@ -142,12 +144,12 @@ that subtable.
             #f)))
     
 
-### `insert`
+### `insert!`
 
 To insert into a 2D table, you also need 2 keys. The first key is used to try
 and find the correct subtable. If a subtable with the first key doesn't exist,
 make a new subtable. If the table exists, use the exact same algorithm we have
-for the 1 dimensional `insert!`.
+for the 1-dimensional `insert!`.
 
     
     (define (insert! key-1 key-2 value table)
@@ -168,7 +170,7 @@ for the 1 dimensional `insert!`.
 
 ## Local Tables
 
-The `lookup` and` insert!` operations defined above take the table as an argument. This enables us to use programs that access more than one table. Another way to deal with multiple tables is to have separate `lookup` and `insert!` procedures for each table. We can do this by representing a table procedurally, as an object that maintains an internal table as part of its local state. When sent an appropriate message, this "table object'' supplies the procedure with which to operate on the internal table. Here is a generator for two-dimensional tables represented in this fashion:
+The `lookup` and` insert!` operations defined above take the table as an argument. This enables us to use programs that access more than one table. Another way to deal with multiple tables is to have separate `lookup` and `insert!` procedures for each table. We can do this by representing a table procedurally, as an object that maintains an internal table as part of its local state. When sent an appropriate message, this "table object'' supplies the procedure with which to operate on the internal table. Here is a generator for 2-dimensional tables represented in this fashion:
     
     
     (define (make-table)
@@ -204,8 +206,8 @@ The `lookup` and` insert!` operations defined above take the table as an argumen
 
 ### `get` and `put`
 
-In Unit 2's "Data Directed" subsection, we used a 2D table to store a value
-under 2 keys using the procedures `get` and `put`.
+When we discussed data-directed programming in Unit 2, we used a 2D table to store a value
+under two keys using the procedures `get` and `put`:
 
     
     (put <key-1> <key-2> <value>)
