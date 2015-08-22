@@ -197,7 +197,9 @@ If _f_ is a numerical function and _n_ is a positive integer, then we can form t
 
 ### SICP 1.46
 
-Several of the numerical methods described in this chapter are instances of an extremely general computational strategy known as _iterative improvement_. Iterative improvement says that, to compute something, we start with an initial guess for the answer, test if the guess is good enough, and otherwise improve the guess and continue the process using the improved guess as the new guess. Write a procedure `iterative-improve` that takes two procedures as arguments: a method for telling whether a guess is good enough and a method for improving a guess. `iterative-improve` should return as its value a procedure that takes a guess as argument and keeps improving the guess until it is good enough. Rewrite the `sqrt` procedure of section [1.1.7](https://mitpress.mit.edu/sicp/full-text/book/book-Z-H-10.html#%_sec_1.1.7) and the `fixed-point` procedure of section [1.3.3](https://mitpress.mit.edu/sicp/full-text/book/book-Z-H-12.html#%_sec_1.3.3) in terms of `iterative-improve`.
+Several of the numerical methods described in this chapter are instances of an extremely general computational strategy known as _iterative improvement_. Iterative improvement says that, to compute something, we start with an initial guess for the answer, test if the guess is good enough, and otherwise improve the guess and continue the process using the improved guess as the new guess.
+
+Write a procedure `iterative-improve` that takes two procedures as arguments: a method for telling whether a guess is good enough and a method for improving a guess. `iterative-improve` should return as its value a procedure that takes a guess as argument and keeps improving the guess until it is good enough. Rewrite the `sqrt` procedure of section [1.1.7](https://mitpress.mit.edu/sicp/full-text/book/book-Z-H-10.html#%_sec_1.1.7) and the `fixed-point` procedure of section [1.3.3](https://mitpress.mit.edu/sicp/full-text/book/book-Z-H-12.html#%_sec_1.3.3) in terms of `iterative-improve`.
 
 ## Exercise 9
 
@@ -219,8 +221,7 @@ sentence. Generalize this pattern to create a higher order procedure called
 Using the higher order functions, our simply-scheme library provides its own versions of the `every` function from the last exercise and the `keep` function shown in our lessons. Get familiar with these by working these examples out before trying them on the computer:
 
   1. `(every (lambda (letter) (word letter letter)) 'purple) `
-  2. `(every (lambda (number) (if (even? number) (word number number) number)) '(781 5 76 909 24)) `
-
+  2. `(every (lambda (n) (if (even? n) (word n n) n)) '(781 5 76 909 24))`
   3. `(keep even? '(781 5 76 909 24)) `
   4. `(keep (lambda (letter) (member? letter 'aeiou)) 'bookkeeper) `
   5. `(keep (lambda (letter) (member? letter 'aeiou)) 'syzygy) `

@@ -37,7 +37,7 @@ Here's a breakdown of the files contained inside of `schython/`:
 </tr>
 <tr>
     <td>6.<code>py-primitives.scm</code></td>
-    <td>This file contains all the Scheme representations of Python data types. Do NOT make changes to this file.</td>
+    <td>This file contains all the Scheme representations of Python data types. You should edit this file.</td>
 </tr>
 <tr>
     <td>7.<code>primitives.py</code></td>
