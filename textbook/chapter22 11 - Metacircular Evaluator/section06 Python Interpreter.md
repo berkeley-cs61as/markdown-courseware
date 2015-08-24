@@ -1,16 +1,16 @@
 ## Introduction to Python
 
 We are going to learn about Python, the language that CS61A uses. Your friends
-in CS61A are writing a Scheme interpreter in Python. Here in CS61AS, you are
-going to write a Python Interpreter written in Scheme for your last project.
+in CS61A are writing a Scheme interpreter in Python (Scheme is a language very similar to Racket).
+Here in CS61AS, you are going to write a Python Interpreter written in Racket for your last project.
 
 ## Opening Python
 
 To open Python, go to the terminal and type "python". The ">>>" prompt will
-show up which is the equivalent of STk's "STk >".
+show up which is the equivalent of Racket's "->".
 
 As you will learn, spaces in Python are really important. Spaces for python
-are Parentheses for Scheme.
+are Parentheses for Racket.
 
 ## Playing with Python
 
@@ -27,7 +27,7 @@ How would you ask Python to print "Hello World"? Well,
          Hello World
     
 
-and that's it! (Yeah, srsly.) As you may have noticed from that simple
+and that's it! (Yeah, seriously). As you may have noticed from that simple
 example, Python does not need left parentheses to call functions; you do not
 need to precede 'print' with a left parenthesis. Python is case-sensitive, so
 "PRINT" would not work. Another key difference is that Python only supports
@@ -105,7 +105,7 @@ is overwritten.
     
 
 Python has support for the Boolean operators 'and' and 'or', which work
-exactly as the corresponding Scheme special forms work:
+exactly as the corresponding Racket special forms work:
 
     
     
@@ -160,7 +160,7 @@ Python has lists! (Why wouldn't it?)
     
 
 "x" is now a variable that stores a list of three numbers. As you can guess,
-the Scheme analog is "(list 1 2 3)". Python lists can also be deep:
+the Racket analog is "(list 1 2 3)". Python lists can also be deep:
 
     
          >>> x = [[1, 2, 3], 2, 3]
@@ -205,7 +205,7 @@ infix operator.
 ### Ifs
 
 An important aspect of Python, born of its dedication to readable code, is its
-usage of INDENTATION. In most other languages, including Scheme, indentation
+usage of INDENTATION. In most other languages, including Racket, indentation
 is not an issue, since these languages ignore the number of spaces, and
 instead use spaces to delimit symbols, numbers and words. However, in Python,
 the number of spaces at the beginning of a line is important.
@@ -319,7 +319,7 @@ in Scheme, the left parenthesis can be considered as a prefix operator, which
 the left parenthesis "calls" its first argument ('square') on the next
 argument ('3'). Also, if Python procedures need to return values, we have to
 explicitly add a 'return'-statement to the body to return the answer; by
-contrast, in Scheme, the very last line of a procedure definition is always
+contrast, in Racket, the very last line of a procedure definition is always
 returned. This allows us to distinguish between Python functions that return
 values, and Python functions that do not return values but are used primarily
 for their side-effects:
@@ -365,7 +365,8 @@ the predicate evaluates to False.
 #### for
 
 A "for" loop takes in a list (or any kind of sequence) and runs through the
-body with each element of the sequence.
+body with each element of the sequence. This is similar to the loops you learned
+about in Lesson 9.
 
     
     
