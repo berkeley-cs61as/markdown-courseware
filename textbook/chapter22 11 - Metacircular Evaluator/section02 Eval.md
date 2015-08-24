@@ -54,7 +54,7 @@ Now is time to look at how `mc-eval` is written. Take a look, and compare it to
 Don't worry if you don't understand it. We will go through this code step-by-
 step.
 
-## what does mc-eval do?
+## What Does mc-eval Do?
 
 The procedure `mc-eval` takes as arguments an expression and an environment. It classifies the
 expression and directs its evaluation. In order to keep the
@@ -78,7 +78,7 @@ each operand and returns a list of the corresponding values:
 
 Let's go line by line to see what each expression in the conditional does.
 
-## PRIMITIVE EXPRESSIONS
+## Self-Evaluating Expressions
 
 ![](http://www.bbc.co.uk/music/tinthepark/2010/img/home/radio1_small_promo.jpg
 )
@@ -155,7 +155,7 @@ value`:
       (cons 'lambda (cons parameters body)))
     
 
-## special forms: sequences
+## Special Forms: Sequences
 
 ![](http://x-equals.com/blog/wp-content/editing_sequences_5_seq_1280.jpg)
 
@@ -291,7 +291,7 @@ Expressions (such as `cond`) that we choose to implement as syntactic
 transformations are called **derived expressions**. `Let` expressions are also
 derived expressions.
 
-## Special forms: assignments and definitions
+## Special Forms: Assignments and Definitions
 
 ![](http://2.bp.blogspot.com/-BJ9VKWsOh74/UjWTv9D1TZI/AAAAAAAAfFA/c0x9oTVm2S4/
 s1600/DEFINE_TwitterAvatar_R1_eo.png)
@@ -365,7 +365,7 @@ The corresponding syntax procedures are the following:
           (make-lambda (cdadr exp)   ; formal parameters
                        (cddr exp)))) ; body
 
-## mc-eval definition revisited
+## mc-eval Definition Revisited
 
 Let's take a look at `mc-eval`'s definition again. Does it make sense to you now?
 
@@ -396,12 +396,12 @@ _Wait, wait, what's apply? I don't know what that is!_
 
 We are going to explore it in the next subsection.
 
-## takeaways
+## Takeaways
 
 In this subsection, you learned how Racket evaluates the expressions using
 `mc-eval` and other procedures.
 
-## What's next?
+## What's Next?
 
 Go to the next subsection and learn how Racket applies the evaluated
 expressions!

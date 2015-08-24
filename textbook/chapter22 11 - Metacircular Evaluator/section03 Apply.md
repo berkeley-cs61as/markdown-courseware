@@ -30,7 +30,7 @@ the procedure to the arguments to which the procedure is to be applied.
 
 We will go through the procedures used in the definition, one-by-one.
 
-## Represent Procedures
+## Representing Procedures
 
 In our metacircular evaluator, procedures are represented by tagged lists. Primitive 
 procedures have the tag `primitive`, and compound procedures have the tag `procedure`. If
@@ -237,7 +237,7 @@ have to call `mc-eval` again!
 It's also important to notice the distinction between defining variables in the metacircular
 evaluator's environment and defining variables in underlying Racket. 
 
-## apply revisited
+## Apply Revisited
 
 Let's look at the definition of `apply` again. Does it make sense this time?
 
@@ -256,7 +256,7 @@ Let's look at the definition of `apply` again. Does it make sense this time?
              (error
               "Unknown procedure type -- APPLY" procedure))))
 
-## takeaways
+## Takeaways
 
 In this subsection, you learned the following:
 
@@ -264,7 +264,7 @@ In this subsection, you learned the following:
   2. How primitive procedures are defined and applied
   3. How the operations on environments are defined
 
-## what's next?
+## What's Next?
 
 We are going to learn how the evaluator runs as a program.
 
