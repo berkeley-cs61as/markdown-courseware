@@ -17,9 +17,31 @@ current directory (note the period at the end):
 
 Or you can download the template [here](http://inst.eecs.berkeley.edu/~cs61as/templates/hw0-1.rkt).
 
+### Language Declaration
+
+You may have noticed that the first line says
+
+```
+#lang racket
+```
+
+This tells the Racket interpreter that your file consists of Racket code.
+This might seem redundant, but the Racket interpreter is also capable of understanding other Lisp-family languages, including
+user-defined ones.
+
+The bottom line is that you must include
+this line at the top of every Racket file you write. If you don't, you'll see this error message:
+
+```
+default-load-handler: expected a `module' declaration
+```
+
 ## Autograder
 
-If you are working on the lab computers, the `grader` command will run the autograder.  If you are working on your own personal machine, you should download [grader.rkt](http://inst.eecs.berkeley.edu/~cs61as/autograder/grader.rkt) and the [HW 0-1 tests](http://inst.eecs.berkeley.edu/~cs61as/autograder/tests/hw0-1-tests.rkt).
+An **autograder** is a program that checks the validity of your code for a particular assignment.
+
+If you are working on the lab computers, the `grader` command will run the autograder; see below for details.
+ If you are working on your own personal machine, you should download [grader.rkt](http://inst.eecs.berkeley.edu/~cs61as/autograder/grader.rkt) and the [HW 0-1 tests](http://inst.eecs.berkeley.edu/~cs61as/autograder/tests/hw0-1-tests.rkt).
 
 ## Exercise 0
 
@@ -236,7 +258,7 @@ A subtle point about `or`: like `and`, if any one of its arguments evaluate to `
 
 ### Part a
 
-Take a moment to read through the above, and try them out in the interpreter.
+Take a moment to read through the above and try everything out in the interpreter.
 Then, write a procedure `can-drive` that takes the age of a person as an argument. If the age is below 16, return the sentence
 `'(Not yet)`. Otherwise, return the sentence `'(Good to go)`. Make sure to test your code in the
 interpreter.
