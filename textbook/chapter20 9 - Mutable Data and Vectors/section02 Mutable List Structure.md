@@ -20,7 +20,18 @@ Similarly, **mutable lists** are simply nested mpairs, created using the procedu
 	-> (mcdr y)
 	(mcons 2 (mcons 3 '()))
 
-Notice how taking the `mcdr` of a mutable list does not return `'(2 3)`. The above notation is used to emphasize the difference between a **pair** and an **mpair**. Keep in mind that they are completely different data structures!
+Notice how taking the `mcdr` of a mutable list does not return `'(2 3)`.
+The above notation is used to emphasize the difference between a pair and an mpair. Keep in mind that they are completely different data structures!
+
+You can use `mlist->list` to convert a mlist to a regular list. This will allow you to print mlists neatly:
+
+```
+-> (define a (mlist 1 2 3))
+-> a
+(mcons 1 (mcons 2 (mcons 3 '())))
+-> (mlist->list a)
+'(1 2 3)
+```
 
 ## Changing Pointers: `set-mcar!`
 
@@ -34,7 +45,7 @@ Let the `mcar` of `x` represent the number of cloudy days this week and the `mcd
 
 ![](/static/lab9-2.png)
 
-The general form is `(set-mcar! <pair> <value>)`
+The general form is `(set-mcar! <pair> <value>)`.
 
 ## Changing Pointers: `set-mcdr!`
 
@@ -51,9 +62,9 @@ The general form is `(set-mcdr! <pair> <value>)`.
 
 ## Mutating Complex Pairs
 
-In this subsection, we will go over mutation using `set-mcar!` and `set-mcdr!` on more complex pairs.
+Let's try using `set-mcar!` and `set-mcdr!` with more complex pairs.
 
-Let us work with the following mpairs and their box-and-pointer diagrams:
+We'll work with the following mpairs and their box-and-pointer diagrams:
     
     (define x (mcons (mlist 'a 'b) (mlist 'c 'd)))
     (define y (mlist 'e 'f))    
@@ -100,9 +111,9 @@ This time, let's define a new mpair, `z`, like so:
 
 The result:
 
-  * `x` will print `((a b) c d)`.
-  * `y` will print `(e f)`.
-  * `z` will print `((e f) c d)`.
+  * `(mlist->list x)` evaluates to the list `((a b) c d)`.
+  * `(mlist->list y)` evaluates to the list `(e f)`.
+  * `(mlist->list z)` evaluates to the list `((e f) c d)`.
 
 <div class="mc">
 	<p>
