@@ -94,12 +94,12 @@ Write a `GPA` procedure. It should take a sentence of grades as its argument and
 ## Exercise 8
 
   
-Write `expand`, which takes a sentence as its argument. It returns a sentence similar to the argument, except that if a number appears in the argument, then the return value contains that many copies of the following word.
+Write `repeat-words`, which takes a sentence as its argument. It returns a sentence similar to the argument, except that if a number appears in the argument, then the return value contains that many copies of the following word.
 
 ```
--> (expand '(4 calling birds 3 french hens))
+-> (repeat-words '(4 calling birds 3 french hens))
 '(calling calling calling calling birds french french french hens)
--> (expand '(the 7 samurai))
+-> (repeat-words '(the 7 samurai))
 '(the samurai samurai samurai samurai samurai samurai samurai)
 ```
 

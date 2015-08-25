@@ -1,6 +1,6 @@
 ## Introduction
 
-In this lesson, we'll discuss the basics of concurrency.
+In this lesson, we'll discuss the basics of concurrency.z
 
 ## Prerequisites
 
