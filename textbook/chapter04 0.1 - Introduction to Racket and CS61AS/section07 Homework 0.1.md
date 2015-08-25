@@ -1,15 +1,17 @@
 ## Homework 0.1 Intro
 
-In this homework, you'll use what you've learned in the first day to solve
+In this homework, you'll use what you've learned so far to solve
 some problems. You'll also be doing a bit of reading and introducing yourself.
 
-**This homework is due Tuesday, June 23 2015, 11:59PM**
+Remember: you can view the due date for this homework on either the [front page](../index.html)
+or the [deadlines spreadsheet](https://docs.google.com/spreadsheets/u/1/d/1JftJo7ko0wx-jxAEF9_QxYXfzHCYqCNqKeRwOU9K65A/edit?usp=sharing).
 
 ## Template
 
-Type the following command at the terminal to copy the template file to the
-current directory (note the period at the end):
+A template file provides the basic skeleton for a homework assignment.
 
+If you're on a lab computer, type the following command into your terminal to copy the template to the
+current directory (note the period at the end):
     
         cp ~cs61as/autograder/templates/hw0-1.rkt .
 
@@ -21,28 +23,20 @@ If you are working on the lab computers, the `grader` command will run the autog
 
 ## Exercise 0
 
-![](http://studentbranding.com/wp-content/uploads/2011/04/Repeat-their-name-
-and-introduce-yourself.jpg)
+First, introduce yourself to the staff!
 
-Before you start the exercises, introduce yourself to staff! We want to know
-who you are.
+In your homework file, answer the following questions:
 
-Answer the following questions on the homework file:
+1. What is your name?
+2. What is your major?
+3. Are you a returning student? (That is, did you take 61AS last semester?)
+4. What made you to take 61AS?
+5. Tell us some interesting things about yourself.
 
-1) What is your name?
-
-2) What is your major?
-
-3) Are you a returning student? (i.e. Did you take 61AS last semester?)
-
-4) What made you to take 61AS?
-
-5) Tell us interesting things about yourself.
-
-Now, see if you can find a post on Piazza called "Hello World!". Make a followup on that post and introduce yourself. Be sure to include:
+Now, see if you can find a post on Piazza called "Hello World!". Make a follow-up on that post and introduce yourself. Be sure to include:
 
   * Name
-  * Major and Year
+  * Major and year
   * One interesting fact about yourself
   * Why you're taking the course
 
@@ -60,11 +54,21 @@ For example, you saw how to define a `square` procedure:
     (define (square x) (* x x))
       
 
-After defining, you can use the procedure `square` to find the square of any
-number you want. Likewise...
+After defining it, you can use the procedure `square` to find the square of any
+number you want:
 
-Without using `*` (use `square` instead), **define a procedure `sum-of-squares`**, which takes two arguments, and returns the sum of the squares of the two
-arguments.
+```
+-> (square 3)
+9
+```
+
+Using `square`, define a procedure `sum-of-squares` that takes two arguments and returns the sum of the squares of the two
+arguments:
+
+```
+-> (sum-of-squares 3 4)
+25
+```
 
 Make sure you test your work!
 
@@ -79,31 +83,31 @@ If you are working on your own machine, type the following into your terminal:
 
     racket -tm grader.rkt -- hw0-1-tests.rkt hw0-1.rkt sum-of-squares
 
-### Words
+## Interlude
 
-We've shown you some interesting procedures that allow you to do stuff to
-words:
+Before we present the next exercise, we need to cover some more Racket features.
 
-`'` makes a word (e.g., `'pi`) or a group of words (e.g., `'(good morning)`).
+### Words and Sentences
 
-`first` takes a word and returns the first letter of that word, or it takes a sentence and returns the first word of that sentence.
+We've shown you some interesting procedures that allow you to do stuff to words and sentences:
 
-`butfirst` (or `bf`) takes a word/sentence and returns everything but the first letter/word.
+* `'` makes a word (e.g., `'pi`) or a sentence (e.g., `'(good morning)`).
+* `first` takes a word and returns the first letter of that word, or it takes a sentence and returns the first word of that sentence.
+* `butfirst` (or `bf`) takes a word/sentence and returns everything but the first letter/word.
 
 Keep these procedures and concepts in the back of your mind. They'll come back
-in later exercises and labs.
+in later exercises and lessons.
 
 ### Special Forms
-
   
 Racket has some control features that allow you to choose what to do next
-based on a test. These are called _Special Forms._ Special forms have
-particular rules that allow them to skip evaluating some of its arguments.
+based on a test. These features are examples of _special forms_&mdash;procedures with special evaluation rules.
+We'll talk about special forms more later in the course.
 
-#### `if`
+### `if`
 
-In Racket, `if` is a special form that evaluates only one of its last two
-arguments to use as a value. `if` always evaluates its first argument. If the
+In Racket, `if` is a special form that takes three arguments.
+`if` always evaluates its first argument. If the
 value of that argument is `true`, then `if` evaluates its second argument and
 returns its value. If the value of the first argument is `false`, then if
 evaluates its third argument and returns that value.
@@ -113,15 +117,17 @@ Here is an example of proper if syntax:
     
     (if (= 5 (+ 2 3))
         'yay!
-        (/ 1 0) )
+        (/ 1 0))
 
-In this case, `yay!` is printed. Because the first expression evaluates to
-true, the last argument to `if` is not evaluated, which means we don't get a
+The result of this example expression is the word `'yay!`. Because the first expression is true,
+the last argument to `if` is not evaluated, which means we don't get a
 divide-by-zero error.
 
-#### `cond`
+### `cond`
 
-`cond` is a special form that acts just like an `if` statement, except with multiple options. Each clause is tested one at a time until one evaluates to `true`. If none of the clauses are `true`, you can include an `else` clause to capture these cases.
+`cond` is a special form that acts just like `if`,
+except with multiple options. Each condition is tested one at a time until one evaluates to `true`.
+An `else` clause is typically used at the end to capture cases where all prior conditions evaluated to `false`.
 
 Here is an example:
 
@@ -130,50 +136,69 @@ Here is an example:
           ((= 3 2) 'still-wrong!)
           (else 'yay))
 
-In this case, the first two conditions return `false`, and `yay` is printed.
+In this example, the first two conditions return `false`, so the overall expression evaluates to the word `'yay!`.
 
 Some good procedures to use for the test cases are `>`, `<`, and `=`.
 
 ### `and`
 
-`and` checks whether **all** its arguments are `true`.
+`and` checks whether *all* of its arguments are `true`:
 
-    
-    > (and (> 5 3) (< 2 4))
-    #t
-    > (and (> 5 3) (< 2 1))
-    #f
-    
+``` 
+-> (and (> 5 3) (< 2 4))
+#t
+-> (and (> 5 3) (< 2 1))
+#f
+```
 
-Why is `and` a special form? It evaluates its arguments and stops as soon as
-it can, returning `#f` as soon as any argument evaluates to false. This turns
-out to be useful:
+Why is `and` a special form? Because it evaluates its arguments and stops as soon as
+it can, returning `false` as soon as any argument evaluates to `false`. This turns
+out to be useful. Suppose we have the following:
 
-    
-    > (define (divisible? big small)
-        (= (remainder big small) 0))
-    > (define (num-divisible-by-4? x)
-        (and (number? x) (divisible? x 4)))
-    > (num-divisible-by-4? 16)
-    #t
-    > (num-divisible-by-4? 6) 
-    #f
-    > (num-divisible-by-4? 'aardvark)
-    #f  ;; and exits before trying to find the remainder of 'aardvark
-    > (divisible? 'aardvark 4)
-    ERROR: AARDVARK IS NOT A NUMBER
-    
+```
+(define (divisible? big small)
+  (= (remainder big small) 0))
+(define (num-divisible-by-4? x)
+  (and (number? x) (divisible? x 4)))
+```
 
-A subtle point about `and`: similar to `or`, if all its arguments evaluate to
+Then we can do this:
+
+```
+-> (num-divisible-by-4? 16)
+#t
+-> (num-divisible-by-4? 6) 
+#f
+-> (num-divisible-by-4? 'aardvark)
+#f
+```
+
+Notice how the last call didn't fail. Since `(number? 'aardvark)` evaluates to `false`,
+`and` returns `#f` before evaluating its second argument.
+Calling `(divisible? 'aardvark 4)` would cause an error:
+
+```
+-> (divisible? 'aardvark 4)
+; remainder: contract violation
+;   expected: integer?
+;   given: 'aardvark
+;   argument position: 1st
+; [,bt for context]
+```
+
+This message simply says that the procedure `remainder` reported an error because it expected an integer 
+but instead got `'aardvark`. 
+
+A subtle point about `and`: if all its arguments evaluate to
 `true`, instead of simply returning `#t` it will return the value of its last
 argument.
 
-    
-    > (and #t (+ 3 5))
-    8
-    > (and (- 2 1) 100)
-    100
-    
+```    
+-> (and #t (+ 3 5))
+8
+-> (and (- 2 1) 100)
+100
+```    
 
 Anything that is not `#f` is `#t`. So, `100` is `true`, `'foo` is `true`, and so on.
 
@@ -182,9 +207,9 @@ Anything that is not `#f` is `#t`. So, `100` is `true`, `'foo` is `true`, and so
 `or` checks whether **any** of its arguments are `true`.
 
     
-    > (or (> 5 3) (< 2 1))
+    -> (or (> 5 3) (< 2 1))
     #t
-    > (or (> 5 6) (< 2 1))
+    -> (or (> 5 6) (< 2 1))
     #f
     
 
@@ -196,17 +221,21 @@ one of its arguments evaluates to `true`.
     #t
     
 
-A subtle point about `or`: just like `and`, if any one of its arguments evaluate to `true`, `or` returns the value of the evaluated expression rather than just simply `#t`.
+A subtle point about `or`: like `and`, if any one of its arguments evaluate to `true`, `or` returns the value of the evaluated expression rather than just simply `#t`.
 
     
-    > (or #f (+ 1 2 3))
+    -> (or #f (+ 1 2 3))
     6
-    > (or (* 3 4) (- 2 1))
+    -> (or (* 3 4) (- 2 1))
     12
 
 ## Exercise 2
 
-**a)** Take a moment to read through the above, and try them out in the interpreter. Then, write a procedure `can-drive` that takes the age of a person as an argument. If the age is below `16`, return the sentence '`(Not yet)`. Otherwise, return the sentence '`(Good to go)`. Make sure to test your code in the
+### Part a
+
+Take a moment to read through the above, and try them out in the interpreter.
+Then, write a procedure `can-drive` that takes the age of a person as an argument. If the age is below 16, return the sentence
+`'(Not yet)`. Otherwise, return the sentence `'(Good to go)`. Make sure to test your code in the
 interpreter.
 
 After you've finished this exercise, run the autograder on your code to check
@@ -221,7 +250,11 @@ Or, on your own machine:
     racket -tm grader.rkt -- hw0-1-tests.rkt hw0-1.rkt can-drive
 
 
-**b)** Write a procedure `fizzbuzz` that takes a number and outputs the word '`fizz` if the number is divisible by `3`, '`buzz` if it's divisible by `5`, '`fizzbuzz` if it's divisible by both `3` and `5`, and otherwise, the number itself. You may find the function `remainder` useful. Make sure to test your code in the interpreter.
+### Part b
+
+Write a procedure `fizzbuzz` that takes a number and outputs the word `'fizz` if the number is divisible by 3,
+`'buzz` if it's divisible by 5, `'fizzbuzz` if it's divisible by both 3 and 5, and otherwise, the number itself.
+You may find the function `remainder` useful. Make sure to test your code in the interpreter.
 
 After you've finished this exercise, check your solution by typing the
 following into your terminal:
@@ -231,14 +264,13 @@ following into your terminal:
 
 Or, on your own machine:
 
-
     racket -tm grader.rkt -- hw0-1-tests.rkt hw0-1.rkt fizzbuzz
 
 ## Exercise 3
 
 Why did the Walrus cross the Serengeti?
 
-To figure out this answer, look on Piazza for the post labeled "Answer to Homework 0-1 Exercise 3".
+To figure out the answer, look on Piazza for the post labeled "Answer to Homework 0-1 Exercise 3".
 
 ## Exercise 4
 
@@ -262,11 +294,11 @@ Here's our attempt:
         then-case
         else-case))
     
-    ;; Let's try it out:
+Let's try it out:
+
     (new-if (= 3 6)
       (infinite-loop)
       (/ 4 2))
-    
 
 It didn't work!
 
@@ -280,47 +312,33 @@ Here is another example that breaks:
 Why didn't `new-if` behave like `if`? What can you learn about `if` from this
 example? Think about this and try to figure it out. Expect to see it again.
 
-## Takeaways
-
-This homework provides practice involving the following ideas:
-
-  1. Procedures
-  2. Short Circuiting
-  3. Using Piazza
-
 ## Recommended Readings
 
-The following reading is recommended:
+The following readings are recommended:
 
   * [Lecture Notes 1](http://inst.eecs.berkeley.edu/~cs61as/reader/notes.pdf)
-  * [SICP 1.1 - The Elements of Programming](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-10.html#%25_sec_1.1)
+  * [SICP 1.1](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-10.html#%25_sec_1.1)
 
 ## Running the Autograder
 
 Before submitting any homework, there are two checks you need to make:
 
-  1. Your homework MUST load into the Racket interpreter. Any submissions that do not load will not receive any credit.
-  2. Run your homework through the autograder to check your answers. If you cannot get your homework to pass all the autograder tests, don't fret, and submit your homework anyway. We grade based on effort. 
+  1. Your homework *must* load into the Racket interpreter. Any submissions that do not load will not receive any credit.
+  2. Run your homework through the autograder to check your answers. If you cannot get your homework to pass all the autograder tests, don't fret.
+  Submit your homework anyway. Remember, homeworks are graded based on effort. 
 
 To run the autograder, type the following into the terminal:
-
     
     grader <assignment name> <file name>
 
 For example, to run the autograder on this homework, type the following into
 the terminal:
-
     
      grader hw0-1 hw0-1.rkt
 
-Remember that if you pass the autograder when you submit your homework, you're
-guaranteed full credit and your slip days are reset!
-
 ## Submitting Your Homework
 
-Here is a [quick guide](http://berkeley-cs61as.github.io/textbook/submitting-homework.html) to turning in homework and basic Unix commands. If you have any trouble submitting, do not hesitate to ask a TA!
+Here is a [guide](../submit.html) on basic terminal commands and homework submission.
 
-## Moving Forward
-
-Start on Lesson 1. If Lesson 1 looks completely foreign to you, talk to a TA and s/he will get you on track.
+If you have any trouble submitting, do not hesitate to ask a TA!
 
