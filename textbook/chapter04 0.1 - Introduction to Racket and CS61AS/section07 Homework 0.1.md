@@ -86,6 +86,7 @@ If you are working on your own machine, type the following into your terminal:
 ## Interlude
 
 Before we present the next exercise, we need to cover some more Racket features.
+Students taking Unit 0 should consider this a preview&mdash;we'll explore these features more in Lesson 0.2.
 
 ### Words and Sentences
 
@@ -150,6 +151,8 @@ Some good procedures to use for the test cases are `>`, `<`, and `=`.
 -> (and (> 5 3) (< 2 1))
 #f
 ```
+
+(Note that `#t` and `true` can be used interchangeably, as can `#f` and `false`.)
 
 Why is `and` a special form? Because it evaluates its arguments and stops as soon as
 it can, returning `false` as soon as any argument evaluates to `false`. This turns
