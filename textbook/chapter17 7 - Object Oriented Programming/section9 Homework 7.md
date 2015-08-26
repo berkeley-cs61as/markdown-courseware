@@ -156,4 +156,6 @@ Devise an example of such a situation. Describe the inheritance hierarchy of you
 
 ## Submit Your Homework!
 
-Don't forget, or all your hard work will be for naught. :(
+For instructions, see [this guide](../submit.html). It covers basic terminal commands and assignment submission.
+
+If you have any trouble submitting, do not hesitate to ask a TA!

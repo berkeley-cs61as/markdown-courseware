@@ -72,4 +72,6 @@ to produce the following dialog:
 
 ## Submit Your Homework!
 
-It's short, but it's still graded. :)
+For instructions, see [this guide](../submit.html). It covers basic terminal commands and assignment submission.
+
+If you have any trouble submitting, do not hesitate to ask a TA!

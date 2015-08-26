@@ -159,7 +159,8 @@ Why might it be advantageous for an interpreter to treat `or`
 as a special form and evaluate its arguments one at a time? Can you think of
 reasons why it might be advantageous to treat `or` as an ordinary function?
 
-## Submitting Your Homework
+## Submit Your Homework!
 
-Please refer to the guide in [Homework 0-2](/textbook/homework-0.2.html) for how to submit your homework.
+For instructions, see [this guide](../submit.html). It covers basic terminal commands and assignment submission.
 
+If you have any trouble submitting, do not hesitate to ask a TA!

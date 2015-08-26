@@ -266,3 +266,8 @@ language figures out the algorithm itself:
 
 Write `regroup`. Read `~cs61as/lib/regroup.problem` for details.
 
+## Submit Your Homework!
+
+For instructions, see [this guide](../submit.html). It covers basic terminal commands and assignment submission.
+
+If you have any trouble submitting, do not hesitate to ask a TA!

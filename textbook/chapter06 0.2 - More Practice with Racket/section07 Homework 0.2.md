@@ -132,69 +132,8 @@ This is how `superlative` should work:
 '(dumbest exercise)
 ```
 
-## Submit your Homework!
+## Submit Your Homework!
 
-**If you are having trouble submitting, ask a question on Piazza or contact a TA.**
+For instructions, see [this guide](../submit.html). It covers basic terminal commands and assignment submission.
 
-**Before submitting:** Make sure your file loads in Racket.
-You can verify this by typing into Racket: 
-
-```
-(require "hw0-2.rkt")
-```
-
-Where `"hw0-2.rkt"` is the name of your homework file. **You will not receive credit for homework that does not load in Racket.**
-
-To submit your assignment, you need to be logged in on any of the lab
-computers. If you want to submit from home, you must connect remotely to the
-lab computers. There is a guide on how to do that [here](https://docs.google.com/document/d/1a-eE4zeEpnL7vT54gbOAn8jLElMxwqPH3GkPnE3bXdU/edit).
-
-Open the Terminal.
-
-Let's submit `hw0-2.rkt`. This requires the following steps:
-
-  1. Making a directory for an assignment (optional, but strongly recommended, as we'll see)
-  2. Placing the assignment in that folder (or moving the files to that folder if you've already completed the assignment)
-  3. Running the `submit` command
-  4. Checking if the assignment was correctly submitted
-
-### Making a Directory
-
-In the terminal, type:
-
-```
-mkdir hw0-2
-```
-
-This tells the computer to make a directory (folder) named `hw0-2`. You can
-double check that it exists (and also see what else is in this current
-directory) by running `ls`.
-
-Now we need to navigate to that folder, so we'll do:
-
-```
-cd hw0-2
-```
-
-Now, make sure your `hw0-2.rkt` file is inside the `hw0-2` directory. The [mv](http://linux.about.com/library/cmd/blcmdl1_mv.htm) command is useful. Or, you can just do this outside of your terminal. If you need help on this step, ask a TA.
-
-### Submitting
-
-After your homework file is in the right directory, you can submit the assignment by doing
-
-```
-submit hw0-2
-```
-
-This tells the computer that you want to submit the assignment called "hw0-2". Follow the prompts that appear afterwards. If insanity is detected, that means your file does not load into Racket! Make tweaks to your code until it loads without errors and try submitting again.
-
-### Checking Your Submission
-
-The following command allows you to look at the times in which you've
-submitted:
-
-```
-glookup -t
-```
-
-And you're done!
+If you have any trouble submitting, do not hesitate to ask a TA!

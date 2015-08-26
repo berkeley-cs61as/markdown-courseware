@@ -66,5 +66,9 @@ yield the following (in any order):
     
     ((grass . 86) (dragon . 39) (normal . 99) (flying . 93) (poison . 59) (ice . 35) (fire . 58) (ghost . 37) (psychic . 77) (electric . 47) (water . 124) (fairy . 35) (bug . 70) (steel . 42) (ground . 62) (rock . 54) (fighting . 45) (dark . 44))
     
-## Submit Your Homework
 
+## Submit Your Homework!
+
+For instructions, see [this guide](../submit.html). It covers basic terminal commands and assignment submission.
+
+If you have any trouble submitting, do not hesitate to ask a TA!

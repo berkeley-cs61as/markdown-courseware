@@ -80,3 +80,9 @@ extend-environment.)
 
 - Abelson & Sussman, exercises [4.16 - 4.21](http://mitpress.mit.edu/sicp/full-
 text/book/book-Z-H-26.html#%_thm_4.16).
+
+## Submit Your Homework!
+
+For instructions, see [this guide](../submit.html). It covers basic terminal commands and assignment submission.
+
+If you have any trouble submitting, do not hesitate to ask a TA!

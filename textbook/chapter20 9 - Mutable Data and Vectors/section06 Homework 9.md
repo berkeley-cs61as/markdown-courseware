@@ -104,6 +104,8 @@ Write the procedure `cxr-name`. Its argument will be a function made by composin
 	> (cxr-name (lambda (x) (cadr (cddar (cadar x)))))
 	CADDDAADAR
 
-## Turn in Your Homework
+## Submit Your Homework!
 
-How sad would it be to get a 0 on this one, of all homeworks?
+For instructions, see [this guide](../submit.html). It covers basic terminal commands and assignment submission.
+
+If you have any trouble submitting, do not hesitate to ask a TA!

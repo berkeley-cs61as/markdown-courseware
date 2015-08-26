@@ -169,6 +169,8 @@ such as `cdddadaadar`. It should return the corresponding function.
   
 [SICP Ex. 2.18](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-15.html#%_thm_2.18); this should take some thought, and you should make sure you get it right, but don't get stuck on it for a whole hour. Note: Your solution should reverse lists, not sentences! That is, you should be using `cons`, `car`, and `cdr`, not `first`, `sentence`, etc.
 
-## Submit Your Homeowrk
+## Submit Your Homework!
 
-Here are [instructions](http://berkeley-cs61as.github.io/textbook/homework-1.html#sub9) if you need a reminder.
+For instructions, see [this guide](../submit.html). It covers basic terminal commands and assignment submission.
+
+If you have any trouble submitting, do not hesitate to ask a TA!

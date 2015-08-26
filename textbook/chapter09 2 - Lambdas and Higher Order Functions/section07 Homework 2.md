@@ -228,6 +228,8 @@ Using the higher order functions, our simply-scheme library provides its own ver
   6. `(keep (lambda (letter) (member? letter 'aeiou)) '(purple syzygy)) `
   7. `(keep (lambda (wd) (member? 'e wd)) '(purple syzygy))`
 
-## Submit Your Homework
+## Submit Your Homework!
 
-Don't remember how? No worries. Take a look at the instructions for [Homework 1](homework-1.html#sub9).
+For instructions, see [this guide](../submit.html). It covers basic terminal commands and assignment submission.
+
+If you have any trouble submitting, do not hesitate to ask a TA!

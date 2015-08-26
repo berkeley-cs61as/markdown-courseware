@@ -30,3 +30,9 @@ text/book/book-Z-H-27.html#%_thm_4.31). This exercise doesn't require great
 brilliance, but it's a lot of work and involves a lot of debugging of details.
 On the other hand, completing this exercise will teach you a lot about the
 evaluator.
+
+## Submit Your Homework!
+
+For instructions, see [this guide](../submit.html). It covers basic terminal commands and assignment submission.
+
+If you have any trouble submitting, do not hesitate to ask a TA!

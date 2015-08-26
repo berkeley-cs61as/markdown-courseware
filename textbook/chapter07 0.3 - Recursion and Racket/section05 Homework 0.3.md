@@ -118,6 +118,8 @@ Write a predicate `same-shape?` that takes two sentences as arguments. It should
 
 **Hint:** The primitive procedure `count` may be useful.
 
-## Submit your Homework!
+## Submit Your Homework!
 
-If you forgot how to submit homework, check out the short guide in [Homework 0-2](/textbook/homework-0.2.html).
+For instructions, see [this guide](../submit.html). It covers basic terminal commands and assignment submission.
+
+If you have any trouble submitting, do not hesitate to ask a TA!

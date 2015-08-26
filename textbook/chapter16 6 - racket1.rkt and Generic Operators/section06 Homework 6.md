@@ -160,5 +160,8 @@ If you're really ambitious, you could maintain a database of inferred argument
 types and use it when a procedure you've seen is invoked by another procedure
 you're examining!
 
-# **DO NOT FORGET TO SUBMIT YOUR HOMEWORK!**
+## Submit Your Homework!
 
+For instructions, see [this guide](../submit.html). It covers basic terminal commands and assignment submission.
+
+If you have any trouble submitting, do not hesitate to ask a TA!

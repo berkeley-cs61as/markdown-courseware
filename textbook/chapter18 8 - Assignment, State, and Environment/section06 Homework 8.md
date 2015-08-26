@@ -43,3 +43,9 @@ that every symbol is a variable reference, and variables are created only by
 
 Describe how you'd use `unique-rename` to allow the evaluation of Scheme
 programs with only a single `(global)` frame.
+
+## Submit Your Homework!
+
+For instructions, see [this guide](../submit.html). It covers basic terminal commands and assignment submission.
+
+If you have any trouble submitting, do not hesitate to ask a TA!

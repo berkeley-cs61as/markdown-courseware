@@ -148,6 +148,8 @@ using Euler's expansion.
   <p>Give an algebraic formula relating the values of the parameters <code>b</code>, <code>n</code>, <code>counter</code>, and <code>product</code> of the iterative exponentiation procedure defined above.</p>
   <p>(The kind of answer we're looking for is "the sum of <code>b</code>, <code>n</code>, and <code>counter</code> times <code>product</code> is always equal to 37.")</p>
    
+## Submit Your Homework!
 
-## Project 1
-Remember that [Project 1](./project-1-chatterbot.html) is due before the Unit 1 deadline.
+For instructions, see [this guide](../submit.html). It covers basic terminal commands and assignment submission.
+
+If you have any trouble submitting, do not hesitate to ask a TA!

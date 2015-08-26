@@ -109,9 +109,12 @@ Some guidelines:
 * `(approximation (fract-stream '(1 7)) 4)` should return `(1 4 2 8)`.
 * `(approximation (fract-stream '(1 2)) 4)` should return `(5 0 0 0)`.
 
-## Submit Your Homework
+## Submit Your Homework!
 
-Don't forget!
+For instructions, see [this guide](../submit.html). It covers basic terminal commands and assignment submission.
+
+If you have any trouble submitting, do not hesitate to ask a TA!
+
 
 
 <!-- Ehhh

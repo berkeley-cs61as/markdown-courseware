@@ -361,9 +361,8 @@ the terminal:
     
      grader hw0-1 hw0-1.rkt
 
-## Submitting Your Homework
+## Submit Your Homework!
 
-Here is a [guide](../submit.html) on basic terminal commands and homework submission.
+For instructions, see [this guide](../submit.html). It covers basic terminal commands and assignment submission.
 
 If you have any trouble submitting, do not hesitate to ask a TA!
-
