@@ -161,5 +161,5 @@ reasons why it might be advantageous to treat `or` as an ordinary function?
 
 ## Submitting Your Homework
 
-Please refer to the guide in [Homework 0-2](/textbook/homework-0.2.html#sub9) for how to submit your homework.
+Please refer to the guide in [Homework 0-2](/textbook/homework-0.2.html) for how to submit your homework.
 
