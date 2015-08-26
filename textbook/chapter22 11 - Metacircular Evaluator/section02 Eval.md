@@ -75,6 +75,14 @@ each operand and returns a list of the corresponding values:
           (cons (mc-eval (first-operand exps) env)
             (list-of-values (rest-operands exps) env))))
     
+**Left to Right? Right to Left?**
+Notice that we cannot tell whether the metacircular evaluator evaluates operands from left to right or from right to left. Its evaluation order is inherited from the underlying Racket: If the arguments to `cons` in `list-of-values` are evaluated from left to right, then `list-of-values` will evaluate operands from left to right; and if the arguments to `cons` are evaluated from right to left, then `list-of-values` will evaluate operands from right to left.
+
+Write a version of `list-of-values` that evaluates operands from left to right regardless of the order of evaluation in the underlying Racket. Also write a version of `list-of-values` that evaluates operands from right to left.
+
+<div class="mc">
+<ans text="I tried writing list-of-values both ways" explanation="Nice! How would you test your code?" correct></ans>
+</div>
 
 Let's go line by line to see what each expression in the conditional does.
 
@@ -365,6 +373,20 @@ The corresponding syntax procedures are the following:
           (make-lambda (cdadr exp)   ; formal parameters
                        (cddr exp)))) ; body
 
+**And and Or**
+
+Recall the definitions of the special forms `and` and `or` from Unit 1:
+
+* and: The expressions are evaluated from left to right. If any expression evaluates to false, `false` is returned; any remaining expressions are not evaluated. If all the expressions evaluate to true values, the value of the last expression is returned. If there are no expressions then true is returned.
+
+* or: The expressions are evaluated from left to right. If any expression evaluates to a true value, that value is returned; any remaining expressions are not evaluated. If all expressions evaluate to false, or if there are no expressions, then `false` is returned.
+
+Install `and` and `or` as new special forms for the evaluator by defining appropriate syntax procedures and evaluation procedures `eval-and` and `eval-or`. Alternatively, show how to implement `and` and `or` as derived expressions.
+
+<div class="mc">
+<ans text="I tried writing both and and or" explanation="Nice! How would you test your code?" correct></ans>
+</div>
+
 ## mc-eval Definition Revisited
 
 Let's take a look at `mc-eval`'s definition again. Does it make sense to you now?
@@ -395,6 +417,17 @@ Let's take a look at `mc-eval`'s definition again. Does it make sense to you now
 _Wait, wait, what's apply? I don't know what that is!_
 
 We are going to explore it in the next subsection.
+
+<div class="mc">
+Which of the following use mc-eval in their definition? Multiple answers may be correct, so check each answer individually.
+
+<ans text="list-of-values" explanation="Correct!" correct></ans>
+<ans text="eval-if" explanation="Correct!" correct></ans>
+<ans text="eval-sequence" explanation="Correct!" correct></ans>
+<ans text="eval-assignment" explanation="Correct!" correct></ans>
+<ans text="eval-definition" explanation="Correct!" correct></ans>
+<!-- and so on -->
+</div>
 
 ## Takeaways
 

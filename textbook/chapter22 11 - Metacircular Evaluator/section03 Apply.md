@@ -256,6 +256,16 @@ Let's look at the definition of `apply` again. Does it make sense this time?
              (error
               "Unknown procedure type -- APPLY" procedure))))
 
+<div class="mc">
+Which of the following use mc-apply? Multiple answers may be correct, so check each answer individually.
+
+<ans text="apply" explanation="Correct!" correct></ans>
+<ans text="apply-primitive-procedure" explanation="Incorrect!"></ans>
+<ans text="eval-sequence" explanation="Incorrect!"></ans>
+<ans text="extend-environment" explanation="Incorrect!"></ans>
+<!-- and so on -->
+</div>
+
 ## Takeaways
 
 In this subsection, you learned the following:
