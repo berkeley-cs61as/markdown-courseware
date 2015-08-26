@@ -43,29 +43,27 @@ as a list of pairs. Each pairs' `car` hold the key for each value.
 In the above table, the breakdown between the keys and values can be seen
 below.
 
-<style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;}
-.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
-.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
-.tg .tg-e3zv{font-weight:bold}
-</style>
-<table class="tg">
+<table class="table table-bordered">
+<thead>
   <tr>
-    <th class="tg-e3zv">Keys</th>
-    <th class="tg-e3zv">Values</th>
+    <th>Key</th>
+    <th>Value</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>a</td>
+    <td>1</td>
   </tr>
   <tr>
-    <td class="tg-031e">a</td>
-    <td class="tg-031e">1</td>
+    <td>b</td>
+    <td>2</td>
   </tr>
   <tr>
-    <td class="tg-031e">b</td>
-    <td class="tg-031e">2</td>
+    <td>c</td>
+    <td>3</td>
   </tr>
-  <tr>
-    <td class="tg-031e">c</td>
-    <td class="tg-031e">3</td>
-  </tr>
+</tbody>
 </table>
 
 Why does our table point to a pair that doesn't contain any key-value pair? We
