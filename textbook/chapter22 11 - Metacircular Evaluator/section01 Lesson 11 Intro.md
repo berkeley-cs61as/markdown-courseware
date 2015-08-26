@@ -1,17 +1,17 @@
 ## Metacircular Evaluator
 
-Do you remember Racket-1 in Lesson 6? Now it's time to explore how Racket
-evaluates expressions!
+Do you remember Racket-1/Scheme-1 in Lesson 6? Now it's time to explore how Racket and Scheme
+evaluate expressions!
 
 You can download the code for this lesson by typing the following into your terminal:
 
-		cp ~cs61as/lib/mceval.rkt .
+		cp ~cs61as/lib/mceval.scm .
 
-The code is also online [here](http://inst.eecs.berkeley.edu/~cs61as/library/mceval.rkt)
+The code is also online [here](http://inst.eecs.berkeley.edu/~cs61as/library/mceval.scm)
 
 ## Prerequisites and What to Expect
 
-A good understanding of how Racket-1 works will be helpful in this chapter. You should
+A good understanding of how Racket-1/Scheme-1 works will be helpful in this chapter. You should
 also be comfortable with the environment model of evaluation from Lesson 8.
 The material covered in this lesson will be quite different from the other
 material covered so far, so be prepared! 
@@ -27,9 +27,9 @@ These are the relevant readings for this lesson:
 ## What Is An Evaluator?
 
 So far, we have learned how to write procedures that output what we want. Once we
-define those procedures and type them in the Racket prompt, we get the value.
+define those procedures and type them in the Scheme prompt, we get the value.
 But have you wondered how those procedures actually get evaluated and work in
-Racket? How does Racket know what the expression means? This is what an **evaluator** does.
+Scheme? How does Scheme know what the expression means? This is what an **evaluator** does.
 
 An **evaluator** (or **interpreter**) for a programming language is a
 procedure that, when applied to an expression of the language, performs the
@@ -45,19 +45,24 @@ Yes, it is. The evaluator is just another program!
 apply.gif)
 
   
-Our evaluator for Racket will be implemented as a Racket program. It may seem
-circular to think about evaluating Racket programs using an evaluator that is
-itself implemented in Racket. However, evaluation is a process, so it is
-appropriate to describe the evaluation process using Racket, which, after all,
+Our evaluator for Scheme will be implemented as a Scheme program. It may seem
+circular to think about evaluating Scheme programs using an evaluator that is
+itself implemented in Scheme. However, evaluation is a process, so it is
+appropriate to describe the evaluation process using Scheme, which, after all,
 is our tool for describing processes. An evaluator that is written in the same
 language that it evaluates is said to be metacircular.
 
-The metacircular evaluator is essentially a Racket formulation of the
+The metacircular evaluator is essentially a Scheme formulation of the
 environment model of evaluation described in Lesson 8. Recall that the model
 has two basic parts:
 
-    * To evaluate a combination (a compound expression other than a special form), evaluate the subexpressions and then apply the value of the operator subexpression to the values of the operand subexpressions.
-    * To apply a compound procedure to a set of arguments, evaluate the body of the procedure in a new environment. To construct this environment, extend the environment part of the procedure object by a frame in which the formal parameters of the procedure are bound to the arguments to which the procedure is applied.
+* To evaluate a combination (a compound expression other than a special form), 
+evaluate the subexpressions and then apply the value of the operator 
+subexpression to the values of the operand subexpressions.
+* To apply a compound procedure to a set of arguments, evaluate the body of 
+the procedure in a new environment. To construct this environment, extend the 
+environment part of the procedure object by a frame in which the formal parameters 
+of the procedure are bound to the arguments to which the procedure is applied.
 
 These two rules describe the essence of the evaluation process, a basic cycle
 in which expressions to be evaluated in environments are reduced to procedures
@@ -90,5 +95,5 @@ In this subsection, you learned:
 
 ## What's Next?
 
-Now it's time to understand how Racket actually works! Exciting! 
+Now it's time to understand how Scheme actually works! Exciting! 
 

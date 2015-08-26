@@ -20,9 +20,9 @@ is implemented just yet, it'll probably be explained in a later section.
             (else (error "bad expr: " exp))))
     
 
-Does this code look familar to you? It should; it's part of the Racket-1
+Does this code look familar to you? It should; it's part of the Racket-1/Scheme-1
 interpreter you learned in Lesson 6! If you look at line 3, you can see that
-`eval-1` is using Racket's `eval` procedure. You didn't really have to worry
+`eval-1` is using Scheme's `eval` procedure. You didn't really have to worry
 too much about the details in Lesson 6, because Scheme's `eval` procedure
 handled all the details. But then how is `eval` defined?
 
@@ -76,9 +76,16 @@ each operand and returns a list of the corresponding values:
             (list-of-values (rest-operands exps) env))))
     
 **Left to Right? Right to Left?**
-Notice that we cannot tell whether the metacircular evaluator evaluates operands from left to right or from right to left. Its evaluation order is inherited from the underlying Racket: If the arguments to `cons` in `list-of-values` are evaluated from left to right, then `list-of-values` will evaluate operands from left to right; and if the arguments to `cons` are evaluated from right to left, then `list-of-values` will evaluate operands from right to left.
+Notice that we cannot tell whether the metacircular evaluator evaluates operands from 
+left to right or from right to left. Its evaluation order is inherited from the underlying 
+Scheme: If the arguments to `cons` in `list-of-values` are evaluated from left to right, 
+then `list-of-values` will evaluate operands from left to right; and if the arguments to
+`cons` are evaluated from right to left, then `list-of-values` will evaluate operands from
+right to left.
 
-Write a version of `list-of-values` that evaluates operands from left to right regardless of the order of evaluation in the underlying Racket. Also write a version of `list-of-values` that evaluates operands from right to left.
+Write a version of `list-of-values` that evaluates operands from left to right regardless 
+of the order of evaluation in the underlying Scheme. Also write a version of `list-of-values` 
+that evaluates operands from right to left.
 
 <div class="mc">
 <ans text="I tried writing list-of-values both ways" explanation="Nice! How would you test your code?" correct></ans>
@@ -119,7 +126,7 @@ world!"`).
 
   * For quoted expressions, `mc-eval` returns the expression that was quoted.
 
-Recall that the Racket parser automatically transforms the expression `'(text of quotation)` into
+Recall that the Scheme parser automatically transforms the expression `'(text of quotation)` into
 the expression `(quote text of quotation)`.
 
 Quotations have the form `(quote <text-of-quotation>)`:
@@ -214,7 +221,7 @@ evaluated in the language being implemented and thus yields a value in that
 language. The interpreter predicate `true?` translates that value into a value
 that can be tested by the if in the implementation language: The metacircular
 representation of truth might not be the same as that of the underlying
-Racket.
+Scheme.
 
 `true?` and `false?` are define as following:
 
@@ -431,11 +438,11 @@ Which of the following use mc-eval in their definition? Multiple answers may be 
 
 ## Takeaways
 
-In this subsection, you learned how Racket evaluates the expressions using
+In this subsection, you learned how Scheme evaluates the expressions using
 `mc-eval` and other procedures.
 
 ## What's Next?
 
-Go to the next subsection and learn how Racket applies the evaluated
+Go to the next subsection and learn how Scheme applies the evaluated
 expressions!
 

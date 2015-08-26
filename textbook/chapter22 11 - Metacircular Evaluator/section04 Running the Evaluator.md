@@ -1,12 +1,12 @@
 ## Running the Evaluator
 
-Let's look at how Racket runs the evaluator. So far, we learned how the Racket
+Let's look at how Scheme runs the evaluator. So far, we learned how the Scheme
 expressions are evaluated using `mc-eval` and `mc-apply`. Then how is the evaluator
 program running?
 
 What our evaluator program does is to reduce all the expressions to the
 application of primitive procedures.  So all we need to run the evaluator is
-to create a mechanism that uses the underlying Racket system for the application
+to create a mechanism that uses the underlying Scheme system for the application
 of primitive procedures.
 
 There must be a binding for each primitive procedure name, so that when `mc-eval`
@@ -14,7 +14,7 @@ evaluates the operator of an application of a primitive, it will find an
 object to pass to `mc-apply`. We thus set up a global environment that associates
 unique objects with the names of the primitive procedures that can appear in
 the expressions we will be evaluating (for example, we'll bind `+` to the
-underlying Racket procedure with the same name). The global environment also includes
+underlying Scheme procedure with the same name). The global environment also includes
 bindings for the symbols `true` and `false`, so that they can be used as
 variables in expressions to be evaluated.
 
@@ -31,7 +31,7 @@ variables in expressions to be evaluated.
     
 
 For convenience in running the metacircular evaluator, we provide a **driver
-loop** that models the read-eval-print loop (or REPL) of the underlying Racket system. It
+loop** that models the read-eval-print loop (or REPL) of the underlying Scheme system. It
 prints a **prompt**, reads an input expression, evaluates this expression in
 the global environment, and prints the result. We precede each printed result
 by an **output prompt** so as to distinguish the value of the expression from
@@ -87,17 +87,17 @@ environment and start the driver loop. Here is a sample interaction:
     ;;; M-Eval value:
     (a b c d e f)
 
-_Wait, I still don't get it. How can we evaluate Racket code with an evaluator
-that is written in Racket?_
+_Wait, I still don't get it. How can we evaluate Scheme code with an evaluator
+that is written in Scheme?_
 
-It's because Racket is powerful enough to handle a program as data, and to let
+It's because Scheme is powerful enough to handle a program as data, and to let
 us construct data structures that are both hierarchical and circular. I have
 an analogy for you in the next section.
 
 ## Data as Programs
 
-To understand interpreting Racket expression with the interpreter written in
-Racket, think of a program as a description of an abstract machine. For
+To understand interpreting Scheme expression with the interpreter written in
+Scheme, think of a program as a description of an abstract machine. For
 example, you can think of the program to compute factorials:
 
     

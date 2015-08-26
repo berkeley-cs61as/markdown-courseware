@@ -63,14 +63,14 @@ environments using the constructor `make-procedure`:
 ## Primitive Procedures
 
 At this point, you may wonder how primitive
-procedures are represented in Racket. There is actually no right way to
+procedures are represented in Scheme. There is actually no right way to
 represent the primitive procedures, as long as `apply` can identify and apply
 them by using the procedures `primitive-procedure?` and `apply-primitive-
 procedure`.
 
-People who created Racket decided to represent a primitive procedure as a tagged list
+People who created Scheme decided to represent a primitive procedure as a tagged list
 that begins with the symbol `primitive` and contains a procedure in the
-underlying Racket that implements that primitive.
+underlying Scheme that implements that primitive.
 
     
     (define (primitive-procedure? proc)
@@ -96,7 +96,7 @@ underlying Racket that implements that primitive.
     
 
 To apply a primitive procedure, we simply apply the implementation procedure
-to the arguments, using the underlying Racket system:
+to the arguments, using the underlying Scheme system:
 
     
     (define (apply-primitive-procedure proc args)
@@ -235,7 +235,7 @@ with each variable has already been determined by applying `mc-eval`, so we don'
 have to call `mc-eval` again!
 
 It's also important to notice the distinction between defining variables in the metacircular
-evaluator's environment and defining variables in underlying Racket. 
+evaluator's environment and defining variables in underlying Scheme. 
 
 ## Apply Revisited
 

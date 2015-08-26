@@ -21,11 +21,11 @@ You can copy the template for this homework by typing the following in your
 terminal:
 
     
-      cp ~cs61as/autograder/templates/hw11.rkt .
+      cp ~cs61as/autograder/templates/hw11.scm .
     
 
 Or, you can download it
-[here](http://inst.eecs.berkeley.edu/~cs61as/templates/hw11.rkt).
+[here](http://inst.eecs.berkeley.edu/~cs61as/templates/hw11.scm).
 
 ## Exercise 1.
 
