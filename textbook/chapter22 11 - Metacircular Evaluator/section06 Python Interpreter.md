@@ -1,7 +1,7 @@
 ## Introduction to Python
 
 We are going to learn about Python, the language that CS61A uses. Your friends
-in CS61A are writing a Scheme interpreter in Python (Scheme is a language very similar to Scheme).
+in CS61A are writing a Scheme interpreter in Python.
 Here in CS61AS, you are going to write a Python Interpreter written in Scheme for your last project.
 
 ## Opening Python
