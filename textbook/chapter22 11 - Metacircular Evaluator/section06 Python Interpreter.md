@@ -1,13 +1,13 @@
 ## Introduction to Python
 
 We are going to learn about Python, the language that CS61A uses. Your friends
-in CS61A are writing a Scheme interpreter in Python. Here in CS61AS, you are
-going to write a Python Interpreter written in Scheme for your last project.
+in CS61A are writing a Scheme interpreter in Python.
+Here in CS61AS, you are going to write a Python Interpreter written in Scheme for your last project.
 
 ## Opening Python
 
 To open Python, go to the terminal and type "python". The ">>>" prompt will
-show up which is the equivalent of STk's "STk >".
+show up which is the equivalent of Scheme's "->".
 
 As you will learn, spaces in Python are really important. Spaces for python
 are Parentheses for Scheme.
@@ -27,7 +27,7 @@ How would you ask Python to print "Hello World"? Well,
          Hello World
     
 
-and that's it! (Yeah, srsly.) As you may have noticed from that simple
+and that's it! (Yeah, seriously). As you may have noticed from that simple
 example, Python does not need left parentheses to call functions; you do not
 need to precede 'print' with a left parenthesis. Python is case-sensitive, so
 "PRINT" would not work. Another key difference is that Python only supports
@@ -365,7 +365,8 @@ the predicate evaluates to False.
 #### for
 
 A "for" loop takes in a list (or any kind of sequence) and runs through the
-body with each element of the sequence.
+body with each element of the sequence. This is similar to the loops you learned
+about in Lesson 9.
 
     
     

@@ -1,34 +1,40 @@
-## apply
 
-`Apply` takes two arguments, a procedure and a list of arguments to which the
+
+## Apply
+
+The procedure `apply` takes two arguments: a procedure and a list of arguments to which the
 procedure should be applied. `Apply` classifies procedures into two kinds: It
 calls `apply-primitive-procedure` to apply primitives; it applies compound
 procedures by sequentially evaluating the expressions that make up the body of
-the procedure. The environment for the evaluation of the body of a compound
-procedure is constructed by extending the base environment carried by the
-procedure to include a frame that binds the parameters of the procedure to the
-arguments to which the procedure is to be applied. Here is the definition of
-`apply`:
+the procedure. To create the environment in which we'll evaluate the body of the compound procedure,
+we'll extend the base environment of the procedure to include a frame that binds the parameters of
+the procedure to the arguments to which the procedure is to be applied.
+
+ Here is the definition of `apply`:
 
     
-    (define (apply procedure arguments)
+    (define (mc-apply procedure arguments)
       (cond ((primitive-procedure? procedure)
-             (apply-primitive-procedure procedure arguments))
+                (apply-primitive-procedure procedure arguments))
             ((compound-procedure? procedure)
-             (eval-sequence
-               (procedure-body procedure)
-               (extend-environment
-                 (procedure-parameters procedure)
-                 arguments
-                 (procedure-environment procedure))))
+                (eval-sequence
+                  (procedure-body procedure)
+                  (extend-environment
+                    (procedure-parameters procedure)
+                    arguments
+                    (procedure-environment procedure))))
             (else
-             (error
-              "Unknown procedure type -- APPLY" procedure))))
+              (error
+                "Unknown procedure type -- APPLY" procedure))))
     
 
 We will go through the procedures used in the definition, one-by-one.
 
-## represent procedures
+## Representing Procedures
+
+In our metacircular evaluator, procedures are represented by tagged lists. Primitive 
+procedures have the tag `primitive`, and compound procedures have the tag `procedure`. If
+we want to see what type of a procedure something is, we just have to check its tag.
 
 To handle primitives, we assume that we have available the following
 procedures:
@@ -39,6 +45,7 @@ applies the given primitive procedure to the argument values in the list
 
   * `(primitive-procedure? proc)`  
 tests whether `proc` is a primitive procedure.
+
 
 Compound procedures are constructed from parameters, procedure bodies, and
 environments using the constructor `make-procedure`:
@@ -53,17 +60,17 @@ environments using the constructor `make-procedure`:
     (define (procedure-environment p) (cadddr p))
     
 
-## primitive procedures
+## Primitive Procedures
 
-At this point, or maybe for a long time, you may wonder how primitive
+At this point, you may wonder how primitive
 procedures are represented in Scheme. There is actually no right way to
 represent the primitive procedures, as long as `apply` can identify and apply
 them by using the procedures `primitive-procedure?` and `apply-primitive-
 procedure`.
 
-People who created Scheme decided to represent a primitive procedure as a list
-which begins with the symbol `primitive` and contains a procedure in the
-underlying Lisp that implements that primitive.
+People who created Scheme decided to represent a primitive procedure as a tagged list
+that begins with the symbol `primitive` and contains a procedure in the
+underlying Scheme that implements that primitive.
 
     
     (define (primitive-procedure? proc)
@@ -89,7 +96,7 @@ underlying Lisp that implements that primitive.
     
 
 To apply a primitive procedure, we simply apply the implementation procedure
-to the arguments, using the underlying Lisp system:
+to the arguments, using the underlying Scheme system:
 
     
     (define (apply-primitive-procedure proc args)
@@ -97,9 +104,9 @@ to the arguments, using the underlying Lisp system:
        (primitive-implementation proc) args))
     
 
-## operations on environments
+## Operations on Environments
 
-For sure, the evaluator needs operations for manipulating environments. What
+In order to evaluate compound procedures, the evaluator needs operations for manipulating environments. What
 is an environment again? It is a sequence of frames, where each frame is a
 table of bindings that associate variables with their corresponding values. We
 use the following operations for manipulating environments:
@@ -132,17 +139,17 @@ empty environment is simply the empty list.
     (define the-empty-environment '())
     
 
-Each frame of an environment is represented as a pair of lists: a list of the
+Each frame of an environment is represented as a mutable pair of mutable lists: a list of the
 variables bound in that frame and a list of the associated values.
 
     
     (define (make-frame variables values)
-      (cons variables values))
-    (define (frame-variables frame) (car frame))
-    (define (frame-values frame) (cdr frame))
+      (mcons variables values))
+    (define (frame-variables frame) (mcar frame))
+    (define (frame-values frame) (mcdr frame))
     (define (add-binding-to-frame! var val frame)
-      (set-car! frame (cons var (car frame)))
-      (set-cdr! frame (cons val (cdr frame))))
+      (set-mcar! frame (mcons var (mcar frame)))
+      (set-mcdr! frame (mcons val (mcdr frame))))
     
 
 To extend an environment by a new frame that associates variables with values,
@@ -150,12 +157,15 @@ we make a frame consisting of the list of variables and the list of values,
 and we adjoin this to the environment. We signal an error if the number of
 variables does not match the number of values.
 
-    
+Notice that since our variables and values must both be mutable lists, we
+first have to convert non-mutable lists to their mutable equivalent.
     
     (define (extend-environment vars vals base-env)
-      (if (= (length vars) (length vals))
+      (if (not (mlist? vars)) (set! vars (list->mlist vars)) 'ok)
+      (if (not (mlist? vals)) (set! vals (list->mlist vals)) 'ok)
+      (if (= (mlength vars) (mlength vals))
           (cons (make-frame vars vals) base-env)
-          (if (< (length vars) (length vals))
+          (if (< (mlength vars) (mlength vals))
               (error "Too many arguments supplied" vars vals)
               (error "Too few arguments supplied" vars vals))))
     
@@ -169,17 +179,17 @@ environment, we signal an "unbound variable" error.
     
     (define (lookup-variable-value var env)
       (define (env-loop env)
-        (define (scan vars vals)
-          (cond ((null? vars)
-                 (env-loop (enclosing-environment env)))
-                ((eq? var (car vars))
-                 (car vals))
-                (else (scan (cdr vars) (cdr vals)))))
-        (if (eq? env the-empty-environment)
-            (error "Unbound variable" var)
-            (let ((frame (first-frame env)))
-              (scan (frame-variables frame)
-                    (frame-values frame)))))
+      (define (scan vars vals)
+        (cond ((null? vars)
+              (env-loop (enclosing-environment env)))
+              ((eq? var (mcar vars))
+                (mcar vals))
+              (else (scan (mcdr vars) (mcdr vals)))))
+      (if (eq? env the-empty-environment)
+          (error "Unbound variable" var)
+          (let ((frame (first-frame env)))
+            (scan (frame-variables frame)
+                  (frame-values frame)))))
       (env-loop env))
     
 
@@ -190,22 +200,22 @@ value when we find it.
     
     (define (set-variable-value! var val env)
       (define (env-loop env)
-        (define (scan vars vals)
-          (cond ((null? vars)
-                 (env-loop (enclosing-environment env)))
-                ((eq? var (car vars))
-                 (set-car! vals val))
-                (else (scan (cdr vars) (cdr vals)))))
-        (if (eq? env the-empty-environment)
-            (error "Unbound variable -- SET!" var)
-            (let ((frame (first-frame env)))
-              (scan (frame-variables frame)
-                    (frame-values frame)))))
+      (define (scan vars vals)
+        (cond ((null? vars)
+                (env-loop (enclosing-environment env)))
+              ((eq? var (mcar vars))
+                (set-mcar! vals val))
+              (else (scan (mcdr vars) (mcdr vals)))))
+      (if (eq? env the-empty-environment)
+          (error "Unbound variable -- SET!" var)
+          (let ((frame (first-frame env)))
+            (scan (frame-variables frame)
+                  (frame-values frame)))))
       (env-loop env))
     
 
 To define a variable, we search the first frame for a binding for the
-variable, and change the binding if it exists (just as in `set-va``riable-
+variable, and change the binding if it exists (just as in `set-variable-
 value!`). If no such binding exists, we adjoin one to the first frame.
 
     
@@ -213,14 +223,21 @@ value!`). If no such binding exists, we adjoin one to the first frame.
       (let ((frame (first-frame env)))
         (define (scan vars vals)
           (cond ((null? vars)
-                 (add-binding-to-frame! var val frame))
-                ((eq? var (car vars))
-                 (set-car! vals val))
-                (else (scan (cdr vars) (cdr vals)))))
+                  (add-binding-to-frame! var val frame))
+                ((eq? var (mcar vars))
+                  (set-mcar! vals val))
+                (else (scan (mcdr vars) (mcdr vals)))))
         (scan (frame-variables frame)
-              (frame-values frame))))
+          (frame-values frame))))
 
-## apply revisited
+**Important:** Notice that when we are defining variables, the value associated
+with each variable has already been determined by applying `mc-eval`, so we don't
+have to call `mc-eval` again!
+
+It's also important to notice the distinction between defining variables in the metacircular
+evaluator's environment and defining variables in underlying Scheme. 
+
+## Apply Revisited
 
 Let's look at the definition of `apply` again. Does it make sense this time?
 
@@ -239,7 +256,17 @@ Let's look at the definition of `apply` again. Does it make sense this time?
              (error
               "Unknown procedure type -- APPLY" procedure))))
 
-## takeaways
+<div class="mc">
+Which of the following use mc-apply? Multiple answers may be correct, so check each answer individually.
+
+<ans text="apply" explanation="Correct!" correct></ans>
+<ans text="apply-primitive-procedure" explanation="Incorrect!"></ans>
+<ans text="eval-sequence" explanation="Incorrect!"></ans>
+<ans text="extend-environment" explanation="Incorrect!"></ans>
+<!-- and so on -->
+</div>
+
+## Takeaways
 
 In this subsection, you learned the following:
 
@@ -247,7 +274,7 @@ In this subsection, you learned the following:
   2. How primitive procedures are defined and applied
   3. How the operations on environments are defined
 
-## what's next?
+## What's Next?
 
 We are going to learn how the evaluator runs as a program.
 
