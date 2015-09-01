@@ -1,7 +1,5 @@
 ## Functional Programming
 
-> "Did you mean: [recursion](https://www.google.com/search?q=recursion)"
-
 In this lesson, we will dive into functional programming and recursion. A recursive procedure solves a large problem by making it a little bit smaller somehow and then calling itself. When it calls itself, it makes the problem smaller yet again. This continues until the problem is small enough to be trivially solved.
 
 Recursion can be hard to get used to if you
@@ -44,9 +42,10 @@ It's the same thing in computer science! A function is defined as a
 dependent on the inputs--that is, when given a certain input(s) to a function,
 it returns the same output every time.
 
-`(define (square x)`
-
-`(* x x))`
+```
+(define (square x)
+  (* x x))
+```
 
 is a function because whenever we put in an input, we always get that input
 times itself.
