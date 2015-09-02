@@ -69,9 +69,11 @@ In the body of the lambda, we replace every occurence of `x` with `1`. We replac
     7
 
 Now, we can rewrite `sum-doubles` as:
-    
+
     (define (sum-doubles a b)
-      (+ ((lambda (x) (* 2 x)) a) (sum-doubles (+ a 1) b))) 
+        (if (> a b)
+            0
+            (+ ((lambda (x) (* 2 x)) a) (sum-doubles (+ a 1) b))))
 
 **Note:** The value returned by creating a `lambda` is a procedure, just as much as one made with a call to `define`.
 
