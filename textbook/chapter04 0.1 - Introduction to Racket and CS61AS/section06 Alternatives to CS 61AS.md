@@ -23,4 +23,4 @@ Find out more about CS 10 here: [http://inst.eecs.berkeley.edu/~cs10/](http://in
 
 ## So What's the Difference?
 
-Each class has something different to offer. To see an organized comparison of CS 10, CS 61A, and CS 61AS, take a look at [this document](https://docs.google.com/a/berkeley.edu/document/d/1zAfHaEi1aABIfJwVOFMYgnYMbNlp9-ebSJ81LI2CJaI/edit?usp=sharing).
+Each class has something different to offer. To see an organized comparison of CS 10, CS 61A, and CS 61AS, take a look at [this document](https://docs.google.com/document/d/1htUkJJHXnXnDVMLq4avHsCbIAWFfki_hxuLumtYz6Os/edit?usp=sharing).
