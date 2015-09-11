@@ -142,6 +142,8 @@ Write and test the `make-tester` procedure. Given a word `w` as its argument,
 
 ## Exercise 8
 
+For the problems below, you will need to refer to [SICP 1.3](https://mitpress.mit.edu/sicp/full-text/book/book-Z-H-12.html).
+
 ### SICP 1.31a
 
 The `sum` procedure is only the simplest of a vast number of similar abstractions that can be captured as higher-order procedures. Write an analogous procedure called `product` that returns the product of the values of a function at points over a given range. Show how to define `factorial` in terms of `product`. Also use `product` to compute approximations to pi using the formula
