@@ -151,6 +151,7 @@ Complete SICP exercises [1.31a](http://mitpress.mit.edu/sicp/full-text/book/book
 For some of these problems, you will need to read parts of the SICP text.
 
 Some additional guidelines:
+
 * For 1.31a, you should base your `product` function off of the `sum` function earlier in the text. It should take four arguments (`term`, `a`, `next`, and `b`). Find the `sum` function and figure out what each of these arguments does.
 * For 1.31a, the function to estimate pi should be called `estimate-pi` (see template). It should take in no arguments, and it should estimate pi using at least 100 terms of the formula given.
 * For 1.33, the predicate should be the last argument to `filtered-accumulate` (see template).
