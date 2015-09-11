@@ -142,66 +142,21 @@ Write and test the `make-tester` procedure. Given a word `w` as its argument,
 
 ## Exercise 8
 
-For the problems below, you will need to refer to [SICP 1.3](https://mitpress.mit.edu/sicp/full-text/book/book-Z-H-12.html).
+Complete SICP exercises [1.31a](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-12.html#%25_thm_1.31),
+[1.32a](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-12.html#%25_thm_1.32),
+[1.33](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-12.html#%25_thm_1.33),
+[1.40](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-12.html#%25_thm_1.40),
+[1.41](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-12.html#%25_thm_1.41), and
+[1.43](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-12.html#%25_thm_1.43).
+For some of these problems, you will need to read parts of the SICP text.
 
-### SICP 1.31a
-
-The `sum` procedure is only the simplest of a vast number of similar abstractions that can be captured as higher-order procedures. Write an analogous procedure called `product` that returns the product of the values of a function at points over a given range. Show how to define `factorial` in terms of `product`. Also use `product` to compute approximations to pi using the formula
-
-![](https://mitpress.mit.edu/sicp/full-text/book/ch1-Z-G-30.gif)
-
-**Notes:**
-
-  * You should base your `product` function off of the `sum` function earlier in the text. It should take 4 arguments: `term`, `a`, `next`, and `b`. Find the `sum` function and figure out what each of these arguments do.
-  * The function to estimate pi should be called `estimate-pi`. It should take in no arguments, and should estimate pi using at least 100 terms of the formula given in SICP.
-
-### SICP 1.32a
-
-Show that `sum` and `product` (Exercise 1.31) are both special cases of a still more general notion called `accumulate` that combines a collection of terms, using some general accumulation function:
-
-    (accumulate combiner null-value term a next b)
-
-`accumulate` takes as arguments the same term and range specifications as `sum` and `product`, together with a `combiner` procedure (of two arguments) that specifies how the current term is to be combined with the accumulation of the preceding terms and a `null-value` that specifies what base value to use when the terms run out. Write `accumulate` and show how `sum` and `product` can both be defined as simple calls to `accumulate`.
-
-### SICP 1.33
-
-You can obtain an even more general version of `accumulate` (Exercise 1.32) by introducing the notion of a _filter_ on the terms to be combined. That is, combine only those terms derived from values in the range that satisfy a specified condition. The resulting `filtered-accumulate` abstraction takes the same arguments as `accumulate`, together with an additional predicate of one argument that specifies the filter. Write `filtered-accumulate` as a procedure. Show how to express the following using `filtered-accumulate`:
-
-**a.** the sum of the squares of the prime numbers in the interval `a` to `b` (assuming that you have a `prime?` predicate already written)
-
-**b.** the product of all the positive integers less than `n` that are relatively prime to `n` (i.e., all positive integers _i < n_ such that _GCD(i,n) = 1_).
-
-**Notes:**
-
-  * The predicate should be the last argument to `filtered-accumulate`.
-  * You should define functions `sum-sq-prime` and `prod-of-some-numbers`.
-
-### SICP 1.40
-
-Define a procedure `cubic` that can be used together with the `newtons-method` procedure in expressions of the form
-
-    (newtons-method (cubic a b c) 1)
-
-to approximate zeros of the cubic _x<sup>3</sup> + ax<sup>2</sup> + bx + c_.
-
-### SICP 1.41
-
-Define a procedure `double` that takes a procedure of one argument as argument and returns a procedure that applies the original procedure twice. For example, if `inc` is a procedure that adds `1` to its argument, then `(double inc)` should be a procedure that adds `2`. What value is returned by the following expression?
-
-    (((double (double double)) inc) 5)
-
-### SICP 1.43
-
-If _f_ is a numerical function and _n_ is a positive integer, then we can form the _n_th repeated application of _f_, which is defined to be the function whose value at _x_ is _f(f(...(f(x))...))_. For example, if _f_ is the function _x -> x + 1_, then the _n_th repeated application of _f_ is the function _x -> x + n_. If _f_ is the operation of squaring a number, then the _n_th repeated application of _f_ is the function that raises its argument to the _2<sup>n</sup>_th power. Write a procedure that takes as inputs a procedure that computes _f_ and a positive integer _n_ and returns the procedure that computes the _n_th repeated application of _f_. Your procedure should be able to be used as follows:
-
-    -> ((repeated square 2) 5)
-    625
-
-### SICP 1.46
-
-Several of the numerical methods described in this chapter are instances of an extremely general computational strategy known as _iterative improvement_. Iterative improvement says that, to compute something, we start with an initial guess for the answer, test if the guess is good enough, and otherwise improve the guess and continue the process using the improved guess as the new guess.
-
-Write a procedure `iterative-improve` that takes two procedures as arguments: a method for telling whether a guess is good enough and a method for improving a guess. `iterative-improve` should return as its value a procedure that takes a guess as argument and keeps improving the guess until it is good enough. Rewrite the `sqrt` procedure of section [1.1.7](https://mitpress.mit.edu/sicp/full-text/book/book-Z-H-10.html#%_sec_1.1.7) and the `fixed-point` procedure of section [1.3.3](https://mitpress.mit.edu/sicp/full-text/book/book-Z-H-12.html#%_sec_1.3.3) in terms of `iterative-improve`.
+Some additional guidelines:
+* For 1.31a, you should base your `product` function off of the `sum` function earlier in the text. It should take four arguments (`term`, `a`, `next`, and `b`). Find the `sum` function and figure out what each of these arguments does.
+* For 1.31a, the function to estimate pi should be called `estimate-pi` (see template). It should take in no arguments, and it should estimate pi using at least 100 terms of the formula given.
+* For 1.33, the predicate should be the last argument to `filtered-accumulate` (see template).
+* For 1.33, you should define functions `sum-sq-prime` and `prod-of-some-numbers` (see template).
+* For 1.40, read the section above it on Newton's method. Don't worry if you don't quite get it though&mdash;you should still be able to complete `cubic`.
+* For 1.43, name your procedure `my-repeated` instead of `repeated` (see template).
 
 ## Exercise 9
 
