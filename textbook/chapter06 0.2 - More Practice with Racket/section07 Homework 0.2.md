@@ -116,6 +116,22 @@ Write a procedure `describe-time` that takes a number of seconds as its argument
 '(15.5 minutes)
 ```
 
+### Note
+
+You may notice that Racket handles integer division a little strangely:
+
+```
+-> (/ 1 2)
+1/2
+```
+
+You can force Racket to return numbers with decimal points (AKA *floating-point numbers*) by using decimal points in one or more of your arguments:
+
+```
+-> (/ 1.0 2)
+0.5
+```
+
 ## Exercise 8
   
 The following program doesn't work. Why not? Fix it and explain why.
