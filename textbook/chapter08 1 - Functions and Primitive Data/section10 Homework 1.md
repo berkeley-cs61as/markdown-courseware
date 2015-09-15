@@ -159,8 +159,86 @@ Why might it be advantageous for an interpreter to treat `or`
 as a special form and evaluate its arguments one at a time? Can you think of
 reasons why it might be advantageous to treat `or` as an ordinary function?
 
-## Submit Your Homework!
+## Submitting Your Homework
 
-For instructions, see [this guide](../submit.html). It covers basic terminal commands and assignment submission.
+**If you are having trouble submitting, ask a question on Piazza or contact a TA.**
 
-If you have any trouble submitting, do not hesitate to ask a TA!
+**Before submitting:** Make sure your file loads in Racket.
+You can verify this by typing into Racket: `(enter! "hw1.rkt")`, where "hw1.rkt" is the name of your homework file.
+You will not receive credit for homework that does not load in Racket.
+
+To submit your assignment, you need to be logged in on any of the lab
+computers. If you want to submit from home, you must connect remotely to the
+lab computers. More on that later.
+
+Now, click on the "Terminal" icon on the left. Terminal is a terminal
+emulator, a method of interacting directly to the computer via text commands.
+It's sort of an "interpreter" for your entire computer. You can do useful
+things with xterm like navigate and manipulate the filesystem (think Windows
+Explorer), submit homework (what we're doing now), and start the Racket
+interpreter (via `racket`)!
+
+Let's submit an assignment. This requires the following steps:
+
+  1. Making a folder for an assignment (optional, but strongly recommended, as we'll see)
+  2. Doing the assignment in that folder (or moving the files to that folder if you've already completed the assignment)
+  3. Running the `submit` command
+  4. Checking if the assignment was correctly submitted
+
+We're going to submit an assignment called "units", which will tell the staff
+how many units you're doing.
+
+### Making a Folder
+
+In the terminal, type:
+
+```
+mkdir units
+```
+
+This tells the computer to make a directory (folder) named `units`. You can
+double check that it exists (and also see what else is in this current
+directory) by running `ls`.
+
+Now we need to navigate to that folder, so we'll do:
+
+```
+cd units
+```
+
+### Finishing the Assignment
+
+In order to complete this assignment, you must create a file named `units`
+(inside the directory named `units`). In that file, write which units you're planning
+on doing. For example, if you were to do units 0, 1, 2, and 3, you'd put
+
+```
+0 1 2 3
+```
+
+Please **do not** include any additional spaces or blank lines!
+
+### Submitting
+
+After you've created the file, you can submit the assignment by doing
+
+```
+submit units
+```
+
+This tells the computer that you want to submit the assignment "units".
+Follow any instructions that appear.
+
+### Checking Your Submission
+
+The following command allows you to look at the times in which you've
+submitted:
+
+```
+glookup -t
+```
+
+That's all for now. You might be interested in connecting from home in order
+to work on all of this. Details about that are under the Resources link on the
+top!
+

@@ -66,13 +66,13 @@ We get an error! Our code for `expt-rat` above assumes that we store the rationa
 
 ## Abstraction Barriers
 
-![](http://farm9.staticflickr.com/8505/8388536641_b8428f32fe_b.jpg)
+![A window into a lab with a warning tape that says "ABSTRACTION BARRIER DO NOT CROSS"](http://farm9.staticflickr.com/8505/8388536641_b8428f32fe_b.jpg)
 
 We defined the rational-number operations in terms of a constructor `make-rat` and selectors `numerator` and `denominator`. In general, the underlying idea of data abstraction is to identify for each type of data object a basic set of operations (e.g. the constructors and selectors) in terms of which all manipulations of data objects of that type will be expressed, and then to use only those operations in manipulating the data.
 
 We can envision the structure of the rational-number system as shown in the figure below. The horizontal lines represent abstraction barriers that isolate different "levels" of the system. At each level, the barrier separates the programs (above) that use the data abstraction from the programs (below) that implement the data abstraction. Programs that use rational numbers manipulate them solely in terms of the procedures supplied "for public use" by the rational-number package: `add-rat`, `sub-rat`, `mul-rat`, `div-rat`, and `equal-rat?`. These, in turn, are implemented solely in terms of the constructor and selectors `make-rat`, `numerator`, and `denominator`, which themselves are implemented in terms of pairs. The details of how pairs are implemented are irrelevant to the rest of the rational-number package so long as pairs can be manipulated by the use of `cons`, `car`, and `cdr`. In effect, procedures at each level are the interfaces that define the abstraction barriers and connect the different levels.
 
-![](http://mitpress.mit.edu/sicp/full-text/book/ch2-Z-G-6.gif)
+![Abstraction diagram for numbers](http://mitpress.mit.edu/sicp/full-text/book/ch2-Z-G-6.gif)
 
 This simple idea has many advantages. One advantage is that it makes programs much easier to maintain and to modify. Any complex data structure can be represented in a variety of ways with the primitive data structures provided by a programming language.
 

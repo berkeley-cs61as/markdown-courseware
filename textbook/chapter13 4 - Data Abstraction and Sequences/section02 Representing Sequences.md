@@ -80,7 +80,7 @@ We can also have the `cdr` of a pair point to _the empty list_, which is written
     -> (cons 1 '())
     (1)
 
-![](/static/04_list_1.png)
+![box-pointer](/static/04_list_1.png)
 
 Why is this useful? When would we ever want to store "nothing" into our pairs? Let's stay patient and look at the next example. Suppose we type this into the interpreter:
 
@@ -151,11 +151,11 @@ Here’s what calling append in the example above will look like with box and po
 
 We start with two lists, `(1 2 3)` and `(4 5 6)`:
 
-![](/static/04_append1.png)
+![box-pointer](/static/04_append1.png)
 
 Then, we remove the null pointer at the end of the first list and point it to the beginning of the second list:
 
-![](/static/04_append2.png)
+![box-pointer](/static/04_append2.png)
 
 ## Append: Under the Hood
 

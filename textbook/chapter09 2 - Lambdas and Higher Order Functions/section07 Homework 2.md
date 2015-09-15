@@ -3,7 +3,7 @@
 Type the following command at the terminal to copy the template file to the
 current directory (note the period at the end):
 
-    
+
     cp ~cs61as/autograder/templates/hw2.rkt .
 
 
@@ -15,7 +15,7 @@ If you are working on the lab computers, the `grader` command will run the autog
 
 ## Exercise 1
 
-  
+
 Write a procedure `substitute` that takes three arguments: a sentence, an old
 word, and a new word. It should return a copy of the sentence, but with every
 occurrence of the old word replaced by the new word.
@@ -27,7 +27,7 @@ occurrence of the old word replaced by the new word.
 
 ## Exercise 2
 
-  
+
 Type each of the following into Racket, and note the results. See if you can
 predict the results before letting Racket do the computation.
 
@@ -70,7 +70,7 @@ predict the results before letting Racket do the computation.
 
 ## Exercise 3
 
-  
+
 Consider a function `g` for which the expression
 
 `((g) 1) `
@@ -82,12 +82,13 @@ can the type of value returned by `g`.
 
 ## Exercise 4
 
-  
+
 For each of the following expressions, what must `f` be in order for the
 evaluation of the expression to succeed, without causing an error? For each
 expression, give a definition of `f` such that evaluating the expression will
 not cause an error, and say what the expression's value will be, given your
-definition.
+definition. To be clear, for number one, define `f1`, for number 2, define `f2`,
+etc.
 
   1. `f1`
   2. `(f2)`
@@ -110,7 +111,7 @@ Work these out before trying them on the computer.
 
 ## Exercise 6
 
-  
+
 Find the values of the following expressions where `t` is defined as in
 Exercise 5, and `s` is defined as follows:
 
@@ -125,7 +126,7 @@ Work these out before trying them on the computer
 
 ## Exercise 7
 
-  
+
 Write and test the `make-tester` procedure. Given a word `w` as its argument,
 `make-tester` returns a procedure of one argument `x` that returns `true` if
 `x` is equal to `w` and `false` otherwise.
@@ -161,7 +162,7 @@ Some additional guidelines:
 
 ## Exercise 9
 
-  
+
 Last week you wrote procedure `squares`, that squared each number in its
 argument sentence, and saw `pigl-sent`, that `pigl`ed each word in its argument
 sentence. Generalize this pattern to create a higher order procedure called
@@ -175,7 +176,7 @@ sentence. Generalize this pattern to create a higher order procedure called
 
 ## Exercise 10
 
-  
+
 Using the higher order functions, our simply-scheme library provides its own versions of the `every` function from the last exercise and the `keep` function shown in our lessons. Get familiar with these by working these examples out before trying them on the computer:
 
   1. `(every (lambda (letter) (word letter letter)) 'purple) `

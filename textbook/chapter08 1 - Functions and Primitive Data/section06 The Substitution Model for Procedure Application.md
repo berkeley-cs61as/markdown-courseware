@@ -69,7 +69,7 @@ for example, might cause an error:
 
 `(define (square x) (* apple apple))`
 
-![](http://foundersgrp.files.wordpress.com/2011/01/apple-cube.jpg)
+![cube apple](http://foundersgrp.files.wordpress.com/2011/01/apple-cube.jpg)
 
 When we use Substitution Model with  `(square 4)` with the definition above, you
 can notice that things are not properly defined. The procedure `square` accepts an argument,

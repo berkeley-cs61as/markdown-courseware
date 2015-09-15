@@ -10,7 +10,7 @@ As with lists and sentences, we can also store data in the Trees data
 structure. They are generally useful for providing hierarchy, ordering, and
 composition.
 
-![](/static/trees_hierarchy.png)
+![Tree diagram of the US. US is at the top, with California and Massechusetts underneath it. Underneath CA are San JOse and Berkeley. Underneath MA is Boston.](/static/trees_hierarchy.png)
 
 The name comes from the downwards branching structure, similar to real trees
 but upside down. A **node** is a point at the Tree. Each node contains a
@@ -80,7 +80,8 @@ assume that someone who designed the ADT would use a list. For example, if `mapl
 
 ## Abstraction Barrier
 
-![](http://www.alienspouse.com/.a/6a00d8345216fc69e201310f6497b3970c-300wi)
+![A real-life tree with a caution tape around it.](http://www.alienspouse.com/.a/
+6a00d8345216fc69e201310f6497b3970c-300wi)
 
 We cannot stress enough that you cannot make **any** assumptions on how a Tree ADT is implemented. When working on Trees, you can only use the constructors/selectors that are
 provided. Since forests are implemented as a list of Trees, you can use `car`
@@ -149,7 +150,7 @@ Notice that `treemap` calls `forest-map`, and `forest-map` calls `treemap`.
 The pattern of **A** calling **B** and **B** calling **A** is called **mutual
 recursion**.
 
-![LEAP OF FAITH](http://images.nationalgeographic.com/wpf/media-
+![Penguins making the LEAP OF FAITH into icy waters](http://images.nationalgeographic.com/wpf/media-
 live/photos/000/247/cache/gentoo-penguins-jumping-in-water_24700_600x450.jpg)
 
 ## `count-leaves`

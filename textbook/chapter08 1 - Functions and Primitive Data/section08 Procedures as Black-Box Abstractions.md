@@ -15,7 +15,7 @@ show it off to his friends by organizing those blocks in the largest possible
 square arrangement! So let's say that Charlie has 13 blocks of chocolate. Then
 the largest square arrangement is a 3x3 = 9 (shown left), with 4 leftovers.
 
-![](http://i.imgur.com/wo9ZcRW.png?1)
+![chocolate square](http://i.imgur.com/wo9ZcRW.png?1)
 
 
 Charlie wonders 'how big can the side of my square be given a certain amount
