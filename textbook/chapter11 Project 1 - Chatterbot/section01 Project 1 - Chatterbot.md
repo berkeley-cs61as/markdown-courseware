@@ -10,6 +10,8 @@ To get the skeleton code for this project, type in the terminal:
 cp -r ~cs61as/lib/chatterbot/ .
 ```
 
+You can also download the files individually [here](http://inst.eecs.berkeley.edu/~cs61as/library/chatterbot/).
+
 You should then have a directory called `chatterbot` with four files inside:
 
   * **readme.txt** contains instructions and questions for this project.
