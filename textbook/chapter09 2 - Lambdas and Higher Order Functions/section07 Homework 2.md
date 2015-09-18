@@ -157,7 +157,7 @@ Some additional guidelines:
 * For 1.31a, the function to estimate pi should be called `estimate-pi` (see template). It should take in no arguments, and it should estimate pi using at least 100 terms of the formula given.
 * For 1.33, the predicate should be the last argument to `filtered-accumulate` (see template).
 * For 1.33, you should define functions `sum-sq-prime` and `prod-of-some-numbers` (see template).
-* For 1.40, read the section above it on Newton's method. Don't worry if you don't quite get it though&mdash;you should still be able to complete `cubic`.
+* For 1.40, don't worry about learning Newton's method. Simply complete `cubic`, which takes in three arguments (`a`, `b`, and `c`) and returns another procedure. This procedure should take an input `x` and evaluate the cubic shown in the problem at `x`.
 * For 1.43, name your procedure `my-repeated` instead of `repeated` (see template).
 
 ## Exercise 9
