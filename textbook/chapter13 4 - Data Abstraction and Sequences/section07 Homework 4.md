@@ -29,7 +29,10 @@ Try and predict what the following expressions will return, then check your answ
 
 ## Exercise 1
 
-### SICP 2.7 
+The first few exercises refer to [SICP 2.1.4](https://mitpress.mit.edu/sicp/full-text/book/book-Z-H-14.html#%_sec_2.1.4).
+See the text for details about interval arithmetic.
+
+### SICP 2.7
 
 Alyssa's program is incomplete because she has not specified the implementation of the interval abstraction. Here is a definition of the interval constructor:
 
@@ -39,7 +42,7 @@ Define selectors `upper-bound` and `lower-bound` to complete the implementation.
 
 ### SICP 2.8
 
-Using reasoning analogous to Alyssa's, describe how the difference of two intervals may be computed. Define a corresponding subtraction procedure, called sub-interval.
+Using reasoning analogous to Alyssa's, describe how the difference of two intervals may be computed. Define a corresponding subtraction procedure, called `sub-interval`.
 
 ### SICP 2.10
 
