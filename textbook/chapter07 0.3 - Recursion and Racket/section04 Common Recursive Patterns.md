@@ -36,8 +36,9 @@ First, here is a procedure to select the three-letter words from a sentence:
     -> (define (keep-three-letter-words sent)
          (cond ((empty? sent) '())
                ((= (count (first sent)) 3)
-               (se (first sent) (keep-three-letter-words (bf sent))))
-               (else (keep-three-letter-words (bf sent)))))
+                 (se (first sent) (keep-three-letter-words (bf sent))))
+               (else
+                 (keep-three-letter-words (bf sent)))))
 
     -> (keep-three-letter-words '(one two three four five six seven))
     '(one two six)
@@ -47,8 +48,9 @@ Next, here is a procedure to select the vowels from a word:
     -> (define (keep-vowels wd)
          (cond ((empty? wd) "")
                ((vowel? (first wd))
-               (word (first wd) (keep-vowels (bf wd))))
-               (else (keep-vowels (bf wd)))))
+                 (word (first wd) (keep-vowels (bf wd))))
+               (else
+                 (keep-vowels (bf wd)))))
 
     -> (keep-vowels 'napoleon)
     'aoeo
