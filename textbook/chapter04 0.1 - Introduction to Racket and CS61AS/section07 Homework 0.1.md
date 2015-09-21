@@ -344,6 +344,25 @@ The following readings are recommended:
   * [Lecture Notes 1](http://inst.eecs.berkeley.edu/~cs61as/reader/notes.pdf)
   * [SICP 1.1](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-10.html#%25_sec_1.1)
 
+## Manual Testing
+
+Before running the autograder, you should test your code manually in the Racket interpreter.
+This is important because the autograder doesn't always test all possible cases.
+
+To load individual definitions into Racket, start the Racket interpreter from your terminal by typing
+
+```
+racket
+```
+
+then copy and paste definitions from your file into the interpreter.
+
+To load your entire file into Racket, use
+
+```
+racket -it hw0-1.rkt
+```
+
 ## Running the Autograder
 
 Before submitting any homework, there are two checks you need to make:
