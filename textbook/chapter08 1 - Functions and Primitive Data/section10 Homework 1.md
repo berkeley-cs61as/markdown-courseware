@@ -110,6 +110,8 @@ should be capitalized.)
 (switch '(you told me that I should wake you up))
 ```
 
+Hint: Consider writing a helper function that just handles the general case of the problem&mdash;that is, your helper shouldn't worry about the "except at the beginning of the sentence" part. Then write `switch` using that helper function and handle the special case in the body of `switch`.
+
 ## Exercise 6
 
 Write a predicate `ordered?` that takes a sentence of numbers as its argument
