@@ -98,7 +98,7 @@ text/book/book-Z-H-16.html#%25_thm_2.62)
 This will help: [SICP 2.3.3](http://mitpress.mit.edu/sicp/full-
 text/book/book-Z-H-16.html#%_sec_2.3.3)
 
-## Exercise 5.
+## Exercise 5
 
   
 The file `~cs61as/lib/bst.scm` contains the binary search tree procedures from
