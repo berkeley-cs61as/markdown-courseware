@@ -7,8 +7,13 @@ current directory (note the period at the end):
 Or you can download the template
 [here](http://inst.eecs.berkeley.edu/~cs61as/templates/hw6.rkt).
 
-## Exercise 0. 
-### Exercise 0 consists of problems from the lesson. Highly recommended to do. This is NOT for credit.
+## Autograder
+
+To run the autograder on your computer, download the test file [here](http://inst.eecs.berkeley.edu/~cs61as/autograder/tests/hw6-tests.rkt).
+Follow the instructions from previous lessons.
+
+## Exercise 0
+**Exercise 0 consists of problems from the lesson. Highly recommended to do. This is NOT for credit.**
   
 Load the racket-1 interpreter from the file
 
@@ -57,7 +62,7 @@ Explain the results.
 sure that as soon as a false value is computed, your and returns #f without
 evaluating any further arguments.
 
-## Exercise 1.
+## Exercise 1
   
 Complete the following:
 
@@ -71,22 +76,21 @@ Note: Some of these are thought-exercises; you needn't actually run any Scheme
 programs for them! (Some don't ask you to write procedures at all; others ask
 for modifications to a program that isn't online.)
 
-## Exercise 2.
+## Exercise 2
 
   
 Write a `map` primitive for `racket-1` (call it `map-1` so you and Racket
 don't get confused about which is which) that works correctly for all mapped
 procedures.
 
-## Exercise 3.
+## Exercise 3
 
 Modify the `racket-1` interpreter to add the `let` special form. Hint: Like a
 procedure call, `let` will have to use `substitute` to replace certain
 variables with their values. Don't forget to evaluate the expressions that
 provide those values!
 
-## Exercise 4.
-
+## Exercise 4
   
 [SICP ex. 2.62 ](http://mitpress.mit.edu/sicp/full-
 text/book/book-Z-H-16.html#%25_thm_2.62)
@@ -101,12 +105,9 @@ The file `~cs61as/lib/bst.scm` contains the binary search tree procedures from
 SICP 2.3.3. Using adjoin-set, construct the [trees shown on page
 156](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-16.html#%_fig_2.16).
 
-# Extra for Experts
+## Extra for Experts: Exercise 6
 
-### Do this if you want to. This is NOT for credit.
-
-## Exercise 6.
-
+**Do this if you want to. This is NOT for credit.**
   
 Another approach to the problem of type-handling is type inference. If, for
 instance, a procedure includes the expression `(+ n k)`, one can infer that
