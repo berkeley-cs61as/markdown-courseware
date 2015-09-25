@@ -167,7 +167,7 @@ For your convenience, `right-split` is shown again here:
 ```
 
 Note that you will not be able to see the visual output of any of your code
-until the very end. As we'll see, the picture language we've been describing
+until after Exercise 6. As we'll see, the picture language we've been describing
 is incomplete&mdash;you'll have to fill in the gaps before we can begin
 using it.
 
@@ -378,15 +378,60 @@ selectors `start-segment` and `end-segment`.
 
 Use `segments->painter` to define the following primitive painters:
 
-* `outline-painter`, which draws the outline of the designated frame.
-
 * `x-painter`, which draws an "X" by connecting opposite corners of the
 frame.
+
+* `outline-painter`, which draws the outline of the designated frame.
 
 * `diamond-painter`, which draws a diamond shape by connecting the midpoints of the
 sides of the frame.
 
 * `wave-painter`, which draws the familiar "wave" figure shown [here](../static/wave.png).
+
+To make sure you're on the right track, you should test your code immediately after defining `x-painter`.
+Instructions are below in the "Testing" section.
+
+### Important Hint
+
+Remember that `segments->painter` takes in a list of segments, each of which is comprised of vectors defined relative to the **unit square**. For example, your code might looks something like this:
+
+```
+(define diag-painter
+  (segments->painter
+   (list (make-segment (make-vect 1 0) (make-vect 0 1)))))
+```
+
+This draws a single diagonal line from the upper left corner to the lower right corner (like [this](../static/diag.png)).
+
+## Testing
+
+We can now begin testing our code. Note that the following commands will not work over SSH.
+
+First load `picture.rkt` by typing in your terminal:
+
+```
+racket -it picture.rkt
+```
+
+Now use the `cs` ("clear screen") procedure to open the drawing window:
+
+```
+(cs)
+```
+
+You should see a window appear with a small triangle.
+
+You can now tell a painter to draw in the drawing window by using `full-frame` as the frame argument.
+For example, try this:
+
+```
+(x-painter full-frame)
+```
+
+You should see an X appear in your drawing window.
+If nothing appears, or if you get errors, don't worry.
+Use the debugging skills you've learned so far to pinpoint the error and resolve it.
+If you need help, post on Piazza or contact a TA.
 
 ## Transforming and Combining painters
 
@@ -562,27 +607,9 @@ only one copy of the `up-split` and `right-split` images instead of two).
 assemble the corners in a different pattern. (For example, you might make the
 wave figure look outward from each corner of the square.)
 
-## Testing
+## More Testing
 
-It's finally time to test your code! Note that the following commands may not work over SSH.
-
-Load `picture.rkt` in Racket, then type the following to open the drawing window:
-
-```
-(cs)
-```
-
-You can now tell a painter to draw in the drawing window by using `full-frame` as the frame argument.
-For example, try this:
-
-```
-(diamond-painter full-frame)
-```
-
-You should see a diamond appear in your drawing window.
-If nothing appears, or if you get errors, don't worry.
-Use the debugging skills you've learned so far to pinpoint the error and resolve it.
-If you need help, post on Piazza or contact a TA.
+Following the instructions in the "Testing" section above, test the rest of your painters.
 
 <!--
 ## Common Errors
