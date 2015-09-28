@@ -38,10 +38,6 @@ We have our own ADT to represent Trees that we will use for the rest of this les
 
 Different representations of Trees will give you different limitations, features, and functionalities.
 
-Before we begin, load our Tree ADT by typing the following into your Racket interpreter:
-
-`(enter! "~cs61as/lib/trees.rkt")`
-
 Here are the built-in constructors and selectors for Trees:
   
   * **Constructor:** `make-tree` takes in two arguments, a datum and a list of its children, and creates a Tree ADT.
@@ -68,8 +64,8 @@ of a Tree as a bunch of `cons`, `cars`, and `cdrs`.
 
 To reiterate, the constructor and selectors for forests are `list`, `car`, and `cdr`, while the constructor and selectors for (this ADT of) Trees are `make-tree`, `datum`, and `children`.
 
-Additionally, since a leaf is a node with no children, we can use the follow
-predicate to check whether a node is a leaf:
+Additionally, since a leaf is a node with no children, we could use a predicate like this
+to check whether a node is a leaf:
 
     
     (define (leaf? node)
