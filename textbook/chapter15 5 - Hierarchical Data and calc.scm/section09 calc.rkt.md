@@ -66,7 +66,7 @@ With that covered, let's go to the Calculator program!
 ## Calc: How Does it Work?
 
 Let's run the program and walk through what is actually happening. Load
-`calc.rkt` in your Racket interpreter (by typing `(enter! 'calc.rkt')`), then call the function `(calc)`:
+`calc.rkt` in your Racket interpreter (by typing `(enter! "calc.rkt")`), then call the function `(calc)`:
 
     
     
