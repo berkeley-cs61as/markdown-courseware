@@ -105,7 +105,7 @@ using Euler's expansion.
 ## Exercise 4: `next-perf`
 
 <p>A <i>perfect number</i> is defined as a number equal to the sum of all its factors less than itself. For example, the first perfect number is 6, because its factors are 1, 2, 3, and 6, and 1+2+3=6. The second perfect number is 28, because 1+2+4+7+14=28. What is the third perfect number?</p>
-<p>Write a procedure <code>(next-perf n)</code> that tests consecutive integers starting with <code>n</code> until a perfect number is found. Then you can evaluate <code>(next-perf 29)</code> to solve the problem.</p>
+<p>Write a procedure <code>(next-perf n)</code> that tests consecutive integers starting with <code>n</code> until a perfect number is found. Then you can evaluate <code>(next-perf 29)</code> to solve the problem. Note that your procedure should be able to handle any non-negative integer input.</p>
 <p>Hint: you’ll need a <code>sum-of-factors</code> subprocedure.</p>
 <p>Note: If you run this program when the system is heavily loaded, it may take half an hour to compute the answer! Try tracing helper procedures to make sure your program is on track, or start by computing <code>(next-perf 1)</code> and see if you get 6.</p>
 
