@@ -151,6 +151,17 @@ output for `(square-limit wave-painter 5)`:
 
 ![](../static/squarelimit.png)
 
+
+### Before Starting Exercise 1
+
+First, if you skimmed or skipped everything above because you wanted to jump directly to the first exercise,
+take a minute now to read everything above carefully.
+
+Also, note that you will *not* be able to test the visual output of any of your code
+until after Exercise 6. As we'll see, the picture language we've been describing
+is incomplete&mdash;you'll have to fill in the gaps before we can begin
+using it.
+
 ## Exercise 1: `up-split`
 
 Define the procedure `up-split` used by `corner-split`. It is similar to
@@ -165,11 +176,6 @@ For your convenience, `right-split` is shown again here:
       (let ((smaller (right-split painter (- n 1))))
         (beside painter (below smaller smaller)))))
 ```
-
-Note that you will not be able to see the visual output of any of your code
-until after Exercise 6. As we'll see, the picture language we've been describing
-is incomplete&mdash;you'll have to fill in the gaps before we can begin
-using it.
 
 ## Higher-Order Operations
 
@@ -386,7 +392,7 @@ frame.
 * `diamond-painter`, which draws a diamond shape by connecting the midpoints of the
 sides of the frame.
 
-* `wave-painter`, which draws the familiar "wave" figure shown [here](../static/wave.png).
+* `wave-painter`, which draws the familiar "wave" figure shown [here](../static/wave.png). Feel free to approximate crudely at your discretion.
 
 To make sure you're on the right track, you should test your code immediately after defining `x-painter`.
 Instructions are below in the "Testing" section.
@@ -432,6 +438,9 @@ You should see an X appear in your drawing window.
 If nothing appears, or if you get errors, don't worry.
 Use the debugging skills you've learned so far to pinpoint the error and resolve it.
 If you need help, post on Piazza or contact a TA.
+
+Note that the tranformations mentioned above (like `beside` or `square-of-four`) will *not* work at this point.
+You'll have to finish Exercise 8 before testing them. For now, if your four primitive painters work, move on to the next section.
 
 ## Transforming and Combining painters
 
