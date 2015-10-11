@@ -152,15 +152,15 @@ output for `(square-limit wave-painter 5)`:
 ![](../static/squarelimit.png)
 
 
-### Before Starting Exercise 1
+## Before Starting Exercise 1
 
-First, if you skimmed or skipped everything above because you wanted to jump directly to the first exercise,
-take a minute now to read everything above carefully.
+First of all, if you skimmed or skipped everything above because you wanted to jump directly to the first exercise,
+take a minute now to read everything above carefully. It's important!
 
 Also, note that you will *not* be able to test the visual output of any of your code
-until after Exercise 6. As we'll see, the picture language we've been describing
+until after Exercise 6. The picture language we've been describing
 is incomplete&mdash;you'll have to fill in the gaps before we can begin
-using it.
+using it!
 
 ## Exercise 1: `up-split`
 
@@ -392,7 +392,7 @@ frame.
 * `diamond-painter`, which draws a diamond shape by connecting the midpoints of the
 sides of the frame.
 
-* `wave-painter`, which draws the familiar "wave" figure shown [here](../static/wave.png). Feel free to approximate crudely at your discretion.
+* `wave-painter`, which draws the familiar "wave" figure shown [here](../static/wave.png). Your drawing does not have to be a perfect replica; just make sure it clearly resembles the original wave figure.
 
 To make sure you're on the right track, you should test your code immediately after defining `x-painter`.
 Instructions are below in the "Testing" section.
@@ -439,7 +439,7 @@ If nothing appears, or if you get errors, don't worry.
 Use the debugging skills you've learned so far to pinpoint the error and resolve it.
 If you need help, post on Piazza or contact a TA.
 
-Note that the tranformations mentioned above (like `beside` or `square-of-four`) will *not* work at this point.
+Note that the painter tranformations mentioned above (like `beside` or `square-of-four`) will *not* work at this point.
 You'll have to finish Exercise 8 before testing them. For now, if your four primitive painters work, move on to the next section.
 
 ## Transforming and Combining painters
