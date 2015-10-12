@@ -439,7 +439,7 @@ If nothing appears, or if you get errors, don't worry.
 Use the debugging skills you've learned so far to pinpoint the error and resolve it.
 If you need help, post on Piazza or contact a TA.
 
-Note that the painter tranformations mentioned above (like `beside` or `square-of-four`) will *not* work at this point.
+Note that the painter tranformations mentioned above (like `beside` and `square-of-four`) will *not* work at this point.
 You'll have to finish Exercise 8 before testing them. For now, if your four primitive painters work, move on to the next section.
 
 ## Transforming and Combining painters
@@ -616,9 +616,25 @@ only one copy of the `up-split` and `right-split` images instead of two).
 assemble the corners in a different pattern. (For example, you might make the
 wave figure look outward from each corner of the square.)
 
-## More Testing
+## Final Steps
 
 Following the instructions in the "Testing" section above, test the rest of your painters.
+Be sure to also test all of your painter transformation procedures.
+
+To submit your project, navigate to your project directory in your terminal, then type
+
+```
+submit proj2
+```
+
+As of October 11th, 2015, you may see the following message:
+
+```
+Performing sanity check on your submission
+picture.scm failed to load in STk.
+```
+
+If you're certain your code loads correctly into the Racket interpreter, feel free to disregard this warning. When prompted "Continue submission anyway?", type "yes" and press Enter.
 
 <!--
 ## Common Errors
