@@ -627,15 +627,6 @@ To submit your project, navigate to your project directory in your terminal, the
 submit proj2
 ```
 
-As of October 11th, 2015, you may see the following message:
-
-```
-Performing sanity check on your submission
-picture.scm failed to load in STk.
-```
-
-If you're certain your code loads correctly into the Racket interpreter, feel free to disregard this warning. When prompted "Continue submission anyway?", type "yes" and press Enter.
-
 <!--
 ## Common Errors
 
