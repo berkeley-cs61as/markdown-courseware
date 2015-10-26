@@ -20,7 +20,7 @@ that will enable us to draw pictures. If you're working on a lab computer, type 
 install-htdp
 ```
 
-If you want to install the picture-drawing package on your own computer, check out [this Piazza post](https://piazza.com/class/idnte7162cf4kk?cid=247).
+If you want to install the picture-drawing package on your own computer, check out the first followup discussion to [this Piazza post](https://piazza.com/class/idnte7162cf4kk?cid=247).
 
 After completing installation, you should be able to type `(require graphics/turtles)` into Racket without errors.
 
