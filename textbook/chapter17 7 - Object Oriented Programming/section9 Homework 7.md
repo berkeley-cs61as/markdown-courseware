@@ -87,7 +87,7 @@ creates a machine that can hold 80 Cokes and sells them for 70 cents each. `coke
 following messages:
 
 * `(ask my-machine 'deposit 25)` means deposit 25 cents. You can deposit several coins and the machine should remember the total.
-* `(ask my-machine 'coke)` means push the button for a Coke. The machine then either 1) prints "Not enough money", 2) prints "Machine empty", or 3) returns the amount of change you get. The error messages should be printed using `display` (for example, `(display "Machine empty")`).
+* `(ask my-machine 'coke)` means push the button for a Coke. The machine then either 1) prints "Not enough money", 2) prints "Machine empty", or 3) returns the amount of change you get. The error messages should be printed using `display` (for example, `(display "Machine empty")`). (After a successful transaction, no money is left in the machine; i.e., change does not stay in the machine.)
 * `(ask my-machine 'fill 60)` means add 60 Cokes to the machine.
 
 Here's an example:
