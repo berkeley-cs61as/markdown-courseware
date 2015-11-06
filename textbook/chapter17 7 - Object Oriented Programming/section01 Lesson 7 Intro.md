@@ -1,6 +1,16 @@
-## IMPORTANT
+## IMPORTANT: Welcome to Scheme
 
 **At this point onwards, we will be using the Scheme language.** If you're reading this message, that means that we are still working on transitioning to Racket on this section. The following lesson and all lessons afterwards will be from our old curriculum, and is written in Scheme.
+
+See [this guide](https://docs.google.com/document/d/1SMi4VZtL308zscmrpz5nClO1Kg0ZnDXc4R1wMBTsgsE/edit?usp=sharing) for instructions on setting up your laptop with STk.
+
+For our lessons, the semantics for Scheme are nearly identical, except for these major differences:
+
+  * To run the STk interpreter, type `stkw` or `stk-simply` into the terminal. If you have a Windows computer, only `stk-simply` will work.
+  * Instead of `require`-ing a file, you should `load` it. For example, typing `(load "hw7.scm")` into the interpreter will load the file into STk.
+  * Multiple definitions are allowed. In your `.scm` file, Scheme will allow you to define functions twice, and will also allow you to define functions that override built-in functions, e.g., `(define (map f lst) 5)` will override the `map` HOF.
+
+Of course, the differences between STk and Racket are not limited to these, but the ones above are the differences that you absolutely need to know.
 
 Thank you for your patience!
 
