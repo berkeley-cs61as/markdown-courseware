@@ -24,7 +24,7 @@ Does this code look familar to you? It should; it's part of the Racket-1/Scheme-
 interpreter you learned in Lesson 6! If you look at line 3, you can see that
 `eval-1` is using Scheme's `eval` procedure. You didn't really have to worry
 too much about the details in Lesson 6, because Scheme's `eval` procedure
-handled all the details. But then how is `eval` defined?
+handled all the details. But what are the details behind Scheme's `eval`?
 
 Now is time to look at how `mc-eval` is written. Take a look, and compare it to
 `eval-1`:
@@ -51,7 +51,7 @@ Now is time to look at how `mc-eval` is written. Take a look, and compare it to
         (error "Unknown expression type -- EVAL" exp))))
     
 
-Don't worry if you don't understand it. We will go through this code step-by-
+`mc-eval` is defined to do the work of underlying Scheme's `eval` to interpret Scheme's syntax rules and to decompose each call into the appropriate action. Don't worry if you don't understand it. We will go through this code step-by-
 step.
 
 ## What Does mc-eval Do?
