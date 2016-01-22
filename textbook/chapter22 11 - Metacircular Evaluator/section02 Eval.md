@@ -124,7 +124,8 @@ world!"`).
 ![](https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQzrLHmk190OIaf1
 -xqLtrpW-BYa-yWwYHL58ZZBqQw6AVbqSZ2qw)
 
-  * For quoted expressions, `mc-eval` returns the expression that was quoted.
+### Special Forms: Sentences and Words
+For quoted expressions, `mc-eval` returns the expression that was quoted.
 
 Recall that the Scheme parser automatically transforms the expression `'(some text here)` into
 the expression pair `(quote (some text here))`.
@@ -150,7 +151,8 @@ identifies lists beginning with a designated symbol:
           false))
     
 
-  * A `lambda` expression must be transformed into an applicable procedure by packaging together the parameters and body specified by the lambda expression with the environment of the evaluation.
+### Special Form: Lambda
+A `lambda` expression must be transformed into an applicable procedure by packaging together the parameters and body specified by the lambda expression with the environment of the evaluation.
 
 Lambda expressions are lists that begin with the symbol lambda:
 
@@ -170,7 +172,7 @@ value`:
       (cons 'lambda (cons parameters body)))
     
 
-## Special Forms: Sequences
+### Special Form: Sequences
 
 ![](http://x-equals.com/blog/wp-content/editing_sequences_5_seq_1280.jpg)
 
@@ -203,7 +205,7 @@ a sequence into a single expression, using `begin` if necessary:
             (else (make-begin seq))))
     (define (make-begin seq) (cons 'begin seq))
 
-## Special Forms: Conditionals
+### Special Form: Conditionals
 
 ![](http://callofcarly.files.wordpress.com/2011/10/if.png)
 
@@ -306,7 +308,7 @@ Expressions (such as `cond`) that we choose to implement as syntactic
 transformations are called **derived expressions**. `Let` expressions are also
 derived expressions.
 
-## Special Forms: Assignments and Definitions
+### Special Form: Assignments and Definitions
 
 ![](http://2.bp.blogspot.com/-BJ9VKWsOh74/UjWTv9D1TZI/AAAAAAAAfFA/c0x9oTVm2S4/
 s1600/DEFINE_TwitterAvatar_R1_eo.png)
