@@ -85,6 +85,8 @@ of the order of evaluation in the underlying Scheme. Also write a version of `li
 that evaluates operands from right to left.
 
 <div class="mc">
+<ans text="I need a hint" explanation="We want to control when each argument to cons is evaluated before you plug it in. Think of different ways you could construct the arguments for the cons." correct></ans>
+<ans text="I need another hint" explanation="let" correct></ans>
 <ans text="I tried writing list-of-values both ways" explanation="Nice! How would you test your code?" correct></ans>
 </div>
 
