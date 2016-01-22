@@ -126,17 +126,17 @@ world!"`).
 
   * For quoted expressions, `mc-eval` returns the expression that was quoted.
 
-Recall that the Scheme parser automatically transforms the expression `'(text of quotation)` into
-the expression `(quote text of quotation)`.
+Recall that the Scheme parser automatically transforms the expression `'(some text here)` into
+the expression pair `(quote (some text here))`.
 
-Quotations have the form `(quote <text-of-quotation>)`:
+In other words, quotations have the form `(quote <text-of-quotation>)`:
 
     
     
     (define (quoted? exp)
       (tagged-list? exp 'quote))
     
-    (define (text-of-quotation exp) (cadr exp))
+    (define (text-of-quotation exp) (cadr exp))  ;returns just the text as a list that will print to output
     
 
 `Quoted?` is defined in terms of the procedure `tagged-list?`, which
