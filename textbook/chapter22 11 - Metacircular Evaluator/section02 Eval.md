@@ -76,10 +76,7 @@ each operand and returns a list of the corresponding values:
             (list-of-values (rest-operands exps) env))))
     
 **Left to Right? Right to Left?**
-Notice that we cannot tell whether the metacircular evaluator evaluates operands from 
-left to right or from right to left. Its evaluation order is inherited from the underlying 
-Scheme: If the arguments to `cons` in `list-of-values` are evaluated from left to right, 
-then `list-of-values` will evaluate operands from left to right; and if the arguments to
+Given some list of operands,`list-of-values` will recursively construct a nested cons structure of calls to `mc-eval` on each operand. Notice that we cannot tell the order that the metacircular evaluator evaluates operands from left to right or from right to left. Its evaluation order is inherited from the underlying  Scheme: If the arguments to `cons` in `list-of-values` are evaluated from left to right, then `list-of-values` will evaluate operands from left to right; and if the arguments to
 `cons` are evaluated from right to left, then `list-of-values` will evaluate operands from
 right to left.
 
