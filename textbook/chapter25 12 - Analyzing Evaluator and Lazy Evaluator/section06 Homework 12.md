@@ -1,3 +1,7 @@
+To get homework file, on an instructional account type:
+```cp ~cs61as/autograder/templates/hw12.scm .```
+
+
 ## Exercise 1
 
   
