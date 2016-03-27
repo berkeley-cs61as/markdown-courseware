@@ -69,11 +69,12 @@ hello
 > Write a program called snow_white that takes in two numbers as arguments, the first is the num_chants, the second is the max_sing.
 >
 > The program:
+>
 > 1. prints "heigh" "ho" alternatingly
 > 2. prints "its off to work we go" after num_chants of "heigh" or "ho"
 > 3. stops printing after having "it's off to work we go" max_sing times
 >
-> EXAMPLE: should print it's off to work we go between every ```5``` alternating his and hos, for a maximum of ```2``` times.
+> EXAMPLE: should print "it's off to work we go" between every ```5``` alternating "hi"s and "ho"s, for a maximum of ```2``` times.
 >
 >     >>> snow_white(5, 2)
 >     heigh
@@ -131,6 +132,7 @@ hello
 4
 ```
 You can also use a string or a list in the place of range as a sequence to iterate over
+
 ```python
 >>> sum = 0
 >>> for number in [1,5,8]: #iterating over a list
