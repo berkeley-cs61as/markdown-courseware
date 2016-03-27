@@ -9,15 +9,6 @@ As experienced programmers, we'll be speeding through the basics so you can dive
    * (1 + 2) * 3
 * A # will comment out anything that follows it on the same line
 
-If you have Python 3 installed correctly, you should be able to launch it via your terminal with the command ```python```. You should see three carrots ```>>>``` that indicate that the python interpreter is accepting input! If you're having problems, please check that you've set up your path environment variable to point to your installation (if you're not sure what that means, try google!) and make sure that you remove any other paths to older python versions. If you're on a mac, see [this](http://superuser.com/questions/770696/how-to-update-macs-system-python).
-```
-MyComputer ~ $ python
-Python 3.5.1 |Anaconda 2.4.1 (64-bit)| (default, Jan 29 2016, 15:01:46) [MSC v.1900 64 bit (AMD64)] on win32
-Type "help", "copyright", "credits" or "license" for more information.
->>> exit() #exiting python
-MyComputer ~ $ 
-```
-
 ## Math and Numbers
 Numbers are self-evaluating (will return themselves). Numerical operations can be performed on numbers, variables holding numerical value, and numerical return values. Here is a table of most of the built in Python numerical operations. Feel free to input these expressions directly into the Python interpreter and examine the results.
 
