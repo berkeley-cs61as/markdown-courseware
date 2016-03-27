@@ -3,7 +3,7 @@ Conditional statements are formed using if, elif, and else statements. An if sta
 
 If, elif, and else use indentation and colons to block the code appropriately. When you’re done, you’ll need a empty line with a matching indentation as the first line to close the conditional when you are inputting directly into the interpreter.
 
-``` python
+```python
 >>> if False:
 ...    3
 ... elif True:
@@ -13,6 +13,7 @@ If, elif, and else use indentation and colons to block the code appropriately. W
 ...
 4
 ```
+
 * Line 1:  (0 space indentation) The if condition
 * Line 2:  (3 space indentation) The if body
 * Line 3:  (0 space indentation) The else if condition
@@ -38,6 +39,7 @@ Certain control statements can be invoked within loops to stop and break out of 
 
 ### While loops
 While loops contain a predicate which is checked before the start of every iteration. If the predicate is not satisfied, the while loop stops. A while block uses a colon and indentation to indicate which line is the header and which are in the body
+
 ```python
 >>> x = 0
 >>> while x < 3:
@@ -50,6 +52,7 @@ hello
 >>> x #check what x is
 3
 ```
+
 * Line 1: set up a variable x equals to zero
 * Line 2: (0 spaces) While header with condition of x being less than 3
 * Line 3: (3 spaces) While body line calls print
@@ -69,7 +72,7 @@ hello
 > 1. prints "heigh" "ho" alternatingly
 > 2. prints "its off to work we go" after num_chants of "heigh" or "ho"
 > 3. stops printing after having "it's off to work we go" max_sing times
-
+>
 > EXAMPLE: should print it's off to work we go between every ```5``` alternating his and hos, for a maximum of ```2``` times.
 >
 >     >>> snow_white(5, 2)
@@ -85,8 +88,11 @@ hello
 >     heigh
 >     ho
 >     it's off to work we go
-
+>
 > Use a while loop (and possibly control statements) to accomplish this behavior.
+
+
+
 
 > **Homework Problem 5: Push First Odd Back (taken from CS10)**
 >

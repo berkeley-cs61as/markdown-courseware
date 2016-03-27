@@ -40,7 +40,7 @@ If you want to dabble with an implementation of lazy evaluation wrappers in Pyth
 
 ## Range and Generators
 
-We've been using ```range()``` in ```for`` loops but we haven't thought much how it works. Range is an immutable sequence that is lazy. Behind the scenes, elements in a sequence created by range aren't created until they are required. Don't believe me? Try ```print(range(4))``` and ```print([0, 1, 2, 3])```.
+We've been using ```range()``` in ```for``` loops but we haven't thought much how it works. Range is an immutable sequence that is lazy. Behind the scenes, elements in a sequence created by range aren't created until they are required. Don't believe me? Try ```print(range(4))``` and ```print([0, 1, 2, 3])```.
 
 We can create similar sequences to ```range()``` through the use of generators. In Python, generators are functions than create sequences by computing and ```yield```ing the next value as needed. They are analogous to streams from Scheme and are a lazy sequence as opposed to lists which are eager sequences (eager to enumerate).
 
@@ -85,6 +85,7 @@ def gen_forever():
 > **Homework Problem 10: Growing Pains (Exponentially)**
 >
 >Write a generator ```gen_exp()``` that takes a number n and generates (for eternity) the exponential of n to the n to the n starting at n.
+>
 >For example the first few elements of ```gen_exp(2)``` should be 2, (2^2), ((2^2)^ 2), (((2^2)^ 2) ^ 2)
 
 
