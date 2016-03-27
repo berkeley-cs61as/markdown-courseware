@@ -102,7 +102,7 @@ Write a program that return True if the string "cat" and "dog" appear the same n
 
 Write a function ```char_freq()``` that takes a string and builds a frequency listing of the characters contained in it. 
 Represent the frequency listing as a Python dictionary with each letter as a key that stores the number of times that letter appears.
- 
+
 Try it with something like ```char_freq("abbabcbdbabdbdbabababcbcbab")```.
 
 *****
@@ -111,7 +111,7 @@ Try it with something like ```char_freq("abbabcbdbabdbdbabababcbcbab")```.
 
 Write a function ```rotate_letters()``` that takes in a number and creates a new mapping of lower case letters offset by that number.
 Return the new mapping as a dictionary such that the original letter is mapped to the shifted letter.
-For example, ```rotate_letters(2)``` would map ```'a'```-```'c'```, ```'b'```-```'d'```, ```'c'```-```'e'``` and so on.
+For example, ```rotate_letters(2)``` would map ```'a'```->```'c'```, ```'b'```->```'d'```, ```'c'```->```'e'``` and so on.
 
 
 **Homework Problem 8.2: Caesar's Ciphers**
