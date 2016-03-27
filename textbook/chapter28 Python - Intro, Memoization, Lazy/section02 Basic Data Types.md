@@ -50,7 +50,6 @@ Boolean values are encoded by ```True``` and ```False```. Boolean values are aga
 Strings are another self-evaluating data type. They constructed as a sequence of characters between matching quotes (you can use either single or double quotes but you cannot mix and match them within a string). 
 
 ```python
-$ python
 >>> "hello"
 'hello'
 >>> 'hello'
@@ -59,7 +58,6 @@ $ python
 Characters inside of the opening and closing quotes are not evaluated. So you can have quote characters inside of a string as long as they are not matching to the open and close quotes
 
 ```python
-$ python
 >>> "hello my name is 'Sally'"
 "hello my name is 'Sally'"
 >>> 'hello my name is "Sally"'
@@ -93,7 +91,6 @@ Lists and strings are similar! Strings are lists of characters, but for the sake
 Surprise, surprise... Lists are self-evaluating! Lists are declared by enumerating comma separated elements between square brackets. Similarly to strings, access list values using indices (indexing starts at 0).
 
 ```python
-$ python
 >>> test_list = ["this", "is", "a", "list", 1 , 2 , 3]
 >>> test_list
 ['this', 'is', 'a', 'list', 1 , 2 , 3]
