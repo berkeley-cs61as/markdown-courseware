@@ -116,6 +116,7 @@ TIP: if you want x iterations and don't actually plan on using the iteration var
 hello
 hello
 ```
+
 ```python
 >>> for i in range(3): #i is 0 then 1 then 2
 ...    print i
@@ -124,6 +125,7 @@ hello
 1
 2
 ```
+
 ```python
 >>> for i in range(2, 6, 2): #start at 2, stop before 6, skip 2
 ...    print(i)
@@ -131,6 +133,7 @@ hello
 2
 4
 ```
+
 You can also use a string or a list in the place of range as a sequence to iterate over
 
 ```python

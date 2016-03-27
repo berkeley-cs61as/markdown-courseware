@@ -8,7 +8,7 @@
 </style>
 <style>
     .rulesub {
-        font-size: 10px;
+        font-size: 14px;
         font-weight: bold;
         color: red;
     }
