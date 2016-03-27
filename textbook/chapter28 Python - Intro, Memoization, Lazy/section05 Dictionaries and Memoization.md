@@ -110,6 +110,7 @@ Deletion
 >
 >Write a function ```char_freq()``` that takes a string and builds a frequency listing of the characters contained in it. 
 >Represent the frequency listing as a Python dictionary with each letter as a key that stores the number of times that letter appears. 
+>
 >Try it with something like ```char_freq("abbabcbdbabdbdbabababcbcbab")```.
 
 > **Homework Problem 8.1: Caesar's Ciphers**
@@ -122,7 +123,8 @@ Deletion
 >
 >Write a function ```decode_cipher()``` that takes in a dictionary of letter mappings and a cipher string (of only lower case letters).
 >Return the decoded string that is created when every character is replaced by its mapping from the dictionary
->For example, ```decode_cipher(rotate_letters(2), "abc")``` should return ```"cde"```
+>For example, ```decode_cipher(rotate_letters(2), "abc")``` should return ```"cde"```.
+>
 >Use this function to decode "jbj fpurzr vf terng" given that the letters had been shifted by 13.
 
 
