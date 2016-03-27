@@ -175,6 +175,6 @@ def memo_fib(n):
 
 > **Homework Problem 9: Memoized Factorial**
 >
-> Write a memoized factorial procedure in a similar fashion to ```memo_fib```. You MUST use recursion.
+> Write a memoized accumulated factorial procedure in a similar fashion to ```memo_fib```. You MUST use recursion.
 >
-> (Factorial of 5 = 5 * 4 * 3 * 2 * 1)
+> Accumulated Factorial of 5 = 5! * 4! * 3! * 2! * 1!
