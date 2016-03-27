@@ -52,12 +52,12 @@ For numbers which are multiples of both three and five print "FizzBuzz".
 
 **Homework Problem 4: Snow White and the Seven Dwarves**
 
-Write a program called snow_white that takes in two numbers as arguments, the first is the num_chants, the second is the max_sing.
+Write a program called ```snow_white``` that takes in two numbers as arguments, the first is the ```num_chants```, the second is the ```max_sing```.
 
 The program:
 1. prints "heigh" "ho" alternatingly
-2. prints "its off to work we go" after num_chants of "heigh" or "ho"
-3. stops printing after having "it's off to work we go" max_sing times
+2. prints "its off to work we go" after ```num_chants``` of "heigh" or "ho"
+3. stops printing after having "it's off to work we go" ```max_sing``` times
 
 EXAMPLE: should print it's off to work we go between every ```5``` alternating his and hos, for a maximum of ```2``` times.
 
@@ -81,7 +81,7 @@ Use a while loop (and possibly control statements) to accomplish this behavior.
 
 **Homework Problem 5: Push First Odd Back (taken from CS10)**
 
-Write a function called push_first_odd_back that takes in a list as an argument
+Write a function called ```push_first_odd_back``` that takes in a list as an argument
 This function should place the first odd number at the back of the input list. 
 Do not return a new list - in fact this function shouldn't return anything, 
 it should only modify the input list. (Hint: use the while loop)
@@ -100,7 +100,7 @@ Write a program that return True if the string "cat" and "dog" appear the same n
 
 **Homework Problem 7: Character Frequencies**
 
-Write a function char_freq() that takes a string and builds a frequency listing of the characters contained in it. 
+Write a function ```char_freq()``` that takes a string and builds a frequency listing of the characters contained in it. 
 Represent the frequency listing as a Python dictionary with each letter as a key that stores the number of times that letter appears. 
 Try it with something like char_freq("abbabcbdbabdbdbabababcbcbab").
 
@@ -108,7 +108,7 @@ Try it with something like char_freq("abbabcbdbabdbdbabababcbcbab").
 
 **Homework Problem 8.1: Caesar's Ciphers**
 
-Write a function rotate_letters() that takes in a number and creates a new mapping of lower case letters offset by that number.
+Write a function ```rotate_letters()``` that takes in a number and creates a new mapping of lower case letters offset by that number.
 Return the new mapping as a dictionary such that the original letter is mapped to the shifted letter.
 For example, ```rotate_letters(2)``` would map ```'a'```-```'c'```, ```'b'```-```'d'```, ```'c'```-```'e'``` and so on.
 

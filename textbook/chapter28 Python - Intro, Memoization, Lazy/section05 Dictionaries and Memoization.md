@@ -108,19 +108,19 @@ Deletion
 
 > **Homework Problem 7: Character Frequencies**
 >
->Write a function char_freq() that takes a string and builds a frequency listing of the characters contained in it. 
+>Write a function ```char_freq()``` that takes a string and builds a frequency listing of the characters contained in it. 
 >Represent the frequency listing as a Python dictionary with each letter as a key that stores the number of times that letter appears. 
->Try it with something like char_freq("abbabcbdbabdbdbabababcbcbab").
+>Try it with something like ```char_freq("abbabcbdbabdbdbabababcbcbab")```.
 
 > **Homework Problem 8.1: Caesar's Ciphers**
 >
->Write a function rotate_letters() that takes in a number and creates a new mapping of lower case letters offset by that number.
+>Write a function ```rotate_letters()``` that takes in a number and creates a new mapping of lower case letters offset by that number.
 >Return the new mapping as a dictionary such that the original letter is mapped to the shifted letter.
 >For example, ```rotate_letters(2)``` would map ```'a'```->```'c'```, ```'b'```->```'d'```, ```'c'```->```'e'``` and so on.
 
 > **Homework Problem 8.2: Caesar's Ciphers**
 >
->Write a function decode_cipher() that takes in a dictionary of letter mappings and a cipher string (of only lower case letters).
+>Write a function ```decode_cipher()``` that takes in a dictionary of letter mappings and a cipher string (of only lower case letters).
 >Return the decoded string that is created when every character is replaced by its mapping from the dictionary
 >For example, ```decode_cipher(rotate_letters(2), "abc")``` should return ```"cde"```
 >Use this function to decode "jbj fpurzr vf terng" given that the letters had been shifted by 13.
@@ -173,6 +173,6 @@ def memo_fib(n):
 
 > **Homework Problem 9: Memoized Factorial**
 >
-> Write a memoized factorial procedure in a similar fashion to memo_fib. You MUST use recursion.
+> Write a memoized factorial procedure in a similar fashion to ```memo_fib```. You MUST use recursion.
 >
 > (Factorial of 5 = 5 * 4 * 3 * 2 * 1)
