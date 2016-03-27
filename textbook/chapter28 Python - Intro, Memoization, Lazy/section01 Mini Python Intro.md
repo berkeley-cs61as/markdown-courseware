@@ -22,7 +22,7 @@ If you have Python 3 installed correctly, you should be able to launch it via yo
 MyComputer ~ $ python
 Python 3.5.1 |Anaconda 2.4.1 (64-bit)| (default, Jan 29 2016, 15:01:46) [MSC v.1900 64 bit (AMD64)] on win32
 Type "help", "copyright", "credits" or "license" for more information.
->>> exit() #exiting python
+>>> exit()
 MyComputer ~ $ 
 ```
 
