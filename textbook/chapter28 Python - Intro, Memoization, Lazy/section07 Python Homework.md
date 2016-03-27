@@ -18,7 +18,7 @@ Provide an example and explain the error message.
 
 *****
 
-**Homework Problem 2: Fruits and Vegetables*
+**Homework Problem 2: Fruits and Vegetables**
 
 ```x = ["apple", "banana", "carrot"]```
 
