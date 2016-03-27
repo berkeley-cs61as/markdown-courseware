@@ -5,8 +5,7 @@ Dictionaries are very similar to lists, but instead do not use indexes to refere
 
 As a refresher, here's how you declare and access list values:
 
-```
-$ python
+```python
 >>> list_var = [0, 1, 2, 3]
 >>> list_var[0]
 0
