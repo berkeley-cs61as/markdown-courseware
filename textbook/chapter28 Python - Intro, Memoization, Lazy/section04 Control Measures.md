@@ -66,13 +66,14 @@ hello
 
 > **Homework Problem 4: Snow White and the Seven Dwarves**
 >
-> Write a program called snow_white that takes in two numbers as arguments, the first is the num_chants, the second is the max_sing.
+> Write a program called ```snow_white``` that takes in two numbers as arguments, 
+> the first is the ```num_chants```, the second is the ```max_sing```.
 >
 > The program:
 >
 > 1. prints "heigh" "ho" alternatingly
-> 2. prints "its off to work we go" after num_chants of "heigh" or "ho"
-> 3. stops printing after having "it's off to work we go" max_sing times
+> 2. prints "its off to work we go" after ```num_chants``` of "heigh" or "ho"
+> 3. stops printing after having "it's off to work we go" ```max_sing``` times
 >
 > EXAMPLE: should print "it's off to work we go" between every ```5``` alternating "hi"s and "ho"s, for a maximum of ```2``` times.
 >
@@ -97,7 +98,7 @@ hello
 
 > **Homework Problem 5: Push First Odd Back (taken from CS10)**
 >
-> Write a function called push_first_odd_back that takes in a list as an argument
+> Write a function called ```push_first_odd_back``` that takes in a list as an argument
 > This function should place the first odd number at the back of the input list. 
 > Do not return a new list - in fact this function shouldn't return anything, 
 > it should only modify the input list. (Hint: use the while loop)
