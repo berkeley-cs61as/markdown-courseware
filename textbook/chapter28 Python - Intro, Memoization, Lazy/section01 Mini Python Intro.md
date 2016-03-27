@@ -2,6 +2,9 @@
 At this point, you should be very familiar with programming principles in Scheme and Racket. 
 Time to transfer this knowledge into a new language! Enter Python. This is a bit more detailed than the intro to Python in your project 4 spec but still pretty basic. Doing one should make the other a breeze. Enjoy!
 
+## Homework
+The homework prompts are scattered throughout the lesson and are intended to be little exercises to do while you learn. Here's the [template](https://drive.google.com/open?id=0Bx-YJoc_dDDGQjhHSnNlRDNkaTg). More details on the homework section of this lesson!
+
 ## Installation
 We'll be using Python 3 (specifically 3.5) in this lesson. This is not equivalent to Python 2. You can skip the following if you have already installed Python 3. When you launch python in your terminal, the version you have installed is displayed so check there.
 
