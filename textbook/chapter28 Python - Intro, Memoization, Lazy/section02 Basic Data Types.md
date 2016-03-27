@@ -278,19 +278,19 @@ And again, here is a compilation of list indexing and operations!
 <tr>
 <td style="text-align:center">Slicing</td>
 <td style="text-align:left">x[1:3]</td>
-<td style="text-align:left">‘el’</td>
+<td style="text-align:left">['is', 'a']</td>
 <td style="text-align:center">is inclusive of the start; <br> exclusive of the end</td>
 </tr>
 <tr>
 <td style="text-align:center">Slicing</td>
 <td style="text-align:left">x[1:]</td>
-<td style="text-align:left">‘ello’</td>
+<td style="text-align:left">['is', 'a', 'list']</td>
 <td style="text-align:center">end defaults to length of string; <br> but first operation</td>
 </tr>
 <tr>
 <td style="text-align:center">Slicing</td>
 <td style="text-align:left">x[:-1]</td>
-<td style="text-align:left">‘hell’</td>
+<td style="text-align:left">['this', is', 'a']</td>
 <td style="text-align:center">start defaults to zero; <br> but last operation</td>
 </tr>
 <tr>
