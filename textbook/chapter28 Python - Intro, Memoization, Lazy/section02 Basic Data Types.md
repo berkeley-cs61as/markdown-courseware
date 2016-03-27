@@ -105,6 +105,7 @@ $ python
 And again, here is a compilation of list indexing and operations!
 
 ->**For the table below, assume x = ["this", "is", "a", "list"]**<-
+
 | Operation | Expression | Results | Notes |
 |:---------:|:-----------|:--------|:-----:|
 Print | print([1,2,3]) | Prints to output | also works on numbers & strings
@@ -120,7 +121,7 @@ Slicing| x[:-1] | 'hell' | start defaults to zero; <br> but last operation| Dele
 | Iteration <br> (more on this in the loops section!) | for i in [1, 2, 3]: print(i) | 1<br>2<br>3 |  |
 | Get Length | len([1, 2, 3]) | 3 |  |
 
-> **Homework Problem 2: Fruits and Vegetables*
+> **Homework Problem 2: Fruits and Vegetables**
 >
 > ```x = ["apple", "banana", "carrot"]```
 >
