@@ -2,7 +2,6 @@
 To define a variable use the equal symbol. (To check equality, a double equals is used.) Variables can defined inside and outside of procedure defintion.
 
 ```python
-$ python
 >>> x = 1 #set x to be 1
 >>> x
 1
@@ -14,7 +13,6 @@ True
 To define a procedure use “def”. In python, indentations (spacing at the start of a line) and colons are the delimiters that structure the python code into blocks. Therefore, we’ll use indentation to indicate the body of our procedures. When you’re done, you’ll need a empty line with a matching indentation as the def line to close the define block if you are inputing it directly into the interpreter.
 
 ```python
-$ python
 >>> def func(x):
 ...    x = x * 2
 ...    return x + 1
@@ -31,8 +29,8 @@ $ python
 Note how we use a return statement. A return stops the procedure and delivers the output back to be displayed. Lines lacking the return statement aren’t propagated beyond the procedure innards. An apt analogy would be: a return statement is similar to you speaking aloud and the non-return statements are similar to your thoughts leading up to what you say. 
 
 If your body is a single expression, you can write procedure definitions in one line. You still need the empty line
-```
-$ python
+
+```python
 >>> def func(x): return (x * 2) + 1
 ...
 >>> func(2)
