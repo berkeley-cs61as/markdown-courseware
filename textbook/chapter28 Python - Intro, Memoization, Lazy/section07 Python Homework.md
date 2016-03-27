@@ -1,4 +1,20 @@
-# Due by April 28th, 2016 at 11:59PM PST (but you should probably do this before/during Project 4)
+ 
+<style>
+    .rules {
+        font-size: 18px;
+        font-weight: bold;
+        color: red;
+    }
+</style>
+<style>
+    .rulesub {
+        font-size: 10px;
+        font-weight: bold;
+        color: red;
+    }
+</style>
+<div class = "rules">Due by April 28th, 2016 at 11:59PM PST </div><br>
+<div class = "rulesub">(but you should probably do this before/during Project 4) </div>
 
 ## Template
 
