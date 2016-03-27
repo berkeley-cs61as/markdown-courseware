@@ -2,8 +2,8 @@
 Conditional statements are formed using if, elif, and else statements. An if statement is composed of a predicate and a body that is executed if the predicate is satisfied. Elif is shorthand for “else if” and is used for any additional conditions beyond the first if statement. An elif statement has a similar construction as an if statement. The else statement follows all if and elif statement as is triggered when none of the conditional statements prior are fulfilled. 
 
 If, elif, and else use indentation and colons to block the code appropriately. When you’re done, you’ll need a empty line with a matching indentation as the first line to close the conditional when you are inputting directly into the interpreter.
-```
-$ python
+
+``` python
 >>> if False:
 ...    3
 ... elif True:
@@ -38,8 +38,7 @@ Certain control statements can be invoked within loops to stop and break out of 
 
 ### While loops
 While loops contain a predicate which is checked before the start of every iteration. If the predicate is not satisfied, the while loop stops. A while block uses a colon and indentation to indicate which line is the header and which are in the body
-```
-$ python
+```python
 >>> x = 0
 >>> while x < 3:
 ...    print("repeat")
@@ -103,16 +102,14 @@ The ```range``` function creates a progression of numbers which can then be used
 
 TIP: if you want x iterations and don't actually plan on using the iteration variable, use ```range(x)```
 
-```
-$ python
+```python
 >>> for i in range(2): #same as do two times
 ...    print "hello"
 ...
 hello
 hello
 ```
-```
-$ python
+```python
 >>> for i in range(3): #i is 0 then 1 then 2
 ...    print i
 ...
@@ -120,8 +117,7 @@ $ python
 1
 2
 ```
-```
-$ python
+```python
 >>> for i in range(2, 6, 2): #start at 2, stop before 6, skip 2
 ...    print(i)
 ...
@@ -129,8 +125,7 @@ $ python
 4
 ```
 You can also use a string or a list in the place of range as a sequence to iterate over
-```
-$ python
+```python
 >>> sum = 0
 >>> for number in [1,5,8]: #iterating over a list
 ...    sum += number
@@ -138,8 +133,7 @@ $ python
 >>> sum
 14
 ```
-```
-$ python
+```python
 >>> longer_string = ""
 >>> for letter in "apple": #iterating over string
 ...    longer_string += letter * 3
