@@ -177,25 +177,25 @@ Here are some useful operations on string and/or returning strings
 <td style="text-align:center">Slicing</td>
 <td style="text-align:center">“hello”[1:3]</td>
 <td style="text-align:center">‘el’</td>
-<td style="text-align:center">is inclusive of the start; &lt;br&gt; exclusive of the end</td>
+<td style="text-align:center">is inclusive of the start; <br> exclusive of the end</td>
 </tr>
 <tr>
 <td style="text-align:center">Slicing</td>
 <td style="text-align:center">“hello”[1:]</td>
 <td style="text-align:center">‘ello’</td>
-<td style="text-align:center">end defaults to length of string; &lt;br&gt; but first operation</td>
+<td style="text-align:center">end defaults to length of string; <br> but first operation</td>
 </tr>
 <tr>
 <td style="text-align:center">Slicing</td>
 <td style="text-align:center">“hello”[:-1]</td>
 <td style="text-align:center">‘hell’</td>
-<td style="text-align:center">start defaults to zero; &lt;br&gt; but last operation</td>
+<td style="text-align:center">start defaults to zero; <br> but last operation</td>
 </tr>
 <tr>
 <td style="text-align:center">Concatenation</td>
 <td style="text-align:center">“hello” + &quot; world&quot;</td>
 <td style="text-align:center">‘hello world’</td>
-<td style="text-align:center">cannot mix with numbers &lt;br&gt; creates a new string!</td>
+<td style="text-align:center">cannot mix with numbers <br> creates a new string!</td>
 </tr>
 <tr>
 <td style="text-align:center">Convert</td>
@@ -245,7 +245,7 @@ Surprise, surprise... Lists are self-evaluating! Lists are declared by enumerati
 
 And again, here is a compilation of list indexing and operations!
 
-->**For the table below, assume x = ["this", "is", "a", "list"]**<-
+**For the table below, assume x = ["this", "is", "a", "list"]**
 
 <table>
 <thead>
@@ -279,19 +279,19 @@ And again, here is a compilation of list indexing and operations!
 <td style="text-align:center">Slicing</td>
 <td style="text-align:left">x[1:3]</td>
 <td style="text-align:left">‘el’</td>
-<td style="text-align:center">is inclusive of the start; &lt;br&gt; exclusive of the end</td>
+<td style="text-align:center">is inclusive of the start; <br> exclusive of the end</td>
 </tr>
 <tr>
 <td style="text-align:center">Slicing</td>
 <td style="text-align:left">x[1:]</td>
 <td style="text-align:left">‘ello’</td>
-<td style="text-align:center">end defaults to length of string; &lt;br&gt; but first operation</td>
+<td style="text-align:center">end defaults to length of string; <br> but first operation</td>
 </tr>
 <tr>
 <td style="text-align:center">Slicing</td>
 <td style="text-align:left">x[:-1]</td>
 <td style="text-align:left">‘hell’</td>
-<td style="text-align:center">start defaults to zero; &lt;br&gt; but last operation</td>
+<td style="text-align:center">start defaults to zero; <br> but last operation</td>
 </tr>
 <tr>
 <td style="text-align:center">Concatenation</td>
@@ -301,7 +301,7 @@ And again, here is a compilation of list indexing and operations!
 </tr>
 <tr>
 <td style="text-align:center">Concatenation</td>
-<td style="text-align:left">&gt;&gt;&gt; x = [1, 2, 3] &lt;br&gt; &gt;&gt;&gt; x += [4, 5, 6] &lt;br&gt; &gt;&gt;&gt; x</td>
+<td style="text-align:left">&gt;&gt;&gt; x = [1, 2, 3] <br> &gt;&gt;&gt; x += [4, 5, 6] <br> &gt;&gt;&gt; x</td>
 <td style="text-align:left">[1, 2, 3, 4, 5, 6]</td>
 <td style="text-align:center"></td>
 </tr>
@@ -318,9 +318,9 @@ And again, here is a compilation of list indexing and operations!
 <td style="text-align:center"></td>
 </tr>
 <tr>
-<td style="text-align:center">Iteration &lt;br&gt; (more on this in the loops section!)</td>
+<td style="text-align:center">Iteration <br> (more on this in the control section!)</td>
 <td style="text-align:left">for i in [1, 2, 3]: print(i)</td>
-<td style="text-align:left">1&lt;br&gt;2&lt;br&gt;3</td>
+<td style="text-align:left">1<br>2<br>3</td>
 <td style="text-align:center"></td>
 </tr>
 <tr>
