@@ -1,0 +1,179 @@
+## Dictionaries 
+Dictionaries are very similar to lists, but instead do not use indexes to reference values but keys. 
+
+![](http://beautyjoy.github.io/bjc-r/img/python/dictionaries_vs_lists.jpg)
+
+As a refresher, here's how you declare and access list values:
+
+```
+$ python
+>>> list_var = [0, 1, 2, 3]
+>>> list_var[0]
+0
+>>> list_var[1]
+1
+```
+Now, contrast that to the structure of dictionaries.
+
+Creating a dictionary: (The keys must be immutable, a.k.a strings, numbers, [tuples](https://docs.python.org/2/tutorial/datastructures.html#tuples-and-sequences), but not lists!)
+
+```python
+>>> empty_dict = {}
+>>> full_dict = {"January": 31, "February":28, "March": 31}
+```
+
+Accessing a dictionary:
+
+```python
+>>> empty_dict["April"] #should error because there is no "April" key in this dictionary 
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+KeyError: 'April'
+>>> full_dict["January"] #should return the value associated with "January" key
+31
+```
+
+Adding to and Changing a dictionary key value pair:
+
+```python
+>>> empty_dict["April"] = 30 #adding a new key,value pair
+>>> empty_dict
+{'April': 30}
+>>> full_dict["February"] = 29 #changing an existing key's value
+>>> full_dict #note that there is no order to the entries of the dictionary
+{'March': 31, 'February': 29, 'January': 31}
+
+```
+
+Useful Dictionary Operations:
+
+```python
+>>> len(full_dict)
+3
+```
+
+```python
+>>> print ("dictionary as string: " + str(full_dict)) #str returns a printable string representation
+dictionary as string: {'January': 31, 'March': 31, 'February': 29}
+```
+
+```python
+>>> full_dict.get("April", default=False) #returns default if key is not in dictionary
+False
+>>> full_dict.has_key("January")
+True
+>>> "January" in full_dict #same as has_key operation
+True
+```
+
+```python
+>>> full_dict.update(empty_dict) #adds all of empty_dict's key,values into full_dict
+>>> full_dict
+{'January': 31, 'March': 31, 'February': 29, 'April': 30}
+```
+
+Iterating over a dictionary's keys
+
+```python
+>>> all_months = ""
+>>> total_days = 0
+>>> for key in full_dict:
+...    all_months += key
+...    all_months += " "
+...    total_days += full_dict[key]
+...
+>>> total_days
+121
+>>> all_months
+'January March February April '
+```
+
+Iterating over a dictionary's values
+
+```python
+>>> total_days = 0
+>>> for val in full_dict.values():
+...    total_days += val
+...
+>>> total_days
+121
+```
+
+Deletion
+
+```python
+>>> del empty_dict['April']; # remove entry with key 'Name'
+>>> empty_dict.clear();     # remove all entries in dict
+>>> del empty_dict ;        # delete entire dictionary
+```
+
+> **Homework Problem 7: Character Frequencies**
+>
+>Write a function char_freq() that takes a string and builds a frequency listing of the characters contained in it. 
+>Represent the frequency listing as a Python dictionary with each letter as a key that stores the number of times that letter appears. 
+>Try it with something like char_freq("abbabcbdbabdbdbabababcbcbab").
+
+> **Homework Problem 8.1: Caesar's Ciphers**
+>
+>Write a function rotate_letters() that takes in a number and creates a new mapping of lower case letters offset by that number.
+>Return the new mapping as a dictionary such that the original letter is mapped to the shifted letter.
+>For example, ```rotate_letters(2)``` would map ```'a'```->```'c'```, ```'b'```->```'d'```, ```'c'```->```'e'``` and so on.
+
+> **Homework Problem 8.2: Caesar's Ciphers**
+>
+>Write a function decode_cipher() that takes in a dictionary of letter mappings and a cipher string (of only lower case letters).
+>Return the decoded string that is created when every character is replaced by its mapping from the dictionary
+>For example, ```decode_cipher(rotate_letters(2), "abc")``` should return ```"cde"```
+>Use this function to decode "jbj fpurzr vf terng" given that the letters had been shifted by 13.
+
+
+## Memoization
+You have now all the tools to learn a new topic which is called memoization! Memoization is the act of storing answers to computations (particularly computationally expensive ones) as you compute things so that if you are required to repeat that computation, you already have a memoized answer. Memoization is often seen in the context of improving the efficiency of a slow recursive process that makes repetitive computations.
+
+Consider the fibbonacci function which generates the nth fibbonacci number in the sequence. Recursively, the brute force definition of that process looks like:
+
+```python
+def fib(n):
+    return n if n < 2 else fib(n-2) + fib(n-1)
+```
+
+If n is sufficiently large, you'll be waiting a long time for fib to return. Consider that case the n is 5.
+We'll have to compute fib(5-2) and separately fib(5-1).
+But in computing fib(5-1) we'll have to recompute fib(5-2).
+Following this logic, you can see we'll end up with many unneccessary recomputations. 
+
+Take a look at the recursion tree generated by calling fib(6). Can you spot all the overlapping computations?
+
+![](http://paulmouzas.github.io/assets/fibonacci_tree(1).png)
+
+To reduce our inefficiency, we should cache, or store, computations as they complete. Then, before doing any computation, we simple check our cache for whether we had already done that computation. Our cache can be created with a dictionary! The keys will correspond to the argument value and the values will correspond to the calculated computation.
+
+```python
+fib_cache = {}
+def fib(n):
+    if n in fib_cache:
+        return fib_cache[n]
+    else:
+        fib_cache[n] = n if n < 2 else fib(n-2) + fib(n-1)
+        return fib_cache[n]
+```
+
+This is kind of messy because the cache exists outside of your function. Alternatively, you can wrap the cache and function so that it is memoized within each call to the wrapper function. The cache will reset for each call to ```memo_fib()``` but at least within one call memoization occurs. In project 4, you'll write a better memoization routine that is less messy yet still memoized between calls.
+
+```python
+def memo_fib(n):
+    fib_cache = {}
+    def fib(n):
+        if n in fib_cache:
+            return fib_cache[n]
+        else:
+            fib_cache[n] = n if n < 2 else fib(n-2) + fib(n-1)
+            return fib_cache[n]
+    return fib(n)
+```
+
+> **Homework Problem 9: Memoized Factorial**
+>
+> Write a memoized factorial procedure in a similar fashion to memo_fib. You MUST use recursion.
+>
+> (Factorial of 5 = 5 * 4 * 3 * 2 * 1)
