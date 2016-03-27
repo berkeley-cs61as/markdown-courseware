@@ -10,7 +10,7 @@ As experienced programmers, we'll be speeding through the basics so you can dive
 * A # will comment out anything that follows it on the same line
 
 If you have Python 3 installed correctly, you should be able to launch it via your terminal with the command ```python```. You should see three carrots ```>>>``` that indicate that the python interpreter is accepting input! If you're having problems, please check that you've set up your path environment variable to point to your installation (if you're not sure what that means, try google!) and make sure that you remove any other paths to older python versions. If you're on a mac, see [this](http://superuser.com/questions/770696/how-to-update-macs-system-python).
-```python
+```
 MyComputer ~ $ python
 Python 3.5.1 |Anaconda 2.4.1 (64-bit)| (default, Jan 29 2016, 15:01:46) [MSC v.1900 64 bit (AMD64)] on win32
 Type "help", "copyright", "credits" or "license" for more information.
@@ -20,6 +20,7 @@ MyComputer ~ $
 
 ## Math and Numbers
 Numbers are self-evaluating (will return themselves). Numerical operations can be performed on numbers, variables holding numerical value, and numerical return values. Here is a table of most of the built in Python numerical operations. Feel free to input these expressions directly into the Python interpreter and examine the results.
+
 |Operation|Expression|Result|
 |:---------:|:----------:|:------:|
 | Addition| 1 + 2 + 3|6|
@@ -36,6 +37,7 @@ Numbers are self-evaluating (will return themselves). Numerical operations can b
 
 ## Boolean Values
 Boolean values are encoded by ```True``` and ```False```. Boolean values are again self-evaluating (will return themselves). The following operations return boolean values and when used with other data types will consider them to be true (anything that is not ```False``` is true).
+
 |Operation|Expression|Result|
 |:---------:|:----------:|:------:|
 |true|```True```|```True```|
@@ -46,6 +48,7 @@ Boolean values are encoded by ```True``` and ```False```. Boolean values are aga
 
 ## Strings
 Strings are another self-evaluating data type. They constructed as a sequence of characters between matching quotes (you can use either single or double quotes but you cannot mix and match them within a string). 
+
 ```python
 $ python
 >>> "hello"
@@ -69,6 +72,7 @@ $ python
 >Provide an example and explain the error message.
 
 Here are some useful operations on string and/or returning strings
+
 |Operation|Expression|Result|Notes|
 |:---------:|:----------:|:------:|:--:|
 Print | print("hello") | Prints to output | also works on numbers
