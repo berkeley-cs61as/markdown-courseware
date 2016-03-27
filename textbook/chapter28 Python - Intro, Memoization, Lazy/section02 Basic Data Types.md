@@ -1,12 +1,13 @@
 ## Basics
 As experienced programmers, we'll be speeding through the basics so you can dive in. But a few rules before we begin:
+
 * Python is case sensitive
 * Indentation via Spaces or tabs are used to structure Python code
 * Spaces and tabs are not interchangeable so pick one and stick to it (spaces are recommended)
- * if you are using sublime, under View > Indentation please check "Indentation Using Spaces"
- * if you ever run into errors, under View > Indentation try converting all indentation to spaces and double check your spacing
+  * if you are using sublime, under View > Indentation please check "Indentation Using Spaces"
+  * if you ever run into errors, under View > Indentation try converting all indentation to spaces and double check your spacing
 * Parentheses can be used to clarify order of evaluation (like in math)
- * (1 + 2) * 3
+  * (1 + 2) * 3
 * A # will comment out anything that follows it on the same line
 
 ## Math and Numbers
@@ -235,6 +236,7 @@ Surprise, surprise... Lists are self-evaluating! Lists are declared by enumerati
 >>> test_list[3]
 'list'
 ```
+
 * Line 1: Set up a list and assign it to a variable named test_list
 * Line 2: Check what the variable test_list is
 * Line 3: ['this', 'is', 'a', 'list', 1 , 2 , 3] is returned (the list we created!)
