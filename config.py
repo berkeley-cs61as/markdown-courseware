@@ -19,7 +19,7 @@ units = [('Unit 0', '4, 6-7'),
          ('Unit 1', '8-9, 11-12'),
          ('Unit 2', '13-16'),
          ('Unit 3', '17-21'),
-         ('Unit 4', '22,23,25-27')]
+         ('Unit 4', '22,23,25-28')]
 
 # List of tuples. Each tuple represents a (non-textbook) page.
 # The first item in the tuple is the name of the page.
