@@ -633,7 +633,7 @@ to be conﬁdent that your logic program won't loop.
 
 <div class="mc">
 <strong>Last-Pair</strong><br><br>
-Define rules to implement the <code>last-pair</code> operation of <a href="http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-15.html#%_thm_2.17">SICP exercise 2.17</a>, which returns a list containing the last element of a nonempty list.
+Define rules to implement the <code>last-pair</code> operation of <a href="http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-15.html#%_thm_2.17">SICP exercise 2.17</a>, which returns a list containing the last element of a nonempty list.
 
 Check your rules on queries such as <code>(last-pair (3) ?x)</code>, <code>(last-pair (1 2 3) ?x)</code>, and <code>(last-pair (2 ?x) (3))</code>. Do your rules work correctly on queries such as <code>(last-pair ?x (3))</code>?
 

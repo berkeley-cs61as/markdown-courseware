@@ -20,7 +20,7 @@ Anything else is a query.
 
 ## Exercise 1
   
-Abelson & Sussman, exercises [4.56](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-29.html#%_thm_4.56), [4.57, 4.58](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-29.html#%_thm_4.57) and [4.65](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-29.html#%_thm_4.65).
+Abelson & Sussman, exercises [4.56](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-29.html#%_thm_4.56), [4.57, 4.58](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-29.html#%_thm_4.57) and [4.65](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-29.html#%_thm_4.65).
 
 ## Exercise 2: Extra for Experts
 

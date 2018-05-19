@@ -111,14 +111,14 @@ test for equality, together with a two-position switch and another factorial
 machine. (The factorial machine is infinite because it contains another
 factorial machine within it -- recursion!) So the machine will look like this:
 
-![](http://mitpress.mit.edu/sicp/full-text/book/ch4-Z-G-2.gif)
+![](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/ch4-Z-G-2.gif)
 
 Like `factorial`, the evaluator is a very special machine that takes a
 description of other machine as input, and then configures itself to emulate
 the given machine. For example, if we give the evaluator the definition of
 `factorial`, the evaluator will emulate it and be able to compute factorials.
 
-![](http://mitpress.mit.edu/sicp/full-text/book/ch4-Z-G-3.gif)
+![](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/ch4-Z-G-3.gif)
 
 So our evaluator is just a universal machine that mimics all other machines!
 

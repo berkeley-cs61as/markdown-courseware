@@ -43,7 +43,7 @@ text/book/book-Z-H-26.html#%_thm_4.15).
   
 Abelson & Sussman, exercises [4.1](http://mitpress.mit.edu/sicp/full-
 text/book/book-Z-H-26.html#%_thm_4.1), [4.2, 4.4, and
-4.5](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-26.html#%_thm_4.2).
+4.5](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-26.html#%_thm_4.2).
 
 ## Exercise 2*.
 

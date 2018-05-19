@@ -117,14 +117,14 @@ Suppose we represent vectors _v_ = (_v_<sub>_i_</sub>) as sequences of numbers, 
 matrices _m_ = (_m_<sub>_i_,_j_</sub>) as sequences of vectors (the rows of the matrix).
 For example, the matrix
 
-![](http://mitpress.mit.edu/sicp/full-text/book/ch2-Z-G-20.gif)
+![](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/ch2-Z-G-20.gif)
 
 is represented as the sequence `((1 2 3 4) (4 5 6 6) (6 7 8 9))`. With this
 representation, we can use sequence operations to concisely express the basic
 matrix and vector operations. These operations (which are described in any
 book on matrix algebra) are the following:
 
-![](http://mitpress.mit.edu/sicp/full-text/book/ch2-Z-G-21.gif)
+![](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/ch2-Z-G-21.gif)
 
 We can define the dot product as
 

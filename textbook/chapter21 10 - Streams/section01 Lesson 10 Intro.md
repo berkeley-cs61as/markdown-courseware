@@ -8,7 +8,7 @@ In this section, we'll learn about streams and some of their applications.
 
 ## Readings
 
-This lesson is based on [SICP 3.5](https://mitpress.mit.edu/sicp/full-text/book/book-Z-H-24.html#%_sec_3.5).
+This lesson is based on [SICP 3.5](https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-24.html#%_sec_3.5).
 
 ## Introduction to Streams
 

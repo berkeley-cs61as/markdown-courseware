@@ -38,7 +38,7 @@ have nothing in common!". Sure, the functions look completely different but
 they do share the same logic:
 
   
-![](http://mitpress.mit.edu/sicp/full-text/book/ch2-Z-G-17.gif)
+![](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/ch2-Z-G-17.gif)
 
 The first step in our idea was to find a recurring pattern in our code. From how we've described recursion in previous lessons, you might dissect `sum-odd-squares` and `even-fibs` by base cases and recursive calls. Now, let's see what each function does from a different perspective:
 

@@ -63,11 +63,11 @@ Because a queue is a list of items, we can technically represent it with an ordi
 
 A list allows us access to the first item in constant time, but when you need to find the last pair, it takes a long time. We can solve this by storing and updating the pointer to the backmost pair.
 
-![](http://mitpress.mit.edu/sicp/full-text/book/ch3-Z-G-19.gif)
+![](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/ch3-Z-G-19.gif)
 
 Looking at the queue above, we see that we store two pointers: one that points to the front of the list and one to the back. If we try to add a new item, `'d`, to the queue, the structure will be changed into the following:
 
-![](http://mitpress.mit.edu/sicp/full-text/book/ch3-Z-G-20.gif)
+![](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/ch3-Z-G-20.gif)
 
 When we want to find the last pair of `q`, we can follow the `(cdr q)` pointer.
 
@@ -145,11 +145,11 @@ next pair.
              queue))) 
     
 
-![](http://mitpress.mit.edu/sicp/full-text/book/ch3-Z-G-20.gif)
+![](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/ch3-Z-G-20.gif)
 
 If starting from the queue above we decide to delete the first time, the change will only be where the `front-ptr` points to:
 
-![](http://mitpress.mit.edu/sicp/full-text/book/ch3-Z-G-21.gif)
+![](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/ch3-Z-G-21.gif)
 
 ## Takeaways
 

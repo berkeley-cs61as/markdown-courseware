@@ -10,5 +10,5 @@ For this lab, make sure you understand all material from Unit 2, specifically ma
 
 Take a look at the following readings:
 
-  * [SICP 3.3.1-3](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-22.html#%_sec_3.3)
+  * [SICP 3.3.1-3](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-22.html#%_sec_3.3)
   * [These notes](http://inst.eecs.berkeley.edu/~cs61as/reader/notes.pdf#page=56) are from old CS 61A lectures and cover mutation and vectors.

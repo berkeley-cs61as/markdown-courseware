@@ -48,11 +48,11 @@ the effect of evaluating the expression `(set-car! (cdr list1) (cadr list2))`.
 ## Exercise 3
 
   
-Complete exercises [3.13 and 3.14](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-22.html#%_thm_3.13) in Abelson & Sussman.
+Complete exercises [3.13 and 3.14](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-22.html#%_thm_3.13) in Abelson & Sussman.
 
 ## Exercise 4
   
-Complete exercises [3.16, 3.17](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-22.html#%_thm_3.16), [3.21](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-22.html#%_thm_3.21), [3.25, and 3.27](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-22.html#%_thm_3.25) in Abelson & Sussman.
+Complete exercises [3.16, 3.17](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-22.html#%_thm_3.16), [3.21](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-22.html#%_thm_3.21), [3.25, and 3.27](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-22.html#%_thm_3.25) in Abelson & Sussman.
 
 **Note:** You do not need to draw the environment diagram for exercise 3.27; use the `trace` procedure to provide the requested explanations. Treat the table procedures `lookup` and `insert!` as primitive; i.e. don't trace the procedures they call. Also, assume that those procedures work in constant time. We're interested to know about the number of times `memo-fib` is invoked.
 
@@ -91,7 +91,7 @@ Sorting a vector:
 
 **Do this if you want to. This is NOT for credit.**
 
-Abelson & Sussman, exercises [3.19](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-22.html#%_thm_3.19) and [3.23](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-22.html#%_thm_3.23). 
+Abelson & Sussman, exercises [3.19](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-22.html#%_thm_3.19) and [3.23](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-22.html#%_thm_3.23). 
 
 Exercise 3.19 is especially challenging, so props to you if you solve it. You'll need to look at some of the other exercises you may have skipped in this section. Exercise 3.23 is slightly easier, but be careful about the Θ(1) running time requirement.
 

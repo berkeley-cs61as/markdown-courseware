@@ -39,10 +39,10 @@ as shown below. The actual shape of the drawing depends on the frame&mdash;all
 four images below are produced by the same `wave-painter`, but
 with respect to four different frames.
 
-![](http://mitpress.mit.edu/sicp/full-text/book/ch2-Z-G-26.gif)
-![](http://mitpress.mit.edu/sicp/full-text/book/ch2-Z-G-27.gif)
-![](http://mitpress.mit.edu/sicp/full-text/book/ch2-Z-G-28.gif)
-![](http://mitpress.mit.edu/sicp/full-text/book/ch2-Z-G-29.gif)
+![](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/ch2-Z-G-26.gif)
+![](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/ch2-Z-G-27.gif)
+![](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/ch2-Z-G-28.gif)
+![](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/ch2-Z-G-29.gif)
 
 ## Combining Painters
 
@@ -68,8 +68,8 @@ two stages starting from `wave-painter`:
 
 The resulting figures are shown below:
 
-![](http://mitpress.mit.edu/sicp/full-text/book/ch2-Z-G-34.gif)
-![](http://mitpress.mit.edu/sicp/full-text/book/ch2-Z-G-35.gif)
+![](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/ch2-Z-G-34.gif)
+![](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/ch2-Z-G-35.gif)
 
 ## Abstract Operations
 
@@ -108,11 +108,11 @@ that makes painters split and branch towards the right:
       
 Here's what the general template for `(right-split painter n)` looks like:
 
-![](http://mitpress.mit.edu/sicp/full-text/book/ch2-Z-G-36.gif)
+![](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/ch2-Z-G-36.gif)
 
 And here's the result for `(right-split wave-painter 4)`:
 
-![](http://mitpress.mit.edu/sicp/full-text/book/ch2-Z-G-38.gif)
+![](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/ch2-Z-G-38.gif)
 
 We can produce balanced patterns by branching upwards as well as towards the
 right:
@@ -132,11 +132,11 @@ right:
 
 Here's the general template for `(corner-split painter n)`:
 
-![](http://mitpress.mit.edu/sicp/full-text/book/ch2-Z-G-37.gif)
+![](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/ch2-Z-G-37.gif)
 
 And here's the result for `(corner-split wave-painter 4)`:
 
-![](http://mitpress.mit.edu/sicp/full-text/book/ch2-Z-G-40.gif)
+![](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/ch2-Z-G-40.gif)
 
 By placing four copies of a `corner-split` appropriately, we obtain a pattern
 called `square-limit`:
@@ -252,7 +252,7 @@ other than to say that there is a constructor `make-frame`, which takes three
 vectors and produces a frame, and three corresponding selectors: `origin-frame`,
 `edge1-frame`, and `edge2-frame`
 
-![](http://mitpress.mit.edu/sicp/full-text/book/ch2-Z-G-42.gif)
+![](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/ch2-Z-G-42.gif)
 
 We will use coordinates in the unit square to specify vectors; that is, we'll
 use the region of space where [mathjaxinline]0 \leq x,y \leq 1[/mathjaxinline].
@@ -265,7 +265,7 @@ With each frame, we associate a **coordinate map**, which is used to shift
 and scale images to fit the frame. The coordinate map transforms vectors in the unit square
 to vectors in the frame using the formula
 
-![](http://mitpress.mit.edu/sicp/full-text/book/ch2-Z-G-43.gif)
+![](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/ch2-Z-G-43.gif)
 
 where [mathjaxinline]x[/mathjaxinline] and [mathjaxinline]y[/mathjaxinline] are
 the components of the input vector.

@@ -183,7 +183,7 @@ A **binary tree** is just like the Tree we described earlier in this lesson, exc
 
 Using binary trees to represent sets is simple and intuitive. The **entry** (analogous to **datum**) of each node in a binary tree will be an element of a set. Each node will also have a **left branch** and a **right branch**; the left or right branch of a node can be empty. If both branches are empty, that node is a **leaf**. This data structure must follow one rule: The left branch of a node must point to a subtree with entries smaller than the entry node. The right branch must point to a subtree with entries larger than the entry node. In other words, **all values to the left of a node must be smaller than the node, and all values to the right of a node must be larger than the node**.
 
-![](http://mitpress.mit.edu/sicp/full-text/book/ch2-Z-G-51.gif)
+![](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/ch2-Z-G-51.gif)
 
 This rule introduces logarithmic runtime into the picture. Walk yourself through finding `11` in the leftmost tree above. We start at the root of the tree and notice that `11` is greater than `7`, and so we travel down the right branch. `11` is greater than `9`, and so we again go down the right branch. We have found `11` in the tree and can return `#t`.
 
@@ -264,7 +264,7 @@ Here's the formal algorithm for `adjoin-set`:
 
 ## Unbalanced Tree
 
-![](http://mitpress.mit.edu/sicp/full-text/book/ch2-Z-G-52.gif)
+![](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/ch2-Z-G-52.gif)
 
 The image above is the result of adding the elements 1, 2, 3, 4, 5, 6, and 7, in
 that order, to an empty tree. (Make sure you try this out with pen and paper to see that this is the case). We say that this tree is **unbalanced** because one

@@ -15,17 +15,17 @@ which are both equivalent to `integers`. Now let's
 imagine the array (or matrix, if you want to think of it that way) of pairs of
 [mathjaxinline]S[/mathjaxinline] and [mathjaxinline]T[/mathjaxinline]:
 
-![](http://mitpress.mit.edu/sicp/full-text/book/ch3-Z-G-45.gif)
+![](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/ch3-Z-G-45.gif)
 
 The stream of pairs of integers is everything above the diagonal:
 
-![](http://mitpress.mit.edu/sicp/full-text/book/ch3-Z-G-46.gif)
+![](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/ch3-Z-G-46.gif)
 
 Let's call the general stream of pairs `(pairs s t)`, and consider it to be composed
 of three parts: the pair [mathjaxinline] (S\_0, T\_0) [/mathjaxinline], the rest of the pairs in the first row, and
 the remaining pairs.
 
-![](http://mitpress.mit.edu/sicp/full-text/book/ch3-Z-G-47.gif)
+![](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/ch3-Z-G-47.gif)
 
 The third piece in this decomposition (pairs that are not in the first row) is
 (recursively) the pairs formed from `(stream-cdr s)` and `(stream-cdr t)`.

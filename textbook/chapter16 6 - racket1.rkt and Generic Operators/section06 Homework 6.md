@@ -70,7 +70,7 @@ Abelson & Sussman, exercises [2.74, 2.75, 2.76](http://mitpress.mit.edu/sicp
 /full-text/book/book-Z-H-17.html#%25_thm_2.74), [2.77, 2.79,
 2.80](http://mitpress.mit.edu/sicp/full-
 text/book/book-Z-H-18.html#%25_thm_2.77), [2.81, 2.83
-](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-18.html#%25_thm_2.81)
+](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-18.html#%25_thm_2.81)
 
 Note: Some of these are thought-exercises; you needn't actually run any Scheme
 programs for them! (Some don't ask you to write procedures at all; others ask
@@ -103,7 +103,7 @@ text/book/book-Z-H-16.html#%_sec_2.3.3)
   
 The file `~cs61as/lib/bst.scm` contains the binary search tree procedures from
 SICP 2.3.3. Using adjoin-set, construct the [trees shown on page
-156](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-16.html#%_fig_2.16).
+156](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-16.html#%_fig_2.16).
 
 ## Extra for Experts: Exercise 6
 

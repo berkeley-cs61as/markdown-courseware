@@ -29,7 +29,7 @@ Try and predict what the following expressions will return, then check your answ
 
 ## Exercise 1
 
-The first few exercises refer to [SICP 2.1.4](https://mitpress.mit.edu/sicp/full-text/book/book-Z-H-14.html#%_sec_2.1.4).
+The first few exercises refer to [SICP 2.1.4](https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-14.html#%_sec_2.1.4).
 See the text for details about interval arithmetic.
 
 ### SICP 2.7
@@ -166,11 +166,11 @@ such as `cdddadaadar`. It should return the corresponding function.
 
 ### Exercise 5
   
-[SICP Ex. 2.6](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-14.html#%_thm_2.4). Besides addition, invent multiplication and exponentiation of nonnegative integers. If you're really enthusiastic, see if you can invent subtraction. (Remember, the rule of this game is that you have only lambda as a starting point.) Read `~cs61as/lib/church-hint` for some suggestions.
+[SICP Ex. 2.6](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-14.html#%_thm_2.4). Besides addition, invent multiplication and exponentiation of nonnegative integers. If you're really enthusiastic, see if you can invent subtraction. (Remember, the rule of this game is that you have only lambda as a starting point.) Read `~cs61as/lib/church-hint` for some suggestions.
 
 ### Exercise 6
   
-[SICP Ex. 2.18](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-15.html#%_thm_2.18); this should take some thought, and you should make sure you get it right, but don't get stuck on it for a whole hour. Note: Your solution should reverse lists, not sentences! That is, you should be using `cons`, `car`, and `cdr`, not `first`, `sentence`, etc.
+[SICP Ex. 2.18](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-15.html#%_thm_2.18); this should take some thought, and you should make sure you get it right, but don't get stuck on it for a whole hour. Note: Your solution should reverse lists, not sentences! That is, you should be using `cons`, `car`, and `cdr`, not `first`, `sentence`, etc.
 
 ## Submit Your Homework!
 

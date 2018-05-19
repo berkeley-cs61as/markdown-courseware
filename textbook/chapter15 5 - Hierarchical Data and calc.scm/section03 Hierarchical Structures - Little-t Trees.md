@@ -4,7 +4,7 @@ Let's discuss some general properties of little-t trees.
 We've seen that structures like `(cons (list 1 2) (list 3 4))`
 can be represented in a tree-like structure:
 
-![](http://mitpress.mit.edu/sicp/full-text/book/ch2-Z-G-16.gif)
+![](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/ch2-Z-G-16.gif)
 
 Little-t trees are composed of *branches* and *leaves*.
 The tree above has five

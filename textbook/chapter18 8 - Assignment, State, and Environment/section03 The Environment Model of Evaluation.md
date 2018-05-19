@@ -54,7 +54,7 @@ Let's get some perspective on how we expression atomic values:
   1. Numbers, strings, `#t`, and `#f` are self-evaluating.
   2. If the expression is a symbol, find the **first available** binding. (That is, look in the current frame; if not found there, look in the frame "behind" the current frame; and so on until the global frame is reached.)
 
-![](http://mitpress.mit.edu/sicp/full-text/book/ch3-Z-G-2.gif)
+![](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/ch3-Z-G-2.gif)
 
 ## Procedure Invocation
 
@@ -86,11 +86,11 @@ What about procedures? How does the evaluation deal with expressions that invoke
 
   
   
-![](http://mitpress.mit.edu/sicp/full-text/book/ch3-Z-G-5.gif)
+![](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/ch3-Z-G-5.gif)
   
 Procedure objects in the global frame.
 
-![](http://mitpress.mit.edu/sicp/full-text/book/ch3-Z-G-6.gif)
+![](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/ch3-Z-G-6.gif)
 
 Environments created by evaluating `(f 5)`.
 
@@ -114,11 +114,11 @@ Environments created by evaluating `(f 5)`.
     "Insufficient funds")))
     
   
-![](http://mitpress.mit.edu/sicp/full-text/book/ch3-Z-G-7.gif)
+![](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/ch3-Z-G-7.gif)
 
 Result of defining `make-withdraw` in the global environment.
 
-![](http://mitpress.mit.edu/sicp/full-text/book/ch3-Z-G-8.gif)
+![](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/ch3-Z-G-8.gif)
 
 Result of evaluating `(define W1 (make-withdraw 100))`.
 

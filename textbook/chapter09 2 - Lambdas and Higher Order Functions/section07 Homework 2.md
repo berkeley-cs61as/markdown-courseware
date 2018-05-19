@@ -143,12 +143,12 @@ Write and test the `make-tester` procedure. Given a word `w` as its argument,
 
 ## Exercise 8
 
-Complete SICP exercises [1.31a](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-12.html#%25_thm_1.31),
-[1.32a](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-12.html#%25_thm_1.32),
-[1.33](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-12.html#%25_thm_1.33),
-[1.40](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-12.html#%25_thm_1.40),
-[1.41](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-12.html#%25_thm_1.41), and
-[1.43](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-12.html#%25_thm_1.43).
+Complete SICP exercises [1.31a](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-12.html#%25_thm_1.31),
+[1.32a](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-12.html#%25_thm_1.32),
+[1.33](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-12.html#%25_thm_1.33),
+[1.40](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-12.html#%25_thm_1.40),
+[1.41](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-12.html#%25_thm_1.41), and
+[1.43](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-12.html#%25_thm_1.43).
 For some of these problems, you will need to read parts of the SICP text.
 
 Some additional guidelines:

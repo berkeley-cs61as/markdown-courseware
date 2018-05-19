@@ -34,7 +34,7 @@ Here is the formal definition for `assoc`:
 In a **1D table**, values are stored under a single key. A table will be designed
 as a list of pairs. Each pairs' `car` hold the key for each value.
 
-![](http://mitpress.mit.edu/sicp/full-text/book/ch3-Z-G-22.gif)
+![](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/ch3-Z-G-22.gif)
 
 In the above table, the breakdown between the keys and values can be seen
 below.
@@ -122,7 +122,7 @@ Say we have 2 tables: "math" and "letters" with the following key-value pairs.
 
 We can put them into one big table:
 
-![](http://mitpress.mit.edu/sicp/full-text/book/ch3-Z-G-23.gif)
+![](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/ch3-Z-G-23.gif)
 
 ### `lookup`
 

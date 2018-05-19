@@ -70,9 +70,9 @@ This runs in linear time with respect to the `n` variable. We know this because 
 
 Can we do better? Turns out there's a more clever exponentiation algorithm that takes advantage of the follow idea of *successive squaring*.
 > Let's say we were trying to compute b^8. Normally, we would do b \* b \* b \* b \* b \* b \* b \* b. This requires 8 multiplcations. Instead we can do it in 3:
-> ![The trick](https://mitpress.mit.edu/sicp/full-text/book/ch1-Z-G-22.gif)
+> ![The trick](https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/ch1-Z-G-22.gif)
 > This method works fine for exponents that are powers of 2. We can also take advantage of successive squaring in computing exponentials in general if we use the rule
-> ![The other trick](https://mitpress.mit.edu/sicp/full-text/book/ch1-Z-G-23.gif)
+> ![The other trick](https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/ch1-Z-G-23.gif)
 
 The above tricks give us this procedure:
 
@@ -131,5 +131,5 @@ What is the runtime of sort?
 
 ## Further Reading
 
-- [SICP 1.2.3 Orders of Growth](https://mitpress.mit.edu/sicp/full-text/book/book-Z-H-4.html#%_toc_%_sec_1.2.3)
-- [SICP 1.2.4 Exponentiation](https://mitpress.mit.edu/sicp/full-text/book/book-Z-H-4.html#%_toc_%_sec_1.2.4)
+- [SICP 1.2.3 Orders of Growth](https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-4.html#%_toc_%_sec_1.2.3)
+- [SICP 1.2.4 Exponentiation](https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-4.html#%_toc_%_sec_1.2.4)

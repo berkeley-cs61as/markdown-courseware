@@ -28,7 +28,7 @@ If you are working on the lab computers, the `grader` command will run the autog
 
 ## Exercise 2: Golden Ratio (Optional)
 
-<p>Read the subsection on <a href="http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-12.html#%_sec_Temp_106">finding fixed points of functions</a> in SICP, and do <a href="http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-12.html#%25_thm_1.35">Exercise 1.35</a>.</p>
+<p>Read the subsection on <a href="http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-12.html#%_sec_Temp_106">finding fixed points of functions</a> in SICP, and do <a href="http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-12.html#%25_thm_1.35">Exercise 1.35</a>.</p>
 
 ## Exercise 3: `cont-frac`
 

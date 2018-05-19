@@ -54,7 +54,7 @@ of the internal sieve to form the output stream. Thus, not only is the stream
 infinite, but the signal processor is also infinite, because the sieve
 contains a sieve within it.
 
-![](http://mitpress.mit.edu/sicp/full-text/book/ch3-Z-G-35.gif)
+![](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/ch3-Z-G-35.gif)
 
 -->
 

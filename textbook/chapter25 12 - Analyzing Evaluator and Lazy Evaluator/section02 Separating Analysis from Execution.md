@@ -188,7 +188,7 @@ procedure does not include its text! Instead, the evaluator represents a
 procedure in the metacircular Scheme as a procedure in the underlying Scheme,
 along with the formal parameters and the defining environment.
 
-(Be sure to read [Section 4.1.7](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-26.html#%_sec_4.1.7) from SICP to see how all of the syntactic analysis procedures are implemented).
+(Be sure to read [Section 4.1.7](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-26.html#%_sec_4.1.7) from SICP to see how all of the syntactic analysis procedures are implemented).
 
 ## Level Confusion
 
@@ -226,7 +226,7 @@ writing of a parser that way. (I mentioned this earlier as an example of data-
 directed programming.) But if you’re writing a parser by hand, it’s easiest to
 use recursive descent.
 
-(Be sure to read section [4.1.7](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-26.html#%_sec_4.1.7) of SICP before proceeding).
+(Be sure to read section [4.1.7](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-26.html#%_sec_4.1.7) of SICP before proceeding).
 
 ## An Example
 

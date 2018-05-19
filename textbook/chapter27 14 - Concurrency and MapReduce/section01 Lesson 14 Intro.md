@@ -10,7 +10,7 @@ You should understand assignment and mutable data.
 
 Most of this lesson is based off of [these
 notes](http://inst.eecs.berkeley.edu/~cs61as/reader/notes.pdf#page=64)
-and [SICP 3.4](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-23.html#%_sec_3.4).
+and [SICP 3.4](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-23.html#%_sec_3.4).
 
 ## Introduction to Concurrency
 

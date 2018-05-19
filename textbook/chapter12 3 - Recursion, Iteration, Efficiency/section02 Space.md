@@ -131,4 +131,4 @@ The following questions are for your understanding. You will not be graded. You 
 - If we use an iterative version, will we ever run out of space calling `factorial`?
 
 ## Further Reading
-[SICP 1.2.1 - Linear Recursion and Iteration](https://mitpress.mit.edu/sicp/full-text/book/book-Z-H-11.html#%_sec_1.2.1)
+[SICP 1.2.1 - Linear Recursion and Iteration](https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-11.html#%_sec_1.2.1)

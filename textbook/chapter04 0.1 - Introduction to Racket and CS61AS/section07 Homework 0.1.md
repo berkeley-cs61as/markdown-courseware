@@ -342,7 +342,7 @@ example? Think about this and try to figure it out. Expect to see it again.
 The following readings are recommended:
 
   * [Lecture Notes 1](http://inst.eecs.berkeley.edu/~cs61as/reader/notes.pdf)
-  * [SICP 1.1](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-10.html#%25_sec_1.1)
+  * [SICP 1.1](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-10.html#%25_sec_1.1)
 
 ## Manual Testing
 

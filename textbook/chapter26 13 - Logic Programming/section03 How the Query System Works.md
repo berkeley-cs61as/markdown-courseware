@@ -43,7 +43,7 @@ the data base. All these streams are then combined to form one huge stream,
 which contains all possible extensions of every frame in the input stream.
 This stream is the output of the query.
 
-![](http://mitpress.mit.edu/sicp/full-text/book/ch4-Z-G-4.gif)
+![](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/ch4-Z-G-4.gif)
 
 To answer a simple query, we use the query with an input stream consisting of
 a single empty frame. The resulting output stream contains all extensions to
@@ -83,7 +83,7 @@ queries can be viewed as a series combination of the two component queries, as
 shown in the figure below. The frames that pass through the first query filter
 are filtered and further extended by the second query.
 
-![](http://mitpress.mit.edu/sicp/full-text/book/ch4-Z-G-5.gif)
+![](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/ch4-Z-G-5.gif)
 
 The and combination of two queries is produced by operating on the stream of
 frames in series.
@@ -93,7 +93,7 @@ queries as a parallel combination of the two component queries. The input
 stream of frames is extended separately by each query. The two resulting
 streams are then merged to produce the final output stream.
 
-![](http://mitpress.mit.edu/sicp/full-text/book/ch4-Z-G-6.gif)
+![](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/ch4-Z-G-6.gif)
 
 The or combination of two queries is produced by operating on the stream of
 frames in parallel and merging the results.

@@ -37,7 +37,7 @@ operands swim upwards, starting at the bottom of the tree, getting
 evaluated at each branch, and resulting in a new value which is further
 evaluated at a higher level.
 
-![Recursion Tree](http://mitpress.mit.edu/sicp/full-text/book/ch1-Z-G-1.gif)
+![Recursion Tree](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/ch1-Z-G-1.gif)
 
 A more detailed explanation is given in the [wiki
 entry](https://edge.edx.org/courses/uc-berkeley/cs61as-1x/SICP/wiki/cs61as-

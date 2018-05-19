@@ -11,7 +11,7 @@ You can also download it by clicking
 
 ##  Exercise 1
 
-Read [SICP 3.5.1](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-24.html#%_sec_3.5.1),
+Read [SICP 3.5.1](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-24.html#%_sec_3.5.1),
 then answer the following:
 
 1. What is the type of the value of `(delay (+ 1 27))`?

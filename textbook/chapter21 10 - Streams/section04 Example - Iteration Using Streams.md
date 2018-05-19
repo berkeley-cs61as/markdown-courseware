@@ -35,7 +35,7 @@ root of 2.
 
 Similarly, we used the following formula to approximate pi:
 
-![](http://mitpress.mit.edu/sicp/full-text/book/ch3-Z-G-41.gif)
+![](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/ch3-Z-G-41.gif)
 
 Now, let's calculate pi with an infinite stream:
 

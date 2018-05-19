@@ -94,7 +94,7 @@ procedure is **strict** in that argument. In a purely applicative-order
 language, all procedures are strict in each argument. In a purely normal-order
 language, all compound procedures are non-strict in each argument, and
 primitive procedures may be either strict or non-strict. There are also
-languages (see [SICP Exercise 4.31](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-27.html#%_thm_4.31)) that give programmers detailed control
+languages (see [SICP Exercise 4.31](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-27.html#%_thm_4.31)) that give programmers detailed control
 over the strictness of the procedures they define.
 
 A striking example of a procedure that can usefully be made non-strict is

@@ -12,9 +12,9 @@ In this section, we are going to go over the change of the state of the variable
 
 In this section, we will cover the material in the following readings:
 
-  * [Introduction to Unit 3: Modularity, Objects, and State ](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-19.html#%_sec_3)
-  * [SICP 3.1: Assignment and Local State ](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-20.html#%_sec_3.1)
-  * [SICP 3.2: The Environment Model of Evaluation](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-21.html#%_sec_3.2)
+  * [Introduction to Unit 3: Modularity, Objects, and State ](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-19.html#%_sec_3)
+  * [SICP 3.1: Assignment and Local State ](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-20.html#%_sec_3.1)
+  * [SICP 3.2: The Environment Model of Evaluation](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-21.html#%_sec_3.2)
   * [OOP Below the line](http://inst.eecs.berkeley.edu/~cs61as/reader/belowline.pdf)
   * [Environment Diagram Rules](https://docs.google.com/document/d/1GbRF9rB9TtFbf--89MBDEHzygF2E5_E2wpLBh4rb4Z4/edit)
 

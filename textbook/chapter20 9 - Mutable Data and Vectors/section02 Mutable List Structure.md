@@ -45,7 +45,7 @@ Let us see how `set-car!` and `set-cdr!` work with more complicated lists. We ar
     (define y (list e f))
     
 
-![](http://mitpress.mit.edu/sicp/full-text/book/ch3-Z-G-13.gif)
+![](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/ch3-Z-G-13.gif)
 
 The next few calls on `set-car!` and `set-cdr!` are independent and will be
 based on this original configuration. For the next few questions, drawing the
@@ -59,7 +59,7 @@ The effect of calling
 
 to the original configuration will give the resulting box-and-pointer diagram:
 
-![](http://mitpress.mit.edu/sicp/full-text/book/ch3-Z-G-14.gif)
+![](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/ch3-Z-G-14.gif)
 
 The call changes the car-pointer on `x`, which initially points to `(list a b)`, to wherever `y` is pointing: `(list e f)`. What happens to the list with `a` and `b`? Nothing actually happens to it, but since it has no pointers that reference it, the list is no longer reachable.
 
@@ -94,7 +94,7 @@ From the original configuration, we now call
 
 This gives us the following box-and-pointer diagram:
 
-![](http://mitpress.mit.edu/sicp/full-text/book/ch3-Z-G-15.gif)
+![](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/ch3-Z-G-15.gif)
 
 
   * `x` will print `((a b) c d)`

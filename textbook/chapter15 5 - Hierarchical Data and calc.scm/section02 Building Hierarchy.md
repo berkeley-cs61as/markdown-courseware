@@ -14,13 +14,13 @@ Now let's make a pair of lists:
 
 The first item of the pair is the list `(1 2)` and the second is the list `(3 4)`. We can show this structure with the following box-and-pointer diagram:
 
-![](http://mitpress.mit.edu/sicp/full-text/book/ch2-Z-G-15.gif)
+![](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/ch2-Z-G-15.gif)
 
 (If you aren't familiar with drawing and interpreting box-and-pointer diagrams, please go back and review the [section](http://berkeley-cs61as.github.io/textbook/representing-sequences.html) in Lesson 4.)
 
 You can also represent the structure `((1 2) 3 4)` using a **little-t tree**:
 
-![](http://mitpress.mit.edu/sicp/full-text/book/ch2-Z-G-16.gif)
+![](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/ch2-Z-G-16.gif)
 
 With litle-t trees, every element in a sequence is a node. In the example above, `(1 2)` is an element of `((1 2) 3 4)`,
 so it's a node. But it's also a tree with two children nodes&mdash;one for each element.

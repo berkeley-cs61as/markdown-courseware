@@ -86,7 +86,7 @@ Tree recursive procedures typically take exponential time to compute. Why would 
 
 ## Further Reading
 
-- [SICP 1.2.2 Tree Recursion](https://mitpress.mit.edu/sicp/full-text/book/book-Z-H-4.html#%_toc_%_sec_1.2.2)
-- [SICP 1.2.2 Example: Counting Change](https://mitpress.mit.edu/sicp/full-text/book/book-Z-H-4.html#%_toc_%_sec_Temp_52)
+- [SICP 1.2.2 Tree Recursion](https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-4.html#%_toc_%_sec_1.2.2)
+- [SICP 1.2.2 Example: Counting Change](https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-4.html#%_toc_%_sec_Temp_52)
 
 

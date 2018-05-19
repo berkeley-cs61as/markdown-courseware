@@ -11,10 +11,10 @@ Or you can download it [here](http://inst.eecs.berkeley.edu/~cs61as/templates/hw
   
 Complete the following: 
 
-  * [SICP 3.3, 3.4](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-20.html#%_thm_3.3)
-  * [SICP 3.7, 3.8](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-20.html#%_thm_3.7)
-  * [SICP 3.10](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-21.html#%25_thm_3.10)
-  * [SICP 3.11](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-21.html#%25_thm_3.11) 
+  * [SICP 3.3, 3.4](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-20.html#%_thm_3.3)
+  * [SICP 3.7, 3.8](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-20.html#%_thm_3.7)
+  * [SICP 3.10](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-21.html#%25_thm_3.10)
+  * [SICP 3.11](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-21.html#%25_thm_3.11) 
 
 **Note:** For exercises 3.3 and 3.4, you should create a function called `make-password-account` instead of `make-account`.
 
